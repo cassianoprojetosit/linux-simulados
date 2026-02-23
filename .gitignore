@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+node_modules/
+client_secret*.json
+*.rtf
+backup/

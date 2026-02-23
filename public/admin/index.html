@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin | Linux Simulados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --surface: #111827;
+            --surface2: #1a2235;
+            --border: rgba(255,255,255,0.07);
+            --accent: #00e5a0;
+            --accent2: #3b82f6;
+            --accent3: #f59e0b;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --text-dim: #64748b;
+            --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            --green: #00e5a0;
+            --blue: #3b82f6;
+            --yellow: #f59e0b;
+            --purple: #a78bfa;
+            --surface3: #212d42;
+            --green-glow: rgba(0,229,160,0.25);
+            --red: #f87171;
+            --text-muted: #64748b;
+            --green-dim: rgba(0,229,160,0.12);
+            --red-dim: rgba(248,113,113,0.12);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ═══ SIDEBAR ADMIN ═══ */
+        .admin-sidebar {
+            position: fixed;
+            left: 0; top: 0;
+            width: 240px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            padding: 28px 0;
+        }
+
+        .admin-logo {
+            padding: 0 24px 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-logo-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .admin-nav {
+            padding: 20px 0;
+            flex: 1;
+        }
+
+        .admin-nav-section {
+            padding: 8px 24px 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .admin-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 24px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .admin-nav-link:hover {
+            color: var(--text);
+            background: var(--surface2);
+        }
+
+        .admin-nav-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(0, 229, 160, 0.07);
+        }
+
+        .admin-nav-icon {
+            width: 18px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .admin-sidebar-footer {
+            border-top: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        .admin-sidebar-footer .admin-nav-link {
+            padding: 10px 24px;
+        }
+
+        .admin-main {
+            margin-left: 240px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ═══ TOPBAR ADMIN ═══ */
+        .admin-topbar {
+            height: 60px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 28px;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .admin-topbar-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .admin-topbar-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-btn-ver-site {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: inherit;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .admin-btn-ver-site:hover {
+            border-color: rgba(255,255,255,0.2);
+            color: var(--text);
+        }
+
+        .admin-user-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 12px 4px 4px;
+        }
+
+        .admin-user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .admin-user-name {
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .admin-logout-btn {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 0;
+            margin-left: 4px;
+            transition: color 0.15s;
+        }
+
+        .admin-logout-btn:hover {
+            color: var(--red);
+        }
+
+        /* ═══ CONTEÚDO ═══ */
+        .admin-content {
+            padding: 36px 32px;
+            flex: 1;
+        }
+
+        .admin-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .admin-metric-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 4px solid var(--green);
+        }
+
+        .admin-metric-card.free { border-top-color: var(--text-muted); }
+        .admin-metric-card.pro { border-top-color: var(--accent3); }
+        .admin-metric-card.sessions { border-top-color: var(--accent2); }
+
+        .admin-metric-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .admin-metric-card .admin-metric-value { color: var(--green); }
+        .admin-metric-card.free .admin-metric-value { color: var(--text-muted); }
+        .admin-metric-card.pro .admin-metric-value { color: var(--accent3); }
+        .admin-metric-card.sessions .admin-metric-value { color: var(--accent2); }
+
+        .admin-metric-label {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .admin-recent-users-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .admin-recent-users-wrap h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-recent-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-recent-table th,
+        .admin-recent-table td {
+            padding: 12px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-recent-table th {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .admin-recent-table tr:last-child td { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <aside class="admin-sidebar">
+        <div class="admin-logo">
+            <span class="admin-logo-text">⚙️ Admin</span>
+        </div>
+        <nav class="admin-nav">
+            <div class="admin-nav-section">Painel</div>
+            <a href="/admin/index.html" class="admin-nav-link active">
+                <span class="admin-nav-icon">📊</span> Dashboard
+            </a>
+            <a href="/admin/simulados.html" class="admin-nav-link">
+                <span class="admin-nav-icon">🎓</span> Simulados
+            </a>
+            <a href="/admin/questoes.html" class="admin-nav-link">
+                <span class="admin-nav-icon">❓</span> Questões
+            </a>
+            <a href="/admin/usuarios.html" class="admin-nav-link">
+                <span class="admin-nav-icon">👥</span> Usuários
+            </a>
+            <a href="/admin/artigos.html" class="admin-nav-link">
+                <span class="admin-nav-icon">📝</span> Artigos
+            </a>
+            <a href="/admin/links.html" class="admin-nav-link">
+                <span class="admin-nav-icon">🔗</span> Links Úteis
+            </a>
+            <a href="/admin/menus.html" class="admin-nav-link">
+                <span class="admin-nav-icon">🗂️</span> Menus
+            </a>
+        </nav>
+        <div class="admin-sidebar-footer">
+            <a href="/index.html" target="_blank" rel="noopener" class="admin-nav-link">
+                <span class="admin-nav-icon">👁️</span> Ver site
+            </a>
+            <button type="button" id="admin-sidebar-sair" class="admin-nav-link" style="width:100%;text-align:left;border:none;background:none;font:inherit;color:inherit;cursor:pointer;">
+                <span class="admin-nav-icon">🚪</span> Sair
+            </button>
+        </div>
+    </aside>
+
+    <div class="admin-main">
+        <header class="admin-topbar">
+            <h1 class="admin-topbar-title">Dashboard</h1>
+            <div class="admin-topbar-right">
+                <a href="/index.html" target="_blank" rel="noopener" class="admin-btn-ver-site">Ver site</a>
+                <div id="admin-user-area">Carregando…</div>
+            </div>
+        </header>
+        <main class="admin-content">
+            <div id="admin-metrics-grid" class="admin-metrics-grid"></div>
+            <div id="admin-recent-users-wrap" class="admin-recent-users-wrap"></div>
+        </main>
+    </div>
+
+    <script type="module" src="/js/admin-auth.js"></script>
+</body>
+</html>

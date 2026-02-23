@@ -1,0 +1,413 @@
+# ============================================================
+# LinuxGeek — Cursor AI Rules File
+# Versão: 1.0 | Última atualização: Fev 2025
+# Autor original do design: Claude (Anthropic)
+# ============================================================
+# LEIA ANTES DE QUALQUER AÇÃO
+# Este arquivo define TODAS as regras de desenvolvimento do
+# projeto LinuxGeek. Siga-as rigorosamente em cada edição.
+# ============================================================
+
+---
+
+## 🎯 VISÃO GERAL DO PROJETO
+
+O **LinuxGeek** é uma plataforma web 100% gratuita de simulados para certificações Linux
+(LPIC-1, LPIC-2, RHCSA e outras futuras). O objetivo atual é **capturar usuários** através
+de conteúdo gratuito de altíssima qualidade — simulados, artigos, guias e links úteis.
+
+### Fase Atual: Crescimento Orgânico (MVP Free)
+- Todos os simulados são gratuitos, sem cadastro obrigatório
+- Foco em SEO, qualidade de conteúdo e experiência do usuário
+- Construção de audiência orgânica através de conteúdo Linux
+
+### Fases Futuras (NÃO implementar ainda, apenas estruturar para suportar):
+- Sistema de login e perfil personalizado
+- Histórico de pontuação e progresso acumulado
+- Ranking e gamificação (badges, streaks, leaderboards)
+- Dicas de estudo personalizadas baseadas em desempenho
+- Sistema de notificações (email, push)
+- Cursos pagos e simulados premium
+- Monetização via afiliados, links patrocinados e Google AdSense
+- Artigos para SEO com objetivo de converter visitantes em leads
+
+---
+
+## 🚨 REGRAS ABSOLUTAS — NUNCA VIOLE
+
+### DESIGN & CSS
+1. **NUNCA altere o design system existente** — cores, fontes, espaçamentos e tokens CSS
+   já estão definidos e aprovados. Não os mude sem instrução explícita.
+2. **NUNCA substitua as variáveis CSS** — o sistema usa variáveis CSS custom properties
+   (`--bg`, `--green`, `--surface`, etc.). Jamais substitua por valores hardcoded.
+3. **NUNCA mude as fontes** — o projeto usa `Syne` (headings), `Inter` (corpo) e
+   `Space Mono` (código/mono). Não substitua por Inter, Roboto, Arial ou system fonts.
+4. **NUNCA remova animações existentes** — `fadeInUp`, `pulse` e outras estão
+   intencionalmente incluídas para UX. Apenas adicione novas, nunca remova.
+5. **NUNCA altere o tema escuro** — o projeto usa dark theme com fundo `#0a0e1a`.
+   Não crie variações light sem instrução explícita.
+
+### HTML ESTRUTURAL
+6. **NUNCA altere IDs de elementos usados pelo JavaScript** — IDs como `config-screen`,
+   `simulado-screen`, `report-screen`, `quiz-container`, etc. são referenciados no JS.
+   Alterá-los quebrará a funcionalidade.
+7. **NUNCA remova classes funcionais** — classes como `hidden`, `correct`, `incorrect`,
+   `question-card`, `option-item` têm comportamento definido no CSS e JS.
+8. **NUNCA reestruture o layout do simulado** — a tela de configuração, a tela do simulado
+   e a tela de relatório têm estrutura aprovada. Apenas adicione conteúdo dentro delas.
+9. **MANTENHA a estrutura de arquivos** — `index.html` (dashboard) e `simulado-lpic1.html`
+   (simulado LPIC-1) são os dois arquivos principais. Novos simulados seguem o mesmo padrão.
+
+### JAVASCRIPT
+10. **NUNCA altere a lógica de negócio do simulado** — a engine de questões, timer,
+    seleção ponderada, feedback e relatório estão funcionando. Não refatore sem necessidade.
+11. **NUNCA remova event listeners existentes** — `startSimulado`, `finishSimulado`,
+    `backToConfig` e outros são críticos para o fluxo.
+12. **SEMPRE mantenha o `window.scrollTo({ top: 0 })` nas transições de tela** —
+    foi explicitamente corrigido para levar à primeira questão ao iniciar.
+
+---
+
+## ✅ O QUE VOCÊ PODE E DEVE FAZER
+
+### Conteúdo (Prioridade Alta)
+- **Adicionar artigos** na seção "Artigos e Guias" do `index.html`
+- **Adicionar links** na seção "Serviços e Ferramentas" do `index.html`
+- **Atualizar cards de simulados** quando novos simulados forem criados
+- **Atualizar estatísticas** no bloco de stats do dashboard
+- **Adicionar novas questões** nos blocos JSON do simulado
+
+### Novos Componentes
+- Seguir EXATAMENTE o padrão visual dos componentes existentes
+- Usar SEMPRE as variáveis CSS já definidas
+- Copiar a estrutura HTML de cards existentes como base
+
+### Novos Simulados
+- Criar um novo arquivo `simulado-[nome].html` copiando `simulado-lpic1.html`
+- Substituir apenas: título, dados JSON das questões, badge do exame
+- Adicionar o novo card no `index.html` seguindo o padrão dos existentes
+
+### Melhorias de Performance
+- Minificação de assets (sem alterar estrutura)
+- Lazy loading de imagens
+- Adição de meta tags SEO
+
+---
+
+## 🎨 DESIGN SYSTEM — REFERÊNCIA COMPLETA
+
+### Paleta de Cores
+```css
+--bg: #0a0e1a          /* Fundo principal */
+--surface: #111827     /* Superfície de cards */
+--surface2: #1a2235    /* Superfície secundária */
+--surface3: #232f45    /* Superfície terciária / hover */
+--border: rgba(255,255,255,0.07)        /* Bordas padrão */
+--border-hover: rgba(255,255,255,0.14)  /* Bordas no hover */
+
+/* Cores de acento */
+--green: #00ff88       /* COR PRINCIPAL — CTAs, destaques, progresso */
+--green-dim: rgba(0,255,136,0.1)   /* Verde com transparência */
+--green-glow: rgba(0,255,136,0.25) /* Glow do verde */
+--blue: #3b82f6        /* Secundário — tópicos, info */
+--blue-dim: rgba(59,130,246,0.12)
+--yellow: #fbbf24      /* Atenção — timer warning, dicas */
+--red: #f87171         /* Erro — respostas incorretas */
+--red-dim: rgba(248,113,113,0.12)
+--purple: #a78bfa      /* Decorativo — stats */
+
+/* Texto */
+--text: #e2e8f0        /* Texto principal */
+--text-dim: #64748b    /* Texto secundário */
+--text-muted: #334155  /* Texto apagado */
+```
+
+### Tipografia
+```
+Títulos/Display:  font-family: 'Syne', sans-serif; font-weight: 700/800;
+Corpo:            font-family: 'Inter', sans-serif; font-weight: 400/500/600;
+Código/Mono:      font-family: 'Space Mono', monospace;
+```
+
+### Componentes Padrão
+
+**Card principal:**
+```html
+<div class="card">...</div>
+<!-- background: var(--surface), border: 1px solid var(--border), border-radius: 16px -->
+```
+
+**Badge/Tag:**
+```html
+<div class="page-tag">TEXTO</div>
+<!-- background: var(--green-dim), border: rgba(0,255,136,0.2), color: var(--green) -->
+```
+
+**Botão primário (CTA):**
+```html
+<button class="btn">Ação</button>
+<!-- background: var(--green), color: #0a0e1a, font-weight: 700 -->
+```
+
+**Botão secundário:**
+```html
+<button class="btn-secondary">Ação</button>
+```
+
+**Botão de aviso:**
+```html
+<button class="btn-warning">Ação</button>
+<!-- background: var(--yellow) -->
+```
+
+---
+
+## 📐 ESTRUTURA DE ARQUIVOS DO PROJETO
+
+```
+linuxgeek/
+├── index.html              ← Dashboard principal
+├── simulado-lpic1.html     ← Simulado LPIC-1 (218 questões)
+├── simulado-lpic2.html     ← (FUTURO — não criar ainda)
+├── simulado-rhcsa.html     ← (FUTURO — não criar ainda)
+├── .cursorrules            ← Este arquivo
+└── assets/                 ← (FUTURO — imagens, favicons, etc.)
+```
+
+---
+
+## 📝 GUIA DE CONTEÚDO — COMO ADICIONAR
+
+### Adicionar Artigo no Dashboard (`index.html`)
+Localizar a section `<!-- ARTIGOS -->` e adicionar seguindo este padrão:
+```html
+<a href="URL_DO_ARTIGO" class="article-card" target="_blank">
+    <div class="article-tag-icon">EMOJI</div>
+    <div>
+        <div class="article-meta">CATEGORIA · TEMA</div>
+        <div class="article-title">Título do Artigo em até 60 caracteres</div>
+        <div class="article-desc">Descrição curta em até 100 caracteres explicando o valor do conteúdo.</div>
+    </div>
+</a>
+```
+
+### Adicionar Link Patrocinado/Parceiro (`index.html`)
+Localizar a section `<!-- LINKS PATROCINADOS -->` e adicionar:
+```html
+<a href="URL" target="_blank" class="sponsored-card">
+    <span class="sponsored-label">Parceiro | Patrocinado | Recurso</span>
+    <div class="sponsored-icon">EMOJI</div>
+    <div>
+        <div class="sponsored-name">Nome do Serviço</div>
+        <div class="sponsored-desc">Descrição curta em até 40 chars</div>
+    </div>
+</a>
+```
+
+### Adicionar Novo Simulado no Dashboard (`index.html`)
+Localizar a section `<!-- SIMULADOS -->` e adicionar dentro do `.exams-grid`:
+```html
+<a href="simulado-NOME.html" class="exam-card">
+    <div class="exam-card-top">
+        <div class="exam-badge">SIGLA</div>
+        <div class="exam-icon-wrap">EMOJI</div>
+    </div>
+    <div class="exam-title">Nome da Certificação</div>
+    <div class="exam-subtitle">Descrição breve da certificação em até 80 chars</div>
+    <div class="exam-meta">
+        <div class="exam-meta-item"><div class="dot"></div> XX questões</div>
+        <div class="exam-meta-item"><div class="dot"></div> Info extra</div>
+    </div>
+    <div class="exam-progress-bar"><div class="exam-progress-fill" style="width: 0%"></div></div>
+    <div class="exam-progress-text">0% concluído</div>
+    <button class="exam-btn">▶ Iniciar Simulado</button>
+</a>
+```
+
+---
+
+## 🧠 ESTRATÉGIA DE CRESCIMENTO & GATILHOS MENTAIS
+
+### Filosofia do Produto
+O LinuxGeek opera na lógica **"Free Value First"**: entregar valor máximo gratuitamente
+para construir confiança e audiência antes de monetizar. A primeira impressão define tudo.
+Um usuário que encontrar nosso simulado grátis e de qualidade, irá voltar, indicar, e
+futuramente converter em cliente pagante.
+
+### Gatilhos Psicológicos Aplicados no Site
+
+**1. Prova Social (Social Proof)**
+- Exibir número de questões disponíveis (218+) como indicador de credibilidade
+- Futuramente: "X usuários fizeram este simulado esta semana"
+- Exibir contadores reais de uso assim que disponíveis
+
+**2. Autoridade**
+- Links para fontes oficiais (LPI.org, RedHat) estabelecem credibilidade
+- Linguagem técnica precisa demonstra domínio do assunto
+- Artigos detalhados e bem fundamentados constroem autoridade de SEO
+
+**3. Reciprocidade**
+- Tudo gratuito, sem cadastro, sem capturas forçadas
+- O usuário recebe valor ANTES de qualquer pedido
+- Futuramente: oferecer PDF de "cheat sheet" grátis em troca de email
+
+**4. Efeito de Progresso (Endowed Progress)**
+- Barra de progresso visual durante o simulado
+- Relatório detalhado por tópico ao final
+- Futuramente: histórico acumulado que mostra evolução ao longo do tempo
+
+**5. Perda Aversão (Loss Aversion)**
+- Timer no simulado cria senso de urgência real
+- "Você errou X questões neste tópico" convida à revisão
+
+**6. Curiosidade & Loop Aberto**
+- Cards de "Em Breve" no dashboard criam antecipação
+- Artigos com títulos que abrem perguntas na mente do leitor
+
+**7. Hierarquia Visual Clara (F-Pattern & Z-Pattern)**
+- Informação mais importante sempre no topo e à esquerda
+- CTAs em verde (--green) se destacam naturalmente
+- Contraste alto entre texto e fundo facilita scan visual
+
+**8. Familiaridade & Consistência (Von Restorff Effect)**
+- Design consistente entre todas as páginas cria confiança
+- Padrão visual único (dark tech + verde neon) torna a marca memorável
+
+### Copy e Microtextos — Princípios
+- **Orientado a benefício, não a feature**: "Pratique com questões reais" > "218 questões"
+- **Sem fricção**: "Sem cadastro", "100% gratuito", "Comece agora"
+- **Específico é mais confiável que vago**: "218 questões" > "Muitas questões"
+- **CTAs em 1ª pessoa implícita**: "▶ Iniciar Simulado" > "Clique aqui"
+
+---
+
+## 🔍 SEO — BOAS PRÁTICAS A SEGUIR
+
+Ao adicionar novo conteúdo, sempre incluir:
+```html
+<!-- No <head> de cada página -->
+<meta name="description" content="[Descrição em até 155 chars com palavra-chave principal]">
+<meta name="keywords" content="lpic-1, simulado linux, certificação linux, lpi">
+<meta property="og:title" content="[Título da página]">
+<meta property="og:description" content="[Descrição]">
+<title>[Título da Página] — LinuxGeek</title>
+```
+
+**Palavras-chave prioritárias:**
+- simulado lpic-1, simulado linux, certificação linux grátis
+- lpic-1 questões, lpic-1 prova, linux lpi
+- rhcsa simulado, linux profissional
+
+---
+
+## ⚡ PADRÕES DE CÓDIGO
+
+### HTML
+- Sempre em português (pt-BR) para textos visíveis
+- Atributos de acessibilidade: `alt` em imagens, `aria-label` em botões sem texto
+- Manter indentação de 4 espaços
+- Comentários de seção no formato: `<!-- NOME DA SEÇÃO -->`
+
+### CSS
+- SEMPRE usar variáveis CSS existentes, nunca valores hardcoded de cor
+- Novas classes seguem o padrão kebab-case
+- Adicionar ao final do bloco `<style>` existente, nunca no meio
+- Manter agrupamento lógico: estrutura → visual → animações → responsivo
+
+### JavaScript
+- Comentários em português explicando a lógica
+- Funções nomeadas descritivamente (ex: `renderQuiz`, `updateProgress`)
+- Não usar `alert()` — usar elementos HTML para feedback
+- `console.log` apenas para debug, remover antes de commit
+
+---
+
+## 🚀 CHECKLIST ANTES DE CADA EDIÇÃO
+
+Antes de fazer qualquer modificação, confirme:
+
+- [ ] Estou apenas ADICIONANDO conteúdo, não removendo estrutura existente?
+- [ ] Estou usando as variáveis CSS corretas (`var(--green)` etc.)?
+- [ ] O novo componente segue o padrão visual dos existentes?
+- [ ] Não alterei nenhum ID de elemento referenciado pelo JavaScript?
+- [ ] O `window.scrollTo({ top: 0 })` está preservado nas transições?
+- [ ] Testei visualmente em desktop (mínimo 1280px)?
+- [ ] O texto novo segue os princípios de copy orientado a benefício?
+
+---
+
+## 🗺️ ROADMAP DO PRODUTO (Para Contexto Futuro)
+
+### Fase 1 — ATUAL: Base Gratuita
+- [x] Dashboard com design profissional dark theme
+- [x] Simulado LPIC-1 funcional (218 questões, exames 101+102)
+- [ ] Adicionar artigos de Linux (SEO)
+- [ ] Adicionar links patrocinados e parceiros
+- [ ] Meta tags SEO em todas as páginas
+- [ ] Favicon e identidade visual básica
+- [ ] Google Analytics para medir tráfego
+
+### Fase 2 — Expansão de Conteúdo
+- [ ] Simulado LPIC-2 (novas questões)
+- [ ] Simulado RHCSA
+- [ ] Simulado AWS CLF (opcional)
+- [ ] Blog/artigos com SEO para linux, certificações, carreira DevOps
+- [ ] Página de recursos (cheat sheets, PDFs, links)
+
+### Fase 3 — Engajamento & Retenção
+- [ ] Sistema de login (Google OAuth / email)
+- [ ] Histórico de simulados e pontuação por usuário
+- [ ] Perfil com metas e progresso acumulado
+- [ ] Gamificação: badges, streaks, ranking semanal
+- [ ] Dicas personalizadas baseadas nos tópicos com menor acerto
+
+### Fase 4 — Monetização
+- [ ] Newsletter com conteúdo semanal de Linux
+- [ ] Notificações push (novos simulados, dicas)
+- [ ] Simulados premium (mais questões, modo simulado oficial cronometrado)
+- [ ] Cursos em vídeo integrados ou afiliados
+- [ ] Google AdSense em posições estratégicas não-intrusivas
+- [ ] Links de afiliado para cursos externos (Udemy, Linux Foundation)
+- [ ] Parcerias com bootcamps e empresas de TI
+
+---
+
+## 📌 DECISÕES TÉCNICAS E SEU PORQUÊ
+
+| Decisão | Motivo |
+|---------|--------|
+| HTML/CSS/JS puro (sem framework) | Zero dependências, carga instantânea, fácil manutenção |
+| Dark theme com verde neon | Identidade visual memorável para o nicho de Linux/DevOps |
+| Syne + Space Mono | Caráter tech/geek que ressoa com o público-alvo |
+| Questões em JSON embutido no HTML | Funciona offline, sem necessidade de backend |
+| `window.scrollTo` explícito nas transições | Correção de bug crítico — não remover |
+| CSS variables em vez de Tailwind | Controle total, sem build step, mais performático |
+| Grid layout responsivo | Mobile first para alcançar maior audiência |
+
+---
+
+## 🤝 MENSAGEM FINAL PARA O CURSOR
+
+Você está trabalhando em um projeto que já tem **design e arquitetura aprovados e funcionando**.
+Sua principal responsabilidade é **POPULAR o site com conteúdo** e **criar novos simulados**
+seguindo o padrão estabelecido — sem reinventar a roda.
+
+Pense assim: o arquiteto já projetou o edifício. Você é o decorador de interiores.
+Adicione móveis (conteúdo), mas não derrube paredes (estrutura/CSS/JS).
+
+Quando em dúvida entre mudar algo ou manter o original: **MANTENHA O ORIGINAL**.
+Pergunte antes de modificar qualquer coisa estrutural.
+
+**O que torna este projeto especial:**
+- Design dark tech profissional e memorável ✓
+- Simulados funcionais com 218+ questões ✓
+- Totalmente gratuito e sem fricção ✓
+- Estrutura preparada para escalar ✓
+
+**O que ainda precisa:**
+- Conteúdo real (artigos, links, parceiros)
+- SEO básico (meta tags, títulos otimizados)
+- Mais simulados (LPIC-2, RHCSA)
+- Analytics para medir o que funciona
+
+Foque nisso. Preserve o resto.
