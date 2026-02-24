@@ -7,10 +7,6 @@
             }
 
             // Estado global da aplicação
-            let examData = {
-                101: null,
-                102: null
-            };
             let currentQuestions = [];
             let userAnswers = [];
             let userAnswerStatus = [];
@@ -18,7 +14,6 @@
             let startTime = null;
             let timeLimit = null;
             let simuladoConfig = {};
-            let topicsStats = {};
 
             // Elementos DOM
             const configScreen = document.getElementById('config-screen');
@@ -36,8 +31,6 @@
             // Controles de quantidade
             const customQuantity = document.getElementById('custom-quantity');
             const customTimer = document.getElementById('custom-timer');
-            const weightedCheck = document.getElementById('weighted');
-            const randomizeCheck = document.getElementById('randomize');
             const showFeedbackCheck = document.getElementById('show-feedback');
 
             // Event listeners para habilitar/desabilitar campos personalizados
@@ -53,6 +46,22 @@
                 });
             });
 
+            // Dashboard: puxar título do simulado da API (slug desta página = lpic1)
+            (async function loadSimuladoInfo() {
+                try {
+                    const res = await fetch('/api/simulados');
+                    const json = await res.json();
+                    if (json.success && json.data && json.data.length) {
+                        const slug = 'lpic1';
+                        const sim = json.data.find(s => s.slug === slug);
+                        if (sim && sim.title) {
+                            const el = document.getElementById('simulado-title');
+                            if (el) el.textContent = sim.title;
+                        }
+                    }
+                } catch (_) {}
+            })();
+
             async function loadExamData(examCode) {
                 try {
                     const url = examCode === 'mixed'
@@ -64,19 +73,42 @@
 
                     if (!json.success) throw new Error(json.error);
 
-                    // Normalizar formato para o engine existente (answer = índice da opção correta para múltipla escolha)
-                    return json.data.map(q => ({
-                        id: q.id,
-                        type: q.type,
-                        question: q.question,
-                        options: q.options || [],
-                        answer: q.answer,
-                        correct: typeof q.answer === 'number' ? q.answer : (q.options && q.options.length ? 0 : null),
-                        topic: q.topic,
-                        difficulty: q.difficulty,
-                        hint: q.hint,
-                        weight: q.weight || 1
-                    }));
+                    function getCorrectIndex(question) {
+                        const opts = question.options || [];
+                        if (!opts.length) return null;
+                        if (typeof question.answer === 'number' && question.answer >= 0 && question.answer < opts.length)
+                            return question.answer;
+                        let answerText = null;
+                        if (Array.isArray(question.answer) && question.answer.length)
+                            answerText = String(question.answer[0]).trim();
+                        else if (typeof question.answer === 'string' && question.answer.trim())
+                            answerText = question.answer.trim();
+                        if (answerText) {
+                            const want = answerText.toLowerCase();
+                            let idx = opts.findIndex(o => String(o).trim().toLowerCase() === want);
+                            if (idx >= 0) return idx;
+                            if (want.length === 1 || (want.length === 2 && want[1] === '.')) {
+                                const letterIdx = 'abcdef'.indexOf(want[0]);
+                                if (letterIdx >= 0 && letterIdx < opts.length) return letterIdx;
+                            }
+                        }
+                        return null;
+                    }
+
+                    return json.data.map(q => {
+                        const correct = q.type === 'multiple' ? getCorrectIndex(q) : null;
+                        return {
+                            id: q.id,
+                            type: q.type,
+                            question: q.question,
+                            options: q.options || [],
+                            answer: q.answer,
+                            correct,
+                            difficulty: q.difficulty,
+                            hint: q.hint,
+                            weight: q.weight || 1
+                        };
+                    });
                 } catch (e) {
                     alert('Erro ao carregar questões. Verifique o console para mais detalhes.');
                     console.error(e);
@@ -109,40 +141,11 @@
                     quantity = parseInt(config.quantity) || 60;
                 }
 
-                // Embaralhar e selecionar
-                let selected = [...pool];
-                if (randomizeCheck.checked) {
-                    selected = shuffleArray(selected);
-                }
-                
+                // Sempre embaralhar questões ao iniciar o simulado
+                let selected = shuffleArray([...pool]);
                 selected = selected.slice(0, quantity);
-                
-                // Se usar pesos, ajustar distribuição (apenas quando examData disponível)
-                if (weightedCheck.checked && config.exam !== 'mixed' && examData[config.exam]) {
-                    selected = applyWeights(selected, config.exam);
-                }
 
                 return selected;
-            }
-
-            // Aplicar pesos (versão simplificada)
-            function applyWeights(questions, exam) {
-                const examTopics = examData[exam].topics;
-                const weightedQuestions = [];
-                
-                examTopics.forEach(topic => {
-                    const topicQuestions = questions.filter(q => q.topic === topic.code);
-                    const targetCount = Math.round((topic.weight / 10) * questions.length);
-                    weightedQuestions.push(...topicQuestions.slice(0, targetCount));
-                });
-                
-                // Completar se necessário
-                if (weightedQuestions.length < questions.length) {
-                    const remaining = questions.filter(q => !weightedQuestions.includes(q));
-                    weightedQuestions.push(...remaining.slice(0, questions.length - weightedQuestions.length));
-                }
-                
-                return weightedQuestions.slice(0, questions.length);
             }
 
             // Embaralhar array
@@ -233,12 +236,7 @@
                     title.innerHTML = (index + 1) + '. ' + escapeHtml(q.question) + ' ';
                     title.appendChild(badge);
                     
-                    const topicBadge = document.createElement('span');
-                    topicBadge.className = 'topic-badge';
-                    topicBadge.textContent = q.topic || 'geral';
-                    
                     header.appendChild(title);
-                    header.appendChild(topicBadge);
                     card.appendChild(header);
 
                     if (q.type === 'text') {
@@ -339,12 +337,12 @@
                 const selectedValue = parseInt(event.target.value);
                 
                 const q = currentQuestions[index];
-                const isCorrect = (selectedValue === q.correct);
+                const isCorrect = (q.correct != null && selectedValue === q.correct);
                 
                 userAnswers[index] = selectedValue;
                 userAnswerStatus[index] = isCorrect ? 'correct' : 'incorrect';
                 
-                if (showFeedbackCheck.checked) {
+                if (!showFeedbackCheck || showFeedbackCheck.checked) {
                     updateSingleCard(index);
                 }
                 
@@ -374,7 +372,7 @@
                 input.disabled = true;
                 event.target.disabled = true;
                 
-                if (showFeedbackCheck.checked) {
+                if (!showFeedbackCheck || showFeedbackCheck.checked) {
                     updateSingleCard(index);
                 }
                 
@@ -409,16 +407,17 @@
                         const accepted = (q.answer || []).join(' ou ');
                         feedbackDiv.innerText = `✗ Incorreto. Sua resposta: "${userAnswers[index]}". Resposta(s) aceita(s): ${accepted}`;
                     } else {
-                        // Destacar a resposta correta
                         const optionsDiv = card.querySelector('.options');
-                        const optionDivs = optionsDiv.querySelectorAll('.option');
-                        const correctOptionDiv = optionDivs[q.correct];
-                        if (correctOptionDiv) {
-                            correctOptionDiv.classList.add('correct-answer');
+                        const optionDivs = optionsDiv ? optionsDiv.querySelectorAll('.option') : [];
+                        if (q.correct != null && q.correct >= 0 && optionDivs[q.correct]) {
+                            optionDivs[q.correct].classList.add('correct-answer');
                         }
                         feedbackDiv.className = 'feedback incorrect-feedback';
-                        let correctLetter = String.fromCharCode(65 + q.correct);
-                        feedbackDiv.innerText = `✗ Incorreto. A correta é ${correctLetter}: ${q.options[q.correct]}`;
+                        if (q.correct != null && q.options && q.options[q.correct] != null) {
+                            feedbackDiv.innerText = `✗ Incorreto. A correta é ${String.fromCharCode(65 + q.correct)}: ${q.options[q.correct]}`;
+                        } else {
+                            feedbackDiv.innerText = '✗ Incorreto.';
+                        }
                     }
                 }
             }
@@ -498,9 +497,6 @@
                     timerInterval = null;
                 }
                 
-                // Calcular estatísticas por tópico
-                calculateTopicStats();
-                
                 // Salvar sessão para a página Meu Progresso
                 const correctCount = userAnswerStatus.filter(s => s === 'correct').length;
                 const total = currentQuestions.length;
@@ -520,33 +516,12 @@
                     wrong: userAnswerStatus.filter(s => s === 'incorrect').length,
                     score: score,
                     passed: score >= 70,
-                    topicsStats: topicsStats,
-                    weakTopics: Object.entries(topicsStats || {}).filter(([_, s]) => s.total && (s.correct / s.total) < 0.6).map(([code]) => code)
+                    topicsStats: {},
+                    weakTopics: []
                 });
                 
                 // Mostrar relatório
                 showReport();
-            }
-
-            // Calcular estatísticas por tópico
-            function calculateTopicStats() {
-                topicsStats = {};
-                
-                currentQuestions.forEach((q, index) => {
-                    const topic = q.topic || 'geral';
-                    if (!topicsStats[topic]) {
-                        topicsStats[topic] = {
-                            total: 0,
-                            correct: 0,
-                            name: topic
-                        };
-                    }
-                    
-                    topicsStats[topic].total++;
-                    if (userAnswerStatus[index] === 'correct') {
-                        topicsStats[topic].correct++;
-                    }
-                });
             }
 
             function formatTime(seconds) {

@@ -31,7 +31,7 @@
         }
         .user-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
         .user-name { font-size: 13px; color: var(--text); font-weight: 500; }
-        .logout-btn { font-size: 11px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; margin-left: 4px; transition: color 0.15s; }
+        .logout-btn { font-size: 11px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; margin-left: 4px; transition: color 0.15s; text-decoration: none; }
         .logout-btn:hover { color: var(--red); }
         .btn-login { font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid rgba(0,255,136,0.3); background: var(--green-dim); border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: all 0.15s; }
         .btn-login:hover { background: rgba(0,255,136,0.2); }
@@ -192,7 +192,6 @@
         </div>
         <div class="topbar-right">
             <div id="user-area"></div>
-            <button type="button" class="btn-ghost">📣 Novidades</button>
             <a href="index.html" class="btn-ghost">← Voltar</a>
         </div>
     </header>
@@ -216,6 +215,8 @@
     </main>
 
     <script type="module" src="/js/user-area.js"></script>
+    <script type="module" src="/js/track-login.js"></script>
+    <script type="module" src="/js/newsletter-popup.js"></script>
     <script type="module" src="/js/login.js"></script>
 </body>
 </html>

@@ -50,9 +50,14 @@ async function fetchSimulados() {
 
 async function fetchExams(simuladoId) {
   if (!simuladoId) return []
-  const res = await fetch(`/admin/api/exams?simulado_id=${encodeURIComponent(simuladoId)}`, { headers: getAuthHeaders() })
-  if (!res.ok) return []
-  const json = await res.json()
+  const url = `/admin/api/exams?simulado_id=${encodeURIComponent(simuladoId)}`
+  const res = await fetch(url, { headers: getAuthHeaders() })
+  const json = await res.json().catch(() => ({}))
+  if (!res.ok) {
+    console.error('[admin-questoes] fetchExams falhou:', res.status, json.error || res.statusText)
+    if (json.error) alert('Erro ao carregar exames: ' + json.error)
+    return []
+  }
   return json.data || []
 }
 
@@ -60,15 +65,15 @@ function buildQuestoesParams() {
   const params = new URLSearchParams()
   params.set('page', String(currentPage))
   params.set('limit', String(LIMIT))
+  const searchVal = (document.getElementById('filter-search')?.value || '').trim()
   const simuladoId = document.getElementById('filter-simulado')?.value
-  const examId = document.getElementById('filter-exam')?.value
-  const topic = document.getElementById('filter-topic')?.value?.trim()
+  const examValue = document.getElementById('filter-exam')?.value
   const type = document.getElementById('filter-type')?.value
   const difficulty = document.getElementById('filter-difficulty')?.value
   const status = document.getElementById('filter-status')?.value
-  if (simuladoId) params.set('simulado_id', simuladoId)
-  if (examId) params.set('exam_id', examId)
-  if (topic) params.set('topic', topic)
+  if (searchVal) params.set('q', searchVal)
+  if (simuladoId) params.set('simulado', simuladoId)
+  if (examValue) params.set('exam', examValue)
   if (type) params.set('type', type)
   if (difficulty) params.set('difficulty', difficulty)
   if (status) params.set('status', status)
@@ -78,11 +83,11 @@ function buildQuestoesParams() {
 async function loadQuestoes() {
   const tbody = document.getElementById('questoes-tbody')
   if (!tbody) return
-  tbody.innerHTML = '<tr><td colspan="7" style="padding:24px;color:var(--text-muted);text-align:center;">Carregando…</td></tr>'
+  tbody.innerHTML = '<tr><td colspan="6" style="padding:24px;color:var(--text-muted);text-align:center;">Carregando…</td></tr>'
   const params = buildQuestoesParams()
   const res = await fetch(`/admin/api/questoes?${params}`, { headers: getAuthHeaders() })
   if (!res.ok) {
-    tbody.innerHTML = '<tr><td colspan="7" style="padding:24px;color:var(--red);">Erro ao carregar questões.</td></tr>'
+    tbody.innerHTML = '<tr><td colspan="6" style="padding:24px;color:var(--red);">Erro ao carregar questões.</td></tr>'
     return
   }
   const json = await res.json()
@@ -91,7 +96,7 @@ async function loadQuestoes() {
   lastQuestoesList = list
 
   if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" style="padding:24px;color:var(--text-muted);">Nenhuma questão encontrada.</td></tr>'
+    tbody.innerHTML = '<tr><td colspan="6" style="padding:24px;color:var(--text-muted);">Nenhuma questão encontrada.</td></tr>'
   } else {
     tbody.innerHTML = list.map((q, i) => {
       const num = (currentPage - 1) * LIMIT + i + 1
@@ -101,13 +106,11 @@ async function loadQuestoes() {
       const statusClass = q.is_active ? 'ativa' : 'inativa'
       const statusText = q.is_active ? 'Ativa' : 'Inativa'
       const examCode = q.exams?.code || '—'
-      const topicVal = escapeHtml(q.topic || '—')
       return (
         '<tr data-id="' + escapeHtml(q.id) + '">' +
         '<td class="col-num">' + num + '</td>' +
         '<td class="col-pergunta" title="' + escapeHtml(q.question || '') + '">' + escapeHtml(pergunta) + '</td>' +
         '<td>' + escapeHtml(tipo) + '</td>' +
-        '<td>' + topicVal + '</td>' +
         '<td>' + escapeHtml(diff) + '</td>' +
         '<td><span class="admin-badge ' + statusClass + '">' + statusText + '</span></td>' +
         '<td class="col-acoes">' +
@@ -134,7 +137,6 @@ function openEditFromList(id) {
   editingId = id
   document.getElementById('modal-questao-title').textContent = 'Editar Questão'
   document.getElementById('form-question').value = q.question || ''
-  document.getElementById('form-topic').value = q.topic || ''
   document.getElementById('form-type').value = q.type || 'multiple'
   document.getElementById('form-difficulty').value = q.difficulty || 'medium'
   document.getElementById('form-hint').value = q.hint || ''
@@ -169,11 +171,21 @@ function fillSimuladoSelect(select, selectedId) {
     simulados.map(s => '<option value="' + escapeHtml(s.id) + '"' + (s.id === selectedId ? ' selected' : '') + '>' + escapeHtml(simuladoLabel(s)) + '</option>').join('')
 }
 
-function fillExamsSelect(select, list, selectedId) {
+function fillExamsSelect(select, list, selectedValue, useCodeAsValue) {
   if (!select) return
-  const placeholder = select.id === 'filter-exam' ? 'Todos os exames' : 'Selecione o simulado primeiro'
-  select.innerHTML = '<option value="">' + placeholder + '</option>' +
-    (list || []).map(e => '<option value="' + escapeHtml(e.id) + '"' + (e.id === selectedId ? ' selected' : '') + '>' + escapeHtml(e.code + (e.name ? ' — ' + e.name : '')) + '</option>').join('')
+  const isFilter = select.id === 'filter-exam'
+  const listArr = Array.isArray(list) ? list : []
+  const placeholder = isFilter
+    ? (listArr.length === 0 ? 'Nenhum exame (cadastre em Simulados)' : 'Todos os exames')
+    : 'Selecione o simulado primeiro'
+  const valueKey = useCodeAsValue || isFilter ? 'code' : 'id'
+  select.innerHTML = '<option value="">' + escapeHtml(placeholder) + '</option>' +
+    listArr.map(e => {
+      const val = valueKey === 'code' ? (e.code || e.id) : e.id
+      const label = (e.code || '') + (e.name ? ' — ' + e.name : '')
+      const selected = (valueKey === 'code' ? val === selectedValue : e.id === selectedValue) ? ' selected' : ''
+      return '<option value="' + escapeHtml(val) + '"' + selected + '>' + escapeHtml(label || val) + '</option>'
+    }).join('')
 }
 
 function openNewQuestao() {
@@ -181,7 +193,6 @@ function openNewQuestao() {
   document.getElementById('modal-questao-title').textContent = 'Nova Questão'
   document.getElementById('form-simulado').value = ''
   document.getElementById('form-exam').innerHTML = '<option value="">Selecione o simulado primeiro</option>'
-  document.getElementById('form-topic').value = ''
   document.getElementById('form-type').value = 'multiple'
   document.getElementById('form-difficulty').value = 'medium'
   document.getElementById('form-question').value = ''
@@ -245,7 +256,6 @@ async function saveQuestao() {
     options: type === 'multiple' ? options : null,
     correct: type === 'multiple' ? correct : undefined,
     answer: type === 'text' ? answer : undefined,
-    topic: document.getElementById('form-topic').value?.trim() || null,
     difficulty: document.getElementById('form-difficulty').value || 'medium',
     hint: document.getElementById('form-hint').value?.trim() || null,
     is_active: true
@@ -352,19 +362,57 @@ async function init() {
   fillSimuladoSelect(document.getElementById('form-simulado'))
   fillSimuladoSelect(document.getElementById('import-simulado'))
 
-  document.getElementById('filter-simulado').addEventListener('change', async () => {
-    const id = document.getElementById('filter-simulado').value
+  async function loadExamsForFilterSimulado() {
+    const selectSimulado = document.getElementById('filter-simulado')
+    const filterExamEl = document.getElementById('filter-exam')
+    if (!selectSimulado || !filterExamEl) return
+    const id = (selectSimulado.value || '').trim()
+    if (!id) {
+      filterExamEl.innerHTML = '<option value="">Todos os exames</option>'
+      return
+    }
+    filterExamEl.innerHTML = '<option value="">Carregando exames…</option>'
+    filterExamEl.disabled = true
     exams = await fetchExams(id)
-    fillExamsSelect(document.getElementById('filter-exam'), exams)
-  })
+    filterExamEl.disabled = false
+    fillExamsSelect(filterExamEl, exams, null, true)
+  }
+
+  document.getElementById('filter-simulado').addEventListener('change', loadExamsForFilterSimulado)
+  await loadExamsForFilterSimulado()
 
   document.getElementById('form-simulado').addEventListener('change', async () => {
     const id = document.getElementById('form-simulado').value
+    const formExamEl = document.getElementById('form-exam')
+    if (!id) {
+      formExamEl.innerHTML = '<option value="">Selecione o simulado primeiro</option>'
+      return
+    }
     const exs = await fetchExams(id)
-    fillExamsSelect(document.getElementById('form-exam'), exs)
+    fillExamsSelect(formExamEl, exs, null, false)
   })
 
   document.getElementById('btn-aplicar-filtros').addEventListener('click', () => { currentPage = 1; loadQuestoes() })
+
+  // Busca com debounce (desempenho: evita requisição a cada tecla)
+  let searchDebounce = null
+  document.getElementById('filter-search')?.addEventListener('input', () => {
+    if (searchDebounce) clearTimeout(searchDebounce)
+    searchDebounce = setTimeout(() => {
+      searchDebounce = null
+      currentPage = 1
+      loadQuestoes()
+    }, 350)
+  })
+  document.getElementById('filter-search')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      if (searchDebounce) clearTimeout(searchDebounce)
+      searchDebounce = null
+      currentPage = 1
+      loadQuestoes()
+    }
+  })
+
   document.getElementById('btn-nova-questao').addEventListener('click', openNewQuestao)
   document.getElementById('btn-importar-json').addEventListener('click', openImportModal)
   document.getElementById('btn-prev').addEventListener('click', () => { if (currentPage > 1) { currentPage--; loadQuestoes() } })

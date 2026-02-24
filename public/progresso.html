@@ -200,6 +200,9 @@
         .content {
             padding: 36px 32px;
             max-width: 1280px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -633,6 +636,7 @@
             padding: 0;
             margin-left: 4px;
             transition: color 0.15s;
+            text-decoration: none;
         }
         .logout-btn:hover { color: var(--red); }
         .btn-login {
@@ -705,10 +709,10 @@
         <a class="nav-link" href="artigos.html">
             <span class="nav-icon">📚</span> Artigos
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/index.html#links-servicos">
             <span class="nav-icon">🔗</span> Links Úteis
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" title="EM BREVE">
             <span class="nav-icon">💬</span> Comunidade
         </a>
     </nav>
@@ -722,7 +726,6 @@
         <div class="topbar-title">📊 Meu Progresso</div>
         <div class="topbar-right">
             <div id="user-area"></div>
-            <button type="button" class="btn-ghost">📣 Novidades</button>
         </div>
     </header>
 
@@ -769,5 +772,7 @@
 <script src="/js/progresso-engine.js"></script>
 <script type="module" src="/js/progresso-data.js"></script>
 <script type="module" src="/js/user-area.js"></script>
+<script type="module" src="/js/track-login.js"></script>
+<script type="module" src="/js/newsletter-popup.js"></script>
 </body>
 </html>

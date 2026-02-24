@@ -72,6 +72,13 @@
         .admin-questoes-filters {
             display: flex; flex-wrap: wrap; align-items: center; gap: 8px; flex: 1;
         }
+        .admin-questoes-search {
+            background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+            padding: 8px 12px; border-radius: 8px; font-size: 0.8125rem; font-family: inherit;
+            min-width: 200px; max-width: 280px;
+        }
+        .admin-questoes-search::placeholder { color: var(--text-muted); }
+        .admin-questoes-search:focus { outline: none; border-color: var(--accent); }
         .admin-questoes-filters select {
             background: var(--surface2); border: 1px solid var(--border); color: var(--text);
             padding: 8px 12px; border-radius: 8px; font-size: 0.8125rem; font-family: inherit;
@@ -165,7 +172,6 @@
             <a href="/admin/usuarios.html" class="admin-nav-link"><span class="admin-nav-icon">👥</span> Usuários</a>
             <a href="/admin/artigos.html" class="admin-nav-link"><span class="admin-nav-icon">📝</span> Artigos</a>
             <a href="/admin/links.html" class="admin-nav-link"><span class="admin-nav-icon">🔗</span> Links Úteis</a>
-            <a href="/admin/menus.html" class="admin-nav-link"><span class="admin-nav-icon">🗂️</span> Menus</a>
         </nav>
         <div class="admin-sidebar-footer">
             <a href="/index.html" target="_blank" rel="noopener" class="admin-nav-link"><span class="admin-nav-icon">👁️</span> Ver site</a>
@@ -184,9 +190,9 @@
         <main class="admin-content">
             <div class="admin-questoes-toolbar">
                 <div class="admin-questoes-filters">
+                    <input type="search" id="filter-search" class="admin-questoes-search" placeholder="Buscar por pergunta…" aria-label="Buscar questão" autocomplete="off" maxlength="200" />
                     <select id="filter-simulado" aria-label="Simulado"><option value="">Todos os simulados</option></select>
                     <select id="filter-exam" aria-label="Exame"><option value="">Todos os exames</option></select>
-                    <input type="text" id="filter-topic" placeholder="Tópico (ex: 101.1)" aria-label="Tópico" style="width:120px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-size:0.8125rem;">
                     <select id="filter-type" aria-label="Tipo"><option value="">Todos</option><option value="multiple">Múltipla escolha</option><option value="text">Digitação</option></select>
                     <select id="filter-difficulty" aria-label="Dificuldade"><option value="">Todas</option><option value="easy">Fácil</option><option value="medium">Médio</option><option value="hard">Difícil</option></select>
                     <select id="filter-status" aria-label="Status"><option value="">Todos</option><option value="active">Ativa</option><option value="inactive">Inativa</option></select>
@@ -205,14 +211,13 @@
                             <th class="col-num">#</th>
                             <th class="col-pergunta">Pergunta</th>
                             <th>Tipo</th>
-                            <th>Tópico</th>
                             <th>Dificuldade</th>
                             <th>Status</th>
                             <th class="col-acoes">Ações</th>
                         </tr>
                     </thead>
                     <tbody id="questoes-tbody">
-                        <tr><td colspan="7" style="padding:24px;color:var(--text-muted);text-align:center;">Carregando…</td></tr>
+                        <tr><td colspan="6" style="padding:24px;color:var(--text-muted);text-align:center;">Carregando…</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -246,10 +251,6 @@
                     </div>
                 </div>
                 <div class="admin-form-row">
-                    <div class="admin-form-group">
-                        <label>Tópico</label>
-                        <input type="text" id="form-topic" placeholder="ex: 101.1">
-                    </div>
                     <div class="admin-form-group">
                         <label>Tipo</label>
                         <select id="form-type"><option value="multiple">Múltipla escolha</option><option value="text">Digitação</option></select>
@@ -313,7 +314,7 @@
                 </div>
                 <div class="admin-form-group">
                     <label>JSON (array de questões)</label>
-                    <textarea id="import-json" placeholder='[{"exam":"101","topic":"101.1","type":"multiple","question":"...","options":["a","b","c","d"],"correct":1,"difficulty":"easy","hint":"..."}]' rows="12" style="font-family:monospace;font-size:0.8rem"></textarea>
+                    <textarea id="import-json" placeholder='[{"exam":"101","type":"multiple","question":"...","options":["a","b","c","d"],"correct":1,"difficulty":"easy","hint":"..."}]' rows="12" style="font-family:monospace;font-size:0.8rem"></textarea>
                 </div>
                 <div class="admin-form-group" id="import-preview-wrap" style="display:none">
                     <p class="admin-pagination-info" id="import-preview-text"></p>

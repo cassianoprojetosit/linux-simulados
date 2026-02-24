@@ -566,16 +566,6 @@
             color: var(--warning);
         }
 
-        .topic-badge {
-            font-size: 0.68rem;
-            padding: 3px 10px;
-            background: var(--surface2);
-            border-radius: 20px;
-            color: var(--muted);
-            font-family: 'Space Mono', monospace;
-            white-space: nowrap;
-        }
-
         .text-input-container { margin-bottom: 4px; }
 
         .text-hint {
@@ -766,6 +756,7 @@
             padding: 0;
             margin-left: 4px;
             transition: color 0.15s;
+            text-decoration: none;
         }
         .logout-btn:hover { color: var(--red); }
         .btn-login {
@@ -814,45 +805,6 @@
             font-size: 0.85rem;
             color: var(--muted);
         }
-
-        .report-topics { margin-bottom: 28px; }
-
-        .topic-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.83rem;
-        }
-
-        .topic-name { flex: 1; }
-
-        .topic-score {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.82rem;
-            color: var(--muted);
-            min-width: 50px;
-            text-align: right;
-        }
-
-        .topic-bar {
-            width: 120px;
-            height: 5px;
-            background: var(--surface2);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .topic-fill {
-            height: 100%;
-            border-radius: 5px;
-            transition: width 0.6s ease;
-        }
-
-        .fill-good { background: var(--success); }
-        .fill-ok { background: var(--warning); }
-        .fill-bad { background: var(--danger); }
 
         .report-recommendations {
             background: var(--surface2);
@@ -985,19 +937,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Report topic progress from JS */
-        .topic-progress {
-            margin-bottom: 14px;
-        }
-
-        .topic-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 6px;
-        }
-
         .progress-bar {
             height: 5px;
             background: var(--surface2);
@@ -1051,14 +990,11 @@
 <body>
     <script type="module" src="/js/require-auth.js"></script>
 
-    <!-- TOPBAR -->
+    <!-- TOPBAR (saída apenas via botão Finalizar) -->
     <header class="topbar">
-        <a href="index.html" class="back-link">← Dashboard</a>
-        <div class="topbar-divider"></div>
         <div class="topbar-title">🐧 Simulado LPIC-1</div>
         <div class="topbar-right">
             <div id="user-area"></div>
-            <button type="button" class="btn-ghost">📣 Novidades</button>
             <div id="topbar-exam-info" style="display:none">
                 <div style="font-size:0.75rem;color:var(--muted);font-family:'Space Mono',monospace" id="topbar-progress">Q 0/0</div>
                 <div class="exam-progress-bar">
@@ -1074,7 +1010,7 @@
         <div id="config-screen">
             <div class="config-hero">
                 <div class="config-badge">🐧 LPI — Linux Professional Institute</div>
-                <h1>Simulado <span>LPIC-1</span></h1>
+                <h1>Simulado <span id="simulado-title">LPIC-1</span></h1>
                 <p>Configure seu simulado personalizado. Escolha o exame, modo de questões, quantidade e tempo.</p>
             </div>
 
@@ -1156,24 +1092,6 @@
                     </div>
                 </div>
 
-                <!-- Opções Extras -->
-                <div class="config-group">
-                    <div class="config-group-title">⚙️ Opções Extras</div>
-                    <div class="radio-list">
-                        <label class="radio-option">
-                            <input type="checkbox" id="weighted" checked>
-                            <span>Usar pesos dos tópicos</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="checkbox" id="randomize" checked>
-                            <span>Embaralhar questões</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="checkbox" id="show-feedback" checked>
-                            <span>Feedback imediato</span>
-                        </label>
-                    </div>
-                </div>
             </div>
 
             <div class="config-actions">
@@ -1259,5 +1177,7 @@
     <script type="module" src="/js/progress-sync.js"></script>
     <script src="/js/simulado-lpic1-engine.js"></script>
     <script type="module" src="/js/user-area.js"></script>
+    <script type="module" src="/js/track-login.js"></script>
+    <script type="module" src="/js/newsletter-popup.js"></script>
 </body>
 </html>

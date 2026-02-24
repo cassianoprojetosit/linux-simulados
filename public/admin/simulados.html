@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulados | Admin Linux Simulados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --surface: #111827;
+            --surface2: #1a2235;
+            --border: rgba(255,255,255,0.07);
+            --accent: #00e5a0;
+            --accent2: #3b82f6;
+            --accent3: #f59e0b;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --text-dim: #64748b;
+            --red: #f87171;
+            --green: #00e5a0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        .admin-sidebar {
+            position: fixed; left: 0; top: 0; width: 240px; height: 100vh;
+            background: var(--surface); border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; z-index: 100; padding: 28px 0;
+        }
+        .admin-logo { padding: 0 24px 28px; border-bottom: 1px solid var(--border); }
+        .admin-logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); }
+        .admin-nav { padding: 20px 0; flex: 1; }
+        .admin-nav-section { padding: 8px 24px 4px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+        .admin-nav-link {
+            display: flex; align-items: center; gap: 12px; padding: 10px 24px; font-size: 0.875rem; font-weight: 500;
+            color: var(--muted); text-decoration: none; transition: all 0.2s; border-left: 3px solid transparent;
+        }
+        .admin-nav-link:hover { color: var(--text); background: var(--surface2); }
+        .admin-nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(0, 229, 160, 0.07); }
+        .admin-nav-icon { width: 18px; text-align: center; font-size: 1rem; }
+        .admin-sidebar-footer { border-top: 1px solid var(--border); padding: 16px 0; }
+        .admin-sidebar-footer .admin-nav-link { padding: 10px 24px; }
+
+        .admin-main { margin-left: 240px; min-height: 100vh; display: flex; flex-direction: column; }
+        .admin-topbar {
+            height: 60px; background: var(--surface); border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; padding: 0 28px; gap: 20px; position: sticky; top: 0; z-index: 50;
+        }
+        .admin-topbar-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+        .admin-topbar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+        .admin-btn {
+            padding: 7px 14px; border-radius: 8px; font-size: 0.8rem; font-family: inherit; cursor: pointer;
+            border: 1px solid var(--border); background: var(--surface2); color: var(--text);
+        }
+        .admin-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .admin-btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .admin-btn-primary:hover { filter: brightness(1.1); color: var(--bg); }
+        .admin-btn-ver-site {
+            background: none; border: 1px solid var(--border); color: var(--muted); padding: 7px 14px;
+            border-radius: 8px; font-size: 0.8rem; cursor: pointer; font-family: inherit; text-decoration: none;
+        }
+        .admin-btn-ver-site:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+        .admin-user-chip { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px 4px 4px; }
+        .admin-user-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+        .admin-user-name { font-size: 13px; color: var(--text); font-weight: 500; }
+        .admin-logout-btn { font-size: 11px; color: var(--text-dim); background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; margin-left: 4px; }
+        .admin-logout-btn:hover { color: var(--red); }
+
+        .admin-content { padding: 36px 32px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+        .admin-simulados-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+        .admin-simulados-table-wrap {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+        }
+        .admin-simulados-table { width: 100%; border-collapse: collapse; }
+        .admin-simulados-table th, .admin-simulados-table td {
+            padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.82rem;
+        }
+        .admin-simulados-table th {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-dim);
+        }
+        .admin-simulados-table tbody tr:hover td { background: var(--surface2); }
+        .admin-simulados-table .col-acoes { white-space: nowrap; }
+        .btn-icon {
+            background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px 6px; font-size: 1rem;
+        }
+        .btn-icon:hover { color: var(--accent); }
+        .btn-icon.danger:hover { color: var(--red); }
+
+        .admin-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
+        }
+        .admin-badge.ativo { background: rgba(0,229,160,0.2); color: var(--green); }
+        .admin-badge.inativo { background: rgba(248,113,113,0.2); color: var(--red); }
+        .admin-badge.premium { background: rgba(245,158,11,0.2); color: var(--accent3); }
+
+        .admin-modal-backdrop {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px;
+        }
+        .admin-modal-backdrop.open { display: flex; }
+        .admin-modal {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 12px; max-width: 520px; width: 100%; max-height: 90vh; overflow-y: auto;
+        }
+        .admin-modal-header {
+            padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;
+        }
+        .admin-modal-header h2 { font-family: 'Syne', sans-serif; font-size: 1rem; }
+        .admin-modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.25rem; padding: 0 4px; }
+        .admin-modal-close:hover { color: var(--text); }
+        .admin-modal-body { padding: 20px; }
+        .admin-form-group { margin-bottom: 16px; }
+        .admin-form-group label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-dim); margin-bottom: 6px; }
+        .admin-form-group input, .admin-form-group select {
+            width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+            background: var(--surface2); color: var(--text); font-family: inherit; font-size: 0.875rem;
+        }
+        .admin-form-group input:focus { outline: none; border-color: var(--accent); }
+        .admin-form-options label { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-weight: 400; font-size: 0.875rem; }
+        .admin-form-options input[type="checkbox"] { width: auto; }
+        .admin-modal-footer { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; }
+
+        .admin-exams-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .admin-exams-section h3 { font-size: 0.8rem; font-weight: 600; color: var(--text-dim); margin-bottom: 10px; }
+        .admin-exams-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        .admin-exams-table th, .admin-exams-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+        .admin-exams-table th { color: var(--text-dim); font-weight: 600; }
+        .admin-exams-table .col-acoes { white-space: nowrap; }
+        .admin-exams-empty { color: var(--text-dim); font-size: 0.8rem; padding: 12px 0; }
+
+        .admin-modal-exam { max-width: 360px; }
+        @media (max-width: 768px) {
+            .admin-main { margin-left: 0; }
+            .admin-sidebar { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <aside class="admin-sidebar">
+        <div class="admin-logo"><span class="admin-logo-text">⚙️ Admin</span></div>
+        <nav class="admin-nav">
+            <div class="admin-nav-section">Painel</div>
+            <a href="/admin/index.html" class="admin-nav-link"><span class="admin-nav-icon">📊</span> Dashboard</a>
+            <a href="/admin/simulados.html" class="admin-nav-link active"><span class="admin-nav-icon">🎓</span> Simulados</a>
+            <a href="/admin/questoes.html" class="admin-nav-link"><span class="admin-nav-icon">❓</span> Questões</a>
+            <a href="/admin/usuarios.html" class="admin-nav-link"><span class="admin-nav-icon">👥</span> Usuários</a>
+            <a href="/admin/artigos.html" class="admin-nav-link"><span class="admin-nav-icon">📝</span> Artigos</a>
+            <a href="/admin/links.html" class="admin-nav-link"><span class="admin-nav-icon">🔗</span> Links Úteis</a>
+        </nav>
+        <div class="admin-sidebar-footer">
+            <a href="/index.html" target="_blank" rel="noopener" class="admin-nav-link"><span class="admin-nav-icon">👁️</span> Ver site</a>
+            <button type="button" id="admin-sidebar-sair" class="admin-nav-link" style="width:100%;text-align:left;border:none;background:none;font:inherit;color:inherit;cursor:pointer;"><span class="admin-nav-icon">🚪</span> Sair</button>
+        </div>
+    </aside>
+
+    <div class="admin-main">
+        <header class="admin-topbar">
+            <h1 class="admin-topbar-title">Simulados</h1>
+            <div class="admin-topbar-right">
+                <a href="/index.html" target="_blank" rel="noopener" class="admin-btn-ver-site">Ver site</a>
+                <div id="admin-user-area">Carregando…</div>
+            </div>
+        </header>
+        <main class="admin-content">
+            <div class="admin-simulados-toolbar">
+                <button type="button" class="admin-btn admin-btn-primary" id="btn-novo-simulado">+ Novo simulado</button>
+            </div>
+
+            <div class="admin-simulados-table-wrap">
+                <table class="admin-simulados-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Slug</th>
+                            <th>Ativo</th>
+                            <th>Premium</th>
+                            <th>Nota mín.</th>
+                            <th>Exames</th>
+                            <th class="col-acoes">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="simulados-tbody">
+                        <tr><td colspan="7" style="padding:24px;color:var(--text-dim);text-align:center;">Carregando…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Criar/Editar Simulado -->
+    <div class="admin-modal-backdrop" id="modal-simulado-backdrop">
+        <div class="admin-modal" id="modal-simulado">
+            <div class="admin-modal-header">
+                <h2 id="modal-simulado-title">Novo simulado</h2>
+                <button type="button" class="admin-modal-close" id="modal-simulado-close" aria-label="Fechar">×</button>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-form-group">
+                    <label for="form-simulado-title">Título *</label>
+                    <input type="text" id="form-simulado-title" placeholder="Ex: LPIC-1" maxlength="200" autocomplete="off">
+                </div>
+                <div class="admin-form-group">
+                    <label for="form-simulado-slug">Slug (URL) *</label>
+                    <input type="text" id="form-simulado-slug" placeholder="Ex: lpic1" maxlength="80" autocomplete="off">
+                    <small style="color:var(--text-dim);font-size:0.7rem;">Apenas letras minúsculas, números e hífen. Usado na URL do simulado.</small>
+                </div>
+                <div class="admin-form-group">
+                    <label for="form-simulado-passing">Nota mínima para aprovação (%)</label>
+                    <input type="number" id="form-simulado-passing" min="0" max="100" value="70" step="1">
+                </div>
+                <div class="admin-form-options">
+                    <label><input type="checkbox" id="form-simulado-active" checked> Ativo (visível no site)</label>
+                </div>
+                <div class="admin-form-options">
+                    <label><input type="checkbox" id="form-simulado-premium"> Premium (restringido a plano Pro)</label>
+                </div>
+                <div class="admin-exams-section" id="exams-section" style="display:none;">
+                    <h3>Exames deste simulado</h3>
+                    <div id="exams-list-wrap"></div>
+                    <button type="button" class="admin-btn" id="btn-add-exam" style="margin-top:10px;">+ Adicionar exame</button>
+                </div>
+            </div>
+            <div class="admin-modal-footer">
+                <button type="button" class="admin-btn" id="modal-simulado-cancel">Cancelar</button>
+                <button type="button" class="admin-btn admin-btn-primary" id="modal-simulado-save">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Adicionar/Editar Exame -->
+    <div class="admin-modal-backdrop" id="modal-exam-backdrop">
+        <div class="admin-modal admin-modal-exam" id="modal-exam">
+            <div class="admin-modal-header">
+                <h2 id="modal-exam-title">Adicionar exame</h2>
+                <button type="button" class="admin-modal-close" id="modal-exam-close" aria-label="Fechar">×</button>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-form-group">
+                    <label for="form-exam-code">Código *</label>
+                    <input type="text" id="form-exam-code" placeholder="Ex: 101" maxlength="20" autocomplete="off">
+                </div>
+                <div class="admin-form-group">
+                    <label for="form-exam-name">Nome</label>
+                    <input type="text" id="form-exam-name" placeholder="Ex: Exame 101" maxlength="120" autocomplete="off">
+                </div>
+            </div>
+            <div class="admin-modal-footer">
+                <button type="button" class="admin-btn" id="modal-exam-cancel">Cancelar</button>
+                <button type="button" class="admin-btn admin-btn-primary" id="modal-exam-save">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/js/admin-auth.js"></script>
+    <script type="module" src="/js/admin-simulados.js"></script>
+</body>
+</html>

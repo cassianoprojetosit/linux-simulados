@@ -5,3 +5,5 @@ node_modules/
 client_secret*.json
 *.rtf
 backup/
+backup-data/
+.DS_Store

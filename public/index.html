@@ -54,6 +54,7 @@
             padding: 0;
             margin-left: 4px;
             transition: color 0.15s;
+            text-decoration: none;
         }
         .logout-btn:hover { color: var(--red); }
         .btn-login {
@@ -237,10 +238,13 @@
             color: var(--text);
         }
 
-        /* ═══ CONTENT ═══ */
+        /* ═══ CONTENT ═══ — centralizado na área principal (melhor uso do espaço em telas largas) */
         .content {
             padding: 36px 32px;
             max-width: 1280px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -618,6 +622,11 @@
             overflow: hidden;
         }
 
+        .article-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         .article-hero-img::after {
             content: '';
             position: absolute; inset: 0;
@@ -690,6 +699,11 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.2rem;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+        .mini-icon img {
+            width: 100%; height: 100%;
+            object-fit: cover;
         }
 
         .mini-title {
@@ -746,11 +760,19 @@
             margin-bottom: 10px;
             display: block;
         }
+        .sponsored-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin: 0 auto 10px;
+            display: block;
+        }
 
         .sponsored-name {
             font-weight: 600;
             font-size: 0.85rem;
             margin-bottom: 4px;
+            color: var(--text);
         }
 
         .sponsored-desc {
@@ -807,10 +829,10 @@
         <a class="nav-link" href="artigos.html">
             <span class="nav-icon">📚</span> Artigos
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/index.html#links-servicos">
             <span class="nav-icon">🔗</span> Links Úteis
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" title="EM BREVE">
             <span class="nav-icon">💬</span> Comunidade
         </a>
     </nav>
@@ -830,7 +852,6 @@
         </div>
         <div class="topbar-right">
             <div id="user-area"></div>
-            <button type="button" class="btn-ghost">📣 Novidades</button>
         </div>
     </header>
 
@@ -973,102 +994,20 @@
         <div class="section">
             <div class="section-header">
                 <h2 class="section-title"><span></span>Artigos & Recursos.</h2>
-                <a href="#" class="view-all">Ver todos →</a>
+                <a href="/artigos.html" class="view-all">Ver todos →</a>
             </div>
-            <div class="articles-grid">
-
-                <!-- Featured article -->
-                <a href="#" class="article-card">
-                    <div class="article-hero-img">🚀</div>
-                    <div class="article-body">
-                        <div class="article-tag">📌 Guia Completo</div>
-                        <div class="article-title">Como se preparar para o LPIC-1 do zero: Roteiro completo 2024</div>
-                        <div class="article-desc">Um guia passo a passo com todos os recursos necessários para conquistar o LPIC-1, desde o básico até a aprovação.</div>
-                        <div class="article-meta">
-                            <span>📅 Jan 2024</span>
-                            <span>⏱ 8 min leitura</span>
-                            <span style="margin-left:auto;color:var(--accent)">Ler artigo →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Article list -->
-                <div class="article-list">
-                    <a href="#" class="article-mini">
-                        <div class="mini-icon">🔧</div>
-                        <div>
-                            <div class="mini-title">Comandos essenciais de administração Linux</div>
-                            <div class="mini-tag">Referência • 5 min</div>
-                        </div>
-                    </a>
-                    <a href="#" class="article-mini">
-                        <div class="mini-icon">🌐</div>
-                        <div>
-                            <div class="mini-title">Configurando redes no Linux: guia prático</div>
-                            <div class="mini-tag">Redes • 7 min</div>
-                        </div>
-                    </a>
-                    <a href="#" class="article-mini">
-                        <div class="mini-icon">🔐</div>
-                        <div>
-                            <div class="mini-title">Permissões e segurança de arquivos no Linux</div>
-                            <div class="mini-tag">Segurança • 6 min</div>
-                        </div>
-                    </a>
-                    <a href="#" class="article-mini">
-                        <div class="mini-icon">📦</div>
-                        <div>
-                            <div class="mini-title">Gerenciamento de pacotes: APT vs YUM vs DNF</div>
-                            <div class="mini-tag">Pacotes • 4 min</div>
-                        </div>
-                    </a>
-                </div>
-
+            <div class="articles-grid" id="artigos-home">
+                <div class="articles-loading" style="grid-column:1/-1;padding:24px;text-align:center;color:var(--muted);">Carregando artigos…</div>
             </div>
         </div>
 
         <!-- LINKS PATROCINADOS / SERVIÇOS -->
-        <div class="section">
+        <div class="section" id="links-servicos">
             <div class="section-header">
                 <h2 class="section-title"><span></span>Links & Serviços Linux.</h2>
             </div>
-            <div class="sponsored-grid">
-                <a href="https://lpi.org" target="_blank" class="sponsored-card">
-                    <span class="sponsored-label">Oficial</span>
-                    <span class="sponsored-icon">🏛️</span>
-                    <div class="sponsored-name">LPI.org</div>
-                    <div class="sponsored-desc">Site oficial da certificação LPIC</div>
-                </a>
-                <a href="https://linuxfoundation.org" target="_blank" class="sponsored-card">
-                    <span class="sponsored-label">Oficial</span>
-                    <span class="sponsored-icon">🐧</span>
-                    <div class="sponsored-name">Linux Foundation</div>
-                    <div class="sponsored-desc">Treinamentos e certificações CKA</div>
-                </a>
-                <a href="https://man7.org/linux/man-pages" target="_blank" class="sponsored-card">
-                    <span class="sponsored-label">Referência</span>
-                    <span class="sponsored-icon">📖</span>
-                    <div class="sponsored-name">Man Pages</div>
-                    <div class="sponsored-desc">Documentação oficial Linux</div>
-                </a>
-                <a href="https://tldr.sh" target="_blank" class="sponsored-card">
-                    <span class="sponsored-label">Ferramenta</span>
-                    <span class="sponsored-icon">⚡</span>
-                    <div class="sponsored-name">TLDR Pages</div>
-                    <div class="sponsored-desc">Comandos simplificados</div>
-                </a>
-                <a href="https://explainshell.com" target="_blank" class="sponsored-card">
-                    <span class="sponsored-label">Ferramenta</span>
-                    <span class="sponsored-icon">🔍</span>
-                    <div class="sponsored-name">Explain Shell</div>
-                    <div class="sponsored-desc">Decifrando comandos Linux</div>
-                </a>
-                <a href="https://overthewire.org" target="_blank" class="sponsored-card">
-                    <span class="sponsored-label">Prática</span>
-                    <span class="sponsored-icon">🎮</span>
-                    <div class="sponsored-name">OverTheWire</div>
-                    <div class="sponsored-desc">Aprenda Linux jogando</div>
-                </a>
+            <div class="sponsored-grid" id="links-grid">
+                <span style="color:var(--muted);grid-column:1/-1;">Carregando…</span>
             </div>
         </div>
 
@@ -1081,7 +1020,11 @@
 </div>
 
     <script type="module" src="/js/user-area.js"></script>
+    <script type="module" src="/js/track-login.js"></script>
+    <script type="module" src="/js/newsletter-popup.js"></script>
     <script type="module" src="/js/cards-auth.js"></script>
     <script type="module" src="/js/admin-entry.js"></script>
+    <script src="/js/artigos-home.js"></script>
+    <script src="/js/links-public.js"></script>
 </body>
 </html>

@@ -10,13 +10,12 @@ const CARD_ID = 'card-lpic1'
 const BTN_SELECTOR = '.btn-start.btn-primary'
 const LOGIN_URL = '/login.html?redirect=' + encodeURIComponent('simulado-lpic1.html')
 
-async function updateLpic1Card() {
+function updateLpic1Card(session) {
   const card = document.getElementById(CARD_ID)
   if (!card) return
   const btn = card.querySelector(BTN_SELECTOR)
   if (!btn) return
 
-  const { data: { session } } = await supabase.auth.getSession()
   if (session) {
     card.href = 'simulado-lpic1.html'
     btn.textContent = 'Iniciar →'
@@ -26,6 +25,5 @@ async function updateLpic1Card() {
   }
 }
 
-// Atualizar na carga e quando a sessão mudar
-updateLpic1Card()
-supabase.auth.onAuthStateChange(() => updateLpic1Card())
+// Atualizar quando a sessão mudar (inclui INITIAL_SESSION)
+supabase.auth.onAuthStateChange((_event, session) => updateLpic1Card(session))

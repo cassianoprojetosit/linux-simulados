@@ -25,7 +25,11 @@ async function checkAdminAndShow (session) {
       method: 'GET',
       headers: { Authorization: `Bearer ${session.access_token}` }
     })
-    const data = res.ok ? await res.json() : null
+    if (!res.ok) {
+      setAdminEntryVisible(false)
+      return
+    }
+    const data = await res.json()
     setAdminEntryVisible(data?.success === true && data?.isAdmin === true)
   } catch (_) {
     setAdminEntryVisible(false)
@@ -35,6 +39,3 @@ async function checkAdminAndShow (session) {
 supabase.auth.onAuthStateChange((_event, session) => {
   checkAdminAndShow(session)
 })
-
-const { data } = await supabase.auth.getSession()
-checkAdminAndShow(data?.session ?? null)

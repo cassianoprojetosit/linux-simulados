@@ -153,6 +153,18 @@
             gap: 12px;
         }
 
+        .admin-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .admin-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
         .admin-btn-ver-site {
             background: none;
             border: 1px solid var(--border);
@@ -314,9 +326,6 @@
             <a href="/admin/links.html" class="admin-nav-link">
                 <span class="admin-nav-icon">🔗</span> Links Úteis
             </a>
-            <a href="/admin/menus.html" class="admin-nav-link">
-                <span class="admin-nav-icon">🗂️</span> Menus
-            </a>
         </nav>
         <div class="admin-sidebar-footer">
             <a href="/index.html" target="_blank" rel="noopener" class="admin-nav-link">
@@ -331,6 +340,7 @@
     <div class="admin-main">
         <header class="admin-topbar">
             <h1 class="admin-topbar-title">Dashboard</h1>
+            <button type="button" id="admin-dashboard-refresh" class="admin-btn" style="margin-right:12px;">Atualizar</button>
             <div class="admin-topbar-right">
                 <a href="/index.html" target="_blank" rel="noopener" class="admin-btn-ver-site">Ver site</a>
                 <div id="admin-user-area">Carregando…</div>

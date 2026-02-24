@@ -30,7 +30,7 @@
         }
         .user-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
         .user-name { font-size: 13px; color: var(--text); font-weight: 500; }
-        .logout-btn { font-size: 11px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; margin-left: 4px; transition: color 0.15s; }
+        .logout-btn { font-size: 11px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; margin-left: 4px; transition: color 0.15s; text-decoration: none; }
         .logout-btn:hover { color: var(--red); }
         .btn-login { font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid rgba(0,255,136,0.3); background: var(--green-dim); border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: all 0.15s; }
         .btn-login:hover { background: rgba(0,255,136,0.2); }
@@ -191,6 +191,9 @@
         .content {
             padding: 36px 32px;
             max-width: 1280px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -429,10 +432,10 @@
         <a class="nav-link active" href="artigos.html">
             <span class="nav-icon">📚</span> Artigos
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/index.html#links-servicos">
             <span class="nav-icon">🔗</span> Links Úteis
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" title="EM BREVE">
             <span class="nav-icon">💬</span> Comunidade
         </a>
     </nav>
@@ -450,7 +453,6 @@
         </div>
         <div class="topbar-right">
             <div id="user-area"></div>
-            <button class="btn-ghost">📣 Novidades</button>
         </div>
     </header>
 
@@ -479,72 +481,7 @@
                 <h2 class="section-title"><span></span>Artigos disponíveis</h2>
             </div>
             <div class="articles-grid" id="artigos-grid">
-
-                <a href="#" class="article-card">
-                    <div class="article-hero-img">🚀</div>
-                    <div class="article-body">
-                        <div class="article-tag">📌 Guia Completo</div>
-                        <div class="article-title">Como se preparar para o LPIC-1 do zero: Roteiro completo 2024</div>
-                        <div class="article-desc">Um guia passo a passo com todos os recursos necessários para conquistar o LPIC-1, desde o básico até a aprovação.</div>
-                        <div class="article-meta">
-                            <span>📅 Jan 2024</span>
-                            <span>⏱ 8 min leitura</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="article-card">
-                    <div class="article-hero-img">🔧</div>
-                    <div class="article-body">
-                        <div class="article-tag">Tutorial</div>
-                        <div class="article-title">Comandos essenciais de linha de comando Linux</div>
-                        <div class="article-desc">Os comandos que todo administrador Linux precisa dominar no dia a dia.</div>
-                        <div class="article-meta">
-                            <span>📅 Fev 2024</span>
-                            <span>⏱ 5 min leitura</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="article-card">
-                    <div class="article-hero-img">🌐</div>
-                    <div class="article-body">
-                        <div class="article-tag">Rede</div>
-                        <div class="article-title">Configurando rede e firewall no Linux</div>
-                        <div class="article-desc">iptables, firewalld e troubleshooting de conectividade.</div>
-                        <div class="article-meta">
-                            <span>📅 Mar 2024</span>
-                            <span>⏱ 10 min leitura</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="article-card">
-                    <div class="article-hero-img">🔐</div>
-                    <div class="article-body">
-                        <div class="article-tag">Segurança</div>
-                        <div class="article-title">Permissões e usuários no Linux</div>
-                        <div class="article-desc">chmod, chown, grupos e boas práticas de segurança.</div>
-                        <div class="article-meta">
-                            <span>📅 Abr 2024</span>
-                            <span>⏱ 6 min leitura</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="article-card">
-                    <div class="article-hero-img">📦</div>
-                    <div class="article-body">
-                        <div class="article-tag">Pacotes</div>
-                        <div class="article-title">apt, dnf e yum: gerenciando pacotes</div>
-                        <div class="article-desc">Diferenças entre gerenciadores e quando usar cada um.</div>
-                        <div class="article-meta">
-                            <span>📅 Mai 2024</span>
-                            <span>⏱ 7 min leitura</span>
-                        </div>
-                    </div>
-                </a>
-
+                <p style="color:var(--muted);grid-column:1/-1;">Carregando artigos…</p>
             </div>
         </div>
 
@@ -557,5 +494,8 @@
 </div>
 
     <script type="module" src="/js/user-area.js"></script>
+    <script type="module" src="/js/track-login.js"></script>
+    <script type="module" src="/js/newsletter-popup.js"></script>
+    <script type="module" src="/js/artigos-public.js"></script>
 </body>
 </html>

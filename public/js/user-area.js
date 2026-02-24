@@ -32,13 +32,11 @@ function renderUser (session) {
       <div class="user-chip">
         <img src="${avatar}" class="user-avatar" alt="${name}">
         <span class="user-name">${name}</span>
-        <button type="button" id="logout-btn" class="logout-btn">Sair</button>
+        <a href="/logout.html" class="logout-btn" id="logout-btn" data-action="logout">Sair</a>
       </div>
     `
     const img = area.querySelector('.user-avatar')
     if (img) img.onerror = function () { this.style.display = 'none' }
-    const btn = document.getElementById('logout-btn')
-    if (btn) btn.addEventListener('click', logout)
   } else {
     area.innerHTML = '<a href="/login.html" class="btn-login">Entrar com Google</a>'
   }

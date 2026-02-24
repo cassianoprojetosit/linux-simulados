@@ -36,7 +36,10 @@ export async function loginWithGoogle() {
   const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/index.html` : 'http://localhost:3000/index.html'
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
-    options: { redirectTo }
+    options: {
+      redirectTo,
+      queryParams: { prompt: 'select_account' }
+    }
   })
   if (error) {
     console.error('Erro ao iniciar login com Google:', error.message)
@@ -50,6 +53,23 @@ export async function loginWithGoogle() {
 }
 
 export async function logout() {
-  await supabase.auth.signOut()
-  window.location.href = '/index.html'
+  try {
+    await supabase.auth.signOut()
+  } catch (e) {
+    console.warn('[logout] signOut falhou:', e?.message || e)
+  }
+  try {
+    const keys = []
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i)
+      if (k && (k.startsWith('sb-') || k === 'linuxgeek-auth')) keys.push(k)
+    }
+    keys.forEach(k => localStorage.removeItem(k))
+    try { sessionStorage.removeItem('newsletter_popup_shown') } catch (_) {}
+    try { localStorage.removeItem('newsletter_opt_in') } catch (_) {}
+  } catch (_) {}
+  if (typeof window !== 'undefined') {
+    const ts = Date.now()
+    window.location.href = `/index.html?logout=${ts}`
+  }
 }

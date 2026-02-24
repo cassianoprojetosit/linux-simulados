@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigo | Linux Simulados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --bg: #0a0e1a; --surface: #111827; --surface2: #1a2235; --border: rgba(255,255,255,0.07); --accent: #00e5a0; --text: #e2e8f0; --muted: #64748b; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        .sidebar { position: fixed; left: 0; top: 0; width: 240px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); padding: 28px 0; }
+        .logo { padding: 0 24px 28px; border-bottom: 1px solid var(--border); }
+        .logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; }
+        .nav { padding: 20px 0; }
+        .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 24px; font-size: 0.875rem; color: var(--muted); text-decoration: none; }
+        .nav-link:hover { color: var(--text); background: var(--surface2); }
+        .main-wrap { margin-left: 240px; min-height: 100vh; display: flex; justify-content: center; }
+        .main { max-width: 900px; width: 100%; min-height: 100vh; padding: 0; }
+        .back { font-size: 0.875rem; color: var(--muted); text-decoration: none; margin-bottom: 24px; display: inline-block; padding: 32px 32px 0; }
+        .back:hover { color: var(--accent); }
+        /* Quadro da capa: mesma largura do texto (máx 900px), altura fixa 400px — prepare a imagem em 900×400 px */
+        .article-hero { width: 100%; max-width: 900px; height: 400px; background: var(--surface2); overflow: hidden; }
+        .article-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+        @media (max-width: 600px) { .article-hero { height: 220px; } }
+        .article-header { padding: 28px 32px 20px; }
+        .article-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+        .article-meta { font-size: 0.8125rem; color: var(--muted); margin-bottom: 24px; }
+        .article-body-wrap { padding: 0 32px 32px; }
+        .article-body { font-size: 1rem; line-height: 1.7; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 8px; }
+        .article-body img.article-cover-img { display: none; }
+        .article-body pre { background: var(--surface2); padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.875rem; }
+        .article-body code { font-family: 'Space Mono', monospace; }
+        .article-body p { margin-bottom: 1em; }
+        .article-body h2 { font-size: 1.25rem; margin-top: 1.5em; margin-bottom: 0.5em; }
+        #load-err { color: var(--muted); }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo"><a href="index.html"><span>🐧</span> Linux Simulados</a></div>
+        <nav class="nav">
+            <a class="nav-link" href="artigos.html">← Voltar aos artigos</a>
+        </nav>
+    </aside>
+    <div class="main-wrap">
+    <main class="main">
+        <a href="artigos.html" class="back">← Artigos</a>
+        <div id="article-wrap">
+            <p id="load-err">Carregando…</p>
+        </div>
+    </main>
+    </div>
+    <script type="module" src="/js/artigo-public.js"></script>
+</body>
+</html>

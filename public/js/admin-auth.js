@@ -72,7 +72,7 @@ function renderDashboard(data) {
     '</div>' +
     '<div class="admin-metric-card sessions">' +
       '<div class="admin-metric-value">' + (data.totalSessions ?? 0) + '</div>' +
-      '<div class="admin-metric-label">Total Sessões</div>' +
+      '<div class="admin-metric-label">Simulados realizados</div>' +
     '</div>'
 
   if (wrap) {
@@ -152,13 +152,19 @@ try {
   }
   renderAdminUser(session)
 
-  const statsRes = await fetch('/admin/api/stats', {
-    headers: { Authorization: 'Bearer ' + session.access_token }
-  })
-  if (statsRes.ok) {
-    const json = await statsRes.json()
-    if (json.success && json.data) renderDashboard(json.data)
+  async function loadDashboardStats() {
+    const res = await fetch('/admin/api/stats', {
+      headers: { Authorization: 'Bearer ' + session.access_token }
+    })
+    if (res.ok) {
+      const json = await res.json()
+      if (json.success && json.data) renderDashboard(json.data)
+    }
   }
+  await loadDashboardStats()
+
+  const refreshBtn = document.getElementById('admin-dashboard-refresh')
+  if (refreshBtn) refreshBtn.addEventListener('click', () => loadDashboardStats())
 } catch (e) {
   if (e.message === 'not admin') throw e
   const area = document.getElementById('admin-user-area')
