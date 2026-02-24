@@ -137,6 +137,14 @@
 
         .hidden { display: none !important; }
 
+        /* Área principal ao lado da sidebar */
+        .main {
+            margin-left: 240px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         /* ═══ TOPBAR ═══ */
         .topbar {
             height: 60px;
@@ -1149,7 +1157,7 @@
 
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 640px) {
-            .main-wrapper { padding: 20px 14px; margin-left: 0; }
+            .main-wrapper { padding: 20px 14px; }
             .config-grid { grid-template-columns: 1fr; }
             .exam-info { gap: 14px; }
             .exam-controls { flex-wrap: wrap; }
@@ -1161,7 +1169,7 @@
         /* Sidebar responsivo: esconde no mobile e remove recuo */
         @media (max-width: 1024px) {
             .sidebar { display: none; }
-            .main-wrapper { margin-left: 0; }
+            .main { margin-left: 0; }
             .btn-mobile-menu { display: flex; }
         }
 
@@ -1209,43 +1217,44 @@
 
     </aside>
 
-    <!-- TOPBAR -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Abrir menu">☰</button>
-        </div>
-        <div class="topbar-right">
-            <div id="user-area"></div>
-            <div id="topbar-exam-info" style="display:none">
-                <div style="font-size:0.75rem;color:var(--muted);font-family:'Space Mono',monospace" id="topbar-progress">Q 0/0</div>
-                <div class="exam-progress-bar">
-                    <div class="exam-progress-fill" id="topbar-progress-bar" style="width:0%"></div>
+    <div class="main">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Abrir menu">☰</button>
+            </div>
+            <div class="topbar-right">
+                <div id="user-area"></div>
+                <div id="topbar-exam-info" style="display:none">
+                    <div style="font-size:0.75rem;color:var(--muted);font-family:'Space Mono',monospace" id="topbar-progress">Q 0/0</div>
+                    <div class="exam-progress-bar">
+                        <div class="exam-progress-fill" id="topbar-progress-bar" style="width:0%"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <div id="mobile-menu-overlay" aria-hidden="true">
-        <div class="mobile-menu-content">
-            <button type="button" class="mobile-menu-close" aria-label="Fechar menu">×</button>
-            <div style="padding:0 0 20px;border-bottom:1px solid var(--border);margin-bottom:20px;">
-                <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;">
-                    <span style="font-size:1.2rem">🐧</span>
-                    <span>Linux Simulados</span>
-                </a>
+        <div id="mobile-menu-overlay" aria-hidden="true">
+            <div class="mobile-menu-content">
+                <button type="button" class="mobile-menu-close" aria-label="Fechar menu">×</button>
+                <div style="padding:0 0 20px;border-bottom:1px solid var(--border);margin-bottom:20px;">
+                    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;">
+                        <span style="font-size:1.2rem">🐧</span>
+                        <span>Linux Simulados</span>
+                    </a>
+                </div>
+                <div class="nav-section">Principal</div>
+                <a class="nav-link" href="index.html">⊞ Dashboard</a>
+                <a class="nav-link" href="simulados.html">📋 Simulados</a>
+                <a class="nav-link" href="progresso.html">📊 Meu Progresso</a>
+                <div class="nav-section">Recursos</div>
+                <a class="nav-link" href="artigos.html">📚 Artigos</a>
+                <a class="nav-link" href="index.html#links-servicos">🔗 Links Úteis</a>
+                <a class="nav-link" href="#" title="EM BREVE">💬 Comunidade</a>
             </div>
-            <div class="nav-section">Principal</div>
-            <a class="nav-link" href="index.html">⊞ Dashboard</a>
-            <a class="nav-link" href="simulados.html">📋 Simulados</a>
-            <a class="nav-link" href="progresso.html">📊 Meu Progresso</a>
-            <div class="nav-section">Recursos</div>
-            <a class="nav-link" href="artigos.html">📚 Artigos</a>
-            <a class="nav-link" href="index.html#links-servicos">🔗 Links Úteis</a>
-            <a class="nav-link" href="#" title="EM BREVE">💬 Comunidade</a>
         </div>
-    </div>
 
-    <div class="main-wrapper" style="margin-left:240px;">
+        <div class="main-wrapper">
 
         <!-- ══ CONFIG SCREEN ══ -->
         <div id="config-screen">
