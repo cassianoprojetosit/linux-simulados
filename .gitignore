@@ -8,3 +8,6 @@ backup/
 backup-data/
 .DS_Store
 public/uploads/
+Favicon.png
+nivel1_linux_user.json
+public/favicon_bk.png

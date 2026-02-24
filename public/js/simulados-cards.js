@@ -7,7 +7,6 @@ import { supabase } from '/js/supabase-auth.js'
 
 const CONTAINER_ID_INDEX = 'simulados-cards'
 const CONTAINER_ID_PAGE = 'simulados-grid'
-const LOGIN_URL = '/login.html?redirect=' + encodeURIComponent('simulado-lpic1.html')
 
 function escapeHtml (text) {
   if (text == null) return ''
@@ -17,15 +16,12 @@ function escapeHtml (text) {
 }
 
 function getStartUrl (slug, hasSession) {
-  if (slug === 'lpic1') {
-    return hasSession ? 'simulado-lpic1.html' : LOGIN_URL
-  }
-  return 'simulados.html'
+  const configUrl = 'simulado.html?slug=' + encodeURIComponent(slug)
+  return hasSession ? configUrl : '/login.html?redirect=' + encodeURIComponent(configUrl)
 }
 
 function getStartLabel (slug, hasSession) {
-  if (slug === 'lpic1') return hasSession ? 'Iniciar →' : 'LOGIN'
-  return 'Iniciar →'
+  return hasSession ? 'Iniciar →' : 'LOGIN'
 }
 
 function renderCards (container, list, hasSession) {

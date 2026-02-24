@@ -1331,6 +1331,49 @@ async function handleAPI(req, res, url) {
     return res.end(JSON.stringify({ success: true, data }))
   }
 
+  // GET /api/simulados/:slug/exams — lista exames do simulado + tipos de questão (para config)
+  const examsMatch = parsed.pathname.match(/^\/api\/simulados\/([a-z0-9_-]+)\/exams\/?$/i)
+  if (examsMatch) {
+    const slug = (examsMatch[1] || '').slice(0, 80)
+    const { data: simulado } = await supabase
+      .from('simulados')
+      .select('id')
+      .eq('slug', slug)
+      .single()
+
+    if (!simulado) {
+      res.writeHead(404)
+      return res.end(JSON.stringify({ success: false, error: 'Simulado não encontrado' }))
+    }
+
+    const { data: exams, error: examsErr } = await supabase
+      .from('exams')
+      .select('id, code')
+      .eq('simulado_id', simulado.id)
+      .order('code')
+
+    if (examsErr) {
+      res.writeHead(500)
+      return res.end(JSON.stringify({ success: false, error: examsErr.message }))
+    }
+
+    // Tipos de questão presentes no simulado (multiple e/ou text)
+    const { data: typeRows } = await supabase
+      .from('questions')
+      .select('type')
+      .eq('is_active', true)
+      .in('exam_id', (exams || []).map(e => e.id))
+
+    const typesSet = new Set((typeRows || []).map(r => r.type).filter(Boolean))
+    const question_types = []
+    if (typesSet.has('multiple')) question_types.push('multiple')
+    if (typesSet.has('text')) question_types.push('text')
+    if (question_types.length === 0) question_types.push('multiple')
+
+    res.writeHead(200)
+    return res.end(JSON.stringify({ success: true, exams: exams || [], question_types }))
+  }
+
   // GET /api/simulados/lpic1/questions?exam=101
   const questionsMatch = parsed.pathname.match(/^\/api\/simulados\/([a-z0-9_-]+)\/questions\/?$/i)
   if (questionsMatch) {

@@ -28,8 +28,9 @@
     if (session) {
       const params = new URLSearchParams(window.location.search)
       const redirect = params.get('redirect')
-      const allowed = ['simulados.html', 'progresso.html', 'simulado-lpic1.html']
-      const target = redirect && allowed.includes(redirect) ? '/' + redirect : '/index.html'
+      const allowed = ['simulados.html', 'progresso.html', 'simulado-lpic1.html', 'simulado.html']
+      const ok = redirect && (allowed.includes(redirect) || (redirect.startsWith && redirect.startsWith('simulado.html?')))
+      const target = ok ? '/' + redirect : '/index.html'
       window.location.href = target
     }
   } catch (e) {

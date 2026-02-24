@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado | Linux Simulados</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --surface: #111827;
+            --surface2: #1a2235;
+            --surface3: #212d42;
+            --border: rgba(255,255,255,0.07);
+            --border2: rgba(255,255,255,0.12);
+            --accent: #00e5a0;
+            --accent-dim: rgba(0,229,160,0.12);
+            --accent2: #3b82f6;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --text-muted: #64748b;
+            --red: #f87171;
+            --green: #00e5a0;
+            --green-dim: rgba(0,229,160,0.12);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .hidden { display: none !important; }
+
+        /* ═══ TOPBAR ═══ */
+        .topbar {
+            height: 60px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 28px;
+            gap: 20px;
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .back-link {
+            display: flex; align-items: center; gap: 6px;
+            color: var(--muted);
+            font-size: 0.82rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--text); }
+
+        .topbar-divider {
+            width: 1px; height: 20px;
+            background: var(--border2);
+        }
+
+        .topbar-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .topbar-right {
+            margin-left: auto;
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-mobile-menu {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            margin: 0 -8px 0 0;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            transition: background 0.15s;
+        }
+        .btn-mobile-menu:hover { background: var(--surface2); }
+
+        #mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            background: var(--surface);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        #mobile-menu-overlay.open {
+            visibility: visible;
+            opacity: 1;
+        }
+        .mobile-menu-content {
+            padding: 24px;
+            max-width: 320px;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .mobile-menu-content .nav-section { margin: 16px 0 8px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+        .mobile-menu-content .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+        .mobile-menu-content .nav-link:hover { background: var(--surface2); color: var(--accent); }
+        .mobile-menu-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .mobile-menu-close:hover { background: var(--surface2); }
+
+        @media (max-width: 1024px) {
+            .btn-mobile-menu { display: flex; }
+        }
+
+        .btn-ghost {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+        /* ═══ PROGRESS BAR (in topbar during exam) ═══ */
+        .exam-progress-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--surface2);
+            border-radius: 6px;
+            overflow: hidden;
+            max-width: 400px;
+        }
+
+        .exam-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #00b377);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        /* ═══ MAIN WRAPPER ═══ */
+        .main-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 36px 24px;
+        }
+
+        /* ═══ CONFIG SCREEN ═══ */
+        .config-screen { }
+
+        .config-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .config-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,160,0.25);
+            color: var(--accent);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .config-hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .config-hero h1 span { color: var(--accent); }
+
+        .config-hero p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Config section label */
+        .config-section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .config-section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Config grid */
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .config-group {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .config-group-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .radio-list { display: flex; flex-direction: column; gap: 8px; }
+        .config-loading { color: var(--muted); font-size: 0.875rem; padding: 8px 0; }
+        .radio-option.disabled { opacity: 0.5; pointer-events: none; }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .radio-option:hover {
+            border-color: var(--border2);
+            background: var(--surface2);
+        }
+
+        .radio-option:has(input:checked) {
+            border-color: rgba(0,229,160,0.4);
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        .radio-option input[type="radio"],
+        .radio-option input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 15px; height: 15px;
+            flex-shrink: 0;
+        }
+
+        .number-input {
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            color: var(--text);
+            border-radius: 8px;
+            padding: 7px 12px;
+            font-size: 0.875rem;
+            font-family: 'Space Mono', monospace;
+            width: 80px;
+        }
+
+        .number-input:focus {
+            outline: none;
+            border-color: rgba(0,229,160,0.4);
+        }
+
+        /* Config info box */
+        .config-info {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .config-info-nums {
+            display: flex;
+            gap: 24px;
+        }
+
+        .info-stat { }
+        .info-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .info-lbl { font-size: 0.7rem; }
+
+        /* Start button */
+        .config-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-start-big {
+            background: var(--accent);
+            color: #0a0e1a;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 16px 48px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.03em;
+        }
+
+        .btn-start-big:hover {
+            background: #00ffb3;
+            box-shadow: 0 0 30px rgba(0,229,160,0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-start-big:active { transform: translateY(0); }
+
+        /* ═══ EXAM SCREEN ═══ */
+        .exam-header {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .exam-info {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .exam-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .exam-stat-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .exam-stat-lbl {
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .exam-stat-divider {
+            width: 1px; height: 36px;
+            background: var(--border);
+        }
+
+        .timer-display {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,160,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        .timer-display.warning {
+            color: var(--danger);
+            background: rgba(239,68,68,0.1);
+            border-color: rgba(239,68,68,0.3);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .exam-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* ═══ QUESTION CARDS ═══ */
+        #quiz-container { display: flex; flex-direction: column; gap: 16px; }
+
+        .question-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .question-card.correct {
+            border-color: rgba(34,197,94,0.3);
+            background: rgba(34,197,94,0.04);
+        }
+
+        .question-card.incorrect {
+            border-color: rgba(239,68,68,0.3);
+            background: rgba(239,68,68,0.04);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+
+        .question-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .question-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .qtag {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            background: var(--surface2);
+            border-radius: 5px;
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .question-text {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        /* Options */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .option:hover {
+            border-color: rgba(0,229,160,0.3);
+            background: var(--accent-dim);
+        }
+
+        .option.selected {
+            border-color: rgba(0,229,160,0.4);
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        .option.correct-answer {
+            border-color: rgba(34,197,94,0.5);
+            background: rgba(34,197,94,0.08);
+            color: var(--success);
+        }
+
+        .option.wrong-answer {
+            border-color: rgba(239,68,68,0.4);
+            background: rgba(239,68,68,0.06);
+            color: var(--danger);
+        }
+
+        .option-letter {
+            width: 26px; height: 26px;
+            min-width: 26px;
+            border-radius: 6px;
+            background: var(--surface2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .option.selected .option-letter {
+            background: rgba(0,229,160,0.3);
+        }
+
+        .option.correct-answer .option-letter {
+            background: rgba(34,197,94,0.25);
+        }
+
+        .option.wrong-answer .option-letter {
+            background: rgba(239,68,68,0.2);
+        }
+
+        /* Text input for typed answers */
+        .text-answer {
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .text-answer:focus {
+            outline: none;
+            border-color: rgba(0,229,160,0.4);
+            box-shadow: 0 0 0 3px rgba(0,229,160,0.08);
+        }
+
+        /* Feedback block */
+        .feedback-block {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 0.83rem;
+            line-height: 1.6;
+        }
+
+        .feedback-correct {
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.2);
+            color: #86efac;
+        }
+
+        .feedback-incorrect {
+            background: rgba(239,68,68,0.06);
+            border: 1px solid rgba(239,68,68,0.2);
+            color: #fca5a5;
+        }
+
+        .feedback-label {
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        /* JS-generated question layout classes */
+        .question-type-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            padding: 2px 8px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border-radius: 5px;
+            font-family: 'Space Mono', monospace;
+            margin-left: 8px;
+        }
+
+        .question-type-badge.text {
+            background: rgba(245,158,11,0.1);
+            color: var(--warning);
+        }
+
+        .text-input-container { margin-bottom: 4px; }
+
+        .text-hint {
+            font-size: 0.8rem;
+            color: var(--warning);
+            background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+
+        .text-input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .text-input-row input {
+            flex: 1;
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .text-input-row input:focus {
+            outline: none;
+            border-color: rgba(0,229,160,0.4);
+        }
+
+        .text-submit-btn {
+            padding: 10px 22px;
+            background: var(--accent);
+            color: #0a0e1a;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .text-submit-btn:hover { background: #00ffb3; }
+        .text-submit-btn:disabled {
+            background: var(--surface2);
+            color: var(--muted);
+            cursor: not-allowed;
+        }
+
+        /* JS-generated feedback classes */
+        .feedback {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.83rem;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .feedback.correct-feedback {
+            display: block;
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.25);
+            color: #86efac;
+        }
+
+        .feedback.incorrect-feedback {
+            display: block;
+            background: rgba(239,68,68,0.06);
+            border: 1px solid rgba(239,68,68,0.2);
+            color: #fca5a5;
+        }
+
+        .option.correct-answer {
+            border-color: rgba(34,197,94,0.5) !important;
+            background: rgba(34,197,94,0.08) !important;
+            color: var(--success) !important;
+        }
+
+        /* Options list wrapper from JS */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        /* Submit button per question */
+        .btn-submit {
+            margin-top: 14px;
+            padding: 10px 24px;
+            background: var(--accent);
+            color: #0a0e1a;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #00ffb3;
+            box-shadow: 0 0 16px rgba(0,229,160,0.35);
+        }
+
+        /* ═══ BUTTONS ═══ */
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary2 {
+            background: var(--accent);
+            color: #0a0e1a;
+        }
+
+        .btn-primary2:hover { background: #00ffb3; }
+
+        .btn-secondary {
+            background: var(--surface2);
+            color: var(--muted);
+            border: 1px solid var(--border2);
+        }
+
+        .btn-secondary:hover { color: var(--text); background: var(--surface3); }
+
+        .btn-warning {
+            background: rgba(245,158,11,0.15);
+            color: var(--warning);
+            border: 1px solid rgba(245,158,11,0.3);
+        }
+
+        .btn-warning:hover { background: rgba(245,158,11,0.25); }
+
+        .btn-success {
+            background: rgba(34,197,94,0.12);
+            color: var(--success);
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+
+        .btn-success:hover { background: rgba(34,197,94,0.22); }
+
+        .btn-danger {
+            background: rgba(239,68,68,0.12);
+            color: var(--danger);
+            border: 1px solid rgba(239,68,68,0.3);
+        }
+
+        .btn-danger:hover { background: rgba(239,68,68,0.22); }
+
+        .user-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 12px 4px 4px;
+        }
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-name {
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .logout-btn {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            padding: 0;
+            margin-left: 4px;
+            transition: color 0.15s;
+            text-decoration: none;
+        }
+        .logout-btn:hover { color: var(--red); }
+        .btn-login {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--green);
+            border: 1px solid rgba(0,255,136,0.3);
+            background: var(--green-dim);
+            border-radius: 20px;
+            padding: 6px 14px;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .btn-login:hover { background: rgba(0,255,136,0.2); }
+
+        /* ═══ REPORT SCREEN ═══ */
+        .report-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .report-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .report-score {
+            font-family: 'Space Mono', monospace;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .report-time {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .report-recommendations {
+            background: var(--surface2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        .report-recommendations h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--warning);
+        }
+
+        .recommendation-item {
+            padding: 8px 12px;
+            border-left: 3px solid rgba(245,158,11,0.4);
+            margin-bottom: 8px;
+            font-size: 0.83rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .report-actions-top {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .result-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 540px;
+            margin: 0 auto 32px;
+        }
+        .result-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 32px;
+        }
+        .result-score-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+        .result-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .result-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .result-block.correct .result-number { color: var(--green); }
+        .result-block.wrong .result-number { color: var(--red); }
+        .result-label { font-size: 13px; color: var(--text-dim); font-weight: 500; }
+        .result-divider {
+            width: 1px;
+            height: 80px;
+            background: var(--border);
+        }
+        .result-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+        .result-dot { color: var(--text-muted); }
+        .result-bar-wrap {
+            height: 6px;
+            background: var(--surface3);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .result-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1s ease;
+        }
+        .result-bar-fill.pass { background: var(--green); }
+        .result-bar-fill.fail { background: var(--red); }
+        .result-pass-label { font-size: 15px; font-weight: 600; }
+        .result-pass-label.pass { color: var(--green); }
+        .result-pass-label.fail { color: var(--red); }
+
+        /* ═══ LOADING ═══ */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .loading-dots::after {
+            content: '';
+            display: inline-block;
+            width: 16px; height: 16px;
+            margin-left: 8px;
+            border: 2px solid var(--surface2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: var(--surface2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #00b377);
+            border-radius: 5px;
+            transition: width 0.6s ease;
+        }
+
+        .progress-fill.low {
+            background: linear-gradient(90deg, var(--danger), #f97316);
+        }
+
+        .report-score.failed {
+            color: var(--danger);
+        }
+
+        /* ═══ FOOTER ═══ */
+        .footer {
+            text-align: center;
+            margin-top: 36px;
+            padding: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            opacity: 0.6;
+        }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 640px) {
+            .main-wrapper { padding: 20px 14px; }
+            .config-grid { grid-template-columns: 1fr; }
+            .exam-info { gap: 14px; }
+            .exam-controls { flex-wrap: wrap; }
+            .config-hero h1 { font-size: 1.6rem; }
+            .report-score { font-size: 2.5rem; }
+            .report-card { padding: 20px; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <script type="module" src="/js/require-auth.js"></script>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Abrir menu">☰</button>
+        </div>
+        <div class="topbar-right">
+            <div id="user-area"></div>
+            <div id="topbar-exam-info" style="display:none">
+                <div style="font-size:0.75rem;color:var(--muted);font-family:'Space Mono',monospace" id="topbar-progress">Q 0/0</div>
+                <div class="exam-progress-bar">
+                    <div class="exam-progress-fill" id="topbar-progress-bar" style="width:0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu-overlay" aria-hidden="true">
+        <div class="mobile-menu-content">
+            <button type="button" class="mobile-menu-close" aria-label="Fechar menu">×</button>
+            <div style="padding:0 0 20px;border-bottom:1px solid var(--border);margin-bottom:20px;">
+                <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;">
+                    <span style="font-size:1.2rem">🐧</span>
+                    <span>Linux Simulados</span>
+                </a>
+            </div>
+            <div class="nav-section">Principal</div>
+            <a class="nav-link" href="index.html">⊞ Dashboard</a>
+            <a class="nav-link" href="simulados.html">📋 Simulados</a>
+            <a class="nav-link" href="progresso.html">📊 Meu Progresso</a>
+            <div class="nav-section">Recursos</div>
+            <a class="nav-link" href="artigos.html">📚 Artigos</a>
+            <a class="nav-link" href="index.html#links-servicos">🔗 Links Úteis</a>
+            <a class="nav-link" href="#" title="EM BREVE">💬 Comunidade</a>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+        <!-- ══ CONFIG SCREEN ══ -->
+        <div id="config-screen">
+            <div class="config-hero">
+                <div class="config-badge">🐧 LPI — Linux Professional Institute</div>
+                <h1>Simulado <span id="simulado-title">LPIC-1</span></h1>
+                <p>Configure seu simulado personalizado. Escolha o exame, modo de questões, quantidade e tempo.</p>
+            </div>
+
+            <div class="config-section-label">Configurações do simulado</div>
+
+            <div class="config-grid">
+                <!-- Seleção de Prova (preenchido por JS conforme exames do simulado) -->
+                <div class="config-group">
+                    <div class="config-group-title">📋 Selecione a Prova</div>
+                    <div class="radio-list" id="exam-options">
+                        <span class="config-loading" id="exam-options-loading">Carregando exames…</span>
+                    </div>
+                </div>
+
+                <!-- Modo de Questões (habilitado/desabilitado conforme tipos do simulado) -->
+                <div class="config-group">
+                    <div class="config-group-title">✏️ Modo de Questões</div>
+                    <div class="radio-list">
+                        <label class="radio-option" id="mode-option-multiple">
+                            <input type="radio" name="mode" value="multiple" checked>
+                            <span>Múltipla Escolha</span>
+                        </label>
+                        <label class="radio-option" id="mode-option-text">
+                            <input type="radio" name="mode" value="text">
+                            <span>Digitação (comandos)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Quantidade: apenas Todas ou Personalizado -->
+                <div class="config-group">
+                    <div class="config-group-title">🔢 Quantidade de Questões</div>
+                    <div class="radio-list">
+                        <label class="radio-option">
+                            <input type="radio" name="quantity" value="all" checked>
+                            <span>Todas as questões</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="quantity" value="custom">
+                            <span>Personalizado:</span>
+                            <input type="number" id="custom-quantity" class="number-input" min="1" value="50" disabled>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Cronômetro -->
+                <div class="config-group">
+                    <div class="config-group-title">⏱️ Modo Cronômetro</div>
+                    <div class="radio-list">
+                        <label class="radio-option">
+                            <input type="radio" name="timer" value="none" checked>
+                            <span>Sem limite de tempo</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timer" value="60">
+                            <span>60 min — simulado oficial</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timer" value="custom">
+                            <span>Personalizado:</span>
+                            <input type="number" id="custom-timer" class="number-input" min="1" max="180" value="90" disabled>
+                            <span style="font-size:0.78rem;color:var(--muted)">min</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="config-actions">
+                <button id="start-simulado" class="btn-start-big">🚀 Iniciar Simulado</button>
+            </div>
+        </div>
+
+        <!-- ══ EXAM SCREEN ══ -->
+        <div id="simulado-screen" class="hidden">
+            <div class="exam-header">
+                <div class="exam-info">
+                    <div class="exam-stat">
+                        <div class="exam-stat-num" id="simulado-exam">101</div>
+                        <div class="exam-stat-lbl">Exame</div>
+                    </div>
+                    <div class="exam-stat-divider"></div>
+                    <div class="exam-stat">
+                        <div class="exam-stat-num"><span id="current-question">0</span>/<span id="total-questions">60</span></div>
+                        <div class="exam-stat-lbl">Questão</div>
+                    </div>
+                    <div class="exam-stat-divider"></div>
+                    <div class="exam-stat">
+                        <div class="exam-stat-num" style="color:var(--success)" id="correct-count">0</div>
+                        <div class="exam-stat-lbl">Acertos</div>
+                    </div>
+                </div>
+                <div class="timer-display" id="timer-display">00:00</div>
+                <div class="exam-controls">
+                    <button id="finish-simulado" class="btn btn-warning">🏁 Finalizar</button>
+                </div>
+            </div>
+
+            <div id="quiz-container"></div>
+        </div>
+
+        <!-- ══ REPORT SCREEN ══ -->
+        <div id="report-screen" class="hidden">
+            <div class="report-actions-top">
+                <button id="new-simulado" class="btn btn-success">🔄 Refazer Simulado</button>
+                <button id="new-simulado-btn" class="btn btn-secondary">Novo Simulado</button>
+            </div>
+            <div class="report-card">
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-tag">📋 RESULTADO</span>
+                    </div>
+
+                    <div class="result-score-row">
+                        <div class="result-block correct">
+                            <div class="result-number" id="result-correct">0</div>
+                            <div class="result-label">✅ Acertos</div>
+                        </div>
+                        <div class="result-divider"></div>
+                        <div class="result-block wrong">
+                            <div class="result-number" id="result-wrong">0</div>
+                            <div class="result-label">❌ Erros</div>
+                        </div>
+                    </div>
+
+                    <div class="result-meta">
+                        <span id="result-total-info"></span>
+                        <span class="result-dot">·</span>
+                        <span id="result-time"></span>
+                        <span class="result-dot">·</span>
+                        <span id="result-pct"></span>
+                    </div>
+
+                    <div class="result-bar-wrap">
+                        <div class="result-bar-fill" id="result-bar"></div>
+                    </div>
+                    <div class="result-pass-label" id="result-pass-label"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Linux Simulados — Simulados para a comunidade Linux
+        </div>
+
+    </div>
+
+
+    <script type="module" src="/js/progress-sync.js"></script>
+    <script src="/js/simulado-engine.js"></script>
+    <script type="module" src="/js/user-area.js"></script>
+    <script type="module" src="/js/track-login.js"></script>
+    <script type="module" src="/js/newsletter-popup.js"></script>
+    <script src="/js/mobile-menu.js"></script>
+</body>
+</html>
