@@ -153,6 +153,75 @@
             gap: 12px;
         }
 
+        .admin-topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-mobile-menu {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            margin: 0 -8px 0 0;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            transition: background 0.15s;
+        }
+        .btn-mobile-menu:hover { background: var(--surface2); }
+
+        #mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            background: var(--surface);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        #mobile-menu-overlay.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .mobile-menu-content {
+            padding: 24px;
+            max-width: 320px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .mobile-menu-close:hover { background: var(--surface2); }
+
+        @media (max-width: 1024px) {
+            .admin-sidebar { display: none; }
+            .admin-main { margin-left: 0; }
+            .btn-mobile-menu { display: flex; }
+        }
+
         .admin-btn {
             background: none;
             border: 1px solid var(--border);
@@ -337,10 +406,48 @@
         </div>
     </aside>
 
+    <div id="mobile-menu-overlay" aria-hidden="true">
+        <div class="mobile-menu-content">
+            <button type="button" class="mobile-menu-close" aria-label="Fechar menu">×</button>
+            <div class="admin-logo">
+                <span class="admin-logo-text">⚙️ Admin</span>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-section">Painel</div>
+                <a href="/admin/index.html" class="admin-nav-link active">
+                    <span class="admin-nav-icon">📊</span> Dashboard
+                </a>
+                <a href="/admin/simulados.html" class="admin-nav-link">
+                    <span class="admin-nav-icon">🎓</span> Simulados
+                </a>
+                <a href="/admin/questoes.html" class="admin-nav-link">
+                    <span class="admin-nav-icon">❓</span> Questões
+                </a>
+                <a href="/admin/usuarios.html" class="admin-nav-link">
+                    <span class="admin-nav-icon">👥</span> Usuários
+                </a>
+                <a href="/admin/artigos.html" class="admin-nav-link">
+                    <span class="admin-nav-icon">📝</span> Artigos
+                </a>
+                <a href="/admin/links.html" class="admin-nav-link">
+                    <span class="admin-nav-icon">🔗</span> Links Úteis
+                </a>
+                <div class="admin-sidebar-footer">
+                    <a href="/index.html" target="_blank" rel="noopener" class="admin-nav-link">
+                        <span class="admin-nav-icon">👁️</span> Ver site
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
     <div class="admin-main">
         <header class="admin-topbar">
-            <h1 class="admin-topbar-title">Dashboard</h1>
-            <button type="button" id="admin-dashboard-refresh" class="admin-btn" style="margin-right:12px;">Atualizar</button>
+            <div class="admin-topbar-left">
+                <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Abrir menu">☰</button>
+                <h1 class="admin-topbar-title">Dashboard</h1>
+                <button type="button" id="admin-dashboard-refresh" class="admin-btn" style="margin-right:12px;">Atualizar</button>
+            </div>
             <div class="admin-topbar-right">
                 <a href="/index.html" target="_blank" rel="noopener" class="admin-btn-ver-site">Ver site</a>
                 <div id="admin-user-area">Carregando…</div>
@@ -353,5 +460,6 @@
     </div>
 
     <script type="module" src="/js/admin-auth.js"></script>
+    <script src="/js/mobile-menu.js"></script>
 </body>
 </html>
