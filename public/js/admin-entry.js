@@ -6,13 +6,20 @@
 import { supabase } from '/js/supabase-auth.js'
 
 const WRAP_ID = 'admin-entry-wrap'
+const MOBILE_WRAP_ID = 'mobile-admin-wrap'
 const ME_URL = '/admin/api/me'
 
 function setAdminEntryVisible (visible) {
   const wrap = document.getElementById(WRAP_ID)
-  if (!wrap) return
-  wrap.style.display = visible ? 'block' : 'none'
-  wrap.setAttribute('aria-hidden', visible ? 'false' : 'true')
+  if (wrap) {
+    wrap.style.display = visible ? 'block' : 'none'
+    wrap.setAttribute('aria-hidden', visible ? 'false' : 'true')
+  }
+  const mobileWrap = document.getElementById(MOBILE_WRAP_ID)
+  if (mobileWrap) {
+    mobileWrap.style.display = visible ? 'block' : 'none'
+    mobileWrap.setAttribute('aria-hidden', visible ? 'false' : 'true')
+  }
 }
 
 async function checkAdminAndShow (session) {

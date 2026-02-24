@@ -476,9 +476,27 @@
         }
 
         /* ═══ RESPONSIVE ═══ */
+        .btn-mobile-menu {
+            display: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; margin: 0 -8px 0 0;
+            background: transparent; border: none; color: var(--text); cursor: pointer; border-radius: 8px; font-size: 1.4rem; transition: background 0.15s;
+        }
+        .btn-mobile-menu:hover { background: var(--surface2); }
+        #mobile-menu-overlay {
+            position: fixed; inset: 0; z-index: 400; background: var(--surface); visibility: hidden; opacity: 0; transition: visibility 0.2s, opacity 0.2s;
+        }
+        #mobile-menu-overlay.open { visibility: visible; opacity: 1; }
+        .mobile-menu-content { padding: 24px; max-width: 320px; height: 100%; overflow-y: auto; }
+        .mobile-menu-content .logo { padding: 0 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+        .mobile-menu-content .nav-section { margin: 16px 0 8px; font-size: 11px; color: var(--muted); }
+        .mobile-menu-content .nav-link { display: flex; align-items: center; gap: 10px; padding: 10px 0; color: var(--text); text-decoration: none; font-weight: 500; border-radius: 8px; }
+        .mobile-menu-content .nav-link:hover { background: var(--surface2); color: var(--accent); }
+        .mobile-menu-content .nav-link.active { color: var(--accent); }
+        .mobile-menu-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; border-radius: 8px; }
+        .mobile-menu-close:hover { background: var(--surface2); }
         @media (max-width: 1024px) {
-            .sidebar { position: static; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+            .sidebar { display: none; }
             .main { margin-left: 0; }
+            .btn-mobile-menu { display: flex; }
         }
 
         @media (max-width: 640px) {
@@ -533,13 +551,33 @@
 
 </aside>
 
+<div id="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-menu-content">
+        <button type="button" class="mobile-menu-close" aria-label="Fechar menu">×</button>
+        <div class="logo">
+            <a href="index.html" class="logo-mark">
+                <div class="logo-icon">🐧</div>
+                <span class="logo-text">Linux <span>Simulados</span></span>
+            </a>
+        </div>
+        <div class="nav-section">Principal</div>
+        <a class="nav-link" href="index.html"><span class="nav-icon">⊞</span> Dashboard</a>
+        <a class="nav-link active" href="simulados.html"><span class="nav-icon">📋</span> Simulados</a>
+        <a class="nav-link nav-sublink" href="progresso.html"><span class="nav-icon">📊</span> Meu Progresso</a>
+        <div class="nav-section">Recursos</div>
+        <a class="nav-link" href="artigos.html"><span class="nav-icon">📚</span> Artigos</a>
+        <a class="nav-link" href="/index.html#links-servicos"><span class="nav-icon">🔗</span> Links Úteis</a>
+        <a class="nav-link" href="#" title="EM BREVE"><span class="nav-icon">💬</span> Comunidade</a>
+    </div>
+</div>
+
 <!-- ═══ MAIN ═══ -->
 <div class="main">
 
     <!-- TOPBAR -->
     <header class="topbar">
         <div class="topbar-left">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;display:none" id="mobile-logo">🐧 Linux Simulados</div>
+            <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Abrir menu">☰</button>
             <span class="page-title">Simulados</span>
         </div>
         <div class="topbar-right">
@@ -659,5 +697,6 @@
     <script type="module" src="/js/user-area.js"></script>
     <script type="module" src="/js/track-login.js"></script>
     <script type="module" src="/js/newsletter-popup.js"></script>
+    <script src="/js/mobile-menu.js"></script>
 </body>
 </html>
