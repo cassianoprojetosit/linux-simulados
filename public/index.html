@@ -783,7 +783,14 @@
 
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 1024px) {
-            .sidebar { display: none; }
+            /* Em telas menores, o menu lateral vira uma faixa no topo em vez de sumir. */
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
             .main { margin-left: 0; }
             .articles-grid { grid-template-columns: 1fr; }
         }
