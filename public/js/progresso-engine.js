@@ -233,7 +233,12 @@
             '<span class="history-title">HISTÓRICO DE SIMULADOS</span>' +
             '<select id="history-filter" class="history-select">' + selectOptions + '</select>' +
             '</div>';
-        var last10 = filtered.slice(-10).reverse();
+        var sorted = filtered.slice().sort(function(a, b) {
+            var ta = (a.dateTimestamp != null ? a.dateTimestamp : (a.date ? new Date(a.date).getTime() : 0));
+            var tb = (b.dateTimestamp != null ? b.dateTimestamp : (b.date ? new Date(b.date).getTime() : 0));
+            return tb - ta;
+        });
+        var last10 = sorted.slice(0, 10);
         if (last10.length === 0) {
             wrap.innerHTML = headerHtml + '<div style="padding:24px;color:var(--text-muted);font-size:13px;">Nenhuma sessão registrada' + (activeFilter !== 'all' ? ' para este simulado.' : '.') + '</div>';
             var sel = document.getElementById('history-filter');
