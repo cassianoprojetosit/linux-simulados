@@ -3,21 +3,10 @@ import '/js/hash-capture.js'
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-// Config do Supabase vem do backend (rota /api/config), para evitar duplicar URL/chave anon no código.
-// A chave anon continua pública (enviada ao navegador), mas a fonte de verdade passa a ser o .env do servidor.
-async function loadSupabaseConfig () {
-  const res = await fetch('/api/config', { credentials: 'same-origin' })
-  if (!res.ok) {
-    throw new Error(`Falha ao carregar config do Supabase: ${res.status}`)
-  }
-  const json = await res.json().catch(() => ({}))
-  if (!json.supabaseUrl || !json.supabaseAnonKey) {
-    throw new Error('Resposta de /api/config inválida (faltando supabaseUrl ou supabaseAnonKey)')
-  }
-  return json
-}
-
-const { supabaseUrl: SUPABASE_URL, supabaseAnonKey: SUPABASE_ANON_KEY } = await loadSupabaseConfig()
+// Configuração fixa do Supabase (mesmos valores de /api/config em produção)
+// Em desenvolvimento/local também apontará para o mesmo projeto do Supabase.
+const SUPABASE_URL = 'https://tfmcvjwhicvoouhoxzqz.supabase.co'
+const SUPABASE_ANON_KEY = 'sb_publishable_lq2WNnwMHRUqhVI6K-HY6g_9_vWmz7R'
 
 export const supabase = createClient(
   SUPABASE_URL,
