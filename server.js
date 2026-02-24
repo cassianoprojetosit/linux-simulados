@@ -774,23 +774,27 @@ async function handleAPI(req, res, url) {
         res.writeHead(code, { 'Content-Type': 'application/json' })
         return res.end(JSON.stringify({ success: false, error: msg }))
       }
-      const simuladoId = body.simulado_id
+      const simuladoId = (body.simulado_id ?? parsed.searchParams.get('simulado_id') ?? '').toString().trim()
       let questions = Array.isArray(body.questions) ? body.questions : Array.isArray(body) ? body : null
       if (!questions) {
         res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'Envie simulado_id e questions (array)' }))
+        return res.end(JSON.stringify({ success: false, error: 'Envie simulado_id (no body ou em ?simulado_id=) e questions (array no body)' }))
       }
       if (!simuladoId && questions.length) {
         res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'simulado_id obrigatório para importação' }))
+        return res.end(JSON.stringify({ success: false, error: 'simulado_id obrigatório para importação (body ou query ?simulado_id=)' }))
       }
       const { data: exams } = await supabase.from('exams').select('id, code').eq('simulado_id', simuladoId)
       const byCode = new Map((exams || []).map(e => [e.code, e.id]))
       const rows = []
+      const skippedCodes = new Set()
       for (const q of questions) {
         const examCode = String(q.exam ?? q.exam_id ?? '').trim()
         const examId = byCode.get(examCode) || (exams && exams[0] ? exams[0].id : null)
-        if (!examId) continue
+        if (!examId) {
+          if (examCode) skippedCodes.add(examCode)
+          continue
+        }
         let answer = []
         if (q.type === 'multiple' && Array.isArray(q.options) && typeof q.correct === 'number') {
           const opt = q.options[q.correct]
@@ -814,10 +818,16 @@ async function handleAPI(req, res, url) {
         })
       }
       if (rows.length === 0) {
+        const hint = !exams || exams.length === 0
+          ? 'O simulado não tem nenhum exame. Crie ao menos um exame (ex.: código N1-100) no painel Admin → Simulados.'
+          : skippedCodes.size
+            ? `Nenhum exame com código: ${[...skippedCodes].slice(0, 5).join(', ')}${skippedCodes.size > 5 ? '...' : ''}. Crie um exame com esse código no simulado ou use o código de um exame existente (ex.: '${(exams && exams[0] && exams[0].code) || ''}').`
+            : 'Nenhuma questão válida (verifique se cada item tem question e, para type multiple, options e correct).'
         res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'Nenhuma questão válida para importar' }))
+        return res.end(JSON.stringify({ success: false, error: 'Nenhuma questão válida para importar.', hint }))
       }
-      const { error } = await supabase.from('questions').insert(rows)
+      const dbQuestions = supabaseAdmin || supabase
+      const { error } = await dbQuestions.from('questions').insert(rows)
       if (error) {
         res.writeHead(500, { 'Content-Type': 'application/json' })
         return res.end(JSON.stringify({ success: false, error: error.message }))
@@ -855,7 +865,7 @@ async function handleAPI(req, res, url) {
             res.writeHead(400, { 'Content-Type': 'application/json' })
             return res.end(JSON.stringify({ success: false, error: 'exam_id obrigatório' }))
           }
-          const { error } = await supabase.from('questions').insert(row)
+          const { error } = await (supabaseAdmin || supabase).from('questions').insert(row)
           if (error) {
             res.writeHead(500, { 'Content-Type': 'application/json' })
             return res.end(JSON.stringify({ success: false, error: error.message }))
@@ -899,7 +909,7 @@ async function handleAPI(req, res, url) {
             res.writeHead(200, { 'Content-Type': 'application/json' })
             return res.end(JSON.stringify({ success: true }))
           }
-          const { error } = await supabase.from('questions').update(row).eq('id', id)
+          const { error } = await (supabaseAdmin || supabase).from('questions').update(row).eq('id', id)
           if (error) {
             res.writeHead(500, { 'Content-Type': 'application/json' })
             return res.end(JSON.stringify({ success: false, error: error.message }))
@@ -921,9 +931,9 @@ async function handleAPI(req, res, url) {
       const hard = parsed.searchParams.get('hard') === 'true'
       let error
       if (hard) {
-        ({ error } = await supabase.from('questions').delete().eq('id', id))
+        ({ error } = await (supabaseAdmin || supabase).from('questions').delete().eq('id', id))
       } else {
-        ({ error } = await supabase.from('questions').update({ is_active: false }).eq('id', id))
+        ({ error } = await (supabaseAdmin || supabase).from('questions').update({ is_active: false }).eq('id', id))
       }
       if (error) {
         res.writeHead(500, { 'Content-Type': 'application/json' })
