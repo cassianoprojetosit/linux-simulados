@@ -773,8 +773,15 @@
 
     <!-- CONTENT ═══ -->
     <main class="content">
+        <!-- Carregando progresso -->
+        <div id="progress-loading" class="empty-state">
+            <div class="empty-icon">🐧</div>
+            <h2>Carregando seu progresso...</h2>
+            <p>Buscando seus simulados recentes neste dispositivo.</p>
+        </div>
+
         <!-- Estado vazio: exibido quando não há sessões no localStorage -->
-        <div id="empty-state" class="empty-state">
+        <div id="empty-state" class="empty-state hidden">
             <div class="empty-icon">🐧</div>
             <h2>Seu progresso aparece aqui</h2>
             <p>Você ainda não completou nenhum simulado. Faça seu primeiro agora e acompanhe sua evolução rumo à certificação LPIC-1.</p>

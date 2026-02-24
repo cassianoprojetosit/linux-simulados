@@ -326,9 +326,11 @@
     function init(sessionsFromEvent) {
         var sessions = sessionsFromEvent !== undefined ? sessionsFromEvent : loadSessions();
         if (!Array.isArray(sessions)) sessions = [];
+        var loadingEl = document.getElementById('progress-loading');
         var emptyEl = document.getElementById('empty-state');
         var dataEl = document.getElementById('content-with-data');
         if (!emptyEl || !dataEl) return;
+        if (loadingEl) loadingEl.classList.add('hidden');
         if (sessions.length === 0) {
             emptyEl.classList.remove('hidden');
             dataEl.classList.add('hidden');
