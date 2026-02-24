@@ -399,13 +399,24 @@
                 <button type="button" class="admin-modal-close" id="modal-import-close" aria-label="Fechar">×</button>
             </div>
             <div class="admin-modal-body">
-                <div class="admin-form-group">
-                    <label>Simulado de destino</label>
-                    <select id="import-simulado"><option value="">Selecione</option></select>
+                <div class="admin-form-row">
+                    <div class="admin-form-group">
+                        <label>Simulado de destino</label>
+                        <select id="import-simulado"><option value="">Selecione</option></select>
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Exame de destino</label>
+                        <select id="import-exam"><option value="">Selecione o simulado primeiro</option></select>
+                    </div>
                 </div>
                 <div class="admin-form-group">
-                    <label>JSON (array de questões)</label>
-                    <textarea id="import-json" placeholder='[{"exam":"101","type":"multiple","question":"...","options":["a","b","c","d"],"correct":1,"difficulty":"easy","hint":"..."}]' rows="12" style="font-family:monospace;font-size:0.8rem"></textarea>
+                    <label>Arquivo JSON (opcional)</label>
+                    <input type="file" id="import-file" accept=".json,application/json" aria-label="Selecionar arquivo JSON">
+                    <p class="admin-pagination-info" id="import-file-status" style="margin-top:6px;font-size:0.75rem;"></p>
+                </div>
+                <div class="admin-form-group">
+                    <label>Ou cole o JSON aqui (array de questões; não inclua "exam" — o exame é o que você escolheu acima)</label>
+                    <textarea id="import-json" placeholder='[{"type":"multiple","question":"...","options":["a","b","c","d"],"correct":1,"difficulty":"easy","hint":"..."}]' rows="8" style="font-family:monospace;font-size:0.8rem"></textarea>
                 </div>
                 <div class="admin-form-group" id="import-preview-wrap" style="display:none">
                     <p class="admin-pagination-info" id="import-preview-text"></p>
@@ -413,7 +424,7 @@
             </div>
             <div class="admin-modal-footer">
                 <button type="button" class="admin-btn" id="import-validar">Validar</button>
-                <button type="button" class="admin-btn admin-btn-primary" id="import-confirmar" style="display:none">Importar <span id="import-count">0</span> questões</button>
+                <button type="button" class="admin-btn admin-btn-primary" id="import-confirmar" style="display:none">Sim, importar <span id="import-count">0</span> questões</button>
                 <button type="button" class="admin-btn" id="modal-import-cancel">Fechar</button>
             </div>
         </div>

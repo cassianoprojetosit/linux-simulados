@@ -12,6 +12,7 @@ let currentPage = 1
 let totalCount = 0
 let editingId = null
 let validatedImport = null
+let importFileData = null // { questions: [] } quando o usuário seleciona um arquivo
 let lastQuestoesList = []
 
 function escapeHtml(text) {
@@ -301,8 +302,13 @@ async function confirmDelete(id) {
 
 function openImportModal() {
   validatedImport = null
+  importFileData = null
   document.getElementById('import-json').value = ''
   document.getElementById('import-simulado').value = ''
+  document.getElementById('import-exam').innerHTML = '<option value="">Selecione o simulado primeiro</option>'
+  document.getElementById('import-file').value = ''
+  const fileStatus = document.getElementById('import-file-status')
+  if (fileStatus) fileStatus.textContent = ''
   document.getElementById('import-preview-wrap').style.display = 'none'
   document.getElementById('import-confirmar').style.display = 'none'
   fillSimuladoSelect(document.getElementById('import-simulado'), null)
@@ -312,32 +318,101 @@ function openImportModal() {
 function closeImportModal() {
   document.getElementById('modal-import-backdrop').classList.remove('open')
   validatedImport = null
+  importFileData = null
+}
+
+function onImportFileChange(e) {
+  const input = e.target
+  const file = input?.files?.[0]
+  const statusEl = document.getElementById('import-file-status')
+  if (!statusEl) return
+  importFileData = null
+  if (!file) {
+    statusEl.textContent = ''
+    return
+  }
+  if (!file.name.toLowerCase().endsWith('.json')) {
+    statusEl.textContent = 'Use um arquivo .json'
+    statusEl.style.color = 'var(--red)'
+    return
+  }
+  statusEl.textContent = 'Lendo arquivo…'
+  statusEl.style.color = ''
+  const reader = new FileReader()
+  reader.onload = () => {
+    try {
+      const raw = reader.result
+      const parsed = JSON.parse(raw)
+      const arr = normalizarQuestoesImport(parsed)
+      importFileData = { questions: arr }
+      statusEl.textContent = `Arquivo "${file.name}" carregado: ${arr.length} questão(s). Selecione o simulado e clique em Validar.`
+      statusEl.style.color = 'var(--accent)'
+      document.getElementById('import-json').value = ''
+    } catch (err) {
+      importFileData = null
+      statusEl.textContent = 'JSON inválido no arquivo. Verifique a sintaxe.'
+      statusEl.style.color = 'var(--red)'
+    }
+  }
+  reader.onerror = () => {
+    importFileData = null
+    statusEl.textContent = 'Erro ao ler o arquivo.'
+    statusEl.style.color = 'var(--red)'
+  }
+  reader.readAsText(file, 'UTF-8')
+}
+
+function normalizarQuestoesImport(parsed) {
+  if (Array.isArray(parsed)) return parsed
+  if (parsed && Array.isArray(parsed.questions)) return parsed.questions
+  if (parsed && parsed.question) return [parsed]
+  return []
 }
 
 function validarImport() {
-  const raw = document.getElementById('import-json').value?.trim()
   const simuladoId = document.getElementById('import-simulado').value
+  const examId = document.getElementById('import-exam').value
   if (!simuladoId) {
     alert('Selecione o simulado de destino.')
     return
   }
-  let arr = []
-  try {
-    const parsed = JSON.parse(raw)
-    arr = Array.isArray(parsed) ? parsed : (parsed.questions ? parsed.questions : [])
-  } catch (e) {
-    alert('JSON inválido.')
+  if (!examId) {
+    alert('Selecione o exame de destino. Todas as questões serão vinculadas a esse exame.')
     return
   }
-  validatedImport = { simulado_id: simuladoId, questions: arr }
+  let arr = []
+  if (importFileData && importFileData.questions && importFileData.questions.length) {
+    arr = importFileData.questions
+  } else {
+    const raw = document.getElementById('import-json').value?.trim()
+    if (!raw) {
+      alert('Selecione um arquivo JSON ou cole o conteúdo no campo de texto.')
+      return
+    }
+    try {
+      const parsed = JSON.parse(raw)
+      arr = normalizarQuestoesImport(parsed)
+    } catch (e) {
+      alert('JSON inválido. Verifique a sintaxe (vírgulas, aspas).')
+      return
+    }
+  }
+  if (arr.length === 0) {
+    alert('Nenhuma questão encontrada no JSON. Use um array de objetos com "question", "options" (múltipla) e "correct" ou "answer". Não é necessário incluir "exam" — o exame é o que você escolheu.')
+    return
+  }
+  validatedImport = { simulado_id: simuladoId, exam_id: examId, questions: arr }
   document.getElementById('import-preview-wrap').style.display = 'block'
-  document.getElementById('import-preview-text').textContent = `Detectadas ${arr.length} questão(s). Clique em "Importar" para confirmar.`
+  document.getElementById('import-preview-text').textContent = `Serão importadas ${arr.length} questão(s) no exame selecionado. Clique em "Sim, importar" para confirmar.`
   document.getElementById('import-count').textContent = arr.length
   document.getElementById('import-confirmar').style.display = 'inline-block'
 }
 
 async function confirmarImport() {
   if (!validatedImport || !validatedImport.questions.length) return
+  const count = validatedImport.questions.length
+  const msg = `Tem certeza que deseja importar ${count} questão(s) no exame selecionado? Esta ação adiciona as questões ao banco.`
+  if (!confirm(msg)) return
   const res = await fetch('/admin/api/questoes/import', {
     method: 'POST',
     headers: getAuthHeaders(),
@@ -345,7 +420,8 @@ async function confirmarImport() {
   })
   const json = await res.json().catch(() => ({}))
   if (!res.ok) {
-    alert(json.error || 'Erro ao importar.')
+    const hint = json.hint ? `\n\n${json.hint}` : ''
+    alert((json.error || 'Erro ao importar.') + hint)
     return
   }
   alert(`Importadas ${json.imported ?? 0} questões.`)
@@ -424,8 +500,23 @@ async function init() {
   document.getElementById('modal-questao-save').addEventListener('click', saveQuestao)
   document.getElementById('modal-questao-backdrop').addEventListener('click', (e) => { if (e.target.id === 'modal-questao-backdrop') closeModalQuestao() })
 
+  document.getElementById('import-simulado').addEventListener('change', async () => {
+    const id = document.getElementById('import-simulado').value
+    const el = document.getElementById('import-exam')
+    if (!id) {
+      el.innerHTML = '<option value="">Selecione o simulado primeiro</option>'
+      return
+    }
+    el.innerHTML = '<option value="">Carregando…</option>'
+    el.disabled = true
+    const exs = await fetchExams(id)
+    el.disabled = false
+    fillExamsSelect(el, exs, null, false)
+  })
+
   document.getElementById('modal-import-close').addEventListener('click', closeImportModal)
   document.getElementById('modal-import-cancel').addEventListener('click', closeImportModal)
+  document.getElementById('import-file').addEventListener('change', onImportFileChange)
   document.getElementById('import-validar').addEventListener('click', validarImport)
   document.getElementById('import-confirmar').addEventListener('click', confirmarImport)
   document.getElementById('modal-import-backdrop').addEventListener('click', (e) => { if (e.target.id === 'modal-import-backdrop') closeImportModal() })

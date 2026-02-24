@@ -785,14 +785,23 @@ async function handleAPI(req, res, url) {
         return res.end(JSON.stringify({ success: false, error: 'simulado_id obrigatório para importação (body ou query ?simulado_id=)' }))
       }
       const { data: exams } = await supabase.from('exams').select('id, code').eq('simulado_id', simuladoId)
+      // Padrão recomendado: exam_id no body → todas as questões vão para esse exame (JSON sem campo exam em cada item).
+      const rootExamId = body.exam_id ? String(body.exam_id).trim() : null
+      if (rootExamId) {
+        const pertence = (exams || []).some(e => e.id === rootExamId)
+        if (!pertence) {
+          res.writeHead(400, { 'Content-Type': 'application/json' })
+          return res.end(JSON.stringify({ success: false, error: 'exam_id inválido ou não pertence ao simulado selecionado.' }))
+        }
+      }
       const byCode = new Map((exams || []).map(e => [e.code, e.id]))
       const rows = []
       const skippedCodes = new Set()
       for (const q of questions) {
-        const examCode = String(q.exam ?? q.exam_id ?? '').trim()
-        const examId = byCode.get(examCode) || (exams && exams[0] ? exams[0].id : null)
+        const examId = rootExamId || byCode.get(String(q.exam ?? q.exam_id ?? '').trim()) || (exams && exams[0] ? exams[0].id : null)
         if (!examId) {
-          if (examCode) skippedCodes.add(examCode)
+          const c = String(q.exam ?? q.exam_id ?? '').trim()
+          if (c) skippedCodes.add(c)
           continue
         }
         let answer = []
