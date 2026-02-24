@@ -89,7 +89,9 @@ async function requireAdmin(req, res, next) {
     next()
     return
   }
-  const { data: userData } = await supabase
+  // Usar client com service_role quando existir, para não depender de RLS em public.users
+  const db = supabaseAdmin || supabase
+  const { data: userData } = await db
     .from('users')
     .select('role')
     .eq('id', user.id)
