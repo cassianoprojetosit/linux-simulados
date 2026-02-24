@@ -38,6 +38,103 @@
             min-height: 100vh;
         }
 
+        /* ═══ SIDEBAR (igual às demais páginas) ═══ */
+        .sidebar {
+            position: fixed;
+            left: 0; top: 0;
+            width: 240px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            padding: 28px 0;
+        }
+
+        .logo {
+            padding: 0 24px 28px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, var(--accent), #00b377);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .logo-text span { color: var(--accent); }
+
+        .nav {
+            padding: 20px 0;
+            flex: 1;
+        }
+
+        .nav-section {
+            padding: 8px 24px 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 24px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--surface2);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(0, 229, 160, 0.07);
+        }
+
+        .nav-link.nav-sublink {
+            padding-left: 48px;
+            font-size: 0.8125rem;
+        }
+
+        .nav-icon {
+            width: 18px; text-align: center; font-size: 1rem;
+        }
+
+        .sidebar-footer {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+        }
+
         .hidden { display: none !important; }
 
         /* ═══ TOPBAR ═══ */
@@ -1052,13 +1149,20 @@
 
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 640px) {
-            .main-wrapper { padding: 20px 14px; }
+            .main-wrapper { padding: 20px 14px; margin-left: 0; }
             .config-grid { grid-template-columns: 1fr; }
             .exam-info { gap: 14px; }
             .exam-controls { flex-wrap: wrap; }
             .config-hero h1 { font-size: 1.6rem; }
             .report-score { font-size: 2.5rem; }
             .report-card { padding: 20px; }
+        }
+
+        /* Sidebar responsivo: esconde no mobile e remove recuo */
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-wrapper { margin-left: 0; }
+            .btn-mobile-menu { display: flex; }
         }
 
         /* Scrollbar */
@@ -1069,6 +1173,41 @@
 </head>
 <body>
     <script type="module" src="/js/require-auth.js"></script>
+
+    <!-- ═══ SIDEBAR (layout padrão) ═══ -->
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="index.html" class="logo-mark">
+                <div class="logo-icon">🐧</div>
+                <span class="logo-text">Linux <span>Simulados</span></span>
+            </a>
+        </div>
+
+        <nav class="nav">
+            <div class="nav-section">Principal</div>
+            <a class="nav-link" href="index.html">
+                <span class="nav-icon">⊞</span> Dashboard
+            </a>
+            <a class="nav-link active" href="simulados.html">
+                <span class="nav-icon">📋</span> Simulados
+            </a>
+            <a class="nav-link nav-sublink" href="progresso.html">
+                <span class="nav-icon">📊</span> Meu Progresso
+            </a>
+
+            <div class="nav-section">Recursos</div>
+            <a class="nav-link" href="artigos.html">
+                <span class="nav-icon">📚</span> Artigos
+            </a>
+            <a class="nav-link" href="/index.html#links-servicos">
+                <span class="nav-icon">🔗</span> Links Úteis
+            </a>
+            <a class="nav-link" href="#" title="EM BREVE">
+                <span class="nav-icon">💬</span> Comunidade
+            </a>
+        </nav>
+
+    </aside>
 
     <!-- TOPBAR -->
     <header class="topbar">
@@ -1106,7 +1245,7 @@
         </div>
     </div>
 
-    <div class="main-wrapper">
+    <div class="main-wrapper" style="margin-left:240px;">
 
         <!-- ══ CONFIG SCREEN ══ -->
         <div id="config-screen">

@@ -54,12 +54,18 @@ export async function loginWithGoogle() {
   })
   if (error) {
     console.error('Erro ao iniciar login com Google:', error.message)
+    if (typeof window !== 'undefined') {
+      alert('Não foi possível iniciar o login com o Google. Tente novamente em instantes.\\n\\nDetalhe técnico: ' + (error.message || 'erro desconhecido'))
+    }
     return
   }
   if (data?.url) {
     window.location.href = data.url
   } else {
     console.error('Supabase não retornou URL de redirecionamento.')
+    if (typeof window !== 'undefined') {
+      alert('Não foi possível redirecionar para o Google. Recarregue a página e tente novamente.')
+    }
   }
 }
 

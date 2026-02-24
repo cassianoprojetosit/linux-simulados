@@ -10,6 +10,9 @@
     loginWithGoogle = mod.loginWithGoogle
   } catch (e) {
     console.error('Falha ao carregar módulo de auth:', e)
+    try {
+      alert('Não foi possível inicializar o módulo de autenticação. Verifique sua conexão e recarregue a página.')
+    } catch (_) {}
     return
   }
 
