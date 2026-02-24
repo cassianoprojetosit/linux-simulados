@@ -1015,103 +1015,8 @@
             <div class="section-header">
                 <h2 class="section-title"><span></span>Simulados Mais Acessados</h2>
             </div>
-            <div class="cards-grid">
-
-                <!-- LPIC-1 Card (href/label atualizados por cards-auth.js conforme sessão) -->
-                <a id="card-lpic1" href="simulado-lpic1.html" class="exam-card card-lpic">
-                    <div class="card-badge badge-active">✦ Disponível</div>
-                    <div class="card-icon icon-green">🐧</div>
-                    <div class="card-title">LPIC-1</div>
-                    <div class="card-desc">Certificação Linux Professional Institute nível 1. Cobre fundamentos de administração Linux com os exames 101 e 102.</div>
-                    <div class="card-progress">
-                        <div class="progress-label">
-                            <span>218 questões</span>
-                            <span style="color:var(--accent)">Exames 101 + 102</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:100%"></div>
-                        </div>
-                    </div>
-                    <div class="card-meta">
-                        <div class="meta-pills">
-                            <span class="pill">101</span>
-                            <span class="pill">102</span>
-                            <span class="pill">Misto</span>
-                        </div>
-                        <span class="btn-start btn-primary">Iniciar →</span>
-                    </div>
-                </a>
-
-                <!-- LPIC-2 Coming Soon -->
-                <div class="exam-card card-coming" style="cursor:default">
-                    <div class="card-badge badge-soon">⏳ Em breve</div>
-                    <div class="card-icon icon-gray">🐧</div>
-                    <div class="card-title">LPIC-2</div>
-                    <div class="card-desc">Certificação Linux nível 2 para administradores avançados. Cobre tópicos de redes, segurança e servidores.</div>
-                    <div class="card-progress">
-                        <div class="progress-label">
-                            <span>Em desenvolvimento</span>
-                            <span>0%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:0%;background:var(--muted)"></div>
-                        </div>
-                    </div>
-                    <div class="card-meta">
-                        <div class="meta-pills">
-                            <span class="pill">201</span>
-                            <span class="pill">202</span>
-                        </div>
-                        <span class="btn-start btn-disabled">Em breve</span>
-                    </div>
-                </div>
-
-                <!-- Docker -->
-                <div class="exam-card card-docker" style="cursor:default">
-                    <div class="card-badge badge-soon">⏳ Em breve</div>
-                    <div class="card-icon icon-blue">🐋</div>
-                    <div class="card-title">Docker Certified</div>
-                    <div class="card-desc">Preparação para a certificação Docker Associate. Containers, imagens, redes e orquestração básica.</div>
-                    <div class="card-progress">
-                        <div class="progress-label">
-                            <span>Em desenvolvimento</span>
-                            <span>0%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:0%;background:var(--muted)"></div>
-                        </div>
-                    </div>
-                    <div class="card-meta">
-                        <div class="meta-pills">
-                            <span class="pill">DCA</span>
-                        </div>
-                        <span class="btn-start btn-disabled">Em breve</span>
-                    </div>
-                </div>
-
-                <!-- Kubernetes -->
-                <div class="exam-card" style="cursor:default;border-style:dashed">
-                    <div class="card-badge badge-soon">🗺️ Planejado</div>
-                    <div class="card-icon icon-gray">☸️</div>
-                    <div class="card-title">CKA / CKAD</div>
-                    <div class="card-desc">Certified Kubernetes Administrator e Application Developer. O futuro da infraestrutura cloud-native.</div>
-                    <div class="card-progress">
-                        <div class="progress-label">
-                            <span>Planejado</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:0%;background:var(--muted)"></div>
-                        </div>
-                    </div>
-                    <div class="card-meta">
-                        <div class="meta-pills">
-                            <span class="pill">CKA</span>
-                            <span class="pill">CKAD</span>
-                        </div>
-                        <span class="btn-start btn-disabled">Planejado</span>
-                    </div>
-                </div>
-
+            <div class="cards-grid" id="simulados-cards">
+                <p class="card-desc" style="grid-column:1/-1;color:var(--muted);">Carregando simulados…</p>
             </div>
         </div>
 
@@ -1147,7 +1052,7 @@
     <script type="module" src="/js/user-area.js"></script>
     <script type="module" src="/js/track-login.js"></script>
     <script type="module" src="/js/newsletter-popup.js"></script>
-    <script type="module" src="/js/cards-auth.js"></script>
+    <script type="module" src="/js/simulados-cards.js"></script>
     <script type="module" src="/js/admin-entry.js"></script>
     <script src="/js/artigos-home.js"></script>
     <script src="/js/links-public.js"></script>
