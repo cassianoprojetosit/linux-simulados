@@ -3,10 +3,21 @@ import '/js/hash-capture.js'
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-// Chave anon (pública) do Supabase — segura no frontend; RLS protege os dados.
-// Nunca use a Service Role Key aqui. Para rotação, injete via build ou config.
-const SUPABASE_URL = 'https://tfmcvjwhicvoouhoxzqz.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmbWN2andoaWN2b291aG94enF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2NjM5OTcsImV4cCI6MjA4NzIzOTk5N30.Y1KygrZq1hZtUzcYrTtfXKhtxf1NVoV8plgrL9imj1s'
+// Config do Supabase vem do backend (rota /api/config), para evitar duplicar URL/chave anon no código.
+// A chave anon continua pública (enviada ao navegador), mas a fonte de verdade passa a ser o .env do servidor.
+async function loadSupabaseConfig () {
+  const res = await fetch('/api/config', { credentials: 'same-origin' })
+  if (!res.ok) {
+    throw new Error(`Falha ao carregar config do Supabase: ${res.status}`)
+  }
+  const json = await res.json().catch(() => ({}))
+  if (!json.supabaseUrl || !json.supabaseAnonKey) {
+    throw new Error('Resposta de /api/config inválida (faltando supabaseUrl ou supabaseAnonKey)')
+  }
+  return json
+}
+
+const { supabaseUrl: SUPABASE_URL, supabaseAnonKey: SUPABASE_ANON_KEY } = await loadSupabaseConfig()
 
 export const supabase = createClient(
   SUPABASE_URL,

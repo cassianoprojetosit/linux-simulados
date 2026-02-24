@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { createClient as createRedisClient } from 'redis'
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
 import { createServer } from 'http'
 import { resolve, normalize } from 'path'
@@ -29,12 +30,13 @@ const supabaseAdmin = SUPABASE_SERVICE_KEY
   ? createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
   : null
 
-const CSP = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' http://localhost:3000 http://127.0.0.1:3000 https://tfmcvjwhicvoouhoxzqz.supabase.co https://*.supabase.co https://*.google.com https://accounts.google.com https://www.googleapis.com wss://tfmcvjwhicvoouhoxzqz.supabase.co wss://*.supabase.co; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://accounts.google.com;"
+const CSP = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' http://localhost:3000 http://127.0.0.1:3000 https://*.supabase.co https://*.google.com https://accounts.google.com https://www.googleapis.com wss://*.supabase.co; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://accounts.google.com;"
 const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'SAMEORIGIN',
   'X-XSS-Protection': '1; mode=block',
-  'Referrer-Policy': 'strict-origin-when-cross-origin'
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
 }
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || ''
@@ -49,25 +51,61 @@ const RATE_LIMIT_ADMIN = 40
 const RATE_LIMIT_API = 120
 const rateLimitMap = new Map()
 
+// Rate limiting distribuído (opcional) via Redis — útil quando houver múltiplas instâncias
+const REDIS_URL = process.env.REDIS_URL || ''
+let redisClient = null
+if (REDIS_URL) {
+  redisClient = createRedisClient({ url: REDIS_URL })
+  redisClient.on('error', (err) => {
+    console.warn('[rate-limit] Erro Redis:', err?.message || err)
+  })
+  redisClient.connect().catch((err) => {
+    console.warn('[rate-limit] Falha ao conectar no Redis, usando rate limit em memória:', err?.message || err)
+    redisClient = null
+  })
+}
+
 function getClientIp(req) {
   return req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown'
 }
 
-function checkRateLimit(req, isAdmin) {
+async function checkRateLimit(req, isAdmin) {
   const ip = getClientIp(req)
+  const keyType = isAdmin ? 'admin' : 'api'
+  const limit = isAdmin ? RATE_LIMIT_ADMIN : RATE_LIMIT_API
+  const windowSec = Math.floor(RATE_LIMIT_WINDOW_MS / 1000)
+
+  // Se Redis estiver configurado, usar rate limit distribuído
+  if (redisClient) {
+    try {
+      const key = `rl:${keyType}:${ip}`
+      const count = await redisClient.incr(key)
+      if (count === 1) {
+        await redisClient.expire(key, windowSec)
+      }
+      return count <= limit
+    } catch (e) {
+      console.warn('[rate-limit] erro ao usar Redis, fazendo fallback para memória:', e?.message || e)
+    }
+  }
+
+  // Fallback/local: rate limit em memória (apenas por instância)
   const now = Date.now()
   let entry = rateLimitMap.get(ip)
   if (!entry) {
     entry = { admin: [], api: [] }
     rateLimitMap.set(ip, entry)
   }
-  const key = isAdmin ? 'admin' : 'api'
-  const list = entry[key]
+  const list = entry[keyType]
   const cutoff = now - RATE_LIMIT_WINDOW_MS
   while (list.length && list[0] < cutoff) list.shift()
-  const limit = isAdmin ? RATE_LIMIT_ADMIN : RATE_LIMIT_API
   if (list.length >= limit) return false
   list.push(now)
+  // Limpar entradas vazias para evitar crescimento indefinido da memória
+  const other = entry[isAdmin ? 'api' : 'admin']
+  const otherCutoff = now - RATE_LIMIT_WINDOW_MS
+  while (other.length && other[0] < otherCutoff) other.shift()
+  if (entry.admin.length === 0 && entry.api.length === 0) rateLimitMap.delete(ip)
   return true
 }
 
@@ -150,6 +188,10 @@ function readBody(req, maxBytes = MAX_BODY_BYTES) {
 async function handleAPI(req, res, url) {
   res.setHeader('Content-Type', 'application/json')
   Object.entries(SECURITY_HEADERS).forEach(([k, v]) => res.setHeader(k, v))
+  const parsed = new URL(url || req.url, 'http://localhost')
+  const pathname = parsed.pathname
+  const isAdminRoute = pathname.startsWith('/admin/api/')
+  if (isAdminRoute) res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
   const origin = req.headers.origin
   if (origin) {
     const allowed = ALLOWED_ORIGINS_LIST
@@ -158,13 +200,20 @@ async function handleAPI(req, res, url) {
     if (allowed) res.setHeader('Access-Control-Allow-Origin', origin)
   }
 
-  const parsed = new URL(url || req.url, 'http://localhost')
-  const pathname = parsed.pathname
-  const isAdminRoute = pathname.startsWith('/admin/api/')
-  if (!checkRateLimit(req, isAdminRoute)) {
+  if (!(await checkRateLimit(req, isAdminRoute))) {
     res.writeHead(429, { 'Content-Type': 'application/json', 'Retry-After': '60' })
     res.end(JSON.stringify({ error: 'Muitas requisições. Tente novamente em 1 minuto.' }))
     return
+  }
+
+  // Configuração pública do Supabase para o frontend (URL + chave anon)
+  if (parsed.pathname === '/api/config' && req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    return res.end(JSON.stringify({
+      success: true,
+      supabaseUrl: SUPABASE_URL,
+      supabaseAnonKey: SUPABASE_KEY
+    }))
   }
 
   // Rota de teste — confirma que o middleware funciona
@@ -374,8 +423,18 @@ async function handleAPI(req, res, url) {
         try {
           const payload = JSON.parse(body || '{}')
           const update = {}
-          if (payload.role !== undefined) update.role = payload.role
-          if (payload.plan !== undefined) update.plan = payload.plan
+          if (payload.role !== undefined) {
+            const r = payload.role === null || payload.role === 'admin' ? payload.role : null
+            if (payload.role !== r) {
+              res.writeHead(400, { 'Content-Type': 'application/json' })
+              return res.end(JSON.stringify({ success: false, error: 'role inválido (use "admin" ou null)' }))
+            }
+            update.role = r
+          }
+          if (payload.plan !== undefined) {
+            const plan = ['free', 'pro'].includes(payload.plan) ? payload.plan : 'free'
+            update.plan = plan
+          }
           if (Object.keys(update).length === 0) {
             res.writeHead(200, { 'Content-Type': 'application/json' })
             return res.end(JSON.stringify({ success: true }))
@@ -894,7 +953,9 @@ async function handleAPI(req, res, url) {
   // GET /api/artigos/:slug — um artigo público (para página de leitura)
   const apiArtigoSlugMatch = parsed.pathname.match(/^\/api\/artigos\/([^/]+)\/?$/)
   if (apiArtigoSlugMatch && req.method === 'GET') {
-    const slug = apiArtigoSlugMatch[1]
+    let rawSlug = apiArtigoSlugMatch[1] || ''
+    try { rawSlug = decodeURIComponent(rawSlug) } catch (_) {}
+    const slug = (typeof rawSlug === 'string' ? rawSlug : '').slice(0, 200).replace(/[\0-\x1F\x7F]/g, '')
     const { data, error } = await (supabaseAdmin || supabase)
       .from('articles')
       .select('id, title, slug, excerpt, content, content_type, author_name, published_at, cover_image_url')
@@ -1046,6 +1107,10 @@ async function handleAPI(req, res, url) {
       }
       const filename = `${randomUUID()}.${ext}`
       const filepath = resolve(UPLOADS_ARTIGOS_DIR, filename)
+      if (!filepath.startsWith(UPLOADS_ARTIGOS_DIR)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        return res.end(JSON.stringify({ success: false, error: 'Nome de arquivo inválido' }))
+      }
       try {
         writeFileSync(filepath, buf)
       } catch (e) {
@@ -1109,6 +1174,10 @@ async function handleAPI(req, res, url) {
       }
       const filename = `${randomUUID()}.${ext}`
       const filepath = resolve(UPLOADS_LINKS_DIR, filename)
+      if (!filepath.startsWith(UPLOADS_LINKS_DIR)) {
+        res.writeHead(400, { 'Content-Type': 'application/json' })
+        return res.end(JSON.stringify({ success: false, error: 'Nome de arquivo inválido' }))
+      }
       try {
         writeFileSync(filepath, buf)
       } catch (e) {
@@ -1244,10 +1313,11 @@ async function handleAPI(req, res, url) {
   }
 
   // GET /api/simulados/lpic1/questions?exam=101
-  const questionsMatch = parsed.pathname.match(/^\/api\/simulados\/(\w+)\/questions\/?$/)
+  const questionsMatch = parsed.pathname.match(/^\/api\/simulados\/([a-z0-9_-]+)\/questions\/?$/i)
   if (questionsMatch) {
-    const slug = questionsMatch[1]
-    const examCode = parsed.searchParams.get('exam')
+    const slug = (questionsMatch[1] || '').slice(0, 80)
+    const examCodeRaw = parsed.searchParams.get('exam')
+    const examCode = (typeof examCodeRaw === 'string' ? examCodeRaw : '').trim().slice(0, 20)
 
     // Buscar exam_id
     const { data: simulado } = await supabase
