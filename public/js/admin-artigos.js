@@ -220,6 +220,67 @@ async function saveArtigo() {
   loadArtigos()
 }
 
+/**
+ * Parseia arquivo .md com frontmatter opcional (YAML entre ---).
+ * Retorna { title, author_name, excerpt, slug, published_at, content }.
+ */
+function parseMdWithFrontmatter (text) {
+  const result = { title: '', author_name: '', excerpt: '', slug: '', published_at: null, content: '' }
+  if (!text || typeof text !== 'string') return result
+  const trimmed = text.trim()
+  if (!trimmed.startsWith('---')) {
+    result.content = trimmed
+    return result
+  }
+  const secondDash = trimmed.indexOf('\n---', 3)
+  if (secondDash === -1) {
+    result.content = trimmed
+    return result
+  }
+  const frontBlock = trimmed.slice(3, secondDash).trim()
+  const body = trimmed.slice(secondDash + 4).trimStart()
+  result.content = body
+  frontBlock.split('\n').forEach(line => {
+    const m = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/)
+    if (!m) return
+    let key = m[1].toLowerCase()
+    let val = m[2].trim()
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) val = val.slice(1, -1)
+    if (key === 'title') result.title = val
+    else if (key === 'author') result.author_name = val
+    else if (key === 'excerpt' || key === 'summary') result.excerpt = val
+    else if (key === 'slug') result.slug = val
+    else if (key === 'date' || key === 'published_at') {
+      const d = new Date(val)
+      if (!isNaN(d.getTime())) result.published_at = d.toISOString()
+    }
+  })
+  return result
+}
+
+function fillFormFromParsedMd (parsed) {
+  document.getElementById('form-title').value = parsed.title || ''
+  document.getElementById('form-author').value = parsed.author_name || ''
+  document.getElementById('form-excerpt').value = parsed.excerpt || ''
+  document.getElementById('form-content').value = parsed.content || ''
+  document.getElementById('form-content-type').value = 'md'
+  if (parsed.slug) {
+    const wrap = document.getElementById('slug-custom-wrap')
+    const slugInput = document.getElementById('form-slug')
+    const preview = document.getElementById('slug-preview')
+    wrap.style.display = 'block'
+    document.getElementById('btn-custom-slug').textContent = 'Usar slug automático'
+    slugInput.value = parsed.slug
+    preview.textContent = parsed.slug
+  }
+  if (parsed.published_at) {
+    const d = new Date(parsed.published_at)
+    const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16)
+    document.getElementById('form-published-at').value = local
+  }
+  updatePreview()
+}
+
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_IMAGE_KB = 200
 
@@ -339,6 +400,72 @@ async function init() {
   document.getElementById('modal-artigo-save').addEventListener('click', saveArtigo)
   document.getElementById('modal-artigo-backdrop').addEventListener('click', (e) => {
     if (e.target.id === 'modal-artigo-backdrop') closeModal()
+  })
+
+  document.getElementById('btn-import-md').addEventListener('click', () => document.getElementById('input-import-md').click())
+  document.getElementById('input-import-md').addEventListener('change', (e) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = () => {
+      const parsed = parseMdWithFrontmatter(reader.result)
+      if (!parsed.title && !parsed.content) {
+        const base = file.name.replace(/\.md$/i, '')
+        parsed.title = base.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+      }
+      fillFormFromParsedMd(parsed)
+    }
+    reader.readAsText(file, 'UTF-8')
+  })
+
+  document.getElementById('btn-bulk-import-md').addEventListener('click', () => document.getElementById('input-bulk-import-md').click())
+  document.getElementById('input-bulk-import-md').addEventListener('change', async (e) => {
+    const files = Array.from(e.target.files || [])
+    e.target.value = ''
+    if (files.length === 0) return
+    const statusEl = document.getElementById('bulk-import-status')
+    statusEl.style.display = 'inline'
+    statusEl.className = 'bulk-import-status'
+    statusEl.textContent = `Importando 0/${files.length}…`
+    let created = 0
+    let failed = 0
+    await ensureToken()
+    for (let i = 0; i < files.length; i++) {
+      statusEl.textContent = `Importando ${i + 1}/${files.length}…`
+      const file = files[i]
+      try {
+        const text = await new Promise((resolve, reject) => {
+          const r = new FileReader()
+          r.onload = () => resolve(r.result)
+          r.onerror = () => reject(new Error('Leitura do arquivo'))
+          r.readAsText(file, 'UTF-8')
+        })
+        const parsed = parseMdWithFrontmatter(text)
+        const title = parsed.title || file.name.replace(/\.md$/i, '').replace(/-/g, ' ')
+        const slug = parsed.slug || slugify(title) || slugify(file.name) || 'artigo-' + Date.now()
+        const payload = {
+          title,
+          slug,
+          author_name: parsed.author_name || 'Admin',
+          excerpt: parsed.excerpt || null,
+          content: parsed.content || '',
+          content_type: 'md',
+          published_at: parsed.published_at || new Date().toISOString(),
+          cover_image_url: null,
+          is_published: true
+        }
+        const res = await fetch('/admin/api/artigos', { method: 'POST', headers: getAuthHeaders(), body: JSON.stringify(payload) })
+        if (res.ok) created++
+        else failed++
+      } catch (_) {
+        failed++
+      }
+    }
+    statusEl.textContent = `${created} artigo(s) criado(s).` + (failed ? ` ${failed} falha(s).` : '')
+    statusEl.className = failed ? 'bulk-import-status err' : 'bulk-import-status ok'
+    if (created > 0) loadArtigos()
+    setTimeout(() => { statusEl.style.display = 'none' }, 6000)
   })
 
   document.getElementById('btn-insert-image').addEventListener('click', () => document.getElementById('input-image').click())

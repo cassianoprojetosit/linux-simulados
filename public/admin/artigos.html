@@ -100,6 +100,11 @@
 
         .admin-content { padding: 36px 32px; flex: 1; }
         .admin-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+        .admin-toolbar-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .bulk-import-md-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .bulk-import-status { font-size: 0.8rem; color: var(--muted); }
+        .bulk-import-status.ok { color: var(--accent); }
+        .bulk-import-status.err { color: var(--red); }
         .admin-btn { padding: 8px 16px; border-radius: 8px; font-size: 0.8125rem; font-family: inherit; cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text); }
         .admin-btn:hover { border-color: var(--accent); color: var(--accent); }
         .admin-btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
@@ -218,7 +223,14 @@
         <main class="admin-content">
             <div class="admin-toolbar">
                 <span style="color:var(--muted);font-size:0.875rem;">Crie e edite artigos (HTML ou Markdown). Use a pré-visualização para conferir o resultado.</span>
-                <button type="button" class="admin-btn admin-btn-primary" id="btn-novo-artigo">+ Novo artigo</button>
+                <div class="admin-toolbar-actions">
+                    <div class="bulk-import-md-wrap">
+                        <button type="button" class="admin-btn" id="btn-bulk-import-md" title="Selecione vários .md para criar um artigo por arquivo">📁 Importar vários .md</button>
+                        <input type="file" id="input-bulk-import-md" accept=".md,text/markdown" multiple style="display:none">
+                        <span id="bulk-import-status" class="bulk-import-status" style="display:none;"></span>
+                    </div>
+                    <button type="button" class="admin-btn admin-btn-primary" id="btn-novo-artigo">+ Novo artigo</button>
+                </div>
             </div>
 
             <div class="admin-table-wrap">
@@ -302,6 +314,8 @@
                 <div class="admin-form-group">
                     <label>Conteúdo</label>
                     <div class="editor-toolbar">
+                        <button type="button" class="admin-btn" id="btn-import-md" title="Preencher título, autor, resumo e conteúdo a partir de um .md">📄 Importar .md</button>
+                        <input type="file" id="input-import-md" accept=".md,text/markdown" style="display:none">
                         <button type="button" class="admin-btn" id="btn-insert-image" title="Inserir no topo do texto e definir como capa">🖼️ Inserir imagem de capa (topo do artigo)</button>
                         <input type="file" id="input-image" accept="image/jpeg,image/png,image/webp" style="display:none">
                         <span class="editor-hint">JPG, PNG ou WebP — máx. 200 KB</span>
