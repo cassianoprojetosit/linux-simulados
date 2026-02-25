@@ -32,6 +32,7 @@ Este documento descreve como colocar o projeto em produção em uma plataforma d
    | `ADMIN_EMAIL` | Opcional | E-mail que terá acesso admin sem depender da tabela `users`. |
    | `ALLOWED_ORIGINS` | Recomendado em produção | Origens CORS: domínio(s) do site, separados por vírgula (ex.: `https://seusite.com,https://www.seusite.com`). Inclua também a URL do app na Render se usuários acessarem por ela (ex.: `https://seu-app.onrender.com`). |
    | `REDIS_URL` | Opcional | Só se quiser rate limit distribuído (múltiplas instâncias). URL completa do Redis (ex.: `rediss://...` para TLS). |
+   | `SUPABASE_STORAGE_BUCKET_ARTIGOS` | Opcional | Nome do bucket no Supabase Storage para imagens de capa. Se definido (com `SUPABASE_SERVICE_ROLE_KEY`), as capas passam a ser salvas no Storage e a URL persiste após cada deploy. Caso contrário, as imagens ficam em `public/uploads/artigos` e só persistem se você versionar e enviar esses arquivos no Git. |
 
 3. **Deploy**
    - Após salvar as variáveis, o Render pode fazer redeploy automático. Ou use **Manual Deploy** → **Deploy latest commit**.
@@ -51,6 +52,7 @@ Este documento descreve como colocar o projeto em produção em uma plataforma d
 - [ ] Painel admin acessível apenas após login com usuário admin; botão "Painel Admin" aparece apenas para admins.
 - [ ] CORS: se o front for servido por outro domínio, `ALLOWED_ORIGINS` deve incluir esse domínio; caso contrário chamadas fetch podem falhar por CORS.
 - [ ] Nenhuma chave secreta (service_role, Redis, etc.) em logs ou no frontend.
+- [ ] **Imagens de capa dos artigos:** Se não usar Supabase Storage (`SUPABASE_STORAGE_BUCKET_ARTIGOS`), lembre-se de que arquivos em `public/uploads/artigos` só existem no servidor se tiverem sido commitados e enviados no repositório; após um deploy “limpo”, capas antigas podem sumir. Para evitar isso, use um bucket público no Supabase e defina a variável acima.
 
 ---
 

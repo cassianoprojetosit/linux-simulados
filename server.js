@@ -1093,7 +1093,9 @@ async function handleAPI(req, res, url) {
     })
   }
 
-  // POST /admin/api/artigos/upload — upload de imagem (base64), salva em public/uploads/artigos
+  // POST /admin/api/artigos/upload — upload de imagem (base64). Se SUPABASE_STORAGE_BUCKET_ARTIGOS
+  // (ou SUPABASE_STORAGE_BUCKET) + SUPABASE_SERVICE_ROLE_KEY estiverem definidos, envia para o
+  // Storage do Supabase (URL pública persiste após deploy). Senão, salva em public/uploads/artigos.
   if (parsed.pathname === '/admin/api/artigos/upload' && req.method === 'POST') {
     return requireAdmin(req, res, async () => {
       let body
@@ -1125,18 +1127,34 @@ async function handleAPI(req, res, url) {
         return res.end(JSON.stringify({ success: false, error: 'Imagem muito grande (máx 200KB)' }))
       }
       const filename = `${randomUUID()}.${ext}`
-      const filepath = resolve(UPLOADS_ARTIGOS_DIR, filename)
-      if (!filepath.startsWith(UPLOADS_ARTIGOS_DIR)) {
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'Nome de arquivo inválido' }))
+      const mimeByExt = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp' }
+      const contentType = mimeByExt[ext] || 'image/jpeg'
+      const storageBucket = process.env.SUPABASE_STORAGE_BUCKET_ARTIGOS || process.env.SUPABASE_STORAGE_BUCKET
+      let url
+      if (storageBucket && supabaseAdmin) {
+        try {
+          const { error: uploadErr } = await supabaseAdmin.storage.from(storageBucket).upload(filename, buf, { contentType, upsert: true })
+          if (uploadErr) throw uploadErr
+          const { data: urlData } = supabaseAdmin.storage.from(storageBucket).getPublicUrl(filename)
+          url = urlData.publicUrl
+        } catch (e) {
+          try { writeFileSync(resolve(UPLOADS_ARTIGOS_DIR, filename), buf) } catch (_) {}
+          url = `/uploads/artigos/${filename}`
+        }
+      } else {
+        const filepath = resolve(UPLOADS_ARTIGOS_DIR, filename)
+        if (!filepath.startsWith(UPLOADS_ARTIGOS_DIR)) {
+          res.writeHead(400, { 'Content-Type': 'application/json' })
+          return res.end(JSON.stringify({ success: false, error: 'Nome de arquivo inválido' }))
+        }
+        try {
+          writeFileSync(filepath, buf)
+        } catch (e) {
+          res.writeHead(500, { 'Content-Type': 'application/json' })
+          return res.end(JSON.stringify({ success: false, error: 'Erro ao salvar arquivo' }))
+        }
+        url = `/uploads/artigos/${filename}`
       }
-      try {
-        writeFileSync(filepath, buf)
-      } catch (e) {
-        res.writeHead(500, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'Erro ao salvar arquivo' }))
-      }
-      const url = `/uploads/artigos/${filename}`
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ success: true, url }))
     })

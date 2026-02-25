@@ -121,7 +121,11 @@ function openModal(isNew = true, article = null) {
   document.getElementById('form-excerpt').value = article?.excerpt ?? ''
   document.getElementById('form-content').value = article?.content ?? ''
   document.getElementById('form-content-type').value = article?.content_type === 'md' ? 'md' : 'html'
-  const coverUrl = article?.cover_image_url ?? ''
+  let coverUrl = (article?.cover_image_url ?? '').trim()
+  if (!coverUrl && article?.content) {
+    const firstImg = article.content.match(/!\[[^\]]*\]\s*\(\s*([^)\s]+)\s*\)/)
+    if (firstImg && firstImg[1]) coverUrl = firstImg[1].trim()
+  }
   document.getElementById('form-cover-image-url').value = coverUrl
   const coverWrap = document.getElementById('cover-preview-wrap')
   const coverImg = document.getElementById('cover-preview-img')
@@ -180,7 +184,15 @@ async function saveArtigo() {
     content: document.getElementById('form-content').value,
     content_type: document.getElementById('form-content-type').value,
     published_at: document.getElementById('form-published-at').value ? new Date(document.getElementById('form-published-at').value).toISOString() : new Date().toISOString(),
-    cover_image_url: document.getElementById('form-cover-image-url').value.trim() || null,
+    cover_image_url: (() => {
+      let url = document.getElementById('form-cover-image-url').value.trim()
+      if (!url) {
+        const content = document.getElementById('form-content').value
+        const m = content.match(/!\[[^\]]*\]\s*\(\s*([^)\s]+)\s*\)/)
+        if (m && m[1]) url = m[1].trim()
+      }
+      return url || null
+    })(),
     is_published: true
   }
 
