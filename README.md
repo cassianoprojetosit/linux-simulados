@@ -134,6 +134,7 @@ Todas as variáveis são configuradas no `.env` (local) ou nas variáveis de amb
 | `ALLOWED_ORIGINS` | Não | Origens permitidas para CORS, separadas por vírgula (ex.: `https://seusite.com,https://www.seusite.com`). Se não definido, aceita localhost e `*.supabase.co`. |
 | `REDIS_URL` | Não | URL do Redis para rate limit distribuído (útil com múltiplas instâncias). Se não definido, usa rate limit em memória por instância. |
 | `SUPABASE_STORAGE_BUCKET_ARTIGOS` | Não | Nome do bucket no Supabase Storage para imagens de capa dos artigos. Se definido (com chave de serviço), uploads vão para o Storage e a URL persiste após deploy. |
+| `SUPABASE_STORAGE_BUCKET_LINKS` | Não | Nome do bucket no Supabase Storage para ícones dos links úteis. Se definido (com chave de serviço), uploads vão para o Storage e a URL persiste após deploy. |
 
 Detalhes e exemplos seguros estão em [.env.example](.env.example). Para deploy em produção, ver [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
@@ -150,6 +151,7 @@ Detalhes e exemplos seguros estão em [.env.example](.env.example). Para deploy 
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Deploy em produção (ex.: Render), checklist de variáveis e CORS. |
 | [docs/SECURITY.md](docs/SECURITY.md) | Medidas de segurança (CORS, rate limit, headers, auth, uploads). |
 | [docs/PERFORMANCE.md](docs/PERFORMANCE.md) | Otimização, desempenho e boas práticas. |
+| [docs/AUDIT.md](docs/AUDIT.md) | Análise de código, segurança, desempenho e melhorias. |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Como contribuir com o projeto. |
 
 ---

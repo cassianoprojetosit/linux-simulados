@@ -111,7 +111,7 @@ Todas exigem `Authorization: Bearer <token>` e usuário admin.
 | GET | `/admin/api/links/:id` | Um link por id (UUID). |
 | PUT | `/admin/api/links/:id` | Atualiza link. |
 | DELETE | `/admin/api/links/:id` | Remove link. |
-| POST | `/admin/api/links/upload` | Upload de ícone (base64). Retorna URL relativa. |
+| POST | `/admin/api/links/upload` | Upload de ícone (base64). Se `SUPABASE_STORAGE_BUCKET_LINKS` estiver definido, salva no Storage e retorna URL pública; senão retorna URL relativa em `/uploads/links/`. |
 
 ---
 

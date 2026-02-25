@@ -60,6 +60,7 @@ Este documento descreve as medidas de segurança implementadas no projeto e boas
 - Tamanho máximo por arquivo definido no servidor (ex.: 200 KB).
 - Nome do arquivo no disco gerado pelo servidor (UUID + extensão); não se usa o nome enviado pelo cliente para o path final.
 - Antes de escrever, o servidor verifica que o path resolvido está dentro do diretório de uploads (proteção contra path traversal).
+- **Artigos e links:** Se as variáveis de bucket do Supabase Storage estiverem definidas (com chave de serviço), o upload vai para o Storage; senão, para disco (com as mesmas regras de extensão e path).
 
 ---
 

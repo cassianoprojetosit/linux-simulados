@@ -68,7 +68,7 @@ Este documento descreve a arquitetura de alto nível do Linux Simulados, os flux
 - **Uso:** Imagens de artigos e ícones de links, enviadas em base64 no body JSON para rotas específicas (`/admin/api/artigos/upload`, `/admin/api/links/upload`).
 - **Armazenamento:** Nome do arquivo sempre gerado no servidor (UUID + extensão), nunca o nome enviado pelo cliente. Extensões permitidas: jpg, jpeg, png, webp. Tamanho máximo por imagem definido no servidor (ex.: 200 KB).
   - **Artigos (capas):** Se `SUPABASE_STORAGE_BUCKET_ARTIGOS` (ou `SUPABASE_STORAGE_BUCKET`) e chave de serviço estiverem definidos, o arquivo é enviado ao Supabase Storage e a URL pública é retornada (persiste após deploy). Caso contrário, salvo em disco em `public/uploads/artigos/`.
-  - **Links (ícones):** Salvos em disco em `public/uploads/links/`.
+  - **Links (ícones):** Se `SUPABASE_STORAGE_BUCKET_LINKS` (ou `SUPABASE_STORAGE_BUCKET`) e chave de serviço estiverem definidos, o ícone é enviado ao Supabase Storage e a URL pública é retornada (persiste após deploy). Caso contrário, salvo em disco em `public/uploads/links/`.
 - **Segurança:** Apenas admins; validação de extensão e verificação de que o path resolvido permanece dentro do diretório de uploads (path traversal).
 
 ---
