@@ -126,6 +126,8 @@
             border-left-color: var(--accent);
             background: rgba(0, 229, 160, 0.07);
         }
+        .nav-link-soon { cursor: help; }
+        .nav-soon-badge { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-left: 4px; }
 
         .nav-link.nav-sublink {
             padding-left: 48px;
@@ -735,8 +737,8 @@
         <a class="nav-link" href="saiba-mais.html">
             <span class="nav-icon">❓</span> Saiba mais
         </a>
-        <a class="nav-link" href="#" title="EM BREVE">
-            <span class="nav-icon">💬</span> Comunidade
+        <a class="nav-link nav-link-soon" href="#" title="EM BREVE" aria-disabled="true" onclick="return false">
+            <span class="nav-icon">💬</span> Comunidade <span class="nav-soon-badge">Em breve</span>
         </a>
     </nav>
 </aside>
@@ -758,7 +760,7 @@
         <a class="nav-link" href="artigos.html"><span class="nav-icon">📚</span> Artigos</a>
         <a class="nav-link" href="/index.html#links-servicos"><span class="nav-icon">🔗</span> Links Úteis</a>
         <a class="nav-link" href="saiba-mais.html"><span class="nav-icon">❓</span> Saiba mais</a>
-        <a class="nav-link" href="#" title="EM BREVE"><span class="nav-icon">💬</span> Comunidade</a>
+        <a class="nav-link nav-link-soon" href="#" title="EM BREVE" aria-disabled="true" onclick="return false"><span class="nav-icon">💬</span> Comunidade <span class="nav-soon-badge">Em breve</span></a>
     </div>
 </div>
 

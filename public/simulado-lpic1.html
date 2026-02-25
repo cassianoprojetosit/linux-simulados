@@ -134,6 +134,8 @@
             border-radius: 8px;
         }
         .mobile-menu-content .nav-link:hover { background: var(--surface2); color: var(--accent); }
+        .nav-link-soon { cursor: help; }
+        .nav-soon-badge { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-left: 4px; }
         .mobile-menu-close {
             position: absolute;
             top: 16px;
@@ -1102,7 +1104,7 @@
             <a class="nav-link" href="artigos.html">📚 Artigos</a>
             <a class="nav-link" href="index.html#links-servicos">🔗 Links Úteis</a>
             <a class="nav-link" href="saiba-mais.html">❓ Saiba mais</a>
-            <a class="nav-link" href="#" title="EM BREVE">💬 Comunidade</a>
+            <a class="nav-link nav-link-soon" href="#" title="EM BREVE" aria-disabled="true" onclick="return false">💬 Comunidade <span class="nav-soon-badge">Em breve</span></a>
         </div>
     </div>
 
