@@ -1210,18 +1210,34 @@ async function handleAPI(req, res, url) {
         return res.end(JSON.stringify({ success: false, error: 'Imagem muito grande (máx 200KB)' }))
       }
       const filename = `${randomUUID()}.${ext}`
-      const filepath = resolve(UPLOADS_LINKS_DIR, filename)
-      if (!filepath.startsWith(UPLOADS_LINKS_DIR)) {
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'Nome de arquivo inválido' }))
+      const mimeByExt = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp' }
+      const contentType = mimeByExt[ext] || 'image/jpeg'
+      const storageBucket = process.env.SUPABASE_STORAGE_BUCKET_LINKS || process.env.SUPABASE_STORAGE_BUCKET
+      let url
+      if (storageBucket && supabaseAdmin) {
+        try {
+          const { error: uploadErr } = await supabaseAdmin.storage.from(storageBucket).upload(filename, buf, { contentType, upsert: true })
+          if (uploadErr) throw uploadErr
+          const { data: urlData } = supabaseAdmin.storage.from(storageBucket).getPublicUrl(filename)
+          url = urlData.publicUrl
+        } catch (e) {
+          try { writeFileSync(resolve(UPLOADS_LINKS_DIR, filename), buf) } catch (_) {}
+          url = `/uploads/links/${filename}`
+        }
+      } else {
+        const filepath = resolve(UPLOADS_LINKS_DIR, filename)
+        if (!filepath.startsWith(UPLOADS_LINKS_DIR)) {
+          res.writeHead(400, { 'Content-Type': 'application/json' })
+          return res.end(JSON.stringify({ success: false, error: 'Nome de arquivo inválido' }))
+        }
+        try {
+          writeFileSync(filepath, buf)
+        } catch (e) {
+          res.writeHead(500, { 'Content-Type': 'application/json' })
+          return res.end(JSON.stringify({ success: false, error: 'Erro ao salvar arquivo' }))
+        }
+        url = `/uploads/links/${filename}`
       }
-      try {
-        writeFileSync(filepath, buf)
-      } catch (e) {
-        res.writeHead(500, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ success: false, error: 'Erro ao salvar arquivo' }))
-      }
-      const url = `/uploads/links/${filename}`
       res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify({ success: true, url }))
     })
