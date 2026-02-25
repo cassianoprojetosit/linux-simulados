@@ -398,9 +398,6 @@ async function init() {
   document.getElementById('modal-artigo-close').addEventListener('click', closeModal)
   document.getElementById('modal-artigo-cancel').addEventListener('click', closeModal)
   document.getElementById('modal-artigo-save').addEventListener('click', saveArtigo)
-  document.getElementById('modal-artigo-backdrop').addEventListener('click', (e) => {
-    if (e.target.id === 'modal-artigo-backdrop') closeModal()
-  })
 
   document.getElementById('btn-import-md').addEventListener('click', () => document.getElementById('input-import-md').click())
   document.getElementById('input-import-md').addEventListener('change', (e) => {
