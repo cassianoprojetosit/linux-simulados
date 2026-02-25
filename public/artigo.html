@@ -26,14 +26,16 @@
         .article-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
         @media (max-width: 600px) { .article-hero { height: 220px; } }
         .article-header { padding: 28px 32px 20px; }
-        .article-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
+        .article-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 12px; line-height: 1.25; color: var(--text) !important; }
         .article-meta { font-size: 0.8125rem; color: var(--muted); margin-bottom: 24px; }
         .article-body-wrap { padding: 0 32px 32px; }
-        .article-body { font-size: 1rem; line-height: 1.7; }
+        .article-body { font-size: 1rem; line-height: 1.7; color: var(--text) !important; }
+        .article-body h1, .article-body h2, .article-body h3, .article-body h4, .article-body h5, .article-body h6, .article-body p, .article-body li, .article-body td, .article-body th { color: var(--text) !important; }
+        .article-body a { color: var(--accent) !important; }
         .article-body img { max-width: 100%; height: auto; border-radius: 8px; }
         .article-body img.article-cover-img { display: none; }
-        .article-body pre { background: var(--surface2); padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.875rem; }
-        .article-body code { font-family: 'Space Mono', monospace; }
+        .article-body pre { background: var(--surface2); padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.875rem; color: var(--text); }
+        .article-body code { font-family: 'Space Mono', monospace; color: var(--text); }
         .article-body p { margin-bottom: 1em; }
         .article-body h2 { font-size: 1.25rem; margin-top: 1.5em; margin-bottom: 0.5em; }
         #load-err { color: var(--muted); }
