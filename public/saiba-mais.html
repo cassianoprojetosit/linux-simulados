@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiba mais | Linux Simulados</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/css/donation-modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --surface: #111827;
+            --surface2: #1a2235;
+            --border: rgba(255,255,255,0.07);
+            --accent: #00e5a0;
+            --accent2: #3b82f6;
+            --accent3: #f59e0b;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            --text-muted: #64748b;
+            --red: #f87171;
+            --green-dim: rgba(0,229,160,0.12);
+        }
+
+        .user-chip { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px 4px 4px; }
+        .user-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+        .user-name { font-size: 13px; color: var(--text); font-weight: 500; }
+        .logout-btn { font-size: 11px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; margin-left: 4px; transition: color 0.15s; text-decoration: none; }
+        .logout-btn:hover { color: var(--red); }
+        .btn-login { font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid rgba(0,255,136,0.3); background: var(--green-dim); border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: all 0.15s; }
+        .btn-login:hover { background: rgba(0,255,136,0.2); }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        .sidebar { position: fixed; left: 0; top: 0; width: 240px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; padding: 28px 0; }
+        .logo { padding: 0 24px 28px; border-bottom: 1px solid var(--border); }
+        .logo-mark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--accent), #00b377); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); }
+        .logo-text span { color: var(--accent); }
+        .nav { padding: 20px 0; flex: 1; }
+        .nav-section { padding: 8px 24px 4px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
+        .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 24px; font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: all 0.2s; border-left: 3px solid transparent; cursor: pointer; }
+        .nav-link:hover { color: var(--text); background: var(--surface2); }
+        .nav-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(0, 229, 160, 0.07); }
+        .nav-link.nav-sublink { padding-left: 48px; font-size: 0.8125rem; }
+        .nav-icon { width: 18px; text-align: center; font-size: 1rem; }
+
+        .main { margin-left: 240px; min-height: 100vh; display: flex; flex-direction: column; }
+        .topbar { position: sticky; top: 0; z-index: 50; background: rgba(10,14,26,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .topbar-left { display: flex; align-items: center; gap: 16px; }
+        .page-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; }
+        .topbar-right { display: flex; align-items: center; gap: 12px; }
+        .btn-ghost { background: none; border: 1px solid var(--border); color: var(--muted); padding: 7px 14px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+        .content { padding: 36px 32px; max-width: 800px; width: 100%; margin-left: auto; margin-right: auto; flex: 1; display: flex; flex-direction: column; }
+        .site-footer { text-align: center; padding: 32px 16px 24px; border-top: 1px solid var(--border); margin-top: auto; }
+        .site-footer p { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); margin: 0; }
+
+        .section { margin-bottom: 44px; }
+        .section-title { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; }
+        .section-title span { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 8px; vertical-align: middle; margin-bottom: 2px; }
+
+        .intro-block { margin-bottom: 40px; }
+        .intro-block p { font-size: 0.95rem; line-height: 1.75; color: var(--text); margin-bottom: 1em; }
+        .intro-block p:last-child { margin-bottom: 0; }
+
+        .faq-list { display: flex; flex-direction: column; gap: 0; }
+        .faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; background: var(--surface); }
+        .faq-q { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); padding: 16px 20px; background: var(--surface2); border-bottom: 1px solid var(--border); }
+        .faq-a { font-size: 0.9rem; line-height: 1.65; color: var(--muted); padding: 16px 20px; }
+        .faq-a a { color: var(--accent); text-decoration: none; }
+        .faq-a a:hover { text-decoration: underline; }
+
+        .statement-block { margin-top: 28px; padding: 24px 28px; background: rgba(0, 229, 160, 0.06); border: 1px solid rgba(0, 229, 160, 0.2); border-radius: 12px; border-left: 4px solid var(--accent); }
+        .statement-block p { font-size: 0.95rem; line-height: 1.75; color: var(--text); margin: 0 0 0.85em 0; }
+        .statement-block p:last-child { margin-bottom: 0; }
+        .statement-block strong { color: var(--accent); }
+
+        .contact-box { margin-top: 32px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+        .contact-box p { margin-bottom: 8px; font-size: 0.9rem; color: var(--muted); }
+        .contact-box a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1rem; }
+        .contact-box a:hover { text-decoration: underline; }
+
+        .btn-mobile-menu { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; margin: 0 -8px 0 0; background: transparent; border: none; color: var(--text); cursor: pointer; border-radius: 8px; font-size: 1.4rem; }
+        .btn-mobile-menu:hover { background: var(--surface2); }
+        #mobile-menu-overlay { position: fixed; inset: 0; z-index: 400; background: var(--surface); visibility: hidden; opacity: 0; transition: visibility 0.2s, opacity 0.2s; }
+        #mobile-menu-overlay.open { visibility: visible; opacity: 1; }
+        .mobile-menu-content { padding: 24px; max-width: 320px; height: 100%; overflow-y: auto; }
+        .mobile-menu-content .logo { padding: 0 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+        .mobile-menu-content .nav-section { margin: 16px 0 8px; font-size: 11px; color: var(--muted); }
+        .mobile-menu-content .nav-link { display: flex; align-items: center; gap: 10px; padding: 10px 0; color: var(--text); text-decoration: none; font-weight: 500; border-radius: 8px; }
+        .mobile-menu-content .nav-link:hover { background: var(--surface2); color: var(--accent); }
+        .mobile-menu-content .nav-link.active { color: var(--accent); }
+        .mobile-menu-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; border-radius: 8px; }
+        .mobile-menu-close:hover { background: var(--surface2); }
+        @media (max-width: 1024px) { .sidebar { display: none; } .main { margin-left: 0; } .btn-mobile-menu { display: flex; } }
+        @media (max-width: 640px) { .content { padding: 20px 16px; } .topbar { padding: 0 16px; } .faq-q, .faq-a { padding: 14px 16px; } }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="logo">
+        <a href="index.html" class="logo-mark">
+            <div class="logo-icon">🐧</div>
+            <span class="logo-text">Linux <span>Simulados</span></span>
+        </a>
+    </div>
+    <nav class="nav">
+        <div class="nav-section">Principal</div>
+        <a class="nav-link" href="index.html"><span class="nav-icon">⊞</span> Dashboard</a>
+        <a class="nav-link" href="simulados.html"><span class="nav-icon">📋</span> Simulados</a>
+        <a class="nav-link nav-sublink" href="progresso.html"><span class="nav-icon">📊</span> Meu Progresso</a>
+        <div class="nav-section">Recursos</div>
+        <a class="nav-link" href="artigos.html"><span class="nav-icon">📚</span> Artigos</a>
+        <a class="nav-link" href="/index.html#links-servicos"><span class="nav-icon">🔗</span> Links Úteis</a>
+        <a class="nav-link active" href="saiba-mais.html"><span class="nav-icon">❓</span> Saiba mais</a>
+        <a class="nav-link" href="#" title="EM BREVE"><span class="nav-icon">💬</span> Comunidade</a>
+    </nav>
+</aside>
+
+<div id="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-menu-content">
+        <button type="button" class="mobile-menu-close" aria-label="Fechar menu">×</button>
+        <div class="logo">
+            <a href="index.html" class="logo-mark">
+                <div class="logo-icon">🐧</div>
+                <span class="logo-text">Linux <span>Simulados</span></span>
+            </a>
+        </div>
+        <div class="nav-section">Principal</div>
+        <a class="nav-link" href="index.html"><span class="nav-icon">⊞</span> Dashboard</a>
+        <a class="nav-link" href="simulados.html"><span class="nav-icon">📋</span> Simulados</a>
+        <a class="nav-link nav-sublink" href="progresso.html"><span class="nav-icon">📊</span> Meu Progresso</a>
+        <div class="nav-section">Recursos</div>
+        <a class="nav-link" href="artigos.html"><span class="nav-icon">📚</span> Artigos</a>
+        <a class="nav-link" href="/index.html#links-servicos"><span class="nav-icon">🔗</span> Links Úteis</a>
+        <a class="nav-link active" href="saiba-mais.html"><span class="nav-icon">❓</span> Saiba mais</a>
+        <a class="nav-link" href="#" title="EM BREVE"><span class="nav-icon">💬</span> Comunidade</a>
+    </div>
+</div>
+
+<div class="main">
+    <header class="topbar">
+        <div class="topbar-left">
+            <button type="button" class="btn-mobile-menu" id="btn-mobile-menu" aria-label="Abrir menu">☰</button>
+            <span class="page-title">Saiba mais</span>
+        </div>
+        <div class="topbar-right">
+            <div id="user-area"></div>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="intro-block">
+            <p>O <strong>Linux Simulados</strong> se baseia em conteúdos que os próprios sites de certificação Linux divulgam e em diversos tutoriais Linux — tanto básicos quanto avançados. Nosso site <strong>não possui e não utiliza cópias de provas reais</strong>; não aprovamos esse tipo de prática.</p>
+            <p>Apoiamos o <strong>estudo</strong>, a <strong>aquisição de conhecimento</strong> e a <strong>prática</strong>. No fim das contas, é isso que separa quem apenas decora ou copia de quem de fato aprende, aplica e, como consequência, cresce em um mercado que está carente de grandes profissionais.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span></span>Perguntas frequentes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q">O Linux Simulados oferece provas reais ou vazadas de certificação?</div>
+                    <div class="faq-a">Não. Não utilizamos, não vendemos e não incentivamos o uso de provas vazadas ou materiais piratas. Todo o conteúdo é elaborado com base em domínios públicos dos exames, documentação oficial e tutoriais de estudo, para você praticar e consolidar o conhecimento de forma ética.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">De onde vêm as questões e o conteúdo do site?</div>
+                    <div class="faq-a">As questões e os materiais são baseados nas informações públicas dos programas de certificação (como LPI, Red Hat e outras), em documentação oficial de distribuições Linux e em tutoriais e guias amplamente utilizados na comunidade. Tudo é pensado para reforçar os tópicos que realmente importam na sua jornada.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">O uso dos simulados substitui o estudo e a leitura?</div>
+                    <div class="faq-a">Não. Os simulados são uma ferramenta de apoio para fixar o que você já estudou. Recomendamos sempre ler documentação, livros e tutoriais, praticar no terminal e em ambientes reais e só então usar os simulados para testar e revisar. Quem só decora respostas não se torna um bom profissional.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Por que praticar com simulados ajuda na certificação?</div>
+                    <div class="faq-a">Porque simulados ajudam a identificar lacunas no seu conhecimento, a se acostumar com o formato de questões e a revisar tópicos importantes sob pressão de tempo. Eles complementam o estudo teórico e a prática no dia a dia, aumentando suas chances de sucesso no exame real.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">O Linux Simulados é oficialmente vinculado à LPI, Red Hat ou outras certificações?</div>
+                    <div class="faq-a">Não. Somos um projeto independente, focado em apoiar quem estuda para certificações Linux. Não temos vínculo oficial com LPI, Red Hat, Linux Foundation ou outras entidades. Para realizar o exame e obter o certificado, é necessário se inscrever diretamente no provedor da certificação.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Posso usar o site para me preparar para LPIC-1, RHCSA e outras certificações?</div>
+                    <div class="faq-a">Sim. O conteúdo é organizado para cobrir temas comuns a várias certificações Linux (linha de comando, administração de sistema, redes, segurança, etc.). Use como uma ferramenta de estudo e prática, junto com o material oficial de cada certificação que você almeja.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Como posso entrar em contato?</div>
+                    <div class="faq-a">Para dúvidas, sugestões ou parcerias, envie um e-mail para <a href="mailto:linuxsimulados@gmail.com">linuxsimulados@gmail.com</a>. Responderemos o mais breve possível.</div>
+                </div>
+            </div>
+
+            <div class="statement-block">
+                <p><strong>Não compre nem use provas vazadas.</strong> Pode parecer atalho, mas é atalho para lugar nenhum. Quem depende de “dumps” e vazamentos não aprende de verdade: na hora do trabalho real, na entrevista ou no servidor em produção, o conhecimento que não foi construído com estudo e prática simplesmente não existe. O mercado não precisa de mais pessoas com certificado na parede e dúvida no terminal; precisa de quem estudou, praticou e sabe fazer.</p>
+                <p>Aqui a gente acredita em você. Acredita que você quer ser esse profissional. Por isso não vamos te oferecer cópia de prova — vamos te oferecer ferramenta para estudar, praticar e chegar lá com mérito. O divisor de águas é esse: de um lado quem copia; do outro quem aprende, aplica e cresce. Fique do lado certo.</p>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <p>Dúvidas, sugestões ou feedback?</p>
+            <a href="mailto:linuxsimulados@gmail.com">linuxsimulados@gmail.com</a>
+        </div>
+
+        <footer class="site-footer">
+            <p>© 2026 Linux Simulados — Simulados para a comunidade Linux</p>
+        </footer>
+    </main>
+</div>
+
+    <script type="module" src="/js/user-area.js"></script>
+    <script type="module" src="/js/track-login.js"></script>
+    <script type="module" src="/js/newsletter-popup.js"></script>
+    <script src="/js/mobile-menu.js"></script>
+    <script src="/js/donation-modal.js"></script>
+</body>
+</html>
