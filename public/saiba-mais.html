@@ -68,7 +68,7 @@
         .section-title span { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 8px; vertical-align: middle; margin-bottom: 2px; }
 
         .intro-block { margin-bottom: 40px; }
-        .intro-block p { font-size: 0.95rem; line-height: 1.75; color: var(--text); margin-bottom: 1em; }
+        .intro-block p { font-size: 0.95rem; line-height: 1.75; color: var(--text); margin-bottom: 1.25em; text-indent: 2em; }
         .intro-block p:last-child { margin-bottom: 0; }
 
         .faq-list { display: flex; flex-direction: column; gap: 0; }
@@ -81,18 +81,19 @@
         .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
         .faq-item.open .faq-body { max-height: 520px; }
         .faq-a { font-size: 0.9rem; line-height: 1.65; color: var(--muted); padding: 16px 20px; }
-        .faq-a p { margin: 0 0 0.75em 0; }
+        .faq-a p { margin: 0 0 1em 0; text-indent: 2em; }
+        .faq-a p:first-of-type { margin-top: 0; }
         .faq-a p:last-child { margin-bottom: 0; }
         .faq-a a { color: var(--accent); text-decoration: none; }
         .faq-a a:hover { text-decoration: underline; }
 
         .statement-block { margin-top: 28px; padding: 24px 28px; background: rgba(0, 229, 160, 0.06); border: 1px solid rgba(0, 229, 160, 0.2); border-radius: 12px; border-left: 4px solid var(--accent); }
-        .statement-block p { font-size: 0.95rem; line-height: 1.75; color: var(--text); margin: 0 0 0.85em 0; }
+        .statement-block p { font-size: 0.95rem; line-height: 1.75; color: var(--text); margin: 0 0 1.25em 0; text-indent: 2em; }
         .statement-block p:last-child { margin-bottom: 0; }
         .statement-block strong { color: var(--accent); }
 
         .contact-box { margin-top: 32px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; text-align: center; }
-        .contact-box p { margin-bottom: 8px; font-size: 0.9rem; color: var(--muted); }
+        .contact-box p { margin: 0 0 8px 0; font-size: 0.9rem; color: var(--muted); }
         .contact-box a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1rem; }
         .contact-box a:hover { text-decoration: underline; }
 
@@ -286,28 +287,6 @@
     <script type="module" src="/js/newsletter-popup.js"></script>
     <script src="/js/mobile-menu.js"></script>
     <script src="/js/donation-modal.js"></script>
-    <script>
-      (function () {
-        var list = document.getElementById('faq-list')
-        if (!list) return
-        list.addEventListener('click', function (e) {
-          var header = e.target.closest('.faq-header')
-          if (!header) return
-          var item = header.closest('.faq-item')
-          var body = item && item.querySelector('.faq-body')
-          if (!item || !body) return
-          var isOpen = item.classList.contains('open')
-          list.querySelectorAll('.faq-item').forEach(function (el) {
-            el.classList.remove('open')
-            var btn = el.querySelector('.faq-header')
-            if (btn) btn.setAttribute('aria-expanded', 'false')
-          })
-          if (!isOpen) {
-            item.classList.add('open')
-            header.setAttribute('aria-expanded', 'true')
-          }
-        })
-      })()
-    </script>
+    <script src="/js/faq-accordion.js"></script>
 </body>
 </html>
