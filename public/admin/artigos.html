@@ -148,9 +148,11 @@
         .cover-specs strong { color: var(--text); }
         .cover-specs-size { font-family: 'Space Mono', monospace; color: var(--accent); }
         .cover-hint { font-size: 0.75rem; color: var(--muted); margin: 4px 0 8px; line-height: 1.4; }
-        .cover-preview-wrap { display: flex; align-items: center; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+        .cover-preview-wrap { display: flex; align-items: flex-start; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
         .cover-preview-img { max-width: 200px; max-height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+        .cover-preview-meta { display: flex; flex-direction: column; gap: 6px; }
         .cover-remove-btn { font-size: 0.75rem; }
+        .cover-load-error { font-size: 0.75rem; color: var(--red); max-width: 280px; line-height: 1.4; }
         .slug-area .slug-preview-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 6px 0 0; font-size: 0.875rem; }
         .slug-area #slug-preview { background: var(--surface2); padding: 4px 8px; border-radius: 6px; font-size: 0.8125rem; }
         .admin-btn-slug-toggle { font-size: 0.75rem; padding: 6px 12px; }
@@ -290,7 +292,10 @@
                     <p class="cover-hint">Use o botão abaixo para enviar uma imagem; ela será inserida no topo do texto e usada como capa no artigo e nos cards.</p>
                     <div id="cover-preview-wrap" class="cover-preview-wrap" style="display:none;">
                         <img id="cover-preview-img" src="" alt="Capa" class="cover-preview-img">
-                        <button type="button" class="admin-btn cover-remove-btn" id="btn-remove-cover" title="Remover capa">Remover capa</button>
+                        <div class="cover-preview-meta">
+                            <button type="button" class="admin-btn cover-remove-btn" id="btn-remove-cover" title="Remover capa">Remover capa</button>
+                            <span id="cover-load-error" class="cover-load-error" style="display:none;">Imagem não encontrada (arquivo pode ter sido perdido após deploy). Use o botão acima para enviar novamente.</span>
+                        </div>
                     </div>
                     <input type="hidden" id="form-cover-image-url" value="">
                 </div>

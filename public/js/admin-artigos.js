@@ -129,12 +129,23 @@ function openModal(isNew = true, article = null) {
   document.getElementById('form-cover-image-url').value = coverUrl
   const coverWrap = document.getElementById('cover-preview-wrap')
   const coverImg = document.getElementById('cover-preview-img')
+  const coverLoadError = document.getElementById('cover-load-error')
   if (coverUrl) {
     coverWrap.style.display = 'flex'
+    if (coverLoadError) coverLoadError.style.display = 'none'
+    coverImg.onerror = () => {
+      if (coverLoadError) coverLoadError.style.display = 'inline'
+    }
+    coverImg.onload = () => {
+      if (coverLoadError) coverLoadError.style.display = 'none'
+    }
     coverImg.src = coverUrl
   } else {
     coverWrap.style.display = 'none'
     coverImg.removeAttribute('src')
+    coverImg.onerror = null
+    coverImg.onload = null
+    if (coverLoadError) coverLoadError.style.display = 'none'
   }
 
   if (article?.published_at) {
@@ -267,7 +278,11 @@ function insertImageUrl(url, asCover = true) {
     document.getElementById('form-cover-image-url').value = url
     const coverWrap = document.getElementById('cover-preview-wrap')
     const coverImg = document.getElementById('cover-preview-img')
+    const coverLoadError = document.getElementById('cover-load-error')
+    if (coverLoadError) coverLoadError.style.display = 'none'
     coverWrap.style.display = 'flex'
+    coverImg.onerror = () => { if (coverLoadError) coverLoadError.style.display = 'inline' }
+    coverImg.onload = () => { if (coverLoadError) coverLoadError.style.display = 'none' }
     coverImg.src = url
   }
   updatePreview()
@@ -331,12 +346,20 @@ async function init() {
     const file = e.target.files?.[0]
     e.target.value = ''
     if (!file) return
+    const content = document.getElementById('form-content').value
+    const type = document.getElementById('form-content-type').value
+    const hasExistingCover = type === 'md'
+      ? /^\s*!\[[^\]]*\]\s*\(\s*[^)\s]+\s*\)/m.test(content)
+      : /^\s*<img\s/im.test(content)
+    if (hasExistingCover && !confirm('Já existe uma imagem de capa no texto. Substituir pela nova? A referência no texto será atualizada.')) return
     const url = await uploadImage(file)
     if (url) insertImageUrl(url, true)
     else alert('Falha no upload da imagem.')
   })
   document.getElementById('btn-remove-cover').addEventListener('click', () => {
     document.getElementById('form-cover-image-url').value = ''
+    const err = document.getElementById('cover-load-error')
+    if (err) err.style.display = 'none'
     document.getElementById('cover-preview-wrap').style.display = 'none'
     document.getElementById('cover-preview-img').removeAttribute('src')
     const ta = document.getElementById('form-content')
