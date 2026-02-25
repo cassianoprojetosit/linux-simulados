@@ -7,7 +7,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 16px;
     overflow-y: auto;
 }
 .donation-modal-backdrop.open {
@@ -16,17 +16,17 @@
 .donation-modal {
     background: var(--surface, #111827);
     border: 1px solid var(--border, rgba(255,255,255,0.07));
-    border-radius: 16px;
-    max-width: 480px;
+    border-radius: 14px;
+    max-width: 380px;
     width: 100%;
-    max-height: 95vh;
+    max-height: 90vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 .donation-modal-header {
-    padding: 20px 24px;
+    padding: 14px 18px;
     border-bottom: 1px solid var(--border, rgba(255,255,255,0.07));
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@
 }
 .donation-modal-header h2 {
     font-family: 'Syne', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text, #e2e8f0);
 }
@@ -44,46 +44,46 @@
     border: none;
     color: var(--muted, #64748b);
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1;
-    padding: 0 6px;
+    padding: 0 4px;
 }
 .donation-modal-close:hover {
     color: var(--text, #e2e8f0);
 }
 .donation-modal-body {
-    padding: 24px;
+    padding: 16px 18px;
     overflow-y: auto;
     flex: 1;
 }
 .donation-intro {
     color: var(--muted, #64748b);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    line-height: 1.5;
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+    line-height: 1.45;
 }
 .donation-networks {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
 }
 .donation-network-card {
     background: var(--surface2, #1a2235);
     border: 1px solid var(--border, rgba(255,255,255,0.07));
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 12px 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 .donation-network-name {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text, #e2e8f0);
 }
 .donation-qr-wrap {
-    min-height: 160px;
+    min-height: 128px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,28 +93,31 @@
     display: block;
 }
 .donation-qr-fallback {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--muted, #64748b);
 }
 .donation-address-wrap {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
 }
 .donation-address {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--muted, #64748b);
     background: rgba(0,0,0,0.2);
     padding: 6px 10px;
     border-radius: 8px;
     word-break: break-all;
-    max-width: 220px;
+    max-width: 200px;
+}
+.donation-address-full {
+    display: none;
 }
 .donation-copy {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--accent, #00e5a0);
     background: rgba(0, 229, 160, 0.1);
@@ -132,10 +135,46 @@
     cursor: default;
 }
 .donation-wallet-link {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--accent2, #3b82f6);
     text-decoration: none;
 }
 .donation-wallet-link:hover {
     text-decoration: underline;
+}
+
+/* Mobile: sem QR, só endereços completos e botões */
+@media (max-width: 640px) {
+    .donation-modal-backdrop {
+        padding: 12px;
+        align-items: flex-start;
+        padding-top: 24px;
+    }
+    .donation-modal {
+        max-width: 100%;
+        max-height: 85vh;
+    }
+    .donation-qr-wrap {
+        display: none !important;
+        min-height: 0;
+    }
+    .donation-address-short {
+        display: none !important;
+    }
+    .donation-address-full {
+        display: block !important;
+        max-width: 100%;
+        width: 100%;
+        font-size: 0.7rem;
+        line-height: 1.4;
+        text-align: center;
+        padding: 8px 10px;
+    }
+    .donation-address-wrap {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .donation-network-card {
+        padding: 12px 10px;
+    }
 }

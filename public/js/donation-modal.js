@@ -25,7 +25,7 @@
         }
     };
 
-    const QR_SCRIPT = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+    const QR_SCRIPT = 'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js';
     const MODAL_ID = 'donation-modal-backdrop';
     const MODAL_BODY_ID = 'donation-modal-body';
 
@@ -163,7 +163,8 @@
                 '<div class="donation-network-name">' + escapeHtml(w.name) + '</div>' +
                 '<div class="donation-qr-wrap" data-address="' + escapeAttr(w.address) + '" data-network="' + key + '"></div>' +
                 '<div class="donation-address-wrap">' +
-                '  <code class="donation-address" title="' + escapeAttr(w.address) + '">' + escapeHtml(shortenAddress(w.address)) + '</code>' +
+                '  <code class="donation-address donation-address-short" title="' + escapeAttr(w.address) + '">' + escapeHtml(shortenAddress(w.address)) + '</code>' +
+                '  <code class="donation-address-full">' + escapeHtml(w.address) + '</code>' +
                 '  <button type="button" class="donation-copy" data-address="' + escapeAttr(w.address) + '" title="Copiar endereço">Copiar</button>' +
                 '</div>' +
                 (allowedScheme(w.scheme) ? '<a href="' + escapeAttr(w.scheme + w.address) + '" class="donation-wallet-link" target="_blank" rel="noopener noreferrer">Abrir na carteira</a>' : '');
@@ -260,8 +261,8 @@
                 if (window.QRCode) {
                     new window.QRCode(wrap, {
                         text: address,
-                        width: 160,
-                        height: 160
+                        width: 128,
+                        height: 128
                     });
                     wrap.dataset.qrDone = '1';
                 }
