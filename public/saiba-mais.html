@@ -73,8 +73,16 @@
 
         .faq-list { display: flex; flex-direction: column; gap: 0; }
         .faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; background: var(--surface); }
-        .faq-q { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); padding: 16px 20px; background: var(--surface2); border-bottom: 1px solid var(--border); }
+        .faq-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 16px 20px; background: var(--surface2); border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit; transition: background 0.2s; }
+        .faq-header:hover { background: rgba(255,255,255,0.05); }
+        .faq-q { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); flex: 1; }
+        .faq-toggle { flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: rgba(255,255,255,0.06); color: var(--accent); font-size: 1.25rem; line-height: 1; transition: transform 0.25s ease; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+        .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-item.open .faq-body { max-height: 520px; }
         .faq-a { font-size: 0.9rem; line-height: 1.65; color: var(--muted); padding: 16px 20px; }
+        .faq-a p { margin: 0 0 0.75em 0; }
+        .faq-a p:last-child { margin-bottom: 0; }
         .faq-a a { color: var(--accent); text-decoration: none; }
         .faq-a a:hover { text-decoration: underline; }
 
@@ -169,34 +177,90 @@
 
         <div class="section">
             <h2 class="section-title"><span></span>Perguntas frequentes</h2>
-            <div class="faq-list">
+            <div class="faq-list" id="faq-list">
                 <div class="faq-item">
-                    <div class="faq-q">O Linux Simulados oferece provas reais ou vazadas de certificação?</div>
-                    <div class="faq-a">Não. Não utilizamos, não vendemos e não incentivamos o uso de provas vazadas ou materiais piratas. Todo o conteúdo é elaborado com base em domínios públicos dos exames, documentação oficial e tutoriais de estudo, para você praticar e consolidar o conhecimento de forma ética.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+                        <span class="faq-q">O Linux Simulados oferece provas reais ou vazadas de certificação?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a1" role="region" aria-labelledby="faq-q1">
+                        <div class="faq-a">
+                            <p>Não. Não utilizamos, não vendemos e não incentivamos o uso de provas vazadas ou materiais piratas.</p>
+                            <p>Todo o conteúdo é elaborado com base em domínios públicos dos exames, documentação oficial e tutoriais de estudo, para você praticar e consolidar o conhecimento de forma ética.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">De onde vêm as questões e o conteúdo do site?</div>
-                    <div class="faq-a">As questões e os materiais são baseados nas informações públicas dos programas de certificação (como LPI, Red Hat e outras), em documentação oficial de distribuições Linux e em tutoriais e guias amplamente utilizados na comunidade. Tudo é pensado para reforçar os tópicos que realmente importam na sua jornada.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+                        <span class="faq-q">De onde vêm as questões e o conteúdo do site?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a2" role="region" aria-labelledby="faq-q2">
+                        <div class="faq-a">
+                            <p>As questões e os materiais são baseados nas informações públicas dos programas de certificação (como LPI, Red Hat e outras), em documentação oficial de distribuições Linux e em tutoriais e guias amplamente utilizados na comunidade.</p>
+                            <p>Tudo é pensado para reforçar os tópicos que realmente importam na sua jornada.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">O uso dos simulados substitui o estudo e a leitura?</div>
-                    <div class="faq-a">Não. Os simulados são uma ferramenta de apoio para fixar o que você já estudou. Recomendamos sempre ler documentação, livros e tutoriais, praticar no terminal e em ambientes reais e só então usar os simulados para testar e revisar. Quem só decora respostas não se torna um bom profissional.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+                        <span class="faq-q">O uso dos simulados substitui o estudo e a leitura?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a3" role="region" aria-labelledby="faq-q3">
+                        <div class="faq-a">
+                            <p>Não. Os simulados são uma ferramenta de apoio para fixar o que você já estudou.</p>
+                            <p>Recomendamos sempre ler documentação, livros e tutoriais, praticar no terminal e em ambientes reais e só então usar os simulados para testar e revisar. Quem só decora respostas não se torna um bom profissional.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Por que praticar com simulados ajuda na certificação?</div>
-                    <div class="faq-a">Porque simulados ajudam a identificar lacunas no seu conhecimento, a se acostumar com o formato de questões e a revisar tópicos importantes sob pressão de tempo. Eles complementam o estudo teórico e a prática no dia a dia, aumentando suas chances de sucesso no exame real.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+                        <span class="faq-q">Por que praticar com simulados ajuda na certificação?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a4" role="region" aria-labelledby="faq-q4">
+                        <div class="faq-a">
+                            <p>Porque simulados ajudam a identificar lacunas no seu conhecimento, a se acostumar com o formato de questões e a revisar tópicos importantes sob pressão de tempo.</p>
+                            <p>Eles complementam o estudo teórico e a prática no dia a dia, aumentando suas chances de sucesso no exame real.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">O Linux Simulados é oficialmente vinculado à LPI, Red Hat ou outras certificações?</div>
-                    <div class="faq-a">Não. Somos um projeto independente, focado em apoiar quem estuda para certificações Linux. Não temos vínculo oficial com LPI, Red Hat, Linux Foundation ou outras entidades. Para realizar o exame e obter o certificado, é necessário se inscrever diretamente no provedor da certificação.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+                        <span class="faq-q">O Linux Simulados é oficialmente vinculado à LPI, Red Hat ou outras certificações?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a5" role="region" aria-labelledby="faq-q5">
+                        <div class="faq-a">
+                            <p>Não. Somos um projeto independente, focado em apoiar quem estuda para certificações Linux. Não temos vínculo oficial com LPI, Red Hat, Linux Foundation ou outras entidades.</p>
+                            <p>Para realizar o exame e obter o certificado, é necessário se inscrever diretamente no provedor da certificação.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Posso usar o site para me preparar para LPIC-1, RHCSA e outras certificações?</div>
-                    <div class="faq-a">Sim. O conteúdo é organizado para cobrir temas comuns a várias certificações Linux (linha de comando, administração de sistema, redes, segurança, etc.). Use como uma ferramenta de estudo e prática, junto com o material oficial de cada certificação que você almeja.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
+                        <span class="faq-q">Posso usar o site para me preparar para LPIC-1, RHCSA e outras certificações?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a6" role="region" aria-labelledby="faq-q6">
+                        <div class="faq-a">
+                            <p>Sim. O conteúdo é organizado para cobrir temas comuns a várias certificações Linux (linha de comando, administração de sistema, redes, segurança, etc.).</p>
+                            <p>Use como uma ferramenta de estudo e prática, junto com o material oficial de cada certificação que você almeja.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Como posso entrar em contato?</div>
-                    <div class="faq-a">Para dúvidas, sugestões ou parcerias, envie um e-mail para <a href="mailto:linuxsimulados@gmail.com">linuxsimulados@gmail.com</a>. Responderemos o mais breve possível.</div>
+                    <button type="button" class="faq-header" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
+                        <span class="faq-q">Como posso entrar em contato?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-body" id="faq-a7" role="region" aria-labelledby="faq-q7">
+                        <div class="faq-a">
+                            <p>Para dúvidas, sugestões ou parcerias, envie um e-mail para <a href="mailto:linuxsimulados@gmail.com">linuxsimulados@gmail.com</a>.</p>
+                            <p>Responderemos o mais breve possível.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -222,5 +286,28 @@
     <script type="module" src="/js/newsletter-popup.js"></script>
     <script src="/js/mobile-menu.js"></script>
     <script src="/js/donation-modal.js"></script>
+    <script>
+      (function () {
+        var list = document.getElementById('faq-list')
+        if (!list) return
+        list.addEventListener('click', function (e) {
+          var header = e.target.closest('.faq-header')
+          if (!header) return
+          var item = header.closest('.faq-item')
+          var body = item && item.querySelector('.faq-body')
+          if (!item || !body) return
+          var isOpen = item.classList.contains('open')
+          list.querySelectorAll('.faq-item').forEach(function (el) {
+            el.classList.remove('open')
+            var btn = el.querySelector('.faq-header')
+            if (btn) btn.setAttribute('aria-expanded', 'false')
+          })
+          if (!isOpen) {
+            item.classList.add('open')
+            header.setAttribute('aria-expanded', 'true')
+          }
+        })
+      })()
+    </script>
 </body>
 </html>
