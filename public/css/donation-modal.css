@@ -117,9 +117,6 @@
     word-break: break-all;
     max-width: 200px;
 }
-.donation-address-full {
-    display: none;
-}
 .donation-copy {
     font-size: 0.75rem;
     font-weight: 600;
@@ -138,52 +135,58 @@
     opacity: 0.8;
     cursor: default;
 }
-.donation-wallet-link {
-    font-size: 0.75rem;
-    color: var(--accent2, #3b82f6);
-    text-decoration: none;
-}
-.donation-wallet-link:hover {
-    text-decoration: underline;
-}
-
-/* Mobile: sem QR, só endereços completos; cards em coluna de novo */
+/* Mobile: sem QR, endereço resumido em campo + Copiar (igual ao site) */
 @media (max-width: 640px) {
     .donation-modal-backdrop {
-        padding: 12px;
+        padding: 10px;
         align-items: flex-start;
-        padding-top: 24px;
+        padding-top: 16px;
     }
     .donation-modal {
         max-width: 100%;
-        max-height: 85vh;
+        max-height: 80vh;
+    }
+    .donation-modal-body {
+        padding: 12px 14px;
+    }
+    .donation-intro {
+        margin-bottom: 10px;
+        font-size: 0.78rem;
     }
     .donation-networks {
         flex-direction: column;
+        gap: 10px;
     }
     .donation-network-card {
         min-width: 0;
-        flex: 1 1 auto;
-        padding: 12px 10px;
+        flex: 0 0 auto;
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    .donation-network-name {
+        font-size: 0.9rem;
     }
     .donation-qr-wrap {
         display: none !important;
         min-height: 0;
     }
-    .donation-address-short {
-        display: none !important;
-    }
-    .donation-address-full {
-        display: block !important;
-        max-width: 100%;
-        width: 100%;
-        font-size: 0.7rem;
-        line-height: 1.4;
-        text-align: center;
-        padding: 8px 10px;
-    }
     .donation-address-wrap {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        justify-content: center;
+    }
+    .donation-address {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: 100%;
+        font-size: 0.7rem;
+        padding: 6px 8px;
+    }
+    .donation-copy {
+        flex-shrink: 0;
+        font-size: 0.7rem;
+        padding: 6px 10px;
     }
 }

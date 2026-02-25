@@ -165,11 +165,9 @@
                 '<div class="donation-network-name">' + escapeHtml(w.name) + '</div>' +
                 '<div class="donation-qr-wrap" data-address="' + escapeAttr(w.address) + '" data-network="' + key + '"></div>' +
                 '<div class="donation-address-wrap">' +
-                '  <code class="donation-address donation-address-short" title="' + escapeAttr(w.address) + '">' + escapeHtml(shortenAddress(w.address)) + '</code>' +
-                '  <code class="donation-address-full">' + escapeHtml(w.address) + '</code>' +
+                '  <code class="donation-address" title="' + escapeAttr(w.address) + '">' + escapeHtml(shortenAddress(w.address)) + '</code>' +
                 '  <button type="button" class="donation-copy" data-address="' + escapeAttr(w.address) + '" title="Copiar endereço">Copiar</button>' +
-                '</div>' +
-                (allowedScheme(w.scheme) ? '<a href="' + escapeAttr(w.scheme + w.address) + '" class="donation-wallet-link" target="_blank" rel="noopener noreferrer">Abrir na carteira</a>' : '');
+                '</div>';
             container.appendChild(card);
         });
         container.querySelectorAll('.donation-copy').forEach(function(btn) {
@@ -196,11 +194,6 @@
     function shortenAddress(addr) {
         if (!addr || addr.length < 20) return addr;
         return addr.slice(0, 10) + '…' + addr.slice(-8);
-    }
-
-    var ALLOWED_SCHEMES = { 'solana:': 1, 'bitcoin:': 1, 'ethereum:': 1 };
-    function allowedScheme(s) {
-        return s && ALLOWED_SCHEMES[s] === 1;
     }
 
     function copyToClipboard(text, buttonEl) {
