@@ -100,7 +100,7 @@ Todas exigem `Authorization: Bearer <token>` e usuário admin.
 | GET | `/admin/api/artigos/:id` | Um artigo por id. |
 | PUT | `/admin/api/artigos/:id` | Atualiza artigo. |
 | DELETE | `/admin/api/artigos/:id` | Remove artigo. |
-| POST | `/admin/api/artigos/upload` | Upload de imagem (base64 no body). Retorna URL relativa do arquivo. |
+| POST | `/admin/api/artigos/upload` | Upload de imagem (base64 no body). Se `SUPABASE_STORAGE_BUCKET_ARTIGOS` estiver definido, salva no Storage e retorna URL pública; senão retorna URL relativa em `/uploads/artigos/`. |
 
 ### Links úteis
 

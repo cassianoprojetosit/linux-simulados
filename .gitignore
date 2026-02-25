@@ -7,7 +7,14 @@ client_secret*.json
 backup/
 backup-data/
 .DS_Store
-# public/uploads/ — removido para que imagens de artigos sejam commitadas e não sumam no deploy
+# Uploads: imagens criadas no site ficam no servidor onde o app roda; não entram no Git.
+# Em deploy (ex.: Render) o filesystem é efêmero — após push/deploy as imagens do servidor somem.
+# Para capas persistirem, use Supabase Storage (SUPABASE_STORAGE_BUCKET_ARTIGOS). Aqui ignoramos
+# para não enviar imagens locais ao Git e manter o repositório limpo.
+public/uploads/artigos/*
+!public/uploads/artigos/.gitkeep
+public/uploads/links/*
+!public/uploads/links/.gitkeep
 Favicon.png
 nivel1_linux_user.json
 public/favicon_bk.png

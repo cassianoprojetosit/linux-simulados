@@ -78,6 +78,17 @@ Este documento descreve as medidas de segurança implementadas no projeto e boas
 
 ---
 
+## Validação e auditoria (checklist)
+
+- **Path traversal:** Serviço de estáticos usa `normalize` e exige que o path resolvido comece com `PUBLIC_DIR` e não contenha `..`.
+- **Upload:** Nome do arquivo gerado no servidor (UUID); nunca o nome do cliente; path de escrita validado para ficar dentro do diretório de uploads.
+- **CSP:** Scripts apenas de `'self'` e `https://cdn.jsdelivr.net`; sem `unsafe-inline` para script (lógica em arquivos externos).
+- **Redirect:** Parâmetro `redirect` aceito apenas para paths em allowlist (evita open redirect).
+- **Body JSON:** Tamanho máximo por rota; whitelist de colunas em criação/atualização.
+- **Admin:** Todas as rotas `/admin/api/*` exigem Bearer token e verificação de admin (e-mail ou role).
+
+---
+
 ## Recomendações adicionais
 
 - Manter `.env` fora do controle de versão e nunca commitar chaves ou senhas.

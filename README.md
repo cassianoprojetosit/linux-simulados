@@ -56,28 +56,30 @@ Nenhuma informação sensível (chaves, domínios reais, e-mails ou dados de usu
 │   ├── API.md                # Referência das rotas da API
 │   ├── DATA_MODEL.md         # Modelo de dados (Supabase)
 │   ├── DEPLOYMENT.md         # Deploy (ex.: Render)
-│   └── SECURITY.md           # Práticas de segurança
+│   ├── SECURITY.md           # Práticas de segurança
+│   ├── PROJECT_SPEC.md       # Especificação do projeto (escopo, funcionalidades)
+│   └── PERFORMANCE.md       # Otimização e boas práticas
 └── public/
     ├── index.html            # Página inicial
     ├── login.html, logout.html
-    ├── simulados.html, simulado-lpic1.html
+    ├── simulados.html, simulado.html, simulado-lpic1.html
     ├── progresso.html
     ├── artigos.html, artigo.html
+    ├── saiba-mais.html       # FAQ, política, contato
+    ├── css/                  # Ex.: donation-modal.css
     ├── js/                   # Módulos do frontend
-    │   ├── supabase-auth.js  # Cliente Supabase (config via /api/config)
-    │   ├── user-area.js, login.js, logout.js, require-auth.js, track-login.js
+    │   ├── supabase-auth.js, user-area.js, login.js, logout.js, require-auth.js, track-login.js
     │   ├── cards-auth.js, admin-entry.js, admin-auth.js
     │   ├── artigos-home.js, artigos-public.js, artigo-public.js
     │   ├── links-public.js
     │   ├── progresso-engine.js, progresso-data.js, progress-sync.js
-    │   ├── simulado-lpic1-engine.js
-    │   ├── admin-*.js        # Painel admin (artigos, links, questões, simulados, usuários)
-    │   ├── mobile-menu.js, newsletter-popup.js
-    │   └── hash-capture.js
+    │   ├── simulado-lpic1-engine.js, simulado-engine.js, simulados-cards.js
+    │   ├── admin-*.js        # Painel admin (artigos com import .md, links, questões, simulados, usuários)
+    │   ├── mobile-menu.js, newsletter-popup.js, donation-modal.js, faq-accordion.js
+    │   └── hash-capture.js, track-login.js
     └── admin/                # Páginas do painel admin
-        ├── index.html
-        ├── artigos.html, links.html, usuarios.html, questoes.html, simulados.html
-        └── (uploads em public/uploads/artigos e public/uploads/links)
+        ├── index.html, artigos.html, links.html, usuarios.html, questoes.html, simulados.html
+        └── (uploads em public/uploads/artigos e public/uploads/links; ou Supabase Storage)
 ```
 
 ---
@@ -131,6 +133,7 @@ Todas as variáveis são configuradas no `.env` (local) ou nas variáveis de amb
 | `ADMIN_EMAIL` | Não | Se definido, este e-mail tem acesso ao painel admin independente da tabela `users`. |
 | `ALLOWED_ORIGINS` | Não | Origens permitidas para CORS, separadas por vírgula (ex.: `https://seusite.com,https://www.seusite.com`). Se não definido, aceita localhost e `*.supabase.co`. |
 | `REDIS_URL` | Não | URL do Redis para rate limit distribuído (útil com múltiplas instâncias). Se não definido, usa rate limit em memória por instância. |
+| `SUPABASE_STORAGE_BUCKET_ARTIGOS` | Não | Nome do bucket no Supabase Storage para imagens de capa dos artigos. Se definido (com chave de serviço), uploads vão para o Storage e a URL persiste após deploy. |
 
 Detalhes e exemplos seguros estão em [.env.example](.env.example). Para deploy em produção, ver [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
@@ -140,11 +143,13 @@ Detalhes e exemplos seguros estão em [.env.example](.env.example). Para deploy 
 
 | Documento | Conteúdo |
 |-----------|----------|
+| [docs/PROJECT_SPEC.md](docs/PROJECT_SPEC.md) | **Especificação do projeto:** escopo, funcionalidades, stack e decisões técnicas. |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitetura, fluxo de autenticação, admin e dados. |
 | [docs/API.md](docs/API.md) | Listagem das rotas da API (públicas e admin), métodos e autenticação. |
 | [docs/DATA_MODEL.md](docs/DATA_MODEL.md) | Tabelas do Supabase e responsabilidades (sem dados sensíveis). |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Deploy em produção (ex.: Render), checklist de variáveis e CORS. |
 | [docs/SECURITY.md](docs/SECURITY.md) | Medidas de segurança (CORS, rate limit, headers, auth, uploads). |
+| [docs/PERFORMANCE.md](docs/PERFORMANCE.md) | Otimização, desempenho e boas práticas. |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Como contribuir com o projeto. |
 
 ---

@@ -53,7 +53,7 @@ Este documento descreve as tabelas utilizadas pela aplicação no Supabase (Post
 
 - **Propósito:** Artigos/publicações (blog ou recursos).
 - **Colunas principais (referência):** `id`, `title`, `slug`, `excerpt`, `content`, `content_type`, `author_name`, `published_at`, `is_published`, `cover_image_url`, etc.
-- **Uso:** API pública (listagem e por slug); admin (CRUD); upload de imagens em disco, URL salva no conteúdo ou em campo específico.
+- **Uso:** API pública (listagem e por slug); admin (CRUD); upload de imagens em disco ou Supabase Storage (capas), URL salva no conteúdo ou em `cover_image_url`; importação de .md (um ou vários arquivos) com frontmatter opcional.
 
 ### `useful_links`
 

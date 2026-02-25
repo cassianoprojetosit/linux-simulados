@@ -35,6 +35,7 @@ Este documento descreve a arquitetura de alto nível do Linux Simulados, os flux
   - tem e-mail igual a `ADMIN_EMAIL` (se a variável estiver definida), ou
   - possui `role = 'admin'` na tabela `public.users` (consultada com client de serviço quando disponível).
 - **Páginas que exigem login:** Simulados, progresso e página do simulado LPIC-1 redirecionam para `/login.html` com `?redirect=` permitido apenas para páginas da allowlist (evita open redirect).
+- **Páginas públicas adicionais:** Saiba mais (`/saiba-mais.html`) com texto institucional, FAQ em accordion e contato; item de menu “Comunidade” existe mas está inativo (badge “Em breve”, tooltip ao passar o mouse).
 
 ---
 
@@ -65,8 +66,10 @@ Este documento descreve a arquitetura de alto nível do Linux Simulados, os flux
 ## Upload de arquivos
 
 - **Uso:** Imagens de artigos e ícones de links, enviadas em base64 no body JSON para rotas específicas (`/admin/api/artigos/upload`, `/admin/api/links/upload`).
-- **Armazenamento:** Arquivos salvos em disco em `public/uploads/artigos/` e `public/uploads/links/` com nome gerado por UUID. Extensões permitidas: jpg, jpeg, png, webp. Tamanho máximo por imagem definido no servidor (ex.: 200 KB).
-- **Segurança:** Apenas admins; validação de extensão e verificação de que o path resolvido permanece dentro do diretório de uploads.
+- **Armazenamento:** Nome do arquivo sempre gerado no servidor (UUID + extensão), nunca o nome enviado pelo cliente. Extensões permitidas: jpg, jpeg, png, webp. Tamanho máximo por imagem definido no servidor (ex.: 200 KB).
+  - **Artigos (capas):** Se `SUPABASE_STORAGE_BUCKET_ARTIGOS` (ou `SUPABASE_STORAGE_BUCKET`) e chave de serviço estiverem definidos, o arquivo é enviado ao Supabase Storage e a URL pública é retornada (persiste após deploy). Caso contrário, salvo em disco em `public/uploads/artigos/`.
+  - **Links (ícones):** Salvos em disco em `public/uploads/links/`.
+- **Segurança:** Apenas admins; validação de extensão e verificação de que o path resolvido permanece dentro do diretório de uploads (path traversal).
 
 ---
 
