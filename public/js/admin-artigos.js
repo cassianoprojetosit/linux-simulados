@@ -245,8 +245,21 @@ async function uploadImage(file) {
 function insertImageUrl(url, asCover = true) {
   const ta = document.getElementById('form-content')
   const type = document.getElementById('form-content-type').value
-  const insert = type === 'md' ? `\n![Capa](${url})\n\n` : `\n<img src="${url}" alt="Capa do artigo" class="article-cover-img" />\n\n`
-  const text = ta.value
+  let text = ta.value
+
+  if (asCover) {
+    // Evitar duplicar capa: remove qualquer linha de imagem já existente no início do conteúdo
+    // e insere só a nova, para o nome (UUID) não mudar por acúmulo de inserções.
+    if (type === 'md') {
+      const leadingMdImages = /^(\s*!\[[^\]]*\]\s*\(\s*[^)\s]+\s*\)\s*\n?)+\s*/m
+      text = text.replace(leadingMdImages, '')
+    } else {
+      const leadingImgTags = /^(\s*<img\s[^>]*>\s*\n?)+\s*/im
+      text = text.replace(leadingImgTags, '')
+    }
+  }
+
+  const insert = type === 'md' ? `![Capa](${url})\n\n` : `\n<img src="${url}" alt="Capa do artigo" class="article-cover-img" />\n\n`
   ta.value = insert + text
   ta.focus()
   ta.setSelectionRange(insert.length, insert.length)
@@ -326,6 +339,16 @@ async function init() {
     document.getElementById('form-cover-image-url').value = ''
     document.getElementById('cover-preview-wrap').style.display = 'none'
     document.getElementById('cover-preview-img').removeAttribute('src')
+    const ta = document.getElementById('form-content')
+    const type = document.getElementById('form-content-type').value
+    let text = ta.value
+    if (type === 'md') {
+      text = text.replace(/^\s*!\[[^\]]*\]\s*\(\s*[^)\s]+\s*\)\s*\n?/, '')
+    } else {
+      text = text.replace(/^\s*<img\s[^>]*>\s*\n?/im, '')
+    }
+    ta.value = text
+    updatePreview()
   })
 
   document.getElementById('artigos-tbody').addEventListener('click', async (e) => {
