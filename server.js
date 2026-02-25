@@ -1444,6 +1444,15 @@ const server = createServer(async (req, res) => {
   const fullUrl = req.url
   const pathname = fullUrl.split('?')[0]
 
+  // Redireciono de conveniência: /DIO -> link de indicação na DIO
+  if (pathname === '/DIO' || pathname === '/dio' || pathname === '/DIO/' || pathname === '/dio/') {
+    res.writeHead(302, {
+      Location: 'https://www.dio.me/sign-up?ref=0D7F0654A6D048B59C5026A70D5E8F45',
+      ...SECURITY_HEADERS
+    })
+    return res.end()
+  }
+
   // Rotas da API (inclui /admin/api/*): usar URL completa para preservar query string
   if (pathname.startsWith('/api/') || pathname.startsWith('/admin/api/')) {
     return handleAPI(req, res, fullUrl)
