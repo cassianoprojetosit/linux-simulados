@@ -116,6 +116,8 @@
     var _lastDonationTrigger = null;
     function openModal(ev) {
         if (ev && ev.currentTarget) _lastDonationTrigger = ev.currentTarget;
+        var mobileOverlay = document.getElementById('mobile-menu-overlay');
+        if (mobileOverlay) mobileOverlay.classList.remove('open');
         const modal = getModal();
         const body = document.getElementById(MODAL_BODY_ID);
         const networksEl = body && body.querySelector('.donation-networks');

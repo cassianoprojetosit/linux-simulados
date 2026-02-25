@@ -3,7 +3,7 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 300;
+    z-index: 500;
     display: none;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@
     background: var(--surface, #111827);
     border: 1px solid var(--border, rgba(255,255,255,0.07));
     border-radius: 14px;
-    max-width: 380px;
+    max-width: 520px;
     width: 100%;
     max-height: 90vh;
     overflow: hidden;
@@ -64,8 +64,10 @@
 }
 .donation-networks {
     display: flex;
-    flex-direction: column;
-    gap: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
 }
 .donation-network-card {
     background: var(--surface2, #1a2235);
@@ -76,6 +78,8 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    min-width: 140px;
+    flex: 1 1 140px;
 }
 .donation-network-name {
     font-weight: 600;
@@ -143,7 +147,7 @@
     text-decoration: underline;
 }
 
-/* Mobile: sem QR, só endereços completos e botões */
+/* Mobile: sem QR, só endereços completos; cards em coluna de novo */
 @media (max-width: 640px) {
     .donation-modal-backdrop {
         padding: 12px;
@@ -153,6 +157,14 @@
     .donation-modal {
         max-width: 100%;
         max-height: 85vh;
+    }
+    .donation-networks {
+        flex-direction: column;
+    }
+    .donation-network-card {
+        min-width: 0;
+        flex: 1 1 auto;
+        padding: 12px 10px;
     }
     .donation-qr-wrap {
         display: none !important;
@@ -173,8 +185,5 @@
     .donation-address-wrap {
         flex-direction: column;
         align-items: stretch;
-    }
-    .donation-network-card {
-        padding: 12px 10px;
     }
 }
