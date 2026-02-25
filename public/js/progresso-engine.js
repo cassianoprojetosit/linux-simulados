@@ -282,7 +282,7 @@
                 icon: '🔥',
                 title: 'Sequência de ' + streak + ' dia' + (streak > 1 ? 's' : '') + '!',
                 desc: 'Continue assim! A consistência é o principal fator de sucesso em certificações.',
-                action: { label: 'Manter a sequência', href: 'simulado-lpic1.html' }
+                action: { label: 'Manter a sequência', href: 'simulados.html' }
             });
         }
         var lastSession = sessions[sessions.length - 1];
