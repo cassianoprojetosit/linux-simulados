@@ -1,0 +1,1302 @@
+[
+  {
+    "type": "multiple",
+    "question": "A syscall 'clone()' com flag CLONE_VM faz com que o processo filho:",
+    "options": [
+      "Execute em um novo espaço de endereçamento virtual isolado",
+      "Compartilhe o mesmo espaço de endereçamento virtual do pai (sem cópia)",
+      "Execute com memória bloqueada (mlock) automaticamente",
+      "Herde apenas as páginas read-only do pai via COW"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "É exatamente o que threads fazem — compartilham o mesmo VAS. Diferente de fork() que usa COW."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a diferença entre CLONE_THREAD e CLONE_VM ao usar clone()?",
+    "options": [
+      "CLONE_THREAD implica CLONE_VM, além de compartilhar thread group, signal handlers e file descriptors",
+      "CLONE_VM apenas copia a tabela de páginas; CLONE_THREAD cria uma thread POSIX completa",
+      "CLONE_THREAD é para user threads; CLONE_VM é para kernel threads",
+      "Não há diferença funcional entre as duas flags"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "Criar uma thread POSIX via pthread_create usa clone() com CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD."
+  },
+  {
+    "type": "multiple",
+    "question": "O que acontece com o saved set-user-ID (SSUID) de um processo ao chamar execve() em um executável com bit setUID ativado?",
+    "options": [
+      "O SSUID é zerado por segurança",
+      "O effective UID é copiado para o SSUID após a mudança pelo setUID bit",
+      "O SSUID permanece igual ao do processo pai",
+      "O SSUID é definido como o UID real do usuário que executa"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "O SSUID permite que o processo voluntariamente abandone e recupere privilégios via setuid()."
+  },
+  {
+    "type": "multiple",
+    "question": "Em qual situação o bit setUID de um executável é IGNORADO pelo kernel ao executar via execve()?",
+    "options": [
+      "Quando o arquivo está em /tmp",
+      "Quando o processo chamador usa ptrace (está sendo debugado), ou o filesystem foi montado com nosuid",
+      "Quando o effective UID do chamador já é 0",
+      "Quando o arquivo tem mais de 100MB"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Também ignorado se no_new_privs está ativo (prctl PR_SET_NO_NEW_PRIVS)."
+  },
+  {
+    "type": "multiple",
+    "question": "O que retorna a syscall mmap() quando o parâmetro addr é NULL?",
+    "options": [
+      "Sempre retorna NULL indicando falha",
+      "O kernel escolhe o endereço alinhado à página; retorna o endereço base do mapeamento criado",
+      "Retorna o endereço 0x0 (início do espaço de endereçamento)",
+      "Retorna (void*)-1 como indicador de auto-alocação"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "Passar NULL é a forma portável de criar um mapeamento — deixa o kernel decidir onde alocar."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual a diferença entre MAP_SHARED e MAP_PRIVATE em mmap()?",
+    "options": [
+      "MAP_SHARED permite leitura; MAP_PRIVATE permite leitura e escrita",
+      "MAP_SHARED: modificações são visíveis a outros processos e refletem no arquivo; MAP_PRIVATE: copy-on-write, modificações são locais",
+      "MAP_SHARED usa memória física; MAP_PRIVATE usa swap",
+      "MAP_SHARED só funciona com arquivos; MAP_PRIVATE só com memória anônima"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "MAP_SHARED é usado para IPC via shared memory e para atualizações atômicas de arquivos."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual proteção de memória (PROT_*) deve ser combinada para mapear memória executável, como JIT compilers fazem?",
+    "options": [
+      "PROT_READ",
+      "PROT_READ|PROT_WRITE|PROT_EXEC",
+      "PROT_EXEC",
+      "PROT_READ|PROT_EXEC"
+    ],
+    "correct": 3,
+    "difficulty": "hard",
+    "hint": "W^X (write XOR execute) é uma política de segurança que proíbe PROT_WRITE|PROT_EXEC simultaneamente. JITs geralmente mapeiam write, escrevem código, depois mprotect para exec."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'demand paging' e como o mmap() o utiliza?",
+    "options": [
+      "Paginação sob demanda: páginas mapeadas só são alocadas fisicamente quando acessadas pela primeira vez",
+      "Uma técnica de leitura antecipada (readahead) de páginas do disco",
+      "O mecanismo de swapping de páginas de memória para disco",
+      "A compressão de páginas inativas para economizar RAM"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "Por isso mmap() de um arquivo grande é rápido — não lê o arquivo todo; apenas configura mapeamentos."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é sigaction() e por que é preferível a signal() para instalação de handlers?",
+    "options": [
+      "sigaction é mais rápido; signal é mais preciso",
+      "sigaction permite controle preciso sobre o comportamento do sinal (mask, flags como SA_RESTART), enquanto signal() tem comportamento não-portável entre plataformas",
+      "signal() é o padrão POSIX; sigaction é extensão GNU",
+      "Não há diferença prática; são intercambiáveis"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "SA_RESTART reinicia syscalls interrompidas automaticamente. SA_SIGINFO passa info adicional ao handler."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'signal mask' (sigmask) de uma thread e como ela difere da disposição do sinal?",
+    "options": [
+      "São a mesma coisa; mask e disposição são sinônimos",
+      "A disposição define o QUE acontece quando o sinal é entregue; a máscara define QUAIS sinais estão bloqueados (pendentes) para aquela thread específica",
+      "A máscara é global para o processo; a disposição é por thread",
+      "A máscara afeta apenas sinais em tempo real; a disposição afeta sinais padrão"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "pthread_sigmask() controla a máscara por thread. sigprocmask() afeta a thread chamadora."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual syscall permite que um processo receba notificações de sinais via file descriptor (integrável com epoll)?",
+    "options": [
+      "signalfd(2)",
+      "sigfd(2)",
+      "sigpoll(2)",
+      "sigevent(2)"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "signalfd() permite integrar tratamento de sinais no loop de eventos sem handlers assíncronos."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a vantagem do POSIX shared memory (shm_open) em relação ao System V shared memory (shmget)?",
+    "options": [
+      "POSIX é mais rápido para grandes volumes de dados",
+      "POSIX usa uma API mais limpa orientada a file descriptors, compatível com mmap(); System V tem API mais complexa e legada",
+      "System V é mais portável entre UNIX; POSIX é apenas Linux",
+      "Não há diferença de performance ou API"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "shm_open() + mmap() vs shmget() + shmat(). Ambos criam memória compartilhada, mas com APIs muito diferentes."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é um 'futex' (fast userspace mutex) e qual sua principal característica de performance?",
+    "options": [
+      "Um mutex implementado inteiramente em user space sem envolver o kernel",
+      "Um mecanismo de sincronização que evita chamadas de sistema quando não há contention — entrando no kernel apenas quando necessário",
+      "Um spinlock otimizado para CPUs multicore",
+      "Uma implementação de semáforo baseada em memória compartilhada"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "pthreads usa futex internamente. A syscall futex(2) é o mecanismo de baixo nível."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual a diferença entre pipes anônimos (pipe(2)) e FIFOs (named pipes, mkfifo(3))?",
+    "options": [
+      "Pipes são bidirecionais; FIFOs são unidirecionais",
+      "FIFOs têm um nome no filesystem e permitem comunicação entre processos não relacionados; pipes só funcionam entre processos com relação pai-filho",
+      "Pipes são mais rápidos; FIFOs têm garantias de entrega",
+      "Não há diferença funcional; apenas a API de criação difere"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "FIFO = First In First Out. 'mkfifo /tmp/meu_fifo' cria um arquivo especial tipo 'p'."
+  },
+  {
+    "type": "multiple",
+    "question": "A syscall 'pipe(2)' cria um pipe unidirecional. Em um padrão fork+pipe para comunicação pai-filho, qual é a prática correta?",
+    "options": [
+      "Ambos usam ambos os ends (read e write) do pipe simultaneamente",
+      "O pai fecha o end de leitura e escreve; o filho fecha o end de escrita e lê (ou vice-versa)",
+      "O kernel gerencia automaticamente qual lado cada processo usa",
+      "O pai usa pipefd[0] para escrever; o filho usa pipefd[1] para ler"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Fechar os ends não usados é essencial para que EOF seja detectado corretamente."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual namespace isola a visão dos processos — cada namespace PID tem seu próprio PID 1?",
+    "options": [
+      "NET namespace",
+      "MNT namespace",
+      "PID namespace",
+      "UTS namespace"
+    ],
+    "correct": 2,
+    "difficulty": "medium",
+    "hint": "Containers Docker usam PID namespace para que o processo principal do container seja PID 1 dentro dele."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual syscall cria um novo namespace e coloca o processo chamador nele?",
+    "options": [
+      "namespace(2)",
+      "clone(2) com flags CLONE_NEW* ou unshare(2)",
+      "setns(2)",
+      "pivot_root(2)"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "unshare(2) cria novo namespace para o processo atual. setns(2) entra em namespace existente."
+  },
+  {
+    "type": "multiple",
+    "question": "O que faz a syscall 'pivot_root()' no contexto de containers?",
+    "options": [
+      "Muda o diretório atual para /",
+      "Troca o filesystem raiz atual por um novo, usado para implementar o isolamento de filesystem em containers",
+      "Cria um novo mount namespace",
+      "Monta o filesystem de overlay"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Docker usa pivot_root() (ou chroot()) ao criar containers para isolar o filesystem."
+  },
+  {
+    "type": "multiple",
+    "question": "O que são 'capabilities' no Linux e qual problema elas resolvem?",
+    "options": [
+      "Habilidades extras de processos para processar dados mais rapidamente",
+      "Divisão dos privilégios de root em unidades distintas e granulares, permitindo que processos tenham apenas os privilégios necessários",
+      "Um sistema de controle de acesso baseado em roles (RBAC)",
+      "Extensões do sistema de permissões UNIX para ACLs"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "Ex: CAP_NET_BIND_SERVICE permite bind em portas <1024 sem ser root. CAP_SYS_ADMIN é a mais poderosa."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual capability permite que um processo faça bind em portas privilegiadas (abaixo de 1024) sem ser root?",
+    "options": [
+      "CAP_NET_ADMIN",
+      "CAP_NET_RAW",
+      "CAP_NET_BIND_SERVICE",
+      "CAP_SYS_ADMIN"
+    ],
+    "correct": 2,
+    "difficulty": "medium",
+    "hint": "Servidores web podem ser iniciados sem root usando esta capability específica."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'seccomp' (secure computing mode) e qual seu uso principal?",
+    "options": [
+      "Um modo de compilação segura que remove código vulnerável",
+      "Um filtro de syscalls que restringe quais chamadas de sistema um processo pode fazer — base do sandboxing",
+      "Um sistema de verificação de integridade de código",
+      "Um modo de execução isolada similar a uma VM"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Docker, Chrome e Firefox usam seccomp para sandboxing. Baseado em BPF para filtros eficientes."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a vantagem de epoll sobre select/poll para servidores com muitas conexões simultâneas?",
+    "options": [
+      "epoll suporta UDP; select/poll não suportam",
+      "epoll tem complexidade O(1) para eventos prontos; select/poll varrem O(n) todos os fds a cada chamada",
+      "epoll funciona com sockets; select funciona com arquivos",
+      "epoll é mais simples de programar"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "epoll mantém uma lista de interesse no kernel; select/poll recebem e repassam toda a lista a cada chamada."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'thundering herd' e como EPOLLONESHOT ou EPOLLEXCLUSIVE resolvem o problema?",
+    "options": [
+      "Um ataque DDoS de muitas conexões simultâneas; resolvido com rate limiting",
+      "Múltiplas threads acordam quando um evento ocorre num fd compartilhado; EPOLLONESHOT desabilita o fd após evento; EPOLLEXCLUSIVE acorda apenas uma thread",
+      "Um problema de fragmentação de memória; resolvido com defragmentação",
+      "A saturação do buffer de rede; resolvido com SO_REUSEPORT"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Arquiteturas como nginx e Redis usam técnicas específicas para evitar thundering herd."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a diferença entre edge-triggered (EPOLLET) e level-triggered no epoll?",
+    "options": [
+      "ET é para leitura; LT é para escrita",
+      "LT notifica enquanto dados estão disponíveis; ET notifica apenas na transição (mudança de estado)",
+      "ET é mais lento mas confiável; LT é mais rápido",
+      "LT requer sockets bloqueantes; ET requer não-bloqueantes"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Com ET, se você não ler todos os dados disponíveis, não receberá nova notificação. Use sempre com O_NONBLOCK."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é uma 'race condition' e qual mecanismo de sincronização POSIX previne acesso simultâneo a dados compartilhados?",
+    "options": [
+      "Condição de corrida entre I/O de disco e rede; prevenida com select()",
+      "Acesso concurrent não coordenado a dados compartilhados levando a resultados imprevisíveis; prevenida com pthread_mutex_lock/unlock",
+      "Um bug de performance em loops; prevenido com compiler flags",
+      "Conflito entre threads e sinais; prevenido com sigprocmask"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "Mutexes garantem exclusão mútua. Condição de corrida é o problema mais comum em programação concorrente."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é um 'deadlock' em programação multithreaded e como pthread_mutex_trylock ajuda a diagnósticá-lo?",
+    "options": [
+      "Um thread que nunca termina; trylock detecta loops infinitos",
+      "Duas ou mais threads bloqueadas esperando recursos uma da outra; trylock tenta lock sem bloquear, retornando EBUSY se ocupado",
+      "Um mutex corrompido; trylock verifica a integridade",
+      "Um thread zombie; trylock libera recursos presos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Hierarquia de locks e timeout são estratégias comuns para prevenir deadlocks."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual flag em pthread_mutexattr_settype() faz com que uma thread que já possui o mutex consiga adquiri-lo novamente sem deadlock?",
+    "options": [
+      "PTHREAD_MUTEX_NORMAL",
+      "PTHREAD_MUTEX_ERRORCHECK",
+      "PTHREAD_MUTEX_RECURSIVE",
+      "PTHREAD_MUTEX_ROBUST"
+    ],
+    "correct": 2,
+    "difficulty": "hard",
+    "hint": "Mutex recursivo conta o número de locks; deve ser unlocked o mesmo número de vezes."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é uma 'condition variable' (pthread_cond_t) e quando é usada?",
+    "options": [
+      "Uma variável que muda de valor com o tempo",
+      "Um mecanismo para threads aguardarem até que uma condição se torne verdadeira, liberando o mutex enquanto esperam",
+      "Uma variável compartilhada entre processos via mmap",
+      "Um contador atômico para sincronização lock-free"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Padrão produtor-consumidor: consumidor espera em cond_wait; produtor sinaliza com cond_signal."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual opção de socket (SO_REUSEPORT) permite que múltiplos processos façam bind na mesma porta?",
+    "options": [
+      "SO_REUSEADDR",
+      "SO_REUSEPORT",
+      "SO_KEEPALIVE",
+      "SO_LINGER"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Permite que múltiplos workers (nginx, envoy) aceitem conexões na mesma porta com balanceamento pelo kernel."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é TCP_NODELAY e quando deve ser usado?",
+    "options": [
+      "Desabilita o algoritmo de Nagle, enviando dados imediatamente sem aguardar mais dados para batch",
+      "Aumenta o delay entre retransmissões para redes congestionadas",
+      "Define o timeout de conexão TCP",
+      "Habilita buffers de tamanho dinâmico no TCP"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "Algoritmo de Nagle agrupa pacotes pequenos. TCP_NODELAY é essencial para protocolos de baixa latência."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual address family de socket é usada para comunicação de baixo nível com acesso direto ao cabeçalho IP (raw sockets)?",
+    "options": [
+      "AF_PACKET",
+      "AF_RAW",
+      "AF_INET com SOCK_RAW",
+      "AF_UNIX"
+    ],
+    "correct": 2,
+    "difficulty": "hard",
+    "hint": "Requer CAP_NET_RAW. Usado por ping, traceroute, e ferramentas de análise de rede."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é o 'Nagle algorithm' no TCP e qual seu impacto em aplicações interativas?",
+    "options": [
+      "Um algoritmo de controle de congestionamento que reduz retransmissões",
+      "Agrupa pequenos pacotes de saída para reduzir overhead de cabeçalhos TCP/IP — pode adicionar latência em apps interativas",
+      "Um algoritmo de handshake para estabelecer conexões mais rápido",
+      "Um mecanismo de ordenação de pacotes TCP fora de ordem"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Telnet, SSH e jogos online desabilitam Nagle para responsividade. Bom para throughput, ruim para latência."
+  },
+  {
+    "type": "multiple",
+    "question": "O que mede o 'user CPU time' reportado pelo time(1) (campo user:)?",
+    "options": [
+      "O tempo total do processo incluindo I/O",
+      "O tempo gasto executando código em modo usuário (sem contar syscalls nem espera)",
+      "O tempo de CPU consumido pelo processo mais seus filhos",
+      "O tempo de wall clock dividido pelo número de CPUs"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "sys = tempo em modo kernel (syscalls). real = wall clock. user+sys ≤ real (pode haver I/O wait)."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual syscall é usada pelo perf e outros profilers para amostragem de performance do kernel e userspace?",
+    "options": [
+      "ptrace(2)",
+      "perf_event_open(2)",
+      "getsamplerinfo(2)",
+      "kprobes(2)"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "perf_event_open() requer CAP_PERFMON (desde Linux 5.8) ou /proc/sys/kernel/perf_event_paranoid baixo."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'copy-on-write' (COW) e como o fork() o utiliza para eficiência?",
+    "options": [
+      "Uma técnica de cópia de arquivos na escrita em disco",
+      "Após fork(), pai e filho compartilham as mesmas páginas físicas de memória marcadas como read-only; uma cópia é feita apenas quando uma das partes tenta escrever",
+      "Um mecanismo de journaling para sistemas de arquivos",
+      "Uma técnica de cache onde dados são copiados antes de serem modificados"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "Por isso fork() seguido de exec() (padrão em shells) é eficiente — o exec() substitui antes de qualquer COW."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual arquivo /proc mostra o mapa de memória virtual de um processo com permissões e backing store?",
+    "options": [
+      "/proc/pid/mem",
+      "/proc/pid/maps",
+      "/proc/pid/vmstat",
+      "/proc/pid/pmap"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "'pmap -x PID' exibe informação similar de forma mais legível. Essencial para análise de memória."
+  },
+  {
+    "type": "multiple",
+    "question": "Em cgroups v2, qual arquivo dentro de um cgroup define o limite máximo de memória para os processos nele?",
+    "options": [
+      "memory.limit",
+      "memory.max",
+      "mem.limit_in_bytes",
+      "cgroup.memory.max"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Em cgroups v1 era memory.limit_in_bytes. v2 unificou a hierarquia e renomeou os arquivos."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a relação entre cgroups e a syscall clone() ao criar containers?",
+    "options": [
+      "clone() cria cgroups automaticamente",
+      "Os processos criados com clone() podem ser adicionados a cgroups via escrita em /sys/fs/cgroup/cgroup.procs para limitar recursos",
+      "cgroups substituem a necessidade de clone() em containers modernos",
+      "clone() e cgroups são mecanismos alternativos para o mesmo objetivo"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Namespaces (clone flags) proveem isolamento; cgroups proveem limitação de recursos. Juntos formam a base dos containers."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é o 'OOM Killer' (Out of Memory Killer) do kernel Linux?",
+    "options": [
+      "Um monitor que alerta quando memória está baixa",
+      "Um mecanismo do kernel que seleciona e mata processos quando a memória se esgota, baseado em uma pontuação (oom_score)",
+      "Um daemon que comprime páginas inativas para liberar RAM",
+      "Um processo que gerencia o swap"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "'cat /proc/PID/oom_score_adj' mostra o ajuste de pontuação. -1000 protege o processo do OOM Killer."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'TLB (Translation Lookaside Buffer)' e por que ele impacta a performance de fork()?",
+    "options": [
+      "Um buffer de transferência de arquivos grandes; fork() o usa para copiar arquivos eficientemente",
+      "Uma cache da CPU que traduz endereços virtuais para físicos; fork() requer flush do TLB, causando overhead de performance",
+      "Um buffer de log do kernel; fork() gera entradas no TLB",
+      "Um mecanismo de prefetch de memória; fork() desabilita o TLB para copiar memória"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "TLB flush é um dos custos 'ocultos' do fork() em sistemas com muito mapeamento de memória."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é o 'Completely Fair Scheduler' (CFS) do kernel Linux?",
+    "options": [
+      "Um scheduler FIFO para processos de tempo real",
+      "O scheduler padrão do Linux para processos normais, baseado em tempo virtual de execução (vruntime) para garantir fairness",
+      "Um scheduler de I/O para discos",
+      "Um scheduler de rede para pacotes"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "Usa uma red-black tree ordenada por vruntime. Processos com menor vruntime são escalonados primeiro."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual política de scheduling é adequada para processos de tempo real com requisitos de latência determinística?",
+    "options": [
+      "SCHED_OTHER (padrão CFS)",
+      "SCHED_FIFO ou SCHED_RR (políticas de tempo real POSIX)",
+      "SCHED_BATCH (para processamento batch)",
+      "SCHED_IDLE (para prioridade mínima)"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "SCHED_FIFO: executa até bloquear voluntariamente. SCHED_RR: preemptível por time quantum. Ambos requerem CAP_SYS_NICE."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é eBPF (extended Berkeley Packet Filter) e qual sua principal evolução em relação ao BPF clássico?",
+    "options": [
+      "Uma versão do BPF para redes 100GbE",
+      "eBPF permite programas verificados em bytecode rodarem seguramente no kernel em vários pontos de hook — não apenas filtro de pacotes",
+      "Uma versão do BPF para ambientes embarcados",
+      "Uma API para acesso direto ao hardware de rede"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Ferramentas modernas de observabilidade como Cilium, Falco, bpftrace e BCC usam eBPF."
+  },
+  {
+    "type": "multiple",
+    "question": "A syscall bpf(2) com comando BPF_PROG_LOAD realiza qual operação?",
+    "options": [
+      "Carrega e executa um programa BPF imediatamente",
+      "Carrega um programa BPF bytecode no kernel, verificando sua segurança, e retorna um file descriptor",
+      "Faz um dump do programa BPF para userspace",
+      "Instala um filtro BPF em uma interface de rede"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "O verifier do kernel garante que o programa não vai causar crash ou loop infinito."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é io_uring e qual problema ele resolve em relação a epoll + read/write?",
+    "options": [
+      "Uma fila de I/O para discos NVMe; resolve latência de hardware",
+      "Uma interface de I/O assíncrono de alta performance baseada em ring buffers compartilhados que elimina syscalls para operações comuns",
+      "Um substituto para epoll em sistemas com alta taxa de eventos",
+      "Um scheduler de I/O que prioriza operações de rede"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "io_uring pode reduzir syscalls a zero em operações de alta frequência via submission/completion rings compartilhados."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'LD_PRELOAD' e como pode ser usado tanto para debugging quanto para ataques?",
+    "options": [
+      "Uma variável que define onde buscar bibliotecas; útil apenas para desenvolvimento",
+      "Permite carregar uma biblioteca antes de qualquer outra, sobrescrevendo funções — pode ser usada para interceptar malloc(), fopen() etc. mas é ignorada em processos setuid",
+      "Define o linker dinâmico a usar; não pode ser explorada por questões de segurança",
+      "Uma variável de cache do dynamic linker; afeta apenas performance"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Ferramenta de debug legítima. Por segurança, ld.so ignora LD_PRELOAD em binários setuid/setgid."
+  },
+  {
+    "type": "multiple",
+    "question": "O token '$ORIGIN' em DT_RPATH de um ELF expande para qual valor em tempo de execução?",
+    "options": [
+      "O diretório home do usuário",
+      "O diretório de trabalho atual",
+      "O diretório que contém o binário ou biblioteca que referencia $ORIGIN",
+      "O diretório /usr/lib do sistema"
+    ],
+    "correct": 2,
+    "difficulty": "hard",
+    "hint": "Permite que aplicações portáveis encontrem suas próprias bibliotecas relativamente ao executável."
+  },
+  {
+    "type": "multiple",
+    "question": "O que faz dlopen() com o flag RTLD_LAZY?",
+    "options": [
+      "Carrega a biblioteca e resolve todos os símbolos imediatamente",
+      "Carrega a biblioteca mas adia a resolução de símbolos até o primeiro uso",
+      "Carrega a biblioteca em modo somente leitura",
+      "Carrega a biblioteca de forma assíncrona em background"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "RTLD_NOW resolve todos os símbolos na carga — garante falha imediata se um símbolo não existir."
+  },
+  {
+    "type": "multiple",
+    "question": "O que o arquivo /proc/pid/smaps exibe além do que /proc/pid/maps mostra?",
+    "options": [
+      "Apenas os segmentos de memória compartilhada",
+      "Estatísticas detalhadas de RSS, PSS (proportional shared size), páginas sujas e privadas para cada região de memória mapeada",
+      "Os sockets abertos pelo processo",
+      "O mapa de inodes dos arquivos abertos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "PSS é a métrica mais justa para medir uso de memória de processos que compartilham bibliotecas."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é /proc/sys/kernel/core_pattern e como ele pode afetar análise de crashes?",
+    "options": [
+      "Define o padrão de nome dos arquivos de core dump gerados quando um processo termina com falha",
+      "Define o padrão de log do kernel para mensagens de panic",
+      "Configura o scheduler de processos do kernel",
+      "Define quais syscalls geram logs de auditoria"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "Pode redirecionar core dumps para programas (como systemd-coredump) usando o prefixo '|'."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'ASLR' (Address Space Layout Randomization) e qual syscall pode desabilitá-lo para um processo?",
+    "options": [
+      "Um mecanismo de criptografia de memória; desabilitado por mlock()",
+      "Randomização dos endereços de carregamento de código, heap e stack para dificultar exploits; desabilitado via prctl(PR_SET_MM) ou personality(ADDR_NO_RANDOMIZE)",
+      "Um sistema de detecção de buffer overflow; desabilitado por seccomp",
+      "Um mecanismo de compartilhamento de memória; desabilitado por mprotect()"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "'echo 0 > /proc/sys/kernel/randomize_va_space' desabilita globalmente (apenas para debugging!)."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a diferença entre DAC (Discretionary Access Control) e MAC (Mandatory Access Control) no Linux?",
+    "options": [
+      "DAC é para arquivos; MAC é para processos",
+      "DAC permite que donos de recursos controlem acesso (permissões UNIX padrão); MAC impõe políticas de sistema que não podem ser sobrescritas pelo dono (SELinux, AppArmor)",
+      "DAC é mais seguro; MAC é mais flexível",
+      "DAC é uma extensão de MAC para usuários comuns"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Com MAC, mesmo o root está sujeito às políticas. Um processo root com SELinux pode ser impedido de acessar arquivos."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'Landlock' introduzido no Linux 5.13?",
+    "options": [
+      "Um mecanismo de kernel para lockdown de chamadas de sistema",
+      "Um framework de sandboxing de filesystem baseado em LSM que permite processos sem privilégios restringirem seu próprio acesso ao filesystem",
+      "Um tipo de lock de memória similar ao mlock()",
+      "Um mecanismo de controle de acesso para dispositivos de bloco"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Landlock(7) permite que aplicações implementem confinamento sem precisar de privilégios especiais."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual syscall usa o ptrace para inspecionar e controlar a execução de outro processo?",
+    "options": [
+      "inspect(2)",
+      "debug(2)",
+      "ptrace(2)",
+      "trace(2)"
+    ],
+    "correct": 2,
+    "difficulty": "medium",
+    "hint": "GDB, strace e ltrace usam ptrace internamente. Um processo pode fazer ptrace em um filho ou em outro processo com permissão."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'core dump' e qual configuração determina se ele é gerado?",
+    "options": [
+      "Um dump da memória do kernel após panic; configurado em /proc/sys/kernel/panic_on_oops",
+      "Uma imagem da memória de um processo no momento do crash; controlado pelo rlimit RLIMIT_CORE e /proc/sys/kernel/core_pattern",
+      "Um dump dos logs do sistema; configurado no rsyslog",
+      "Uma cópia do filesystem raiz; configurado no initramfs"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "'ulimit -c unlimited' habilita core dumps. 'ulimit -c 0' desabilita."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'overlay filesystem' e como o Docker o usa?",
+    "options": [
+      "Um filesystem que sobrepõe dois discos físicos para redundância",
+      "Um filesystem que combina múltiplas camadas (lowerdir somente-leitura + upperdir de escrita) em uma visão unificada — base das camadas de imagens Docker",
+      "Um filesystem de rede que sobrepõe múltiplos servidores NFS",
+      "Um filesystem de journaling que usa uma camada extra para transações"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Docker image layers = lowerdirs somente-leitura. Container layer = upperdir. Mudanças ficam no upperdir via COW."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a vantagem do sistema de arquivos XFS em relação ao ext4 para workloads de alto throughput?",
+    "options": [
+      "XFS usa menos espaço em disco",
+      "XFS é melhor para metadados intensivos (muitos arquivos pequenos), paralização de I/O e arquivos grandes; ext4 é mais adequado para uso geral",
+      "XFS tem journaling mais rápido para escritas pequenas",
+      "XFS suporta namespaces de arquivo; ext4 não suporta"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "XFS é o filesystem padrão no RHEL. Não suporta shrink de filesystem (apenas grow)."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'FUSE' (Filesystem in Userspace) e qual sua principal limitação?",
+    "options": [
+      "Um mecanismo de filesystems criptografados; limitação é performance de criptografia",
+      "Permite implementar filesystems em código de usuário sem patches no kernel; limitação é overhead de context switching entre kernel e userspace",
+      "Um filesystem para dispositivos USB; limitação é suporte a formatos legados",
+      "Um filesystem distribuído; limitação é latência de rede"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "SSHFS, GlusterFS e S3FS usam FUSE. Context switches adicionam overhead vs filesystems no kernel."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'netfilter' no kernel Linux e qual sua relação com iptables/nftables?",
+    "options": [
+      "Um analisador de protocolo de rede; iptables é sua interface CLI",
+      "Um framework no kernel para filtragem, NAT e manipulação de pacotes; iptables e nftables são interfaces de userspace para configurá-lo",
+      "Um driver de interface de rede; iptables são as regras de roteamento",
+      "Um protocolo de rede virtual; nftables é sua implementação moderna"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "nftables substituiu iptables como interface preferida desde o kernel 3.13. Ambos usam netfilter."
+  },
+  {
+    "type": "multiple",
+    "question": "O que faz a opção de socket SO_KEEPALIVE?",
+    "options": [
+      "Mantém o socket aberto indefinidamente mesmo após o processo encerrar",
+      "Habilita envio periódico de pacotes keepalive TCP para detectar conexões mortas",
+      "Define o timeout de inatividade do socket",
+      "Desabilita o Nagle algorithm para keepalives"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "hint": "Importante para detectar peers que desapareceram sem enviar FIN. Configurável via /proc/sys/net/ipv4/tcp_keepalive_*."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é AF_NETLINK e para que é usado?",
+    "options": [
+      "Um protocolo de rede para comunicação entre containers",
+      "Uma interface kernel-userspace via sockets para configurar networking, roteamento e regras de firewall (usado por ip, ss, iptables)",
+      "Um tipo de socket para comunicação Unix local mais rápido que AF_UNIX",
+      "Uma implementação de sockets sem buffer para latência mínima"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "iproute2 (ip, ss, tc) usa AF_NETLINK para comunicar com o kernel. rtnetlink(7) para roteamento."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'mlockall(MCL_CURRENT|MCL_FUTURE)' e por que aplicações de tempo real o usam?",
+    "options": [
+      "Cria um lock de arquivo para acesso exclusivo",
+      "Bloqueia todas as páginas de memória do processo na RAM, evitando page faults causados por swapping — crítico para latência determinística",
+      "Trava a versão atual da biblioteca carregada impedindo atualizações",
+      "Ativa modo de memória compartilhada bloqueada entre processos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Page faults em código crítico podem causar latências de ms. mlockall() elimina esse risco."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é o propósito de 'CPU pinning' (sched_setaffinity) em aplicações de alto desempenho?",
+    "options": [
+      "Aumentar a prioridade de um processo no scheduler",
+      "Fixar um processo em um núcleo CPU específico, melhorando cache locality e eliminando latência de migração entre CPUs",
+      "Reservar CPUs exclusivamente para o kernel",
+      "Distribuir threads de um processo em múltiplos NUMA nodes"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "numactl e taskset são ferramentas de usuário. sched_setaffinity(2) é a syscall direta."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é o Linux Audit subsystem (auditd) e como ele difere do syslog?",
+    "options": [
+      "auditd é mais lento que syslog; syslog é preferido para segurança",
+      "auditd registra eventos de segurança detalhados (syscalls, acesso a arquivos, mudanças de configuração) com não-repúdio; syslog registra logs de aplicação de forma geral",
+      "São equivalentes; auditd é apenas uma versão mais nova do syslog",
+      "auditd funciona apenas em modo kernel; syslog funciona em userspace"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "auditd é obrigatório para compliance (PCI DSS, HIPAA). Regras em /etc/audit/rules.d/."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'fanotify' e como ele difere de 'inotify' para monitoramento de filesystem?",
+    "options": [
+      "fanotify é mais antigo; inotify é a versão moderna",
+      "fanotify pode interceptar e bloquear operações de arquivo (acesso, modificação) antes que ocorram; inotify apenas notifica após o evento",
+      "inotify monitora apenas diretórios; fanotify monitora filesystems inteiros",
+      "fanotify usa menos CPU; inotify usa menos memória"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "fanotify é usado por antivírus e sistemas DLP. inotify é suficiente para sincronização de arquivos."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'huge pages' e qual syscall permite que um processo use páginas de memória maiores?",
+    "options": [
+      "Páginas de disco de grande bloco; ativadas via mkfs com -b",
+      "Páginas de memória maiores (2MB/1GB vs 4KB padrão) que reduzem pressão no TLB; configuradas via mmap com MAP_HUGETLB ou /proc/sys/vm/nr_hugepages",
+      "Páginas de swap comprimidas; ativadas via swapon --huge",
+      "Páginas de rede para transferências rápidas; ativadas via SO_ZEROCOPY"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Databases como PostgreSQL e Oracle se beneficiam significativamente de huge pages para buffer pools grandes."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'madvise(MADV_SEQUENTIAL)' e como ele afeta o comportamento do kernel?",
+    "options": [
+      "Instrui o kernel a nunca fazer swap das páginas dessa região",
+      "Informa ao kernel que as páginas serão acessadas sequencialmente, ativando readahead agressivo e liberação antecipada de páginas já lidas",
+      "Marca as páginas como não-essenciais, candidatas para liberação imediata",
+      "Instrui o kernel a mapear as páginas em huge pages automaticamente"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "MADV_RANDOM desabilita readahead. MADV_WILLNEED prefetches as páginas antecipadamente."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é a função init_module(2) / finit_module(2) e quando é chamada?",
+    "options": [
+      "Inicializa o processo de boot do kernel",
+      "Carrega um módulo do kernel na memória — chamada por modprobe/insmod",
+      "Inicializa um driver de dispositivo após detecção de hardware",
+      "Registra funções de cleanup do módulo"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "finit_module() é a versão mais nova que carrega de um file descriptor em vez de um buffer de memória."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'kprobes' no Linux e como o eBPF o utiliza?",
+    "options": [
+      "Uma interface para debug de processos de usuário via /proc",
+      "Um mecanismo para inserir probes dinamicamente em funções do kernel sem precisar de patches ou recompilação — usado pelo eBPF para instrumentação",
+      "Um sistema de probes para hardware (PMU counters)",
+      "Uma ferramenta de compilação para módulos do kernel"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "kprobes + uprobes + tracepoints são os três pontos de hook principais do eBPF."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'vDSO' (virtual Dynamic Shared Object) e qual sua importância para performance?",
+    "options": [
+      "Uma biblioteca compartilhada virtual que permite chamadas de sistema sem context switch — usada por gettimeofday(), clock_gettime() e similares",
+      "Um substituto virtual para ld.so em containers",
+      "Uma técnica de mmap para bibliotecas somente-leitura",
+      "Uma interface de shared memory entre kernel e userspace para drivers"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "gettimeofday() via vDSO não faz syscall — lê de uma página mapeada pelo kernel. 10-100x mais rápido."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'splice(2)' e qual sua vantagem sobre read+write para transferência de dados?",
+    "options": [
+      "Uma operação atômica de escrita em múltiplos buffers",
+      "Move dados entre file descriptors (pipe, socket, arquivo) sem copiar pelo userspace (zero-copy) — ideal para servidores proxy e de arquivos",
+      "Uma operação de splicing genômico para bioinformática no Linux",
+      "Uma técnica de compressão de dados em pipes"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "sendfile(2) é um caso especial para arquivo→socket. splice(2) é mais geral (qualquer fd↔pipe)."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é NUMA (Non-Uniform Memory Access) e como o kernel lida com isso?",
+    "options": [
+      "Uma política de memória sem acesso uniforme; o kernel a evita sempre",
+      "Uma arquitetura onde diferentes regiões de RAM têm latências distintas dependendo do CPU; o kernel e numactl tentam colocar processo+memória no mesmo nó NUMA",
+      "Um tipo de memória de cache L3 compartilhada entre CPUs",
+      "Uma técnica de compressão de memória para reduzir acessos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "'numactl --hardware' mostra a topologia NUMA. Má afinidade NUMA causa degradação significativa de performance."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual syscall implementa 'zero-copy' de dados de um socket para um arquivo (muito usado em servidores HTTP)?",
+    "options": [
+      "splice(2)",
+      "sendfile(2)",
+      "mmap+write",
+      "read+write otimizado"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "sendfile() foi criado especificamente para isso. nginx e lighttpd o usam para servir arquivos estáticos."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é o '/proc/sys/kernel/perf_event_paranoid' e quais seus valores?",
+    "options": [
+      "Define o nível de log de eventos de performance: 0=mínimo, 3=máximo",
+      "Controla quem pode usar perf_event_open(): -1=todos, 0=acesso básico, 1=kernel counters restritos, 2=apenas root",
+      "Define quantos eventos simultâneos o perf pode monitorar",
+      "Controla a frequência de amostragem máxima do perf"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Em produção costuma ser 2 ou 3. Para desenvolvimento, 0 ou -1 permite uso completo sem root."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'userfaultfd(2)' e qual seu caso de uso principal?",
+    "options": [
+      "Um mecanismo para detectar use-after-free em userspace",
+      "Permite que userspace trate page faults — usado por checkpointing de processos, live migration de VMs e CRIU",
+      "Um tipo especial de futex para falhas de sincronização",
+      "Uma interface para debug de memory leaks"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "CRIU (Checkpoint/Restore In Userspace) usa userfaultfd para restaurar processos com seu estado de memória."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é o propósito de 'memfd_create(2)'?",
+    "options": [
+      "Cria um arquivo de memória persistente em /dev/shm",
+      "Cria um arquivo anônimo na memória (sem nome no filesystem) que pode ser compartilhado via file descriptor — útil para IPC seguro",
+      "Cria uma região de memória protegida contra escrita pelo kernel",
+      "Cria um arquivo temporário criptografado em memória"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Mais seguro que /dev/shm porque não tem nome no filesystem. Pode ser selado com fcntl F_ADD_SEALS."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'close_range(2)' (adicionado no Linux 5.9)?",
+    "options": [
+      "Fecha um intervalo de file descriptors de uma vez, mais eficiente que chamar close() em loop",
+      "Limita o intervalo de file descriptors que um processo pode abrir",
+      "Define um range de segurança para file descriptors que não podem ser fechados",
+      "Fecha file descriptors compartilhados entre processos de forma atômica"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "Muito útil após fork() para fechar rapidamente todos os fds desnecessários antes do exec()."
+  },
+  {
+    "type": "multiple",
+    "question": "O que o campo 'VmPTE' no /proc/pid/status representa?",
+    "options": [
+      "O tamanho das páginas de memória grandes (huge pages) do processo",
+      "O tamanho das tabelas de páginas (page tables) usadas pelo processo para mapear memória virtual",
+      "O número total de page table entries",
+      "A memória usada por pthreads do processo"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Processos com muitos mapeamentos têm VmPTE alto. Relevante em análise de uso de memória de sistemas complexos."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a função de 'prctl(PR_SET_DUMPABLE, 0)' em relação ao /proc filesystem?",
+    "options": [
+      "Desabilita a geração de core dumps e muda a propriedade dos arquivos /proc/pid do processo para root:root",
+      "Habilita core dumps mesmo para processos setuid",
+      "Define o processo como não-monitorável pelo perf",
+      "Protege o processo da leitura via ptrace"
+    ],
+    "correct": 0,
+    "difficulty": "hard",
+    "hint": "Usado por processos que lidam com informações sensíveis (senhas, chaves) para evitar exposição via /proc."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'tgkill(2)' e por que é preferível a kill(2) para enviar sinais a threads específicas?",
+    "options": [
+      "tgkill é mais rápido para sinais em tempo real",
+      "tgkill(tgid, tid, sig) envia sinal a uma thread específica verificando que o TID pertence ao TGID correto, evitando race condition de TID reuse que kill(tid) teria",
+      "tgkill suporta sinais em tempo real; kill(2) apenas suporta sinais padrão",
+      "tgkill funciona entre processos; kill funciona apenas dentro do mesmo processo"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "pthread_kill(3) usa tgkill internamente para garantir entrega correta do sinal à thread."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'seccomp-bpf' e como ele diferencia de seccomp básico (SECCOMP_MODE_STRICT)?",
+    "options": [
+      "seccomp-bpf é apenas para BSD; modo strict é para Linux",
+      "Modo strict permite apenas read, write, exit e sigreturn; seccomp-bpf usa programas BPF para definir políticas granulares por syscall e argumento",
+      "seccomp-bpf é mais rápido; strict é mais seguro",
+      "Não há diferença prática entre os dois modos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Docker usa seccomp-bpf com um profile padrão que bloqueia ~40 syscalls perigosas por padrão."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'copy_file_range(2)' e qual sua vantagem?",
+    "options": [
+      "Copia um arquivo de forma segura com verificação de integridade",
+      "Copia dados entre file descriptors dentro do kernel sem copiar para userspace — mais eficiente que read()+write()",
+      "Cria um link hard de forma atômica entre arquivos",
+      "Copia apenas as regiões modificadas de um arquivo (delta copy)"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Suportado por filesystems como Btrfs, XFS e NFS para server-side copy. Reduz uso de CPU e bandwidth de memória."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'pidfd' (PID file descriptor) e qual problema ele resolve?",
+    "options": [
+      "Um arquivo que armazena o PID de um daemon",
+      "Um file descriptor que referencia um processo de forma segura, evitando race conditions de PID reuse — se o processo morrer, o pidfd se torna inválido",
+      "Um tipo de pipe unidirecional para comunicação com processos filhos",
+      "Uma alternativa ao /proc/pid/ para acesso a informações de processo"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "pidfd_open(2), pidfd_send_signal(2) e pidfd_getfd(2) compõem a API moderna para gerenciamento de processos."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é o 'kernel.randomize_va_space' em /proc/sys/kernel e quais seus valores?",
+    "options": [
+      "Controla aleatoriedade do scheduler; 0=determinístico, 2=máximo",
+      "Controla ASLR: 0=desabilitado, 1=randomiza stack/mmap, 2=randomiza também heap e brk (padrão)",
+      "Controla aleatoriedade do PRNG do kernel; 0=seed fixo, 2=seed de hardware",
+      "Controla posição aleatória dos módulos do kernel na memória"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Valor 2 é o padrão e o mais seguro. Desabilitar (valor 0) é necessário para debugging com endereços fixos."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'mount namespace' e como 'mount --bind' se comporta neste contexto?",
+    "options": [
+      "Um namespace que isola visibilidade de processos; bind mount copia processos entre namespaces",
+      "Um namespace que isola o conjunto de pontos de montagem visíveis para o processo; bind mount monta um diretório em outro ponto sem copiar dados",
+      "Um namespace para roteamento de rede; bind mount direciona tráfego entre interfaces",
+      "Um namespace de usuário; bind mount herda permissões do namespace pai"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Containers usam mount namespaces + bind mounts para criar visões isoladas do filesystem."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'audit(2)' no contexto do Linux Audit subsystem e quais eventos ele pode registrar?",
+    "options": [
+      "Uma syscall para criar arquivos de auditoria",
+      "O framework do kernel que pode registrar syscalls, acessos a arquivos, mudanças de configuração de rede e execuções de programas com contexto completo",
+      "Um comando de userspace para verificar logs de segurança",
+      "Uma interface BPF para interceptar eventos de segurança"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Auditd usa regras como '-w /etc/passwd -p wa' para monitorar writes/attrs em /etc/passwd."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a diferença entre SIGCHLD e wait(2)/waitpid(2) no gerenciamento de processos filhos?",
+    "options": [
+      "SIGCHLD é para monitorar filhos remotos; wait() é para locais",
+      "O kernel envia SIGCHLD ao pai quando um filho termina ou para; wait()/waitpid() recolhe o status de saída e previne acúmulo de processos zombie",
+      "SIGCHLD ignora filhos terminados; wait() os mantém em memória",
+      "wait() é mais eficiente que SIGCHLD para múltiplos filhos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Servidores que fazem fork() para handlers devem chamar waitpid(-1, WNOHANG) no handler de SIGCHLD."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'getrandom(2)' e por que é preferível a /dev/urandom para inicialização de PRNGs?",
+    "options": [
+      "getrandom() é mais rápido que /dev/urandom",
+      "getrandom() bloqueia na inicialização do sistema até que o pool de entropia esteja suficientemente populado, evitando geração de números previsíveis; /dev/urandom nunca bloqueia",
+      "getrandom() usa hardware RNG; /dev/urandom usa algoritmos de software",
+      "São equivalentes; getrandom() é apenas uma interface mais conveniente"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Adicionado no Linux 3.17. Com GRND_NONBLOCK, retorna EAGAIN se entropia insuficiente."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'VDSO' e quais syscalls típicas são implementadas via VDSO para evitar overhead de context switch?",
+    "options": [
+      "VDSO = Virtual Disk System Object; usado para acesso rápido a disco",
+      "VDSO = Virtual Dynamic Shared Object; uma biblioteca mapeada pelo kernel no espaço do processo para implementar clock_gettime(), gettimeofday() e getcpu() sem syscall real",
+      "VDSO = Virtual Driver Shared Object; usado para drivers de hardware rápidos",
+      "VDSO é exclusivo para processos de tempo real; processos normais usam vsyscall"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "'cat /proc/self/maps | grep vdso' mostra onde o VDSO está mapeado no processo atual."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'io_uring_setup(2)' e quais são os dois ring buffers que ele cria?",
+    "options": [
+      "Configura um device de I/O de alta performance; cria rings de leitura e escrita",
+      "Inicializa uma instância io_uring; cria SQ (Submission Queue) onde operações são submetidas e CQ (Completion Queue) onde resultados são recebidos",
+      "Configura buffers de rede de alta performance; cria rings de send e receive",
+      "Inicializa um scheduler de I/O; cria rings de prioridade alta e baixa"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "SQ e CQ são ring buffers mapeados via mmap em userspace — operações podem ser submetidas sem syscalls."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é o propósito do campo 'Dirty' em /proc/meminfo?",
+    "options": [
+      "Páginas de memória corrompidas que precisam ser verificadas",
+      "Páginas de memória que foram modificadas e ainda precisam ser escritas no disco (write-back pending)",
+      "Páginas de memória usadas por processos terminados",
+      "Páginas de memória reservadas pelo kernel mas não alocadas"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Alto Dirty pode indicar I/O lento ou flush insuficiente. Controlado por /proc/sys/vm/dirty_ratio."
+  },
+  {
+    "type": "multiple",
+    "question": "O que faz a syscall 'mprotect(2)' e qual seu uso em hardening de segurança?",
+    "options": [
+      "Protege um arquivo contra modificação com senha",
+      "Altera as proteções de memória (PROT_READ/WRITE/EXEC) de uma região mapeada — usado para implementar W^X (write XOR execute)",
+      "Criptografa uma região de memória para dados sensíveis",
+      "Bloqueia uma região de memória no swap"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "JIT compilers: mmap(PROT_WRITE) → gerar código → mprotect(PROT_READ|PROT_EXEC) para executar."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'SO_RCVBUF' e 'SO_SNDBUF' em sockets e qual o impacto no throughput de rede?",
+    "options": [
+      "Definem o timeout de recebimento e envio em milissegundos",
+      "Definem o tamanho dos buffers de kernel para recebimento e envio; buffers maiores permitem maior throughput em redes de alta latência (bandwidth-delay product)",
+      "Definem o número máximo de conexões pendentes",
+      "Controlam a prioridade de envio e recebimento de pacotes"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Para links de alta latência/bandwidth, calcule BDP = bandwidth × RTT. O buffer deve ser >= BDP."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'TCP Fast Open' (TFO) e qual problema ele resolve?",
+    "options": [
+      "Otimização de abertura de arquivos via TCP",
+      "Permite enviar dados na SYN do TCP handshake (usando um cookie), reduzindo de 1.5 RTT para 0.5 RTT em conexões frequentes com o mesmo servidor",
+      "Uma técnica para acelerar conexões TCP lentas via compressão de headers",
+      "Um mecanismo de fast-failover para conexões TCP perdidas"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Habilitado via /proc/sys/net/ipv4/tcp_fastopen. Requer suporte no cliente e servidor."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'userns' (user namespace) e que poder ele confere a um processo sem privilégios?",
+    "options": [
+      "Um namespace para isolar variáveis de ambiente por usuário",
+      "Permite que um processo sem privilégios tenha UID 0 dentro do namespace, podendo criar outros namespaces e montar filesystems — base dos containers rootless",
+      "Um namespace para isolamento de quotas de disco por usuário",
+      "Um namespace que restringe quais usuários podem fazer login"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Docker rootless e Podman usam user namespaces para executar containers sem root no host."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'Dirty COW' (CVE-2016-5195) e qual primitiva de kernel ela explorou?",
+    "options": [
+      "Um exploit que corrompe dados sujos no cache de escrita do filesystem",
+      "Uma race condition no mecanismo copy-on-write do mmap() que permitia escrita em mapeamentos somente-leitura, incluindo arquivos setuid e /proc/self/mem",
+      "Uma vulnerabilidade no driver de rede que permitia sniffing de pacotes",
+      "Um bug no scheduler que permitia escalonamento privilegiado de processos"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Afetou praticamente todas as versões do Linux. Exploração via /proc/self/mem + madvise(MADV_DONTNEED)."
+  },
+  {
+    "type": "multiple",
+    "question": "O que é 'cgroup freezer' e para que é usado?",
+    "options": [
+      "Um cgroup para processos que requerem baixa temperatura de CPU",
+      "Um subsistema de cgroup que pode congelar (SIGSTOP) e descongelar (SIGCONT) todos os processos de um cgroup de forma atômica",
+      "Um mecanismo de throttling de CPU para evitar aquecimento",
+      "Uma política de memória que congela páginas raramente acessadas"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Usado por checkpointing de containers (CRIU) e para pausar containers sem perdê-los."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é o significado de 'anon_hugepages' no /proc/meminfo?",
+    "options": [
+      "Memória anônima total do sistema",
+      "Huge pages (2MB) usadas por mapeamentos anônimos (heap, stack) via Transparent Huge Pages (THP)",
+      "Páginas de memória anonimizadas por segurança",
+      "Memória usada por processos anônimos sem nome"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "THP (/sys/kernel/mm/transparent_hugepage/enabled) torna huge pages automáticas para mapeamentos grandes."
+  },
+  {
+    "type": "multiple",
+    "question": "O que são 'socket options' do nível SOL_SOCKET e como SO_LINGER afeta o fechamento de conexões TCP?",
+    "options": [
+      "SOL_SOCKET são opções de protocolos de alto nível; SO_LINGER aumenta timeout de conexão",
+      "SOL_SOCKET são opções gerais de socket; SO_LINGER com l_onoff=1 faz close() bloquear até que todos os dados sejam enviados/confirmados ou o timeout expire",
+      "SOL_SOCKET são opções de roteamento; SO_LINGER ativa roteamento persistente",
+      "SO_LINGER atrasa o envio de dados para otimizar batch"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "SO_LINGER com l_linger=0 força RST imediato em vez de FIN gracioso. Útil para load balancers."
+  },
+  {
+    "type": "multiple",
+    "question": "Qual é a diferença entre 'strace' (que usa ptrace) e 'perf trace' (que usa perf_event_open/eBPF) para rastreamento de syscalls?",
+    "options": [
+      "strace rastreia apenas syscalls; perf trace rastreia apenas hardware counters",
+      "strace para o processo a cada syscall (overhead alto, até 100x mais lento); perf trace usa ring buffers e sampling com overhead muito menor — adequado para produção",
+      "perf trace é mais preciso; strace apenas amostra",
+      "Não há diferença de overhead; ambos usam a mesma infraestrutura do kernel"
+    ],
+    "correct": 1,
+    "difficulty": "hard",
+    "hint": "Para diagnóstico em produção, prefira perf trace ou ferramentas eBPF como bpftrace e execsnoop."
+  }
+]
