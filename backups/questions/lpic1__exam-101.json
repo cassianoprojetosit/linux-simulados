@@ -1,0 +1,3266 @@
+{
+  "meta": {
+    "simulado_id": "9663387a-649a-412e-b31c-000e71616591",
+    "simulado_slug": "lpic1",
+    "simulado_title": "LPIC-1",
+    "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+    "exam_code": "101",
+    "exam_name": null,
+    "exported_at": "2026-02-25T13:55:10.356Z"
+  },
+  "questions": [
+    {
+      "id": "011f7e21-3480-45fb-817c-92671141280e",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No Zypper (openSUSE), qual comando é usado para atualizar a lista de pacotes dos repositórios?",
+      "options": [
+        "zypper update",
+        "zypper refresh",
+        "zypper upgrade",
+        "zypper list-updates",
+        "zypper repos"
+      ],
+      "answer": [
+        "zypper refresh"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "015f10d5-e2fc-4da5-b39d-9af16a4b67f1",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual opção do `tar` é usada para criar um arquivo compactado com gzip (arquivo.tar.gz)?",
+      "options": [
+        "tar -cvf",
+        "tar -xvf",
+        "tar -xzf",
+        "tar -czf",
+        "tar -tvf"
+      ],
+      "answer": [
+        "tar -czf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "0208d420-3d97-4f03-ac19-17ad73be869b",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando exibe o diretório de trabalho atual no shell?",
+      "options": [
+        "ls",
+        "cd",
+        "pwd",
+        "dir",
+        "cwd"
+      ],
+      "answer": [
+        "pwd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "053230cc-3d0b-4c21-9b84-3e6dd5c6cb23",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No tmux, qual comando divide a janela atual verticalmente (criando painéis lado a lado)?",
+      "options": [
+        "Ctrl+B \"",
+        "Ctrl+B %",
+        "Ctrl+B ,",
+        "Ctrl+B ;",
+        "Ctrl+B |"
+      ],
+      "answer": [
+        "Ctrl+B %"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "06a48dce-40fc-4a6a-b9ea-b81e7db12eaf",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando `rpm` é usado para instalar um pacote RPM, exibindo uma barra de progresso?",
+      "options": [
+        "rpm -i package.rpm",
+        "rpm -ivh package.rpm",
+        "rpm -U package.rpm",
+        "rpm --install package.rpm",
+        "rpm -e package.rpm"
+      ],
+      "answer": [
+        "rpm -ivh package.rpm"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "0935dc39-d0e2-40e9-804d-f915f21c1265",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "O que é um hipervisor Tipo 1 (bare-metal)?",
+      "options": [
+        "Executa sobre um sistema operacional host",
+        "Virtualiza apenas aplicações, não sistemas completos",
+        "Executa diretamente no hardware da máquina",
+        "É um contêiner Linux",
+        "Gerencia apenas redes virtuais"
+      ],
+      "answer": [
+        "Executa diretamente no hardware da máquina"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "0ac5da7e-a457-4907-a34d-2727e9ed7e26",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando systemctl define o target padrão de inicialização do sistema?",
+      "options": null,
+      "answer": [
+        "systemctl set-default"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "0aeddcf0-ad75-4be5-b710-0f9a01f4829f",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Em qual diretório são armazenadas as regras personalizadas para o subsistema udev?",
+      "options": [
+        "/etc/udev/rules.d/",
+        "/lib/udev/rules.d/",
+        "/usr/lib/udev/rules.d/",
+        "/run/udev/rules.d/",
+        "/etc/udev/"
+      ],
+      "answer": [
+        "/etc/udev/rules.d/"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "0f702936-9541-49fc-81b0-b3dd277e9af2",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a função primária do comando `sed`?",
+      "options": [
+        "Editor de fluxo para filtrar e transformar texto",
+        "Compactador de arquivos",
+        "Localizador de padrões",
+        "Listar processos",
+        "Gerenciar partições"
+      ],
+      "answer": [
+        "Editor de fluxo para filtrar e transformar texto"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "10645fb1-acb1-47de-ad85-23b4dcbcba85",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando carrega ou descarrega módulos do kernel de forma inteligente (resolvendo dependências)?",
+      "options": null,
+      "answer": [
+        "modprobe"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "1087fe24-32e7-45b2-91cd-6ebce58ac7a8",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para listar os jobs (trabalhos) atuais do shell?",
+      "options": [
+        "ps",
+        "top",
+        "jobs",
+        "fg",
+        "bg"
+      ],
+      "answer": [
+        "jobs"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "10aa763d-6e99-43f5-a516-47e11af22336",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual arquivo em /proc lista as regiões de portas de Entrada/Saída registradas atualmente?",
+      "options": [
+        "/proc/cpuinfo",
+        "/proc/interrupts",
+        "/proc/ioports",
+        "/proc/dma",
+        "/proc/iomem"
+      ],
+      "answer": [
+        "/proc/ioports"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "12675fdf-8a00-4df3-ad1f-8b4a7d21540c",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No arquivo `/etc/fstab`, qual a opção de montagem monta um sistema de arquivos como somente leitura?",
+      "options": [
+        "defaults",
+        "rw",
+        "ro",
+        "noatime",
+        "user"
+      ],
+      "answer": [
+        "ro"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "127ff9eb-5ca0-4228-8d98-37bc8c934536",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual arquivo é usado para fornecer parâmetros persistentes aos módulos do kernel (ex: `options mod param=value`)?",
+      "options": [
+        "/etc/modules.conf ou arquivos em /etc/modprobe.d/",
+        "/etc/modules-load.d/",
+        "/etc/sysctl.conf",
+        "/boot/config-*",
+        "/etc/default/grub"
+      ],
+      "answer": [
+        "/etc/modules.conf ou arquivos em /etc/modprobe.d/"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "1308bdd9-3bc7-4e7d-853c-f7ed3cd43de6",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para gerar um novo arquivo de configuração para o GRUB 2 após alterações em `/etc/default/grub`?",
+      "options": [
+        "grub-install",
+        "grub-mkconfig -o /boot/grub/grub.cfg",
+        "update-grub-legacy",
+        "grub-set-default",
+        "grub-reboot"
+      ],
+      "answer": [
+        "grub-mkconfig -o /boot/grub/grub.cfg"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "15245a3b-b930-4323-8806-f68a714dc475",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando remove linhas duplicadas consecutivas da saída de um comando ou arquivo?",
+      "options": null,
+      "answer": [
+        "uniq"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "18a2d6a7-786c-43d7-a27e-0816d503b6a1",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a função do comando `xargs`?",
+      "options": [
+        "Executa um comando com argumentos vindos da entrada padrão",
+        "Exibe o caminho de um executável",
+        "Remove diretórios vazios",
+        "Cria um arquivo de imagem de disco",
+        "Faz uma busca eficiente por arquivos"
+      ],
+      "answer": [
+        "Executa um comando com argumentos vindos da entrada padrão"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "1947a549-e795-447c-ba66-4edad6ed1725",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual operador de redirecionamento anexa a saída padrão (stdout) ao final de um arquivo existente, sem sobrescrevê-lo?",
+      "options": [
+        ">",
+        "<",
+        ">>",
+        "2>",
+        "&>"
+      ],
+      "answer": [
+        ">>"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "1a2793be-7c46-4f68-a844-0725c772bfaa",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para alterar o proprietário e grupo de um arquivo?",
+      "options": [
+        "chmod",
+        "chown",
+        "chgrp",
+        "usermod",
+        "groupmod"
+      ],
+      "answer": [
+        "chown"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "1b8c7e31-30fb-4b94-8ead-a810e3392cdd",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para carregar ou descarregar módulos do kernel?",
+      "options": [
+        "insmod",
+        "rmmod",
+        "modinfo",
+        "modprobe",
+        "depmod"
+      ],
+      "answer": [
+        "modprobe"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "1d556cfd-bde2-47ab-a07b-425fd804ac36",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "No editor vi, qual sequência de teclas (em modo normal) exclui a linha atual inteira?",
+      "options": null,
+      "answer": [
+        "dd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "1d7c3d65-3897-4da9-8ed5-6560bc694a1a",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando altera as permissões de um arquivo ou diretório?",
+      "options": null,
+      "answer": [
+        "chmod"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "2013c281-ad31-43e7-81d1-650fe3c99d54",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe as mensagens do kernel desde a inicialização (buffer de anel)?",
+      "options": null,
+      "answer": [
+        "dmesg"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "20db4626-435e-4162-9729-7e134a8d9629",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Como você pode reutilizar o último comando do histórico sem digitá-lo novamente?",
+      "options": [
+        "!!",
+        "!$",
+        "!*",
+        "!-1",
+        "history !!"
+      ],
+      "answer": [
+        "!!"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "216efad5-e8c1-497b-a2af-8657d057ecba",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando exibe informações detalhadas sobre um módulo do kernel, como dependências e parâmetros?",
+      "options": [
+        "lsmod",
+        "modinfo",
+        "modprobe --info",
+        "insmod --info",
+        "kmod info"
+      ],
+      "answer": [
+        "modinfo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "233eb2cf-9ba8-40ff-89e3-bb4e4543c40e",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a permissão octal (numérica) para `rwxr-xr--`?",
+      "options": [
+        "754",
+        "751",
+        "744",
+        "654",
+        "764"
+      ],
+      "answer": [
+        "754"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "249716bf-c06e-4047-bd93-fcb16bbf0d0a",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No GNU Parted, qual comando é usado para tentar recuperar uma partição que foi acidentalmente excluída?",
+      "options": [
+        "rescue",
+        "recover",
+        "restore",
+        "undelete",
+        "repair"
+      ],
+      "answer": [
+        "rescue"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "24e51200-742a-4f5b-b592-bce1265123a4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No APT, qual comando atualiza a lista de pacotes disponíveis a partir dos repositórios?",
+      "options": [
+        "apt-get upgrade",
+        "apt-get update",
+        "apt-get dist-upgrade",
+        "apt-cache update",
+        "apt-get install --update"
+      ],
+      "answer": [
+        "apt-get update"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "2590227c-f6a6-439d-88a7-950519b11680",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando do systemd é usado para gerenciar (iniciar, parar, habilitar) serviços?",
+      "options": null,
+      "answer": [
+        "systemctl"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "259dd433-26bf-4e7a-8ee0-3c8345b5526c",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando localiza arquivos no sistema por nome, tipo, tamanho, permissões e outros atributos?",
+      "options": null,
+      "answer": [
+        "find"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "2747e5ed-fd84-4ab9-9eda-bf697fbd8334",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Segundo o FHS, onde devem ser armazenados os binários essenciais para todos os usuários (como `ls`, `cp`)?",
+      "options": [
+        "/usr/bin",
+        "/sbin",
+        "/bin",
+        "/opt/bin",
+        "/usr/local/bin"
+      ],
+      "answer": [
+        "/bin"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "2a226586-9ab5-4348-9ce5-a4cb68da4757",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Segundo o FHS, onde são armazenados os arquivos de configuração específicos da máquina (como `passwd`, `hostname`)?",
+      "options": [
+        "/usr/etc",
+        "/etc",
+        "/config",
+        "/var/conf",
+        "/opt/etc"
+      ],
+      "answer": [
+        "/etc"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "2cb0ff79-a7b3-4fd5-a8bb-6e6d5ec42d17",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No contexto de inicialização do sistema com systemd, o que é uma 'unidade' (unit)?",
+      "options": [
+        "Um script de inicialização",
+        "Um arquivo de configuração para o kernel",
+        "Um recurso que o systemd pode gerenciar (serviço, soquete, dispositivo, ponto de montagem, etc.)",
+        "Um grupo de usuários",
+        "Um nível de execução (runlevel)"
+      ],
+      "answer": [
+        "Um recurso que o systemd pode gerenciar (serviço, soquete, dispositivo, ponto de montagem, etc.)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "2d853131-1e5f-46bf-a4cd-82b896e39e98",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para editar as quotas de disco para um usuário em um sistema de arquivos?",
+      "options": [
+        "quota",
+        "edquota",
+        "repquota",
+        "quotacheck",
+        "setquota"
+      ],
+      "answer": [
+        "edquota"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "2dd55b79-632c-4bee-a215-cd681c4b7050",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando `find` localizaria todos os arquivos maiores que 10MB no diretório /home?",
+      "options": [
+        "find /home -size +10M",
+        "find /home -size 10M",
+        "find /home -size 10240k",
+        "find /home -size +10240k",
+        "find /home -size +10MB"
+      ],
+      "answer": [
+        "find /home -size +10M"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "30872d74-3eeb-43fa-86f5-b853a8b63edf",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a principal diferença entre um link físico (hard link) e um link simbólico (soft link)?",
+      "options": [
+        "Hard links podem atravessar sistemas de arquivos, soft links não",
+        "Soft links apontam para um nome de arquivo, hard links apontam diretamente para o inode (e não podem atravessar sistemas de arquivos)",
+        "Hard links só funcionam para diretórios",
+        "Soft links não podem ser removidos",
+        "Hard links são identificados por um 'l' no `ls -l`"
+      ],
+      "answer": [
+        "Soft links apontam para um nome de arquivo, hard links apontam diretamente para o inode (e não podem atravessar sistemas de arquivos)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "345fb13a-9bb4-4040-9a13-b1ca7dd15a4c",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe informações sobre os módulos do kernel carregados no sistema?",
+      "options": null,
+      "answer": [
+        "lsmod"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "354f4636-9d15-44e0-a999-87aecea7666f",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual expressão regular corresponde a qualquer caractere (exceto nova linha)?",
+      "options": [
+        "*",
+        ".",
+        "?",
+        "[.]",
+        "^"
+      ],
+      "answer": [
+        "."
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "359feff8-432a-44fa-8395-f18fcb1e0bb1",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para modificar parâmetros ajustáveis de um sistema de arquivos ext2/ext3/ext4, como a contagem máxima de montagens?",
+      "options": [
+        "fsck.ext4",
+        "tune2fs",
+        "resize2fs",
+        "dumpe2fs",
+        "debugfs"
+      ],
+      "answer": [
+        "tune2fs"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "3ad44246-bfeb-4813-8c24-5965abee5ee2",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual foi o principal objetivo do Upstart ao ser desenvolvido como substituto do SysVinit?",
+      "options": [
+        "Reduzir o consumo de memória",
+        "Acelerar a inicialização através da execução paralela de serviços",
+        "Adicionar suporte a sistemas de arquivos",
+        "Melhorar a segurança do sistema",
+        "Fornecer uma interface gráfica de configuração"
+      ],
+      "answer": [
+        "Acelerar a inicialização através da execução paralela de serviços"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "3e057e06-419f-4965-a861-2ed443b7f2f4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual recurso do Linux é fundamental para a tecnologia de contêineres, permitindo isolar e limitar recursos do sistema (CPU, memória, etc.)?",
+      "options": [
+        "namespaces",
+        "cgroups (control groups)",
+        "chroot",
+        "SELinux",
+        "AppArmor"
+      ],
+      "answer": [
+        "cgroups (control groups)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "3f20727f-df64-446c-904a-381bfb2a043a",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para listar todos os módulos do kernel atualmente carregados?",
+      "options": [
+        "lsmod",
+        "modlist",
+        "kmod list",
+        "modprobe -l",
+        "dmesg | grep module"
+      ],
+      "answer": [
+        "lsmod"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "3f2f25d9-7bc1-4c7f-ac03-1e96c81500cf",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Em virtualização com KVM, qual comando ou daemon é comumente usado para gerenciar as máquinas virtuais?",
+      "options": [
+        "qemu",
+        "libvirt",
+        "virsh",
+        "virt-manager",
+        "kvmctl"
+      ],
+      "answer": [
+        "libvirt"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "3ffd4ccc-173b-429b-bfbc-6e5706a51ad4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No RPM/YUM, qual diretório contém os arquivos `.repo` que definem os repositórios de software?",
+      "options": [
+        "/etc/yum.repos.d/",
+        "/etc/yum/",
+        "/var/lib/rpm/",
+        "/etc/rpm/",
+        "/etc/dnf/"
+      ],
+      "answer": [
+        "/etc/yum.repos.d/"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "43585045-b039-48c6-b097-fceeaa84589b",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando shell exibe o histórico de comandos digitados anteriormente?",
+      "options": null,
+      "answer": [
+        "history"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "44994ef8-7c3e-455f-8219-7bb00338e6ce",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para encontrar o PID de um processo pelo seu nome (ex: encontrar o PID do processo 'sshd')?",
+      "options": [
+        "ps -C",
+        "pgrep",
+        "pidof",
+        "ps -p",
+        "top -p"
+      ],
+      "answer": [
+        "pgrep"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "4532828b-f1f3-4ee6-97dc-97d8908d80e5",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "O que deve ser alterado ou regenerado ao clonar uma máquina virtual Linux para que não haja conflitos?",
+      "options": [
+        "O endereço MAC da placa de rede e o D-Bus Machine ID",
+        "O kernel do Linux",
+        "A versão do GCC",
+        "O arquivo /etc/fstab",
+        "O nome do usuário root"
+      ],
+      "answer": [
+        "O endereço MAC da placa de rede e o D-Bus Machine ID"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "477df339-cef7-4d3c-8284-ccda1ed31fd5",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual operador é usado para conectar a saída de um comando à entrada de outro comando?",
+      "options": [
+        ">",
+        "<",
+        "|",
+        "&",
+        "||"
+      ],
+      "answer": [
+        "|"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "47c67361-212e-4c66-af90-3dfb85474ae8",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No APT (Debian/Ubuntu), qual arquivo lista os repositórios de onde os pacotes são obtidos?",
+      "options": [
+        "/etc/apt/apt.conf",
+        "/etc/apt/preferences",
+        "/etc/apt/sources.list",
+        "/etc/apt/apt.conf.d/",
+        "/etc/apt/sources.list.d/ (é um diretório, mas o principal é o sources.list)"
+      ],
+      "answer": [
+        "/etc/apt/sources.list"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "4a81f5da-f936-4aaa-9186-8da84b873cda",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Como você pode mover um processo que está em execução em primeiro plano para o segundo plano?",
+      "options": [
+        "Ctrl+C",
+        "Ctrl+Z seguido de `bg`",
+        "Ctrl+D",
+        "Ctrl+Barra (\\)",
+        "`fg`"
+      ],
+      "answer": [
+        "Ctrl+Z seguido de `bg`"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "4b4c130f-14b5-4abc-bc17-8c7def688254",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando conta o número de linhas, palavras e caracteres em um arquivo?",
+      "options": [
+        "wc",
+        "nl",
+        "od",
+        "sed",
+        "awk"
+      ],
+      "answer": [
+        "wc"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "4d31cf7d-c8e7-4d59-ab71-9a828370a21b",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é uma característica marcante do sistema de arquivos Btrfs?",
+      "options": [
+        "Journaling",
+        "Suporte a subvolumes e snapshots",
+        "Criptografia nativa",
+        "Desfragmentação manual",
+        "Apenas para discos pequenos"
+      ],
+      "answer": [
+        "Suporte a subvolumes e snapshots"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "4e429f4d-8c38-4647-8168-9e95a6e8433f",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando instala pacotes .deb no sistema Debian/Ubuntu?",
+      "options": null,
+      "answer": [
+        "dpkg",
+        "dpkg -i",
+        "apt",
+        "apt-get"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "4ed12ea7-6ade-418e-862e-363507264e13",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando exibe um relatório de quotas para todos os usuários?",
+      "options": [
+        "quota -u",
+        "edquota -p",
+        "repquota -a",
+        "quotastats",
+        "quotaoff -a"
+      ],
+      "answer": [
+        "repquota -a"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "4f07e091-ee7f-4909-b8ba-efd7840bdabd",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe o nível de execução atual do sistema (runlevel)?",
+      "options": null,
+      "answer": [
+        "runlevel"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "501b760e-56a2-4477-9367-ee05e38bf8ec",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para atualizar o cache do vinculador dinâmico (`ld.so.cache`)?",
+      "options": [
+        "ldd",
+        "ldconfig",
+        "ldlink",
+        "update-ld",
+        "ld-update"
+      ],
+      "answer": [
+        "ldconfig"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "5062fed7-cfd6-45f6-9777-9ec5881d8f64",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual utilitário interativo é usado para depurar e inspecionar a estrutura interna de um sistema de arquivos XFS?",
+      "options": [
+        "xfs_db",
+        "xfs_info",
+        "xfs_admin",
+        "xfs_metadump",
+        "xfs_check"
+      ],
+      "answer": [
+        "xfs_db"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "5320c840-0550-4bb0-aed5-1036198cd3cb",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para alterar a prioridade (nice value) de um processo já em execução?",
+      "options": [
+        "nice",
+        "renice",
+        "chprio",
+        "top (tecla 'r')",
+        "setprio"
+      ],
+      "answer": [
+        "renice"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "53792046-6ae0-4e89-94b6-ab84adfb28c0",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para criar um sistema de arquivos ext4?",
+      "options": [
+        "mkfs.ext4",
+        "mke2fs -t ext4",
+        "Ambas estão corretas",
+        "mkfs -t ext4",
+        "ext4format"
+      ],
+      "answer": [
+        "Ambas estão corretas"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "53b4646c-fc27-43f8-b923-68b8e2691798",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual diretório deve ser mantido em uma partição separada para garantir a inicialização do sistema mesmo em caso de falha no sistema de arquivos raiz?",
+      "options": [
+        "/home",
+        "/var",
+        "/boot",
+        "/tmp",
+        "/usr"
+      ],
+      "answer": [
+        "/boot"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "55dfb9d3-97c3-45d7-a7de-f050f7b91f5e",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é o objetivo do utilitário `cloud-init`?",
+      "options": [
+        "Gerenciar contêineres Docker",
+        "Pré-configurar e inicializar instâncias de nuvem (cloud)",
+        "Fazer backup de VMs",
+        "Criptografar discos na nuvem",
+        "Monitorar desempenho de VMs"
+      ],
+      "answer": [
+        "Pré-configurar e inicializar instâncias de nuvem (cloud)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "571f21dd-16c1-4a3d-ae34-ff76eec30a37",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando ativa uma partição ou arquivo de swap para uso imediato pelo kernel?",
+      "options": null,
+      "answer": [
+        "swapon"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "574dbbdf-8cdc-42cb-a59f-218a2e08b1ff",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para desmontar um sistema de arquivos?",
+      "options": [
+        "mount -u",
+        "umount",
+        "dismount",
+        "eject",
+        "unmount"
+      ],
+      "answer": [
+        "umount"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "5b28157e-b560-43ce-89b2-7763191bec59",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe as variáveis de ambiente do shell atual?",
+      "options": null,
+      "answer": [
+        "env",
+        "printenv",
+        "export"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "5e6c467c-f8c6-43de-9a70-6de6f5e123be",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual operador redireciona a saída de erro padrão (stderr) para um arquivo?",
+      "options": null,
+      "answer": [
+        "2>"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "62e98787-e6dc-4866-b6b8-cc440b858545",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual arquivo em /proc lista os canais registrados de DMA (acesso direto à memória) em uso?",
+      "options": [
+        "/proc/cpuinfo",
+        "/proc/interrupts",
+        "/proc/ioports",
+        "/proc/dma",
+        "/proc/driver"
+      ],
+      "answer": [
+        "/proc/dma"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "63332467-69fa-40f5-9168-f221c696bd15",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a função da variável de ambiente `PATH`?",
+      "options": [
+        "Mostrar o diretório home do usuário",
+        "Listar os diretórios onde o shell procura por comandos executáveis",
+        "Definir o prompt primário",
+        "Armazenar o histórico de comandos",
+        "Configurar a localização de bibliotecas"
+      ],
+      "answer": [
+        "Listar os diretórios onde o shell procura por comandos executáveis"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "64888bde-69af-4c24-ac18-175a672b0d31",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No Debian, qual utilitário é uma alternativa ao `apt-get` e combina as funções mais comuns do `apt-get` e `apt-cache`?",
+      "options": [
+        "aptitude",
+        "dpkg",
+        "apt",
+        "synaptic",
+        "tasksel"
+      ],
+      "answer": [
+        "apt"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "65173d4a-3a63-40c9-9f74-c7a006603fbe",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando `systemctl` é usado para verificar o status de um serviço?",
+      "options": [
+        "systemctl list sshd",
+        "systemctl status sshd",
+        "systemctl is-active sshd",
+        "systemctl show sshd",
+        "systemctl check sshd"
+      ],
+      "answer": [
+        "systemctl status sshd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "663f1305-1e37-4d20-b200-f9f63d111f98",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe o gerenciador de inicialização padrão do GRUB2 para atualizar a configuração?",
+      "options": null,
+      "answer": [
+        "update-grub",
+        "grub-mkconfig -o /boot/grub/grub.cfg",
+        "grub2-mkconfig -o /boot/grub2/grub.cfg"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "674b873b-aabd-4731-ae7e-8a805163bfb5",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para verificar a soma de verificação (checksum) SHA256 de um arquivo?",
+      "options": [
+        "md5sum",
+        "sha1sum",
+        "sha256sum",
+        "cksum",
+        "hashdeep"
+      ],
+      "answer": [
+        "sha256sum"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "6b9e173a-6e6d-4351-83a2-e59cfc755ed2",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual daemon é responsável por gerenciar eventos relacionados à energia, como fechar a tampa de um laptop ou pressionar o botão de energia?",
+      "options": [
+        "systemd-logind",
+        "acpid",
+        "udevd",
+        "dbus-daemon",
+        "elogind"
+      ],
+      "answer": [
+        "acpid"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "6bcae7d4-06a2-4dbb-b137-6bfdb32e362f",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No GNU Screen, qual sequência de teclas entra no modo de cópia/rolagem para permitir a navegação pelo histórico?",
+      "options": [
+        "Ctrl+A [",
+        "Ctrl+A ]",
+        "Ctrl+A C",
+        "Ctrl+A Esc",
+        "Ctrl+A H"
+      ],
+      "answer": [
+        "Ctrl+A ["
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "6e26b965-1c89-45b4-821d-57ea7692bb81",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando cria um link simbólico? (apenas o comando base, sem argumentos)",
+      "options": null,
+      "answer": [
+        "ln"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "70fce283-81e9-4249-8fdd-3f2b6fd43a09",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "O que o comando `tee` faz?",
+      "options": [
+        "Lê da entrada padrão e escreve para a saída padrão e para um arquivo",
+        "Divide um arquivo em várias partes",
+        "Une arquivos",
+        "Exibe as primeiras linhas de um arquivo",
+        "É um editor de texto"
+      ],
+      "answer": [
+        "Lê da entrada padrão e escreve para a saída padrão e para um arquivo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "71c4233d-4652-47ae-9609-929c6959965f",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual caractere curinga corresponde a qualquer caractere único em um nome de arquivo?",
+      "options": [
+        "*",
+        "?",
+        "[a-z]",
+        "{}",
+        "!"
+      ],
+      "answer": [
+        "?"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "73e3885f-7e61-4536-88bb-b49ae88c92bb",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Na saída do comando `ps -el`, o que a coluna `PRI` e `NI` representam?",
+      "options": [
+        "Tamanho do processo e memória usada",
+        "Prioridade estática e valor nice",
+        "ID do processo e do pai",
+        "Tempo de CPU e tempo real",
+        "Estado do processo e terminal"
+      ],
+      "answer": [
+        "Prioridade estática e valor nice"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "73ead8a6-fd13-4ade-988e-37a9f9a60b5a",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para verificar o uso de espaço em disco por diretórios e arquivos?",
+      "options": [
+        "df",
+        "du",
+        "fsck",
+        "lsblk",
+        "mount"
+      ],
+      "answer": [
+        "du"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "7568c81a-d829-4317-9567-3a4fbd64b3a6",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual opção do `tar` é usada para extrair um arquivo compactado com gzip (arquivo.tar.gz)?",
+      "options": [
+        "tar -cvf",
+        "tar -xvf",
+        "tar -xzf",
+        "tar -czf",
+        "tar -tvf"
+      ],
+      "answer": [
+        "tar -xzf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "75d07ba3-2f61-4789-92b8-6dfb88a251e7",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual arquivo contém a tabela de sistemas de arquivos montados automaticamente na inicialização?",
+      "options": null,
+      "answer": [
+        "/etc/fstab"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "761b32d4-a498-45bc-b860-8626ed9c2b3c",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para eliminar um processo pelo seu nome (ex: `firefox`)?",
+      "options": [
+        "kill firefox",
+        "pkill firefox",
+        "killall firefox",
+        "pgrep firefox"
+      ],
+      "answer": [
+        "pkill firefox"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "77b81907-b94a-4550-9f45-3948697e9488",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando executa um programa periodicamente (a cada 2 segundos por padrão) e mostra sua saída em tempo real?",
+      "options": [
+        "cron",
+        "at",
+        "watch",
+        "loop",
+        "repeat"
+      ],
+      "answer": [
+        "watch"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "77f2d62d-7d1e-45a0-aa9f-46ac768c45bb",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para listar os membros de um grupo específico?",
+      "options": [
+        "groupmems -g grupo -l",
+        "getent group grupo",
+        "members grupo",
+        "groups grupo",
+        "id grupo"
+      ],
+      "answer": [
+        "getent group grupo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "795c98ac-493c-4bd2-ac00-bff8901a2cb8",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "O que o comando `mount -o remount,ro /dev/sda1` faz?",
+      "options": [
+        "Desmonta a partição",
+        "Remonta a partição /dev/sda1 como somente leitura sem desmontá-la",
+        "Monta a partição pela primeira vez",
+        "Verifica erros e remonta",
+        "Aplica novas opções do fstab"
+      ],
+      "answer": [
+        "Remonta a partição /dev/sda1 como somente leitura sem desmontá-la"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "7a90416b-c628-4eac-a072-1d34f30f65cf",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No tmux, qual comando é usado para listar todas as sessões ativas?",
+      "options": [
+        "tmux list-sessions",
+        "tmux ls",
+        "Ctrl+B s",
+        "tmux attach",
+        "tmux list"
+      ],
+      "answer": [
+        "tmux ls"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "837a8035-6b88-4286-90ed-96d7b5168f82",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No systemd, qual é a extensão de arquivo usada para uma unidade de montagem?",
+      "options": [
+        ".service",
+        ".mount",
+        ".target",
+        ".automount",
+        ".device"
+      ],
+      "answer": [
+        ".mount"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "8394b72d-917e-4e09-8cc0-e424fa3a4c69",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para verificar e reparar um sistema de arquivos XFS?",
+      "options": [
+        "fsck.xfs",
+        "xfs_check",
+        "xfs_repair",
+        "xfs_fsr",
+        "xfs_db"
+      ],
+      "answer": [
+        "xfs_repair"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "83e36a19-3a4a-422f-8470-5ecd8d6351d2",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Como você pode acessar a documentação (manual) do comando `ls`?",
+      "options": [
+        "ls /help",
+        "info ls",
+        "man ls",
+        "ls --usage",
+        "help ls"
+      ],
+      "answer": [
+        "man ls"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "85131bc5-1366-4633-92ae-3552d41c6440",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando `ps` exibe todos os processos do sistema com informações detalhadas, incluindo usuário, PID, %CPU, %MEM, etc. (formato BSD)?",
+      "options": [
+        "ps -ef",
+        "ps aux",
+        "ps -A",
+        "ps -l",
+        "ps -eF"
+      ],
+      "answer": [
+        "ps aux"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "855e1cc8-9dbb-4420-beb5-47acd4f07392",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando classifica as linhas de um arquivo em ordem alfabética?",
+      "options": null,
+      "answer": [
+        "sort"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "8583ab12-6cfb-4b6b-9189-6a5614dc7041",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual arquivo contém informações sobre os usuários do sistema Linux?",
+      "options": null,
+      "answer": [
+        "/etc/passwd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "87dd22fa-43f4-4f93-bb38-42a2b88bcea1",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando exibe as mensagens do buffer de anel do kernel?",
+      "options": [
+        "journalctl",
+        "tail /var/log/kernel",
+        "dmesg",
+        "klogctl",
+        "syslogd"
+      ],
+      "answer": [
+        "dmesg"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "87e627b9-d0dc-48ce-aece-8148f4629e46",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual variável de ambiente pode ser usada para adicionar diretórios temporários à busca de bibliotecas compartilhadas?",
+      "options": [
+        "PATH",
+        "LD_PRELOAD",
+        "LD_LIBRARY_PATH",
+        "LIB_PATH",
+        "LD_RUN_PATH"
+      ],
+      "answer": [
+        "LD_LIBRARY_PATH"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "8d3859a1-b644-4b92-86f9-884e78ebdf1b",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é o efeito do `sticky bit` (bit de aderência) em um diretório?",
+      "options": [
+        "Faz com que arquivos sejam executados como proprietário do diretório",
+        "Impede que usuários removam arquivos dos quais não são proprietários",
+        "Garante que novos arquivos herdem o grupo do diretório",
+        "Torna o diretório imune a exclusão",
+        "Ativa a compactação no diretório"
+      ],
+      "answer": [
+        "Impede que usuários removam arquivos dos quais não são proprietários"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "8daf730d-bf04-481f-a506-6693a3a0fa8d",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe o uso de espaço em disco de arquivos e diretórios?",
+      "options": null,
+      "answer": [
+        "du",
+        "du -sh"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "8f348329-4038-49bd-9640-455e9449bc29",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual utilitário é amplamente usado para pré-configurar instâncias na nuvem, permitindo definir hostname, usuários, pacotes e outras configurações na primeira inicialização?",
+      "options": [
+        "cloud-init",
+        "aws-cli",
+        "terraform",
+        "ansible",
+        "packer"
+      ],
+      "answer": [
+        "cloud-init"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "8f7c454f-90f7-4679-b63b-e5941e44318a",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para listar todos os dispositivos PCI conectados ao sistema?",
+      "options": [
+        "lssub",
+        "lsmod",
+        "lspci",
+        "lsdev",
+        "lsusb"
+      ],
+      "answer": [
+        "lspci"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "90593a9a-4968-4235-abea-6b0b8fc89d6c",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é o propósito do diretório `/var`?",
+      "options": [
+        "Arquivos variáveis que mudam durante a operação do sistema (logs, spools, cache)",
+        "Arquivos de boot",
+        "Binários de usuário",
+        "Arquivos temporários voláteis",
+        "Dados de serviços (como páginas web)"
+      ],
+      "answer": [
+        "Arquivos variáveis que mudam durante a operação do sistema (logs, spools, cache)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "924fbc59-0fa3-4677-be69-802cb695aaec",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para exibir informações sobre permissões de arquivo em formato longo?",
+      "options": [
+        "ls",
+        "ls -l",
+        "ls -a",
+        "ll",
+        "stat"
+      ],
+      "answer": [
+        "ls -l"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "92642b1d-5b53-41d1-82c7-4c56870053e0",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a partição usada por sistemas UEFI para armazenar os bootloaders?",
+      "options": [
+        "/boot",
+        "/boot/efi (ESP)",
+        "/efi",
+        "/boot/grub",
+        "/sys/efi"
+      ],
+      "answer": [
+        "/boot/efi (ESP)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "9317d752-8777-4389-8c6c-78e36cdf8c64",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando lista os dispositivos USB conectados ao sistema?",
+      "options": null,
+      "answer": [
+        "lsusb"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "94064b63-bf7f-4db6-bbe6-22248b6ee599",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No systemd, qual comando é usado para ativar um serviço para iniciar durante o boot?",
+      "options": [
+        "systemctl start sshd",
+        "systemctl enable sshd",
+        "systemctl activate sshd",
+        "systemctl boot sshd",
+        "systemctl daemon-reload sshd"
+      ],
+      "answer": [
+        "systemctl enable sshd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "954e1aef-4af6-4b92-9086-3d73d178fa99",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual arquivo virtual do kernel contém os parâmetros passados ao kernel durante a inicialização?",
+      "options": null,
+      "answer": [
+        "/proc/cmdline"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "98d49562-7368-4b6a-b609-ebb306bef2b7",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "No RPM, qual opção lista todos os pacotes instalados no sistema?",
+      "options": null,
+      "answer": [
+        "rpm -qa",
+        "rpm --query --all"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "9972d78a-aca3-4088-b91e-02cb54406e91",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para desligar ou reiniciar o sistema imediatamente, notificando os usuários?",
+      "options": [
+        "halt",
+        "poweroff",
+        "shutdown -h now",
+        "reboot --force",
+        "init 0"
+      ],
+      "answer": [
+        "shutdown -h now"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "9b230ded-ed19-4aeb-ab6d-005f237d4321",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "No systemd, qual target equivale ao runlevel 3 do SysVinit (modo multiusuário sem interface gráfica)?",
+      "options": null,
+      "answer": [
+        "multi-user.target"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "9d74741c-7e01-451f-b4b6-c71538abde93",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para criar um link simbólico?",
+      "options": [
+        "ln source link",
+        "ln -s source link",
+        "link -s source link",
+        "symlink source link",
+        "ln --symbolic source link"
+      ],
+      "answer": [
+        "ln -s source link"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "9eff26ee-c7af-4ccc-ab43-50c1673d46dd",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual arquivo de configuração do APT lista os repositórios de software no Debian/Ubuntu?",
+      "options": null,
+      "answer": [
+        "/etc/apt/sources.list"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "a04b5ebb-d5ad-4878-a5f4-e5d28d2af9a5",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual diretório no Linux armazena as informações em tempo de execução do kernel (hardware, processos, etc)?",
+      "options": null,
+      "answer": [
+        "/proc"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "a05a8e0e-f553-404e-9cc6-384486e3bd78",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a principal diferença entre os comandos 'apt' e 'apt-get'?",
+      "options": [
+        "apt é mais antigo e obsoleto",
+        "apt combina as funcionalidades mais comuns de apt-get e apt-cache com uma saída mais amigável",
+        "apt-get tem mais recursos de segurança",
+        "apt só funciona em sistemas Debian, apt-get funciona em qualquer distribuição",
+        "Não há diferença, são sinônimos"
+      ],
+      "answer": [
+        "apt combina as funcionalidades mais comuns de apt-get e apt-cache com uma saída mais amigável"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "a0eb5183-1e3f-421b-8acb-d27de1781a70",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a principal vantagem do LVM (Logical Volume Manager)?",
+      "options": [
+        "Aumentar a velocidade do disco",
+        "Criptografar partições",
+        "Flexibilidade no gerenciamento de espaço em disco (redimensionamento, extensão)",
+        "Criar partições MBR",
+        "Melhorar a segurança do sistema de arquivos"
+      ],
+      "answer": [
+        "Flexibilidade no gerenciamento de espaço em disco (redimensionamento, extensão)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "a4c72fd2-602a-4cf3-96f5-a3b9e74053d5",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No sistema de pacotes Debian (dpkg), qual comando é usado para remover um pacote e também seus arquivos de configuração?",
+      "options": [
+        "dpkg -r",
+        "dpkg --remove",
+        "dpkg -P (purge)",
+        "dpkg --delete",
+        "apt-get remove --purge (mas a pergunta é sobre dpkg)"
+      ],
+      "answer": [
+        "dpkg -P (purge)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "a80f64dc-af0c-4deb-87d7-57d52eee950b",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No systemd, qual tipo de unidade permite que um sistema de arquivos seja montado automaticamente apenas quando for acessado?",
+      "options": [
+        ".service",
+        ".mount",
+        ".target",
+        ".automount",
+        ".device"
+      ],
+      "answer": [
+        ".automount"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "a82dda6c-aab0-4ebe-9534-e6d354eb620d",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No editor `vi`, qual comando salva o arquivo e sai do editor?",
+      "options": [
+        ":wq",
+        ":q!",
+        ":x",
+        "ZZ",
+        "Todos acima"
+      ],
+      "answer": [
+        ":wq"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "a8ec86d0-ffed-48ec-bece-9eebc156f471",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a função principal do D-Bus em um sistema Linux?",
+      "options": [
+        "Gerenciar dispositivos de bloco",
+        "Fornecer um sistema de arquivos virtual",
+        "Permitir a comunicação entre processos",
+        "Gerenciar o agendamento de processos",
+        "Controlar o consumo de energia"
+      ],
+      "answer": [
+        "Permitir a comunicação entre processos"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "aaf49c65-ede6-4184-97ed-00485b323ffd",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a faixa de valores nice no Linux?",
+      "options": [
+        "0 a 99",
+        "-20 a 19",
+        "0 a 139",
+        "100 a 139",
+        "-100 a 100"
+      ],
+      "answer": [
+        "-20 a 19"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "ab6bad7d-ec9a-422c-9359-2a674c7f94a8",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No Debian, qual comando `dpkg` é usado para listar todos os arquivos instalados por um pacote específico?",
+      "options": [
+        "dpkg -L pacote",
+        "dpkg -l pacote",
+        "dpkg -s pacote",
+        "dpkg --get-selections",
+        "dpkg-query -l"
+      ],
+      "answer": [
+        "dpkg -L pacote"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "adf8fd38-b84a-4ae9-b6d2-ffe3522a5593",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual diretório contém arquivos de dispositivos (ex: `/dev/sda`)?",
+      "options": [
+        "/dev",
+        "/proc/devices",
+        "/sys/devices",
+        "/devices",
+        "/driver"
+      ],
+      "answer": [
+        "/dev"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "aefb2346-b1fc-4ca4-a282-1b5df9b452d4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando de partição é usado para gerenciar tabelas de partição GPT?",
+      "options": [
+        "fdisk",
+        "gdisk",
+        "parted",
+        "cfdisk",
+        "sfdisk"
+      ],
+      "answer": [
+        "gdisk"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "af7b2c0e-5e63-4b86-a5de-3e05508a4961",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual arquivo ou diretório é usado para configurar os caminhos de busca de bibliotecas compartilhadas?",
+      "options": [
+        "/etc/ld.so.cache",
+        "/etc/ld.so.conf e /etc/ld.so.conf.d/",
+        "/etc/library.conf",
+        "/usr/lib/config",
+        "/etc/ldconfig.conf"
+      ],
+      "answer": [
+        "/etc/ld.so.conf e /etc/ld.so.conf.d/"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "b2586856-b391-4fd9-9354-d8de412b2b12",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando é usado para montar um sistema de arquivos no Linux?",
+      "options": null,
+      "answer": [
+        "mount"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "b517b5ee-9e9c-4779-a313-4ed60bbbec7d",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Em qual diretório o kernel Linux armazena informações em tempo de execução sobre hardware e processos?",
+      "options": [
+        "/dev",
+        "/etc",
+        "/sys",
+        "/var",
+        "/opt"
+      ],
+      "answer": [
+        "/sys"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "b56a209c-6903-4234-8fcd-09ce9e589f58",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe as dependências de bibliotecas compartilhadas de um executável?",
+      "options": null,
+      "answer": [
+        "ldd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "b9e48913-dba2-4389-9c2f-05fb37650dc4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No gerenciador de boot GRUB Legacy, qual arquivo continha as configurações do menu de boot?",
+      "options": [
+        "/boot/grub/grub.cfg",
+        "/boot/grub/menu.lst",
+        "/etc/default/grub",
+        "/boot/grub/grub.conf",
+        "/etc/grub.conf"
+      ],
+      "answer": [
+        "/boot/grub/menu.lst"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "bd17b938-7649-4ed3-85db-3cac3bff4ccb",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No comando `df -h`, o que a opção `-h` significa?",
+      "options": [
+        "Ocultar sistemas de arquivos virtuais",
+        "Saída em formato legível por humanos (human-readable)",
+        "Ajuda (help)",
+        "Somente sistemas de arquivos locais",
+        "Sistema de arquivos hierárquico"
+      ],
+      "answer": [
+        "Saída em formato legível por humanos (human-readable)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "c0be65bc-5e12-4896-8615-7cf1ab100e70",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é o nome da convenção para bibliotecas compartilhadas no Linux (ex: libc.so.6)?",
+      "options": [
+        "soname",
+        "ldname",
+        "dlname",
+        "linkname",
+        "runtimename"
+      ],
+      "answer": [
+        "soname"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "c247bfe5-c1f8-4301-8bc4-45cc939c2696",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual parâmetro do kernel pode ser usado para definir o init alternativo (ex: /bin/bash)?",
+      "options": [
+        "root=",
+        "ro",
+        "rw",
+        "init=",
+        "single"
+      ],
+      "answer": [
+        "init="
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "c4721334-c19e-4e1d-8f81-452c114a522b",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual utilitário é usado para desfragmentar (reorganizar) um sistema de arquivos XFS?",
+      "options": [
+        "xfs_fsr",
+        "xfs_defrag",
+        "xfs_db",
+        "xfs_repair -d",
+        "fsck.xfs -d"
+      ],
+      "answer": [
+        "xfs_fsr"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "c62873ca-f758-4acc-b7d3-bb92b24635a6",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para visualizar as primeiras 10 linhas de um arquivo por padrão?",
+      "options": [
+        "tail",
+        "less",
+        "more",
+        "cat",
+        "head"
+      ],
+      "answer": [
+        "head"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "c77c5db4-96c2-4baa-9688-c31b4bbbb675",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual arquivo do GRUB 2 contém o menu de boot e não deve ser editado diretamente?",
+      "options": null,
+      "answer": [
+        "/boot/grub/grub.cfg",
+        "/boot/grub2/grub.cfg"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "c7ab0c45-c4cc-4dce-a77d-70360b23d861",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando do YUM/DNF instala um pacote no sistema?",
+      "options": null,
+      "answer": [
+        "yum install",
+        "dnf install"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "c8236af9-f6e9-4abe-8e1a-5b1d5d8630a3",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "O que o `umask 022` faz?",
+      "options": [
+        "Define a senha do usuário",
+        "Remove permissões de escrita para grupo e outros em novos arquivos/diretórios",
+        "Adiciona permissões de escrita para o proprietário",
+        "Força permissões 755 para novos arquivos",
+        "Exibe a máscara de usuário atual"
+      ],
+      "answer": [
+        "Remove permissões de escrita para grupo e outros em novos arquivos/diretórios"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "c8ae15d8-10d2-4f59-a6dc-1a010a69297e",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No GRUB 2, qual arquivo de configuração NÃO deve ser editado diretamente, pois é gerado automaticamente?",
+      "options": [
+        "/boot/grub/menu.lst",
+        "/etc/default/grub",
+        "/boot/grub/grub.cfg",
+        "/etc/grub.d/40_custom",
+        "/boot/grub/grubenv"
+      ],
+      "answer": [
+        "/boot/grub/grub.cfg"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "cf93fd27-4a98-49b1-b16f-658f9d782f27",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando é utilizado para listar todos os dispositivos PCI conectados ao sistema?",
+      "options": null,
+      "answer": [
+        "lspci"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "d2ac9291-9072-43a1-a674-39e140d18fd7",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual opção do grep habilita expressões regulares estendidas (ERE)?",
+      "options": null,
+      "answer": [
+        "grep -E",
+        "egrep"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "d32ad000-7b79-403e-b845-ca94e9ee0519",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual bit especial de permissão, quando aplicado a um diretório, faz com que novos arquivos herdem o grupo do diretório (e não o grupo primário do criador)?",
+      "options": null,
+      "answer": [
+        "sgid",
+        "setgid",
+        "set-gid"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "d3a1b61d-91b9-461b-965d-50f18fe4c688",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual subsistema do Linux é responsável por gerenciar dinamicamente os dispositivos em /dev, criando arquivos de dispositivo quando o hardware é detectado?",
+      "options": [
+        "systemd",
+        "sysfs",
+        "udev",
+        "dbus",
+        "hal"
+      ],
+      "answer": [
+        "udev"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "d899090c-c117-4c96-a35f-34e4ac6ff8c6",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual utilitário pode ser usado para extrair o conteúdo de um arquivo RPM sem instalá-lo, convertendo-o para um arquivo cpio?",
+      "options": [
+        "rpm -q",
+        "rpm2cpio",
+        "cpio2rpm",
+        "rpm-extract",
+        "ar"
+      ],
+      "answer": [
+        "rpm2cpio"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "dae7765f-b17b-4ce5-b3ba-c5ca470955c6",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando inicia um novo processo com valor nice (prioridade) personalizado? (apenas o comando base)",
+      "options": null,
+      "answer": [
+        "nice"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "dc2f5aad-b521-49db-92fe-e06869ec3bec",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando exibe o uso de espaço em disco dos sistemas de arquivos montados?",
+      "options": null,
+      "answer": [
+        "df",
+        "df -h"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "dc7f4215-e93b-401b-b4a6-4f5948e1c55e",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual arquivo em /proc lista os números de interrupções (IRQs) por dispositivo de entrada e saída?",
+      "options": [
+        "/proc/cpuinfo",
+        "/proc/interrupts",
+        "/proc/ioports",
+        "/proc/dma",
+        "/proc/meminfo"
+      ],
+      "answer": [
+        "/proc/interrupts"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "dd4a789d-011a-4446-ac37-d60aeae9ec09",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando altera o dono (proprietário) de um arquivo?",
+      "options": null,
+      "answer": [
+        "chown"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "df59e558-f5c1-4862-8ad9-c05e3e72df93",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para gerar ou verificar o D-Bus machine ID de um sistema?",
+      "options": [
+        "dbus-uuidgen",
+        "dbus-launch",
+        "uuidgen",
+        "machine-id",
+        "systemd-machine-id-setup"
+      ],
+      "answer": [
+        "dbus-uuidgen"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "e085510a-bf1a-453d-a8f4-8be4c0fdbd33",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No `top`, qual tecla interativa permite ordenar os processos por uso de memória?",
+      "options": [
+        "P",
+        "M",
+        "N",
+        "T",
+        "R"
+      ],
+      "answer": [
+        "M"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "e08a27e5-27f4-4259-9a63-13ee664b8ef2",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando `sed` substituiria todas as ocorrências de 'erro' por 'acerto' em um arquivo?",
+      "options": [
+        "sed 's/erro/acerto/' arquivo",
+        "sed 's/erro/acerto/g' arquivo",
+        "sed 'y/erro/acerto/' arquivo",
+        "sed '/erro/d' arquivo",
+        "sed -n 's/erro/acerto/p' arquivo"
+      ],
+      "answer": [
+        "sed 's/erro/acerto/g' arquivo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "e4257561-20ac-4c01-be51-2570124767a9",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para reconfigurar um pacote já instalado, executando novamente seu script de pós-instalação?",
+      "options": [
+        "dpkg --configure",
+        "dpkg-reconfigure",
+        "apt-get install --reinstall",
+        "dpkg --reconfigure",
+        "apt reconfigure"
+      ],
+      "answer": [
+        "dpkg-reconfigure"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "e6bff8d1-98da-443d-9524-37d0574d66c8",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No gerenciador de pacotes YUM, qual comando é usado para encontrar qual pacote fornece um arquivo específico, como `/etc/hosts`?",
+      "options": [
+        "yum search /etc/hosts",
+        "yum list /etc/hosts",
+        "yum whatprovides /etc/hosts",
+        "yum info /etc/hosts",
+        "yum provides /etc/hosts"
+      ],
+      "answer": [
+        "yum whatprovides /etc/hosts"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "ea8dde26-07d3-4590-9470-2505e14a2255",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando verifica a integridade de um sistema de arquivos ext4?",
+      "options": null,
+      "answer": [
+        "fsck",
+        "e2fsck"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "ed2bbcc1-e211-463e-8d17-1b1284cbf422",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando cria uma partição de swap e prepara-a para uso?",
+      "options": null,
+      "answer": [
+        "mkswap"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "ee436c50-10c9-4740-9c8a-9d5513b1609f",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando `grep` é usado para pesquisar sem diferenciar maiúsculas de minúsculas?",
+      "options": [
+        "grep -v",
+        "grep -c",
+        "grep -n",
+        "grep -i",
+        "grep -w"
+      ],
+      "answer": [
+        "grep -i"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "f1385142-430f-442d-afaf-f751a2953f47",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "text",
+      "question": "Qual comando envia um sinal SIGKILL (9) para encerrar imediatamente um processo pelo seu PID?",
+      "options": null,
+      "answer": [
+        "kill -9",
+        "kill -SIGKILL",
+        "kill -KILL"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "f3dca65c-9efb-4bd3-9e15-31d0b0d37615",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual sinal é enviado por padrão pelo comando `kill` se nenhum sinal for especificado?",
+      "options": [
+        "SIGKILL (9)",
+        "SIGTERM (15)",
+        "SIGHUP (1)",
+        "SIGSTOP",
+        "SIGCONT"
+      ],
+      "answer": [
+        "SIGTERM (15)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "f466ed4f-3826-462f-ac3b-08a580fc0b54",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No SysVinit, qual nível de execução (runlevel) é geralmente associado ao desligamento do sistema?",
+      "options": [
+        "0",
+        "1",
+        "3",
+        "5",
+        "6"
+      ],
+      "answer": [
+        "0"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    },
+    {
+      "id": "f472cb41-1aee-494f-9485-6d7c05d826ff",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para encontrar o UUID de um dispositivo de bloco?",
+      "options": [
+        "uuid",
+        "blkid",
+        "lsblk -f",
+        "uuidgen",
+        "tune2fs -l"
+      ],
+      "answer": [
+        "lsblk -f"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "f5058a04-4b66-4ce6-b139-be93f7cdaca4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual é a principal diferença entre BIOS e UEFI?",
+      "options": [
+        "UEFI não suporta discos GPT",
+        "UEFI é um firmware mais antigo",
+        "UEFI pode ler sistemas de arquivos e inicializar a partir de partições GPT",
+        "BIOS suporta inicialização segura (Secure Boot)",
+        "BIOS é mais rápida na inicialização"
+      ],
+      "answer": [
+        "UEFI pode ler sistemas de arquivos e inicializar a partir de partições GPT"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "f6f386c8-48cb-4f3e-8431-aa41ef1c777c",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "No editor `vi`, como você entra no modo de inserção para começar a digitar texto antes da posição atual do cursor?",
+      "options": [
+        "a",
+        "i",
+        "o",
+        "A",
+        "I"
+      ],
+      "answer": [
+        "i"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.14256"
+    },
+    {
+      "id": "fb6c7b9f-adf2-4b2b-826b-fc374dbec8a4",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "O que o arquivo `/proc/cpuinfo` contém?",
+      "options": [
+        "Informações sobre a CPU",
+        "Log de erros da CPU",
+        "Configuração de frequência da CPU",
+        "Código de microprograma da CPU",
+        "Arquivo de dispositivo da CPU"
+      ],
+      "answer": [
+        "Informações sobre a CPU"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.350662"
+    },
+    {
+      "id": "fcb70ca5-5b46-4bd7-8961-e41991526fa0",
+      "exam_id": "813e90f2-58d9-4d9e-9f97-d881234ff83d",
+      "type": "multiple",
+      "question": "Qual comando é usado para iniciar um processo imune a `hangups` (para que continue rodando mesmo após o logout)?",
+      "options": [
+        "bg",
+        "disown",
+        "nohup",
+        "&",
+        "screen"
+      ],
+      "answer": [
+        "nohup"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:09.628669"
+    }
+  ]
+}

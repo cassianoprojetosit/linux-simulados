@@ -1,0 +1,2113 @@
+{
+  "meta": {
+    "simulado_id": "ef6e390e-fe2a-43ef-8c15-d9516de28c9f",
+    "simulado_slug": "linux-user",
+    "simulado_title": "Linux User",
+    "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+    "exam_code": "N1-100",
+    "exam_name": null,
+    "exported_at": "2026-02-25T13:55:10.120Z"
+  },
+  "questions": [
+    {
+      "id": "068a21f0-0d54-47c2-bdc0-cccdd458c4a3",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe uma lista dos processos em execução no sistema?",
+      "options": [
+        "proc",
+        "task",
+        "ps",
+        "jobs"
+      ],
+      "answer": [
+        "ps"
+      ],
+      "difficulty": "easy",
+      "hint": "'ps aux' mostra todos os processos de todos os usuários.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "07aa7d71-309d-474f-bda1-8e7a6b81c037",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é um PID no Linux?",
+      "options": [
+        "Um tipo de permissão de arquivo",
+        "O identificador numérico único de um processo em execução",
+        "O nome do processo no sistema",
+        "A prioridade de agendamento do processo"
+      ],
+      "answer": [
+        "O identificador numérico único de um processo em execução"
+      ],
+      "difficulty": "easy",
+      "hint": "Process ID. O kernel usa o PID para identificar e gerenciar cada processo.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "08642459-df14-49ed-8b1a-e08c23c93c3e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como repetir o último comando executado no bash?",
+      "options": [
+        "repeat",
+        "last",
+        "!!",
+        "prev"
+      ],
+      "answer": [
+        "!!"
+      ],
+      "difficulty": "easy",
+      "hint": "!! é expandido para o último comando. 'sudo !!' executa o último comando como root.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "09075514-0348-4c63-8e26-9f09aa2f581c",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é o init (PID 1) no Linux?",
+      "options": [
+        "O primeiro processo criado pelo kernel ao iniciar; é o pai de todos os outros processos",
+        "Um processo de segurança que monitora outros processos",
+        "O processo responsável pelo gerenciamento de memória",
+        "O processo que gerencia dispositivos de hardware"
+      ],
+      "answer": [
+        "O primeiro processo criado pelo kernel ao iniciar; é o pai de todos os outros processos"
+      ],
+      "difficulty": "medium",
+      "hint": "Sistemas modernos usam systemd como init. Você pode ver com 'ps -p 1'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "090ea9ea-7991-45a0-b930-5f0c5dd47c14",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o wildcard '*' representa em comandos como 'ls *.txt'?",
+      "options": [
+        "Apenas um caractere qualquer",
+        "Zero ou mais caracteres quaisquer",
+        "Apenas letras e números",
+        "Exatamente um caractere"
+      ],
+      "answer": [
+        "Zero ou mais caracteres quaisquer"
+      ],
+      "difficulty": "easy",
+      "hint": "'?' representa exatamente um caractere. '[abc]' representa um dos caracteres listados.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "0cfba750-2f46-4432-99bd-1bded873d7ef",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando busca por um padrão de texto dentro de arquivos?",
+      "options": [
+        "find",
+        "search",
+        "locate",
+        "grep"
+      ],
+      "answer": [
+        "grep"
+      ],
+      "difficulty": "easy",
+      "hint": "grep = global regular expression print. Ex: grep 'erro' /var/log/syslog",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "10fc1cd5-f86e-4641-9330-870b8276fd9a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Onde ficam armazenadas as informações básicas das contas de usuário no Linux?",
+      "options": [
+        "/etc/users",
+        "/etc/accounts",
+        "/etc/passwd",
+        "/etc/login"
+      ],
+      "answer": [
+        "/etc/passwd"
+      ],
+      "difficulty": "easy",
+      "hint": "As senhas em si ficam em /etc/shadow (criptografadas).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "11c25f32-e5d2-462d-b6d9-a6ebf3358153",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que significa o traço '-' no início de '-rwxr-xr--' na saída do ls -l?",
+      "options": [
+        "O arquivo está oculto",
+        "Indica que é um arquivo regular (não diretório, não link)",
+        "Indica que o arquivo não tem permissões",
+        "Indica que o arquivo está bloqueado"
+      ],
+      "answer": [
+        "Indica que é um arquivo regular (não diretório, não link)"
+      ],
+      "difficulty": "medium",
+      "hint": "'d' = diretório, 'l' = link simbólico, '-' = arquivo regular, 'c' = dispositivo de caractere.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "13a84426-f508-4594-a510-f7e7b8c2b90a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando cria um link simbólico chamado 'link' apontando para '/usr/bin/python3'?",
+      "options": [
+        "ln /usr/bin/python3 link",
+        "ln -s /usr/bin/python3 link",
+        "cp -s /usr/bin/python3 link",
+        "symlink /usr/bin/python3 link"
+      ],
+      "answer": [
+        "ln -s /usr/bin/python3 link"
+      ],
+      "difficulty": "medium",
+      "hint": "'-s' cria symbolic link. Sem -s cria hard link.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "13f4c601-d139-4ef3-9af3-79fbb6f02ccb",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe as interfaces de rede e seus endereços IP no Linux moderno?",
+      "options": [
+        "ifconfig",
+        "netconfig",
+        "ip addr show",
+        "ipaddr"
+      ],
+      "answer": [
+        "ip addr show"
+      ],
+      "difficulty": "easy",
+      "hint": "ifconfig é o comando legado. O moderno é 'ip addr' ou 'ip a' (do pacote iproute2).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "15a53687-7f7a-4afa-80da-1592c096276e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'echo $?' após executar um comando?",
+      "options": [
+        "Exibe o PID do último processo",
+        "Exibe o código de saída (exit status) do último comando executado",
+        "Exibe o nome do último comando",
+        "Repete o último comando"
+      ],
+      "answer": [
+        "Exibe o código de saída (exit status) do último comando executado"
+      ],
+      "difficulty": "medium",
+      "hint": "Exit status 0 = sucesso. Qualquer valor não-zero = erro.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "1c7ed1c0-d8b0-4580-a9d8-43a405c94ae8",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual a diferença entre 'df' e 'du'?",
+      "options": [
+        "df mostra partições; du mostra arquivos individuais",
+        "df mostra espaço disponível nos filesystems; du mostra espaço usado por arquivos/diretórios",
+        "df é para discos; du é para memória",
+        "São idênticos, apenas com saídas diferentes"
+      ],
+      "answer": [
+        "df mostra espaço disponível nos filesystems; du mostra espaço usado por arquivos/diretórios"
+      ],
+      "difficulty": "medium",
+      "hint": "'du -sh /var/*' mostra o tamanho de cada item em /var de forma resumida.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "1d62cc14-8ff8-4799-b60b-92c523fca170",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o comando 'passwd' faz quando executado por um usuário comum?",
+      "options": [
+        "Exibe a senha atual do usuário",
+        "Permite ao usuário alterar sua própria senha",
+        "Lista todos os usuários do sistema",
+        "Cria um novo usuário no sistema"
+      ],
+      "answer": [
+        "Permite ao usuário alterar sua própria senha"
+      ],
+      "difficulty": "easy",
+      "hint": "Root pode usar 'passwd nome_usuario' para alterar a senha de qualquer usuário.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "1dfa2800-7140-413f-9bb2-16abba136664",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o comando 'man 5 passwd' consulta?",
+      "options": [
+        "O manual do comando passwd na seção 5",
+        "O manual do comando passwd com 5 páginas",
+        "O manual da syscall passwd",
+        "A seção 5 de todos os manuais"
+      ],
+      "answer": [
+        "O manual do comando passwd na seção 5"
+      ],
+      "difficulty": "medium",
+      "hint": "Seção 5 = formatos de arquivo. 'man 5 passwd' documenta o FORMAT do arquivo /etc/passwd.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "212e42a5-deac-4764-871a-44f95257181b",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando cria um novo diretório chamado 'projetos'?",
+      "options": [
+        "newdir projetos",
+        "create projetos",
+        "mkdir projetos",
+        "touch projetos"
+      ],
+      "answer": [
+        "mkdir projetos"
+      ],
+      "difficulty": "easy",
+      "hint": "mkdir = make directory.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "22005c63-f9b2-4a82-8dbb-d300dcdea06e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "No Linux, quais são as três categorias de permissões de um arquivo?",
+      "options": [
+        "admin, usuário, convidado",
+        "owner (dono), group (grupo), others (outros)",
+        "read, write, execute",
+        "user, root, daemon"
+      ],
+      "answer": [
+        "owner (dono), group (grupo), others (outros)"
+      ],
+      "difficulty": "easy",
+      "hint": "Em 'ls -l': -rwxr-xr-- as 9 letras depois do tipo representam dono/grupo/outros.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "2871303d-e42e-4275-95e6-000eef1ded70",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual é o prompt típico que indica que um usuário comum está logado no bash?",
+      "options": [
+        "#",
+        "$",
+        "@",
+        ">"
+      ],
+      "answer": [
+        "$"
+      ],
+      "difficulty": "easy",
+      "hint": "O símbolo # indica superusuário (root); $ indica usuário comum.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "2c2f9b43-fabb-4233-9e2b-29a6177455e4",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é o 'shebang' (#!) na primeira linha de um script shell?",
+      "options": [
+        "Um comentário que documenta o script",
+        "Indica ao sistema operacional qual interpretador usar para executar o script",
+        "Uma diretiva de compilação",
+        "Um caractere de escape para a linha seguinte"
+      ],
+      "answer": [
+        "Indica ao sistema operacional qual interpretador usar para executar o script"
+      ],
+      "difficulty": "medium",
+      "hint": "Ex: '#!/bin/bash' significa que o bash será o interpretador do script.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "2f7a0946-5a78-48bc-abba-47a672dc2d7d",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual é a diferença entre 'find' e 'locate' para buscar arquivos?",
+      "options": [
+        "find é mais rápido; locate é mais preciso",
+        "find busca em tempo real no filesystem; locate usa um banco de dados indexado (mais rápido, mas pode estar desatualizado)",
+        "find busca por nome; locate busca por conteúdo",
+        "Não há diferença prática"
+      ],
+      "answer": [
+        "find busca em tempo real no filesystem; locate usa um banco de dados indexado (mais rápido, mas pode estar desatualizado)"
+      ],
+      "difficulty": "medium",
+      "hint": "O banco do locate é atualizado com 'updatedb', geralmente via cron diário.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "3027a4ce-21d6-4737-95da-0a0d76061f92",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o operador '|' (pipe) faz em 'ps aux | grep nginx'?",
+      "options": [
+        "Salva a saída de ps aux em um arquivo chamado grep",
+        "Compara a saída de ps aux com o padrão nginx",
+        "Envia a saída de ps aux como entrada para o grep",
+        "Executa os dois comandos em paralelo"
+      ],
+      "answer": [
+        "Envia a saída de ps aux como entrada para o grep"
+      ],
+      "difficulty": "easy",
+      "hint": "O pipe conecta a stdout de um comando à stdin do próximo.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "35b3e338-13fe-4176-b93d-c8d9446c0913",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que significa '/dev/null' quando usado em redirecionamentos como '2>/dev/null'?",
+      "options": [
+        "Um arquivo de log do sistema",
+        "Um dispositivo que descarta tudo que é escrito nele",
+        "Um buffer temporário da memória",
+        "O terminal atual do usuário"
+      ],
+      "answer": [
+        "Um dispositivo que descarta tudo que é escrito nele"
+      ],
+      "difficulty": "medium",
+      "hint": "Útil para suprimir mensagens de erro indesejadas.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "36765b1f-1837-40ae-8d6e-e3e75a0a6dfc",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual seção do manual (man) contém documentação de comandos de usuário?",
+      "options": [
+        "Seção 0",
+        "Seção 1",
+        "Seção 2",
+        "Seção 8"
+      ],
+      "answer": [
+        "Seção 1"
+      ],
+      "difficulty": "easy",
+      "hint": "Seção 2 = syscalls, Seção 3 = funções de biblioteca, Seção 8 = comandos de administração.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "3b8430fd-9e9b-4b5e-b080-2dd93e3299b0",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual atalho de teclado suspende (pausa) um processo em execução no terminal?",
+      "options": [
+        "Ctrl+C",
+        "Ctrl+D",
+        "Ctrl+Z",
+        "Ctrl+S"
+      ],
+      "answer": [
+        "Ctrl+Z"
+      ],
+      "difficulty": "medium",
+      "hint": "Após Ctrl+Z, use 'fg' para retomar em foreground ou 'bg' para enviar ao background.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "3d9a5287-f3ae-4fd9-8d36-c3f991df7cd1",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz 'chmod +x script.sh'?",
+      "options": [
+        "Remove a permissão de execução do arquivo",
+        "Adiciona permissão de execução para dono, grupo e outros",
+        "Torna o arquivo executável apenas pelo root",
+        "Cria uma cópia executável do arquivo"
+      ],
+      "answer": [
+        "Adiciona permissão de execução para dono, grupo e outros"
+      ],
+      "difficulty": "easy",
+      "hint": "É a notação simbólica do chmod. '+' adiciona, '-' remove, '=' define exatamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "3df6a803-5341-48d9-aff5-b346e9b2d3e3",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como executar um comando em background no shell?",
+      "options": [
+        "background comando",
+        "comando &",
+        "run comando",
+        "nohup comando"
+      ],
+      "answer": [
+        "comando &"
+      ],
+      "difficulty": "easy",
+      "hint": "O shell retorna o PID do processo iniciado em background.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "3ebf2949-6824-4e0c-b3da-63879f5793a6",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que significa 'montar' (mount) um sistema de arquivos no Linux?",
+      "options": [
+        "Formatar uma partição",
+        "Anexar um sistema de arquivos a um ponto da hierarquia de diretórios",
+        "Criar um backup do sistema",
+        "Verificar erros em uma partição"
+      ],
+      "answer": [
+        "Anexar um sistema de arquivos a um ponto da hierarquia de diretórios"
+      ],
+      "difficulty": "medium",
+      "hint": "Ex: 'mount /dev/sdb1 /mnt/pendrive' torna o pendrive acessível em /mnt/pendrive.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "4abac03d-d267-4d3b-b145-c4d0441f5741",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como navegar para o diretório /var/log usando um caminho absoluto?",
+      "options": [
+        "cd var/log",
+        "cd ./var/log",
+        "cd /var/log",
+        "cd ~/var/log"
+      ],
+      "answer": [
+        "cd /var/log"
+      ],
+      "difficulty": "easy",
+      "hint": "Caminhos absolutos sempre começam com /.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "4d805647-0ace-4c76-afbd-a6300dbd4857",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual diretório contém os binários de administração do sistema, geralmente acessíveis apenas pelo root?",
+      "options": [
+        "/bin",
+        "/usr/bin",
+        "/sbin",
+        "/admin"
+      ],
+      "answer": [
+        "/sbin"
+      ],
+      "difficulty": "easy",
+      "hint": "Ex: fdisk, mkfs, ifconfig, iptables ficam em /sbin ou /usr/sbin.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "5043530c-f470-4e1f-9669-c7ffddd12103",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe as últimas linhas do arquivo /var/log/syslog em tempo real?",
+      "options": [
+        "cat -f /var/log/syslog",
+        "less /var/log/syslog",
+        "tail -f /var/log/syslog",
+        "watch /var/log/syslog"
+      ],
+      "answer": [
+        "tail -f /var/log/syslog"
+      ],
+      "difficulty": "easy",
+      "hint": "A opção -f significa 'follow' — acompanha o arquivo à medida que cresce.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "5676d2f6-cc04-467e-9210-5db7fc0747fb",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O comando 'touch arquivo.txt' é utilizado para:",
+      "options": [
+        "Editar o conteúdo de um arquivo",
+        "Criar um arquivo vazio ou atualizar o timestamp de um arquivo existente",
+        "Verificar se um arquivo existe",
+        "Exibir as primeiras linhas de um arquivo"
+      ],
+      "answer": [
+        "Criar um arquivo vazio ou atualizar o timestamp de um arquivo existente"
+      ],
+      "difficulty": "easy",
+      "hint": "Muito usado em scripts para criar arquivos de marcação.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "60c1a6f0-876b-44d7-99c2-0b90103edff1",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual atalho completa automaticamente nomes de arquivos e comandos no bash?",
+      "options": [
+        "Ctrl+C",
+        "Enter",
+        "Tab",
+        "Ctrl+A"
+      ],
+      "answer": [
+        "Tab"
+      ],
+      "difficulty": "easy",
+      "hint": "Pressione Tab duas vezes para ver todas as opções quando há mais de uma possibilidade.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "6c86fdc7-c37a-44c5-ab1f-32e0397c5928",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é um 'shell' no contexto do Linux?",
+      "options": [
+        "O núcleo do sistema operacional que gerencia hardware",
+        "Um interpretador de comandos que permite ao usuário interagir com o SO via texto",
+        "Um ambiente gráfico como GNOME ou KDE",
+        "Um tipo de sistema de arquivos do Linux"
+      ],
+      "answer": [
+        "Um interpretador de comandos que permite ao usuário interagir com o SO via texto"
+      ],
+      "difficulty": "easy",
+      "hint": "O shell mais comum no Linux é o bash (Bourne Again Shell).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "6e5bb14c-6138-44d1-adc3-174ef3d7975a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que acontece com os processos filhos quando o processo pai termina abruptamente?",
+      "options": [
+        "Todos os filhos são encerrados imediatamente",
+        "Os filhos são 'adotados' pelo processo init (PID 1) e continuam rodando",
+        "Os filhos ficam em estado zombie",
+        "Os filhos são suspensos até que um novo pai assuma"
+      ],
+      "answer": [
+        "Os filhos são 'adotados' pelo processo init (PID 1) e continuam rodando"
+      ],
+      "difficulty": "medium",
+      "hint": "Este é o mecanismo que permite daemons sobreviverem ao terminal que os iniciou.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "6fda6cf9-1b0f-4ac8-a90b-aaeaee1b8f93",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que a opção '-a' faz no comando 'ls -a'?",
+      "options": [
+        "Ordena os arquivos por data de acesso",
+        "Exibe também arquivos ocultos (cujos nomes começam com ponto)",
+        "Lista apenas diretórios",
+        "Exibe o tamanho em formato legível"
+      ],
+      "answer": [
+        "Exibe também arquivos ocultos (cujos nomes começam com ponto)"
+      ],
+      "difficulty": "easy",
+      "hint": "Arquivos como .bashrc e .profile são ocultos por padrão.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "73798a01-9c2b-4538-8e00-282e8a164952",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe o histórico de comandos digitados no shell?",
+      "options": [
+        "log",
+        "history",
+        "commands",
+        "past"
+      ],
+      "answer": [
+        "history"
+      ],
+      "difficulty": "easy",
+      "hint": "Use 'Ctrl+R' para busca reversa no histórico. !número executa o comando da linha N.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "76476571-3feb-40f8-9c3b-803ed06c2543",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'top'?",
+      "options": [
+        "Mostra o topo (primeira linha) de um arquivo",
+        "Exibe processos em tempo real com uso de CPU e memória",
+        "Lista os 10 processos com maior prioridade",
+        "Mostra informações sobre o kernel"
+      ],
+      "answer": [
+        "Exibe processos em tempo real com uso de CPU e memória"
+      ],
+      "difficulty": "easy",
+      "hint": "Pressione 'q' para sair do top. Alternativas modernas: htop, btop.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "79c0c516-bafd-4657-a872-d194a235f141",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como redirecionar os erros (stderr) para um arquivo chamado erros.log?",
+      "options": [
+        "ls /inexistente > erros.log",
+        "ls /inexistente 2> erros.log",
+        "ls /inexistente | erros.log",
+        "ls /inexistente >> erros.log"
+      ],
+      "answer": [
+        "ls /inexistente 2> erros.log"
+      ],
+      "difficulty": "medium",
+      "hint": "File descriptor 1 = stdout, 2 = stderr. '2>' redireciona o stderr.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "79f4fafc-ad72-4bda-8b36-2739697bf82b",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que significam as letras 'r', 'w' e 'x' nas permissões de um arquivo?",
+      "options": [
+        "run, write, execute",
+        "read, write, execute",
+        "read, work, extra",
+        "remove, write, execute"
+      ],
+      "answer": [
+        "read, write, execute"
+      ],
+      "difficulty": "easy",
+      "hint": "Para diretórios, 'x' significa permissão de entrar (cd).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "7a3045a8-82d2-4d24-8824-745dad7ac324",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como exibir o valor da variável de ambiente HOME?",
+      "options": [
+        "print HOME",
+        "display $HOME",
+        "echo $HOME",
+        "show HOME"
+      ],
+      "answer": [
+        "echo $HOME"
+      ],
+      "difficulty": "easy",
+      "hint": "O $ é necessário para referenciar o valor de uma variável.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "7a7e8cdf-a540-4a0a-a96d-d448c8ec849b",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe as primeiras 10 linhas de um arquivo?",
+      "options": [
+        "first arquivo",
+        "top arquivo",
+        "head arquivo",
+        "start arquivo"
+      ],
+      "answer": [
+        "head arquivo"
+      ],
+      "difficulty": "easy",
+      "hint": "Use 'head -n 20' para ver as primeiras 20 linhas.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "7c381c23-03f8-42d6-9f12-e3be52bbe3f2",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como verificar o tipo de um arquivo no Linux sem abri-lo?",
+      "options": [
+        "type arquivo",
+        "check arquivo",
+        "file arquivo",
+        "typeof arquivo"
+      ],
+      "answer": [
+        "file arquivo"
+      ],
+      "difficulty": "easy",
+      "hint": "O comando 'file' detecta o tipo real analisando o conteúdo, não apenas a extensão.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "8150f11f-548b-4516-9177-6623583c8037",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "No nano, como salvar um arquivo sem sair do editor?",
+      "options": [
+        "Ctrl+S",
+        "Ctrl+O",
+        "Ctrl+W",
+        "Ctrl+X"
+      ],
+      "answer": [
+        "Ctrl+O"
+      ],
+      "difficulty": "easy",
+      "hint": "Ctrl+O = Write Out (salvar). Ctrl+X = sair (pergunta se quer salvar).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "84e01dd9-9938-482b-8f19-fd9e6e11905d",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'sudo' antes de outro comando?",
+      "options": [
+        "Executa o comando como o usuário atual sem restrições",
+        "Executa o comando com privilégios de superusuário (root)",
+        "Executa o comando em background",
+        "Executa o comando em um novo shell"
+      ],
+      "answer": [
+        "Executa o comando com privilégios de superusuário (root)"
+      ],
+      "difficulty": "easy",
+      "hint": "sudo = substitute user do. Requer que o usuário esteja no arquivo /etc/sudoers.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "85504efb-fb66-4ab8-ba4e-66d13c504376",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe o conteúdo do diretório atual no Linux?",
+      "options": [
+        "dir",
+        "show",
+        "ls",
+        "list"
+      ],
+      "answer": [
+        "ls"
+      ],
+      "difficulty": "easy",
+      "hint": "Com a opção -l mostra detalhes como permissões, dono e tamanho.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "85c399cd-7c83-42bd-a46a-35f2e5d46e1a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como buscar a palavra 'erro' dentro do paginador 'less'?",
+      "options": [
+        "find erro",
+        "search erro",
+        "/erro",
+        "grep erro"
+      ],
+      "answer": [
+        "/erro"
+      ],
+      "difficulty": "medium",
+      "hint": "Pressione 'n' para ir para a próxima ocorrência e 'N' para a anterior.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "891542e7-5367-4fbe-991e-0cd0811e376a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'sort arquivo.txt'?",
+      "options": [
+        "Ordena as linhas do arquivo e exibe na tela",
+        "Ordena os arquivos no diretório",
+        "Reordena as palavras em cada linha",
+        "Ordena numericamente o conteúdo"
+      ],
+      "answer": [
+        "Ordena as linhas do arquivo e exibe na tela"
+      ],
+      "difficulty": "easy",
+      "hint": "Use 'sort -r' para ordem reversa e 'sort -n' para ordem numérica.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "8b124dd1-b86c-464f-9188-fe4316b96392",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é stdin, stdout e stderr no contexto Linux?",
+      "options": [
+        "Nomes de diretórios do sistema",
+        "Os três canais padrão de entrada, saída e saída de erro de um processo",
+        "Tipos de arquivos especiais",
+        "Protocolos de comunicação entre processos"
+      ],
+      "answer": [
+        "Os três canais padrão de entrada, saída e saída de erro de um processo"
+      ],
+      "difficulty": "medium",
+      "hint": "Representados pelos file descriptors 0, 1 e 2 respectivamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "91a86eba-1508-4ece-a36d-163ba748bf48",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual é o diretório padrão onde ficam os arquivos de configuração do sistema no Linux?",
+      "options": [
+        "/bin",
+        "/var",
+        "/etc",
+        "/opt"
+      ],
+      "answer": [
+        "/etc"
+      ],
+      "difficulty": "easy",
+      "hint": "Segundo o FHS (Filesystem Hierarchy Standard), /etc contém configurações estáticas do sistema.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "95a84bce-7fc2-431f-8dec-9f85735b1242",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual é a diferença entre um caminho absoluto e um caminho relativo?",
+      "options": [
+        "Caminhos absolutos usam '/', relativos usam './'",
+        "Caminho absoluto começa em '/' e é completo; relativo parte do diretório atual",
+        "Caminhos absolutos são mais rápidos; relativos são mais seguros",
+        "Não há diferença prática entre eles"
+      ],
+      "answer": [
+        "Caminho absoluto começa em '/' e é completo; relativo parte do diretório atual"
+      ],
+      "difficulty": "easy",
+      "hint": "Exemplo absoluto: /home/user/docs. Exemplo relativo: docs/ ou ../docs.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "97666845-e152-483d-a27a-f852b541473f",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual arquivo contém o mapeamento estático de hostnames para endereços IP no Linux?",
+      "options": [
+        "/etc/dns",
+        "/etc/hosts",
+        "/etc/hostname",
+        "/etc/resolv.conf"
+      ],
+      "answer": [
+        "/etc/hosts"
+      ],
+      "difficulty": "easy",
+      "hint": "Este arquivo é verificado antes do DNS, conforme configurado em /etc/nsswitch.conf.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "9773c528-98d1-4ffc-9a5b-742ce7d5bebe",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como tornar um script shell executável após criá-lo?",
+      "options": [
+        "run script.sh",
+        "source script.sh",
+        "chmod +x script.sh",
+        "bash -x script.sh"
+      ],
+      "answer": [
+        "chmod +x script.sh"
+      ],
+      "difficulty": "easy",
+      "hint": "Sem +x, você precisaria chamar 'bash script.sh' explicitamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "9a6bc316-b189-4bc6-bd22-921282c877a5",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz 'grep -i' em relação ao padrão de busca?",
+      "options": [
+        "Inverte o resultado (mostra linhas que NÃO contêm o padrão)",
+        "Busca de forma case-insensitive (ignora maiúsculas/minúsculas)",
+        "Busca recursivamente em subdiretórios",
+        "Exibe apenas o nome dos arquivos com correspondências"
+      ],
+      "answer": [
+        "Busca de forma case-insensitive (ignora maiúsculas/minúsculas)"
+      ],
+      "difficulty": "easy",
+      "hint": "'grep -r' busca recursivamente; 'grep -v' inverte; 'grep -i' ignora case.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "9f9818e2-ac2a-4cb2-b78e-e4fb62762317",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando cria um arquivo tar comprimido com gzip de um diretório?",
+      "options": [
+        "tar -czf backup.tar.gz /dados/",
+        "gzip -r /dados/ backup.tar.gz",
+        "compress -tar /dados/ backup.tar.gz",
+        "zip -r backup.tar.gz /dados/"
+      ],
+      "answer": [
+        "tar -czf backup.tar.gz /dados/"
+      ],
+      "difficulty": "medium",
+      "hint": "c=create, z=gzip, f=filename. Para extrair: tar -xzf backup.tar.gz",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "a05563f9-e00c-442a-88df-d094e63c93c7",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o atalho Ctrl+C no terminal Linux?",
+      "options": [
+        "Copia o texto selecionado",
+        "Encerra a sessão do shell",
+        "Envia o sinal SIGINT ao processo em primeiro plano, geralmente interrompendo-o",
+        "Limpa a tela do terminal"
+      ],
+      "answer": [
+        "Envia o sinal SIGINT ao processo em primeiro plano, geralmente interrompendo-o"
+      ],
+      "difficulty": "easy",
+      "hint": "É o jeito mais comum de parar um comando que está rodando.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "a3f483a9-7457-4221-96e5-9a855e271769",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O diretório '/var' no Linux é destinado a armazenar quais tipos de dados?",
+      "options": [
+        "Executáveis do sistema",
+        "Dados variáveis como logs, spools e caches que mudam com o tempo",
+        "Bibliotecas compartilhadas",
+        "Arquivos temporários apagados no boot"
+      ],
+      "answer": [
+        "Dados variáveis como logs, spools e caches que mudam com o tempo"
+      ],
+      "difficulty": "medium",
+      "hint": "var = variable. Logs ficam em /var/log, spools em /var/spool, etc.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "a4c90907-e978-4fe3-a3fd-1a8324fd0b8b",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando mostra o diretório atual de trabalho?",
+      "options": [
+        "wd",
+        "cwd",
+        "pwd",
+        "dir"
+      ],
+      "answer": [
+        "pwd"
+      ],
+      "difficulty": "easy",
+      "hint": "Vem de 'print working directory'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "a57e331b-c85d-4e65-b71a-6b4184a5dc5f",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'kill 1234'?",
+      "options": [
+        "Mata o processo imediatamente sem chances de limpeza",
+        "Envia SIGTERM (sinal 15) ao processo 1234, pedindo que encerre graciosamente",
+        "Para o processo 1234 temporariamente",
+        "Reinicia o processo 1234"
+      ],
+      "answer": [
+        "Envia SIGTERM (sinal 15) ao processo 1234, pedindo que encerre graciosamente"
+      ],
+      "difficulty": "easy",
+      "hint": "'kill -9 1234' envia SIGKILL, que não pode ser ignorado.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "a84119a7-53a0-42c1-80f2-48953b462aea",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe o nome do usuário atualmente logado?",
+      "options": [
+        "id",
+        "who",
+        "whoami",
+        "user"
+      ],
+      "answer": [
+        "whoami"
+      ],
+      "difficulty": "easy",
+      "hint": "'id' mostra UID, GID e grupos. 'who' mostra todos logados. 'whoami' só o nome do usuário atual.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "ad668493-edcc-4aba-abfd-6c98e10efb53",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'gzip arquivo.txt'?",
+      "options": [
+        "Cria uma cópia comprimida e mantém o original",
+        "Comprime o arquivo, substituindo o original por arquivo.txt.gz",
+        "Cria um arquivo zip com o conteúdo",
+        "Comprime o arquivo e o criptografa"
+      ],
+      "answer": [
+        "Comprime o arquivo, substituindo o original por arquivo.txt.gz"
+      ],
+      "difficulty": "easy",
+      "hint": "Para manter o original: 'gzip -k arquivo.txt'. Para descomprimir: 'gunzip' ou 'gzip -d'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "ad9e691a-7a6a-4f05-9dbc-0155c2c2a018",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando copia o arquivo 'relatorio.txt' para o diretório /tmp/?",
+      "options": [
+        "mv relatorio.txt /tmp/",
+        "cp relatorio.txt /tmp/",
+        "ln relatorio.txt /tmp/",
+        "copy relatorio.txt /tmp/"
+      ],
+      "answer": [
+        "cp relatorio.txt /tmp/"
+      ],
+      "difficulty": "easy",
+      "hint": "cp = copy. mv = move (também serve para renomear).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "b174c0c8-7b6f-4e98-8d90-62ab754b186a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando busca arquivos pelo nome a partir de um diretório?",
+      "options": [
+        "search",
+        "locate",
+        "find",
+        "which"
+      ],
+      "answer": [
+        "find"
+      ],
+      "difficulty": "easy",
+      "hint": "Ex: 'find /home -name \"*.txt\"' busca todos .txt em /home e subdiretórios.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "b203c557-c984-4c70-a7b0-3ae3e658daea",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como renomear o arquivo 'old.txt' para 'new.txt'?",
+      "options": [
+        "cp old.txt new.txt",
+        "rename old.txt new.txt",
+        "mv old.txt new.txt",
+        "rn old.txt new.txt"
+      ],
+      "answer": [
+        "mv old.txt new.txt"
+      ],
+      "difficulty": "easy",
+      "hint": "O comando 'mv' serve tanto para mover quanto para renomear.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "b7cb4527-18f5-4d39-a7cd-af307634039f",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o comando 'cat arquivo1.txt arquivo2.txt' faz?",
+      "options": [
+        "Compara os dois arquivos",
+        "Concatena e exibe o conteúdo dos dois arquivos na tela",
+        "Copia arquivo1 para arquivo2",
+        "Cria um arquivo combinando os dois"
+      ],
+      "answer": [
+        "Concatena e exibe o conteúdo dos dois arquivos na tela"
+      ],
+      "difficulty": "easy",
+      "hint": "cat = concatenate. Pode redirecionar a saída: cat arq1 arq2 > combinado.txt",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "b94645ed-c78f-442a-8369-cc4333d331cb",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como definir uma variável de ambiente que seja visível para processos filhos?",
+      "options": [
+        "set VARIAVEL=valor",
+        "VARIAVEL=valor",
+        "export VARIAVEL=valor",
+        "env VARIAVEL=valor"
+      ],
+      "answer": [
+        "export VARIAVEL=valor"
+      ],
+      "difficulty": "medium",
+      "hint": "Sem export, a variável existe apenas no shell atual e não é herdada por subprocessos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "b9afc0de-758c-4c57-818c-07dacb03d59e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é um arquivo de configuração 'dotfile' no Linux?",
+      "options": [
+        "Um arquivo com extensão .dot",
+        "Um arquivo cujo nome começa com ponto (.) e fica oculto por padrão",
+        "Um arquivo de configuração do sistema em /etc",
+        "Um arquivo binário de configuração"
+      ],
+      "answer": [
+        "Um arquivo cujo nome começa com ponto (.) e fica oculto por padrão"
+      ],
+      "difficulty": "easy",
+      "hint": "Exemplos: .bashrc, .profile, .vimrc, .gitconfig no diretório home do usuário.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "bb9d4be9-2d27-44d2-b718-3f7f7ba31e99",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O comando 'rm -r diretorio/' faz o quê?",
+      "options": [
+        "Remove apenas o diretório se estiver vazio",
+        "Remove o diretório e todo o seu conteúdo recursivamente",
+        "Move o diretório para a lixeira",
+        "Renomeia o diretório"
+      ],
+      "answer": [
+        "Remove o diretório e todo o seu conteúdo recursivamente"
+      ],
+      "difficulty": "easy",
+      "hint": "CUIDADO: não há confirmação por padrão e não há lixeira. A remoção é permanente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "bcb8c908-f715-4958-9672-bece0c350164",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando conta o número de linhas, palavras e caracteres de um arquivo?",
+      "options": [
+        "count",
+        "wc",
+        "lc",
+        "stat"
+      ],
+      "answer": [
+        "wc"
+      ],
+      "difficulty": "easy",
+      "hint": "wc = word count. Use 'wc -l' para contar apenas linhas.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "bd4be08d-36b3-452b-90b4-340f23821b8e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual arquivo é executado pelo bash toda vez que um novo terminal interativo é aberto?",
+      "options": [
+        "/etc/profile",
+        "/etc/bash.bashrc",
+        "~/.bashrc",
+        "~/.bash_profile"
+      ],
+      "answer": [
+        "~/.bashrc"
+      ],
+      "difficulty": "medium",
+      "hint": "~/.bash_profile é executado apenas em shells de login. ~/.bashrc em shells interativos não-login.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "bddd656f-60b4-415f-88ae-164b721725f0",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como acessar o manual do comando 'ls'?",
+      "options": [
+        "help ls",
+        "ls --help",
+        "man ls",
+        "info --ls"
+      ],
+      "answer": [
+        "man ls"
+      ],
+      "difficulty": "easy",
+      "hint": "'man man' mostra o manual do próprio comando man.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "be959a46-5456-4df5-ba39-9c5c0ff9e927",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como se encerra uma sessão de terminal no Linux pressionando um atalho de teclado?",
+      "options": [
+        "Ctrl+C",
+        "Ctrl+Z",
+        "Ctrl+D",
+        "Ctrl+X"
+      ],
+      "answer": [
+        "Ctrl+D"
+      ],
+      "difficulty": "easy",
+      "hint": "Ctrl+D envia EOF (End of File), sinalizando ao shell que não há mais entrada.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "c2a3d54b-e009-4106-94af-ae39e81bef52",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando mostra há quanto tempo o sistema está em execução desde o último boot?",
+      "options": [
+        "runtime",
+        "sysinfo",
+        "uptime",
+        "systime"
+      ],
+      "answer": [
+        "uptime"
+      ],
+      "difficulty": "easy",
+      "hint": "Também mostra a média de carga (load average) do sistema.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "c74319a4-ba9c-481c-8492-a0bdf8527d7f",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é o usuário 'root' no Linux?",
+      "options": [
+        "Um usuário com permissões limitadas para tarefas administrativas",
+        "O superusuário com acesso irrestrito a todo o sistema",
+        "O primeiro usuário criado durante a instalação",
+        "Um usuário de sistema usado por serviços"
+      ],
+      "answer": [
+        "O superusuário com acesso irrestrito a todo o sistema"
+      ],
+      "difficulty": "easy",
+      "hint": "Com grande poder vem grande responsabilidade. Use root com cautela.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "c8740015-1124-4695-873f-b8beca1c9587",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando testa a conectividade de rede enviando pacotes ICMP para um host?",
+      "options": [
+        "traceroute",
+        "netstat",
+        "ping",
+        "curl"
+      ],
+      "answer": [
+        "ping"
+      ],
+      "difficulty": "easy",
+      "hint": "'ping google.com' testa se consegue alcançar o servidor. Ctrl+C para parar.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "ca7c5580-7250-4f2e-b880-618ff5e24bdb",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual paginador de texto é mencionado no man-pages como o programa padrão usado pelo comando 'man'?",
+      "options": [
+        "more",
+        "most",
+        "less",
+        "view"
+      ],
+      "answer": [
+        "less"
+      ],
+      "difficulty": "easy",
+      "hint": "No less, use espaço para avançar e 'q' para sair.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "cb677a80-9696-4b7d-92b1-482843b74ed3",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual sinal não pode ser capturado nem ignorado por nenhum processo?",
+      "options": [
+        "SIGTERM (15)",
+        "SIGHUP (1)",
+        "SIGKILL (9)",
+        "SIGINT (2)"
+      ],
+      "answer": [
+        "SIGKILL (9)"
+      ],
+      "difficulty": "medium",
+      "hint": "Por isso 'kill -9' sempre funciona (exceto em processos em sono não-interruptível).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "cc4926f9-c629-4870-91d5-0afd6c87991e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Em qual diretório ficam os dispositivos de hardware representados como arquivos no Linux?",
+      "options": [
+        "/sys",
+        "/proc",
+        "/dev",
+        "/hardware"
+      ],
+      "answer": [
+        "/dev"
+      ],
+      "difficulty": "easy",
+      "hint": "Ex: /dev/sda (disco), /dev/tty (terminal), /dev/null, /dev/random.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "d031914a-6c1c-4a72-a901-2701cea523af",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que significa '..' (dois pontos) em um caminho de diretório?",
+      "options": [
+        "O diretório atual",
+        "O diretório pai (um nível acima)",
+        "Um arquivo oculto",
+        "O diretório home"
+      ],
+      "answer": [
+        "O diretório pai (um nível acima)"
+      ],
+      "difficulty": "easy",
+      "hint": "'cd ..' sobe um nível na hierarquia de diretórios.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "d10c58d0-e4f8-44d7-bde4-b5702e962a28",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'which ls'?",
+      "options": [
+        "Lista os arquivos no diretório ls",
+        "Exibe o caminho completo do executável 'ls'",
+        "Verifica se ls está instalado e retorna sua versão",
+        "Mostra o manual do comando ls"
+      ],
+      "answer": [
+        "Exibe o caminho completo do executável 'ls'"
+      ],
+      "difficulty": "easy",
+      "hint": "Útil para saber qual versão de um comando está sendo usada quando há múltiplas instalações.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "d3b5a506-3a3f-4feb-8bdb-c713a6588fe8",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual diretório contém os executáveis essenciais do sistema disponíveis para todos os usuários?",
+      "options": [
+        "/sbin",
+        "/usr/bin",
+        "/bin",
+        "/opt"
+      ],
+      "answer": [
+        "/bin"
+      ],
+      "difficulty": "easy",
+      "hint": "Em sistemas modernos, /bin pode ser um link simbólico para /usr/bin.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "d5a1a1fa-c35e-406b-9ff3-0c55b2c7d971",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como sair do editor 'vi' ou 'vim' sem salvar alterações?",
+      "options": [
+        ":save",
+        "ZZ",
+        ":q!",
+        "Ctrl+X"
+      ],
+      "answer": [
+        ":q!"
+      ],
+      "difficulty": "medium",
+      "hint": "':wq' salva e sai. ':q!' sai sem salvar. 'i' entra no modo de inserção.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "d5cc773e-e81b-41fd-a9e3-eb23e8e1c3f9",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é um link simbólico (symlink) no Linux?",
+      "options": [
+        "Uma cópia idêntica do arquivo original",
+        "Um ponteiro que aponta para outro arquivo ou diretório",
+        "Um arquivo comprimido",
+        "Um arquivo de backup automático"
+      ],
+      "answer": [
+        "Um ponteiro que aponta para outro arquivo ou diretório"
+      ],
+      "difficulty": "medium",
+      "hint": "Crie com 'ln -s alvo nome_do_link'. Se o alvo for removido, o link fica 'quebrado'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "d85e1d09-52f6-4f86-943c-b63c07f38dcd",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O comando 'diff arquivo1 arquivo2' é usado para:",
+      "options": [
+        "Deletar arquivos diferentes",
+        "Encontrar e exibir as diferenças entre dois arquivos",
+        "Sincronizar dois arquivos",
+        "Comparar tamanhos de arquivos"
+      ],
+      "answer": [
+        "Encontrar e exibir as diferenças entre dois arquivos"
+      ],
+      "difficulty": "easy",
+      "hint": "Saída vazia significa que os arquivos são idênticos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "e16d55b3-efd8-4dc2-bcf2-9018d5205f22",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o símbolo '~' representa no shell Linux?",
+      "options": [
+        "O diretório raiz /",
+        "O diretório atual",
+        "O diretório home do usuário atual",
+        "O diretório temporário /tmp"
+      ],
+      "answer": [
+        "O diretório home do usuário atual"
+      ],
+      "difficulty": "easy",
+      "hint": "'cd ~' e 'cd $HOME' fazem a mesma coisa.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "e16dbfcd-7f69-4cc2-b114-bd0d3fabef14",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual é o modo padrão ao abrir um arquivo no editor 'vim'?",
+      "options": [
+        "Modo de inserção (insert mode)",
+        "Modo de comando (normal mode)",
+        "Modo visual",
+        "Modo de substituição"
+      ],
+      "answer": [
+        "Modo de comando (normal mode)"
+      ],
+      "difficulty": "medium",
+      "hint": "Pressione 'i' para entrar no modo de inserção e começar a digitar.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "e3784e03-970f-4cfb-99f2-a652ca44f52a",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Como executar um script Python 'app.py' diretamente pelo terminal?",
+      "options": [
+        "run app.py",
+        "execute app.py",
+        "python3 app.py",
+        "./app.py sem mais nada"
+      ],
+      "answer": [
+        "python3 app.py"
+      ],
+      "difficulty": "easy",
+      "hint": "Para usar './app.py', o script precisa de shebang (#!/usr/bin/env python3) e permissão +x.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "e5740732-d352-41a1-8238-7418c9a75c63",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual a diferença entre 'man ls' e 'ls --help'?",
+      "options": [
+        "São idênticos",
+        "man ls mostra documentação completa e detalhada; --help mostra um resumo rápido das opções",
+        "--help é mais detalhado; man ls é resumido",
+        "man ls é para administradores; --help é para usuários"
+      ],
+      "answer": [
+        "man ls mostra documentação completa e detalhada; --help mostra um resumo rápido das opções"
+      ],
+      "difficulty": "easy",
+      "hint": "O man page tem DESCRIPTION, EXAMPLES, SEE ALSO; --help é apenas a lista de flags.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "e6210eba-e0d8-4f45-8518-c522d7572ce8",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'chmod 644 arquivo.txt'?",
+      "options": [
+        "Dá permissão total ao dono e nenhuma permissão ao grupo e outros",
+        "Dá leitura+escrita ao dono (6=rw-) e apenas leitura ao grupo e outros (4=r--)",
+        "Dá todas as permissões a todos",
+        "Torna o arquivo executável"
+      ],
+      "answer": [
+        "Dá leitura+escrita ao dono (6=rw-) e apenas leitura ao grupo e outros (4=r--)"
+      ],
+      "difficulty": "medium",
+      "hint": "644 é uma permissão comum para arquivos regulares que não precisam ser executados.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "e73d88b5-eaac-4a4b-bc0e-67e2494aa035",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que armazena o arquivo /etc/group?",
+      "options": [
+        "As senhas criptografadas dos grupos",
+        "A definição dos grupos do sistema e seus membros",
+        "As permissões padrão para novos grupos",
+        "O histórico de criação de grupos"
+      ],
+      "answer": [
+        "A definição dos grupos do sistema e seus membros"
+      ],
+      "difficulty": "easy",
+      "hint": "Formato: nome_grupo:senha:GID:lista_de_membros",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "ea05efc3-d851-4a4a-8985-65e72587b96c",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe todas as variáveis de ambiente atualmente definidas?",
+      "options": [
+        "vars",
+        "printenv ou env",
+        "showenv",
+        "listenv"
+      ],
+      "answer": [
+        "printenv ou env"
+      ],
+      "difficulty": "easy",
+      "hint": "'printenv NOME' mostra o valor de uma variável específica.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "ea50ed0b-8827-49b3-bb92-06a0f40d9063",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que significa o bit 'sticky' em um diretório como /tmp?",
+      "options": [
+        "O diretório não pode ser removido",
+        "Apenas o dono do arquivo (ou root) pode deletar/renomear arquivos dentro do diretório",
+        "O diretório fica sempre na memória RAM",
+        "O diretório é somente leitura para usuários comuns"
+      ],
+      "answer": [
+        "Apenas o dono do arquivo (ou root) pode deletar/renomear arquivos dentro do diretório"
+      ],
+      "difficulty": "medium",
+      "hint": "Sem sticky bit, qualquer um com escrita no diretório poderia deletar arquivos de outros.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "f1ebf682-a5c7-4338-861d-669f48747812",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe informações sobre o kernel Linux em execução?",
+      "options": [
+        "kernelinfo",
+        "sysinfo",
+        "uname -a",
+        "version"
+      ],
+      "answer": [
+        "uname -a"
+      ],
+      "difficulty": "easy",
+      "hint": "uname -r mostra apenas a versão do kernel. uname -a mostra tudo.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "f2d91571-6e6e-4a13-99d2-3105af9f79b3",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando muda o proprietário de um arquivo para o usuário 'maria'?",
+      "options": [
+        "chmod maria arquivo",
+        "chgrp maria arquivo",
+        "chown maria arquivo",
+        "usermod maria arquivo"
+      ],
+      "answer": [
+        "chown maria arquivo"
+      ],
+      "difficulty": "easy",
+      "hint": "chown = change owner. 'chown maria:devs arquivo' muda dono E grupo.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "f30c7ec6-b5d0-472b-870c-5265d757d435",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual arquivo define os servidores DNS que o sistema consulta para resolver nomes?",
+      "options": [
+        "/etc/hosts",
+        "/etc/hostname",
+        "/etc/resolv.conf",
+        "/etc/nsswitch.conf"
+      ],
+      "answer": [
+        "/etc/resolv.conf"
+      ],
+      "difficulty": "easy",
+      "hint": "Contém linhas como 'nameserver 8.8.8.8'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "f3531d34-fdb7-41da-8307-5f7ea7a9589d",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe as últimas linhas de um arquivo e pode monitorar em tempo real com '-f'?",
+      "options": [
+        "end",
+        "tail",
+        "last",
+        "bottom"
+      ],
+      "answer": [
+        "tail"
+      ],
+      "difficulty": "easy",
+      "hint": "'tail -f /var/log/syslog' é muito usado para acompanhar logs em tempo real.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "f3603e97-e370-4a0e-9b0d-99bccb8ed3ae",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual comando exibe informações sobre o espaço usado e disponível nos sistemas de arquivos montados?",
+      "options": [
+        "diskinfo",
+        "du",
+        "df",
+        "space"
+      ],
+      "answer": [
+        "df"
+      ],
+      "difficulty": "easy",
+      "hint": "df = disk free. Use 'df -h' para ver em formato legível (GB, MB).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "f7223bad-d6b5-4eaa-b39e-3dea13a91dda",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que o operador '>' faz em 'ls -l > lista.txt'?",
+      "options": [
+        "Adiciona a saída ao final do arquivo lista.txt",
+        "Redireciona a saída padrão para lista.txt, sobrescrevendo-o",
+        "Envia a saída como entrada para o próximo comando",
+        "Lê o conteúdo de lista.txt como entrada"
+      ],
+      "answer": [
+        "Redireciona a saída padrão para lista.txt, sobrescrevendo-o"
+      ],
+      "difficulty": "easy",
+      "hint": "Use '>>' para ADICIONAR ao arquivo sem sobrescrever.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "fac5c829-ac29-4c2c-a24d-48b7fdc088a4",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que é um processo 'zombie' no Linux?",
+      "options": [
+        "Um processo consumindo 100% da CPU",
+        "Um processo que terminou mas cujo registro ainda não foi recolhido pelo processo pai",
+        "Um processo infectado por malware",
+        "Um processo rodando em background sem terminal"
+      ],
+      "answer": [
+        "Um processo que terminou mas cujo registro ainda não foi recolhido pelo processo pai"
+      ],
+      "difficulty": "medium",
+      "hint": "Aparecem como 'Z' no campo de estado no ps. O pai deve chamar wait() para limpá-los.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "faca9099-35ba-4dab-927e-c5c051da567e",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "Qual variável de ambiente armazena os diretórios onde o shell procura por comandos executáveis?",
+      "options": [
+        "HOME",
+        "SHELL",
+        "PATH",
+        "USER"
+      ],
+      "answer": [
+        "PATH"
+      ],
+      "difficulty": "easy",
+      "hint": "Quando você digita 'ls', o shell procura o binário /bin/ls graças a esta variável.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "fd923b4b-9d4c-482f-9eaf-e10e1519040d",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que faz o comando 'chmod 755 script.sh'?",
+      "options": [
+        "Dá permissão total (rwx) ao dono, e leitura+execução (r-x) ao grupo e outros",
+        "Dá permissão total a todos os usuários",
+        "Torna o arquivo somente leitura para todos",
+        "Remove todas as permissões do arquivo"
+      ],
+      "answer": [
+        "Dá permissão total (rwx) ao dono, e leitura+execução (r-x) ao grupo e outros"
+      ],
+      "difficulty": "medium",
+      "hint": "7=rwx (4+2+1), 5=r-x (4+0+1). Formato: dono/grupo/outros.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    },
+    {
+      "id": "fe7b748a-3148-4b73-a710-70606a251ccb",
+      "exam_id": "55dd6aa0-b619-414e-ab4a-0161d3a9d5a3",
+      "type": "multiple",
+      "question": "O que representa o diretório '/' no Linux?",
+      "options": [
+        "O diretório home do usuário root",
+        "O diretório atual de trabalho",
+        "A raiz da hierarquia de todo o sistema de arquivos",
+        "Um diretório temporário do sistema"
+      ],
+      "answer": [
+        "A raiz da hierarquia de todo o sistema de arquivos"
+      ],
+      "difficulty": "easy",
+      "hint": "Toda a árvore de diretórios do Linux começa aqui.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:10:19.314972"
+    }
+  ]
+}

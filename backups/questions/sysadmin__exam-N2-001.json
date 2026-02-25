@@ -1,0 +1,2113 @@
+{
+  "meta": {
+    "simulado_id": "2aa15ab6-1213-4399-b11c-451dab5e423f",
+    "simulado_slug": "sysadmin",
+    "simulado_title": "SysAdmin",
+    "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+    "exam_code": "N2-001",
+    "exam_name": null,
+    "exported_at": "2026-02-25T13:55:10.918Z"
+  },
+  "questions": [
+    {
+      "id": "015828f7-228e-4fd3-84b0-869c4291cd93",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando do systemd exibe dependências de um serviço?",
+      "options": [
+        "systemctl deps nginx",
+        "systemctl list-dependencies nginx",
+        "systemctl show --deps nginx",
+        "systemd-analyze nginx"
+      ],
+      "answer": [
+        "systemctl list-dependencies nginx"
+      ],
+      "difficulty": "medium",
+      "hint": "'systemd-analyze blame' mostra quais serviços atrasaram o boot.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "080a12cf-c6e8-4f5f-833d-8f23a488235a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo define o hostname permanente do sistema no systemd?",
+      "options": [
+        "/etc/hostname",
+        "/etc/hosts",
+        "/proc/sys/kernel/hostname",
+        "/etc/sysconfig/network"
+      ],
+      "answer": [
+        "/etc/hostname"
+      ],
+      "difficulty": "easy",
+      "hint": "'hostnamectl set-hostname nome' altera e persiste o hostname. 'hostname' mostra/altera temporariamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "08f05507-de53-4c27-a924-9a484aee800f",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como carregar manualmente um módulo do kernel chamado 'br_netfilter'?",
+      "options": [
+        "insmod br_netfilter",
+        "modprobe br_netfilter",
+        "kernelmod -l br_netfilter",
+        "rmmod -a br_netfilter"
+      ],
+      "answer": [
+        "modprobe br_netfilter"
+      ],
+      "difficulty": "easy",
+      "hint": "modprobe resolve dependências automaticamente. insmod requer o caminho completo e não resolve dependências.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "0cbb9425-cc3a-4308-b71e-e2ab08f41804",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual opção do /etc/fstab faz com que o sistema de arquivos seja montado apenas quando acessado, economizando recursos?",
+      "options": [
+        "noauto",
+        "lazy",
+        "auto",
+        "defaults"
+      ],
+      "answer": [
+        "noauto"
+      ],
+      "difficulty": "medium",
+      "hint": "Útil para mídias removíveis ou sistemas de arquivos raramente acessados.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "0debc0b3-c2fc-44ba-be62-22eef0d8d607",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual é o propósito do comando 'strace -p PID'?",
+      "options": [
+        "Rastrear o uso de CPU de um processo em tempo real",
+        "Interceptar e exibir as system calls feitas por um processo em execução",
+        "Monitorar o uso de memória de um processo",
+        "Rastrear conexões de rede de um processo"
+      ],
+      "answer": [
+        "Interceptar e exibir as system calls feitas por um processo em execução"
+      ],
+      "difficulty": "medium",
+      "hint": "Extremamente útil para debugar comportamentos inesperados de processos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "11bc0165-acd3-4653-af8b-817f40cad535",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo configura o comportamento do sudo, definindo quem pode executar quais comandos como root?",
+      "options": [
+        "/etc/sudo.conf",
+        "/etc/sudoers",
+        "/etc/sudo/rules",
+        "/etc/pam.d/sudo"
+      ],
+      "answer": [
+        "/etc/sudoers"
+      ],
+      "difficulty": "easy",
+      "hint": "Edite SEMPRE com 'visudo', que valida a sintaxe antes de salvar.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "124f84a3-f9d9-46c4-8a9a-f174f13883bd",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando remove um pacote E suas dependências não mais necessárias no Debian/Ubuntu?",
+      "options": [
+        "apt remove pacote",
+        "apt purge pacote",
+        "apt autoremove pacote",
+        "apt-get remove --deps pacote"
+      ],
+      "answer": [
+        "apt purge pacote"
+      ],
+      "difficulty": "medium",
+      "hint": "'purge' remove pacote + arquivos de configuração. 'remove' mantém configs. 'autoremove' limpa dependências órfãs.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "17253aa1-e461-4c9f-9ef9-51e0165ab7a9",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando verifica quais portas TCP estão abertas e em escuta no sistema?",
+      "options": [
+        "openports",
+        "netstat -tlnp ou ss -tlnp",
+        "portscan localhost",
+        "lsof -network"
+      ],
+      "answer": [
+        "netstat -tlnp ou ss -tlnp"
+      ],
+      "difficulty": "easy",
+      "hint": "ss é o substituto moderno do netstat. -t=TCP, -l=listening, -n=numérico, -p=processo.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "17b7cdd7-849d-4be0-b7ab-c83f96993321",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Em qual arquivo ficam tipicamente as mensagens gerais do sistema e do kernel no syslog?",
+      "options": [
+        "/var/log/boot.log",
+        "/var/log/messages ou /var/log/syslog",
+        "/var/log/kern.log",
+        "/var/log/dmesg"
+      ],
+      "answer": [
+        "/var/log/messages ou /var/log/syslog"
+      ],
+      "difficulty": "easy",
+      "hint": "Red Hat usa /var/log/messages; Debian/Ubuntu usa /var/log/syslog.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "1aae3249-e41e-41d3-aaf3-b8083c0fd181",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é o arquivo /etc/resolv.conf e quem pode atualizá-lo automaticamente?",
+      "options": [
+        "Arquivo estático de rotas de rede; atualizado apenas pelo admin",
+        "Arquivo que configura servidores DNS; pode ser atualizado pelo NetworkManager, systemd-resolved ou DHCP",
+        "Arquivo de mapeamento hostname-IP; atualizado pelo DNS dinâmico",
+        "Arquivo de cache DNS; atualizado pelo nscd"
+      ],
+      "answer": [
+        "Arquivo que configura servidores DNS; pode ser atualizado pelo NetworkManager, systemd-resolved ou DHCP"
+      ],
+      "difficulty": "medium",
+      "hint": "Em muitos sistemas modernos, é um link simbólico gerenciado pelo systemd-resolved.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "1f4763a7-9422-4032-b154-c48c436f63cc",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que o parâmetro 'nosuid' em uma entrada do /etc/fstab faz?",
+      "options": [
+        "Impede a criação de arquivos com setUID naquela partição",
+        "Desativa o bit setUID em arquivos naquela partição, impedindo escalonamento de privilégios",
+        "Remove os bits setUID de todos os arquivos existentes",
+        "Impede que arquivos sejam executados naquela partição"
+      ],
+      "answer": [
+        "Desativa o bit setUID em arquivos naquela partição, impedindo escalonamento de privilégios"
+      ],
+      "difficulty": "hard",
+      "hint": "Boa prática de segurança para partições como /tmp, /home e volumes de dados.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "24aa55c6-78f9-4c67-a235-466f27275759",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando exibe o caminho completo do arquivo de configuração de um serviço systemd?",
+      "options": [
+        "systemctl show --property=FragmentPath nginx",
+        "systemctl config nginx",
+        "systemctl path nginx",
+        "systemctl edit nginx"
+      ],
+      "answer": [
+        "systemctl show --property=FragmentPath nginx"
+      ],
+      "difficulty": "hard",
+      "hint": "'systemctl edit nginx' cria um override local sem modificar o arquivo original.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "27982a7f-3c61-459f-9c70-7af354fe575e",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é SELinux e qual é seu modo 'enforcing'?",
+      "options": [
+        "Um firewall de aplicação web; enforcing bloqueia ataques",
+        "Um sistema de controle de acesso obrigatório (MAC); enforcing aplica políticas e nega acessos não permitidos",
+        "Um antivírus; enforcing realiza varreduras automáticas",
+        "Um IDS; enforcing bloqueia conexões suspeitas"
+      ],
+      "answer": [
+        "Um sistema de controle de acesso obrigatório (MAC); enforcing aplica políticas e nega acessos não permitidos"
+      ],
+      "difficulty": "medium",
+      "hint": "Os modos são: enforcing (aplica), permissive (apenas loga), disabled (desativado).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "28da28de-ab27-423a-b910-7bce4cc149fd",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O comando 'dmesg' exibe mensagens de qual fonte?",
+      "options": [
+        "Todos os logs do sistema desde o boot",
+        "O buffer de mensagens do kernel (ring buffer)",
+        "Os logs do systemd journal",
+        "Os logs de autenticação"
+      ],
+      "answer": [
+        "O buffer de mensagens do kernel (ring buffer)"
+      ],
+      "difficulty": "easy",
+      "hint": "Útil para diagnosticar problemas de hardware, drivers e boot. 'dmesg -T' mostra com timestamps.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "292b0de2-261f-4ea3-8655-eb186a98b8fa",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual é o propósito do 'initramfs' (initial RAM filesystem) no processo de boot?",
+      "options": [
+        "Armazenar o kernel Linux",
+        "Prover um filesystem temporário na RAM com drivers e ferramentas suficientes para montar o filesystem raiz real",
+        "Fazer backup do sistema antes do boot",
+        "Testar a integridade da memória RAM"
+      ],
+      "answer": [
+        "Prover um filesystem temporário na RAM com drivers e ferramentas suficientes para montar o filesystem raiz real"
+      ],
+      "difficulty": "medium",
+      "hint": "Essencial quando o root filesystem está em LVM, RAID, ou requer drivers especiais.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "2cd57d8f-0616-4383-92ee-a3cb79f6310f",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual daemon é responsável pelo registro centralizado de logs no Linux tradicional?",
+      "options": [
+        "logd",
+        "journald",
+        "syslogd / rsyslogd",
+        "auditd"
+      ],
+      "answer": [
+        "syslogd / rsyslogd"
+      ],
+      "difficulty": "easy",
+      "hint": "Em sistemas com systemd, journald coleta logs primeiro. rsyslog pode receber e persistir.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "2eeb72b0-36f4-4398-a2eb-ab91d1236002",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como adicionar o usuário 'joao' ao grupo 'sudo' sem remover seus grupos atuais?",
+      "options": [
+        "usermod -G sudo joao",
+        "groupadd joao sudo",
+        "usermod -aG sudo joao",
+        "gpasswd sudo joao"
+      ],
+      "answer": [
+        "usermod -aG sudo joao"
+      ],
+      "difficulty": "medium",
+      "hint": "Sem o '-a' (append), a opção -G substitui todos os grupos do usuário.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "2f95d2e0-2653-4d2a-85d2-e22146b0a026",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que significa 'WantedBy=multi-user.target' na seção [Install] de um unit file systemd?",
+      "options": [
+        "O serviço será iniciado apenas se houver múltiplos usuários logados",
+        "O serviço será adicionado ao target multi-user.target quando habilitado, iniciando junto com o sistema em modo texto",
+        "O serviço requer que outros serviços de múltiplos usuários estejam ativos",
+        "O serviço pode ser usado por múltiplos usuários simultaneamente"
+      ],
+      "answer": [
+        "O serviço será adicionado ao target multi-user.target quando habilitado, iniciando junto com o sistema em modo texto"
+      ],
+      "difficulty": "hard",
+      "hint": "Equivalente ao runlevel 3 (multiusuário sem GUI) do SysV.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "32ea07b1-6d28-4e04-a9f3-027c61651b9c",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo configura os servidores DNS no Linux?",
+      "options": [
+        "/etc/hosts",
+        "/etc/nsswitch.conf",
+        "/etc/resolv.conf",
+        "/etc/network/dns"
+      ],
+      "answer": [
+        "/etc/resolv.conf"
+      ],
+      "difficulty": "easy",
+      "hint": "Contém: nameserver 8.8.8.8, search exemplo.com. Em sistemas com NetworkManager, pode ser gerado automaticamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "35d1b51f-5c68-4d3d-9c75-b946cc5d171f",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que são cgroups (control groups) no Linux?",
+      "options": [
+        "Um sistema de permissões avançado para grupos de usuários",
+        "Um mecanismo do kernel para limitar, contabilizar e isolar recursos (CPU, memória, I/O) de grupos de processos",
+        "Um tipo especial de grupo UNIX com privilégios elevados",
+        "Um sistema de clustering para grupos de servidores"
+      ],
+      "answer": [
+        "Um mecanismo do kernel para limitar, contabilizar e isolar recursos (CPU, memória, I/O) de grupos de processos"
+      ],
+      "difficulty": "hard",
+      "hint": "São a base dos containers Docker e LXC. Definidos em /sys/fs/cgroup/.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "35d2d345-d638-450b-8333-22cbf372b5b0",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando exibe informações sobre o hardware do sistema como CPU, memória e dispositivos PCI?",
+      "options": [
+        "hwinfo",
+        "lshw",
+        "sysinfo",
+        "dmidecode e lspci"
+      ],
+      "answer": [
+        "dmidecode e lspci"
+      ],
+      "difficulty": "medium",
+      "hint": "dmidecode lê tabelas DMI/SMBIOS do BIOS. lspci lista dispositivos PCI. lshw combina várias fontes.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "3799ee95-54b6-49ea-b1f1-4300f97fa2b4",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/fstab é responsável por:",
+      "options": [
+        "Definir os servidores de arquivos NFS",
+        "Configurar os sistemas de arquivos montados automaticamente no boot",
+        "Listar os filesystems suportados pelo kernel",
+        "Definir cotas de disco por usuário"
+      ],
+      "answer": [
+        "Configurar os sistemas de arquivos montados automaticamente no boot"
+      ],
+      "difficulty": "easy",
+      "hint": "Cada linha define: dispositivo, ponto de montagem, tipo, opções, dump, fsck.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "3ac20050-c333-47ff-892b-dc4be238308e",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que faz 'iptables -A INPUT -p tcp --dport 22 -j ACCEPT'?",
+      "options": [
+        "Bloqueia conexões SSH de entrada",
+        "Adiciona uma regra que aceita conexões TCP de entrada na porta 22 (SSH)",
+        "Remove todas as regras para a porta 22",
+        "Limita conexões SSH a 22 por minuto"
+      ],
+      "answer": [
+        "Adiciona uma regra que aceita conexões TCP de entrada na porta 22 (SSH)"
+      ],
+      "difficulty": "medium",
+      "hint": "-A=append, -p=protocol, --dport=destination port, -j=jump (ação: ACCEPT, DROP, REJECT).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "3acb0636-9955-4672-84c1-9b8eb59a94d9",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que são namespaces no Linux e qual sua relação com containers?",
+      "options": [
+        "Espaços de nome para variáveis de ambiente",
+        "Mecanismo do kernel que isola recursos do sistema (processos, rede, filesystems) entre grupos de processos — base dos containers",
+        "Diretórios especiais para configurações de sistema",
+        "Partições lógicas de memória para isolamento de processos"
+      ],
+      "answer": [
+        "Mecanismo do kernel que isola recursos do sistema (processos, rede, filesystems) entre grupos de processos — base dos containers"
+      ],
+      "difficulty": "hard",
+      "hint": "Tipos: PID, NET, MNT, UTS, IPC, USER namespace. 'unshare' e 'nsenter' operam com namespaces.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "3ae4dc46-bbe6-49c5-9fe9-712f3ab557ae",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que acontece quando o número de inodes disponíveis em um filesystem se esgota?",
+      "options": [
+        "O sistema entra em modo de leitura automática",
+        "Não é possível criar novos arquivos, mesmo se ainda houver espaço em disco",
+        "O sistema apaga automaticamente os inodes mais antigos",
+        "O filesystem é expandido automaticamente"
+      ],
+      "answer": [
+        "Não é possível criar novos arquivos, mesmo se ainda houver espaço em disco"
+      ],
+      "difficulty": "hard",
+      "hint": "Verifique com 'df -i'. Comum em filesystems com muitos arquivos pequenos (ex: servidor de email).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "3e3405e5-3eaf-4640-84eb-cd6a366c5f07",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando permite a porta 443/TCP no firewalld de forma persistente?",
+      "options": [
+        "firewall-cmd --add-port=443/tcp --permanent",
+        "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+        "firewall-cmd --open 443",
+        "ufw allow 443/tcp"
+      ],
+      "answer": [
+        "firewall-cmd --add-port=443/tcp --permanent"
+      ],
+      "difficulty": "medium",
+      "hint": "Após --permanent, execute 'firewall-cmd --reload' para aplicar as mudanças.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "44e20c2c-b512-4b96-b5d8-9d79400d0f31",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando envia uma mensagem para todos os usuários logados no sistema?",
+      "options": [
+        "broadcast",
+        "wall",
+        "sendmsg",
+        "notify"
+      ],
+      "answer": [
+        "wall"
+      ],
+      "difficulty": "easy",
+      "hint": "wall = write all. Útil para avisar sobre manutenções. 'write usuario' envia para um usuário específico.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "45ff795a-6339-4e6d-867b-5cf50ce544c5",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo de configuração do servidor SSH define parâmetros como porta, autenticação por senha e root login?",
+      "options": [
+        "/etc/ssh/ssh.conf",
+        "/etc/ssh/sshd_config",
+        "/etc/openssh/config",
+        "/etc/sshd/sshd.conf"
+      ],
+      "answer": [
+        "/etc/ssh/sshd_config"
+      ],
+      "difficulty": "easy",
+      "hint": "Após alterar, reinicie: 'systemctl restart sshd'. Sempre mantenha uma sessão aberta ao testar mudanças.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "466450e2-d995-4e84-84e6-c67cbfa22843",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como adicionar um endereço IP temporário à interface eth0?",
+      "options": [
+        "ifconfig eth0 add 192.168.1.10/24",
+        "ip addr add 192.168.1.10/24 dev eth0",
+        "netconfig eth0 192.168.1.10",
+        "ipset eth0 192.168.1.10/24"
+      ],
+      "answer": [
+        "ip addr add 192.168.1.10/24 dev eth0"
+      ],
+      "difficulty": "medium",
+      "hint": "Temporário = perdido após reboot. Para persistir, configure nos arquivos de rede da distro.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "46fac903-4bcb-479a-87dd-7e1bf0ed96e5",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/profile é executado quando:",
+      "options": [
+        "Qualquer usuário abre um novo terminal",
+        "Um usuário faz login (login shell) em qualquer distro Linux",
+        "Apenas o root faz login",
+        "O sistema é iniciado (boot)"
+      ],
+      "answer": [
+        "Um usuário faz login (login shell) em qualquer distro Linux"
+      ],
+      "difficulty": "medium",
+      "hint": "~/.bash_profile tem precedência sobre /etc/profile para configurações específicas do usuário.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "4d51352a-fad3-49de-8e09-5a34518b4e24",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual ferramenta é o frontend padrão para gerenciar firewall em sistemas Red Hat modernos (RHEL 7+)?",
+      "options": [
+        "iptables",
+        "ufw",
+        "firewalld",
+        "nftables"
+      ],
+      "answer": [
+        "firewalld"
+      ],
+      "difficulty": "medium",
+      "hint": "firewalld usa zonas e serviços. 'firewall-cmd --list-all' lista as regras ativas.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "4ec3cea2-5160-4c1e-8d39-39056e21eb2a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando cria um sistema de arquivos ext4 na partição /dev/sdb1?",
+      "options": [
+        "format -t ext4 /dev/sdb1",
+        "fdisk -ext4 /dev/sdb1",
+        "mkfs.ext4 /dev/sdb1",
+        "mke4fs /dev/sdb1"
+      ],
+      "answer": [
+        "mkfs.ext4 /dev/sdb1"
+      ],
+      "difficulty": "easy",
+      "hint": "mkfs.ext4 é equivalente a 'mkfs -t ext4'. Certifique-se de que a partição correta está selecionada!",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "583d9a29-e8ec-4515-95a9-5adf3fa70739",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual diretório do kernel /proc contém informações sobre a CPU do sistema?",
+      "options": [
+        "/proc/hardware",
+        "/proc/cpuinfo",
+        "/proc/cpu",
+        "/proc/processor"
+      ],
+      "answer": [
+        "/proc/cpuinfo"
+      ],
+      "difficulty": "easy",
+      "hint": "'grep -c processor /proc/cpuinfo' conta o número de cores/threads disponíveis.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "58cbe73f-4cae-44d3-a352-ce59a13f4797",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é um 'inode' no contexto de sistemas de arquivos Linux?",
+      "options": [
+        "O nome do arquivo no diretório",
+        "Uma estrutura de dados que contém os metadados do arquivo (dono, permissões, tamanho, localização dos blocos)",
+        "O conteúdo real do arquivo",
+        "O journal de transações do filesystem"
+      ],
+      "answer": [
+        "Uma estrutura de dados que contém os metadados do arquivo (dono, permissões, tamanho, localização dos blocos)"
+      ],
+      "difficulty": "medium",
+      "hint": "O nome do arquivo fica no diretório, apontando para o inode. Um arquivo pode ter múltiplos nomes (hard links) para o mesmo inode.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "5df30023-ea2b-4087-9175-537e34ffd132",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando visualiza logs do systemd journal em tempo real?",
+      "options": [
+        "tail -f /var/log/journal",
+        "journalctl -f",
+        "systemctl logs -f",
+        "logview --follow"
+      ],
+      "answer": [
+        "journalctl -f"
+      ],
+      "difficulty": "easy",
+      "hint": "'journalctl -u nginx -f' acompanha logs apenas do serviço nginx em tempo real.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "5f8f27f0-fcef-45e3-9fb6-1df27b50b788",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/shadow armazena as senhas dos usuários. Qual é o formato do segundo campo (a senha em si)?",
+      "options": [
+        "Texto plano",
+        "Hash criptográfico (geralmente SHA-512 precedido por $6$)",
+        "Codificação Base64 da senha",
+        "Senha XOR com o UID do usuário"
+      ],
+      "answer": [
+        "Hash criptográfico (geralmente SHA-512 precedido por $6$)"
+      ],
+      "difficulty": "medium",
+      "hint": "O prefixo indica o algoritmo: $1$=MD5, $5$=SHA-256, $6$=SHA-512.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "60014e02-d764-4255-8f99-ab489996ecaf",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que significa a entrada cron '0 2 * * 0 /scripts/backup.sh'?",
+      "options": [
+        "Executar backup.sh a cada 2 horas aos domingos",
+        "Executar backup.sh às 2:00 da manhã todo domingo",
+        "Executar backup.sh 2 vezes por dia",
+        "Executar backup.sh no dia 2 de cada mês"
+      ],
+      "answer": [
+        "Executar backup.sh às 2:00 da manhã todo domingo"
+      ],
+      "difficulty": "medium",
+      "hint": "Formato: minuto hora dia_mês mês dia_semana. 0=domingo, *=qualquer valor.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "636ef57c-bac9-4f4a-8567-5f8cb9b2a475",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual é a sequência correta de boot em sistemas Linux com UEFI/systemd?",
+      "options": [
+        "BIOS → MBR → GRUB → Kernel → systemd",
+        "UEFI → GRUB → Kernel → initramfs → systemd",
+        "POST → GRUB → systemd → Kernel",
+        "Kernel → GRUB → UEFI → systemd"
+      ],
+      "answer": [
+        "UEFI → GRUB → Kernel → initramfs → systemd"
+      ],
+      "difficulty": "medium",
+      "hint": "O initramfs monta o filesystem raiz temporário para o kernel carregar drivers necessários.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "6399be13-6d5a-4220-88b3-9339aa2f52b1",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/sysctl.conf é usado para:",
+      "options": [
+        "Configurar módulos do kernel carregados no boot",
+        "Definir parâmetros do kernel em tempo de execução de forma persistente",
+        "Configurar o scheduler de processos",
+        "Definir limites de recursos por usuário"
+      ],
+      "answer": [
+        "Definir parâmetros do kernel em tempo de execução de forma persistente"
+      ],
+      "difficulty": "medium",
+      "hint": "Ex: 'net.ipv4.ip_forward=1' habilita roteamento. Aplique: 'sysctl -p'. Veja em tempo real: 'sysctl -a'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "68e54a36-cf65-4964-83e5-ded860147167",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que faz o comando 'chage -l usuario'?",
+      "options": [
+        "Altera a senha do usuário",
+        "Lista as informações de validade/expiração da senha do usuário",
+        "Muda o shell padrão do usuário",
+        "Bloqueia a conta do usuário"
+      ],
+      "answer": [
+        "Lista as informações de validade/expiração da senha do usuário"
+      ],
+      "difficulty": "medium",
+      "hint": "chage = change age. Controla quando a senha expira, quando o usuário deve trocar, etc.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "6c11e6e7-886f-4973-b476-d4cc8098e4a0",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando cria um novo usuário chamado 'joao' com diretório home automaticamente?",
+      "options": [
+        "adduser joao",
+        "useradd joao",
+        "newuser joao",
+        "createuser joao"
+      ],
+      "answer": [
+        "adduser joao"
+      ],
+      "difficulty": "easy",
+      "hint": "No Debian/Ubuntu, 'adduser' é interativo. No Red Hat, 'useradd -m joao' cria o home.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "6ca843a0-e6f9-43b9-9b31-79342b145069",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando lista os módulos do kernel atualmente carregados?",
+      "options": [
+        "modlist",
+        "kernelmod -l",
+        "lsmod",
+        "modules --list"
+      ],
+      "answer": [
+        "lsmod"
+      ],
+      "difficulty": "easy",
+      "hint": "A saída inclui Module, Size e Used by (módulos que dependem dele).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "6d4d4d00-f3a6-415b-8a12-dc0998b6613a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo controla os limites de recursos (open files, processes, etc.) por usuário ou grupo de forma persistente?",
+      "options": [
+        "/etc/sysctl.conf",
+        "/etc/limits.conf",
+        "/etc/security/limits.conf",
+        "/etc/ulimits.conf"
+      ],
+      "answer": [
+        "/etc/security/limits.conf"
+      ],
+      "difficulty": "medium",
+      "hint": "Formato: 'usuario soft nofile 65536' ou 'grupo hard nproc 1024'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "727c32e0-3a2e-451c-b281-de0512a6537b",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual ferramenta agenda tarefas recorrentes no Linux (ex: backups diários)?",
+      "options": [
+        "at",
+        "scheduler",
+        "cron",
+        "task"
+      ],
+      "answer": [
+        "cron"
+      ],
+      "difficulty": "easy",
+      "hint": "'at' agenda execuções únicas. cron é para tarefas repetitivas.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "74f3b83c-510a-42cf-b5a3-4c2fd88b532b",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual syscall é usada internamente por comandos como ps e top para obter informações sobre processos em execução?",
+      "options": [
+        "getproc(2)",
+        "readdir(2) sobre /proc",
+        "psinfo(2)",
+        "proclist(2)"
+      ],
+      "answer": [
+        "readdir(2) sobre /proc"
+      ],
+      "difficulty": "hard",
+      "hint": "O /proc é um filesystem virtual; ps lê arquivos em /proc/[PID]/stat, /proc/[PID]/status, etc.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "7bea30e1-b54b-4b5c-904a-a1fae1365cba",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando altera a prioridade de um processo já em execução (PID 1234) para nice value -10?",
+      "options": [
+        "nice -10 1234",
+        "renice -10 -p 1234",
+        "priority -10 1234",
+        "sched -10 1234"
+      ],
+      "answer": [
+        "renice -10 -p 1234"
+      ],
+      "difficulty": "medium",
+      "hint": "Nice values: -20 (mais alta prioridade) a 19 (mais baixa). Apenas root pode usar valores negativos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "7cf2710f-1111-4638-aeee-433d387c512c",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "A syscall 'getrlimit(RLIMIT_NOFILE, ...)' retorna qual informação?",
+      "options": [
+        "O número atual de arquivos abertos pelo processo",
+        "Os limites soft e hard para o número máximo de file descriptors abertos",
+        "O número máximo de arquivos no sistema",
+        "O tamanho máximo de um arquivo em bytes"
+      ],
+      "answer": [
+        "Os limites soft e hard para o número máximo de file descriptors abertos"
+      ],
+      "difficulty": "hard",
+      "hint": "'ulimit -n' no shell mostra/define este limite. Crítico para servidores de alta concorrência.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "7d07e5c2-d184-4780-8c1a-1ce3340d352c",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que o arquivo /proc/pid/fd/ contém?",
+      "options": [
+        "A lista de threads do processo",
+        "Links simbólicos para cada file descriptor aberto pelo processo",
+        "O código fonte do processo",
+        "As variáveis de ambiente do processo"
+      ],
+      "answer": [
+        "Links simbólicos para cada file descriptor aberto pelo processo"
+      ],
+      "difficulty": "medium",
+      "hint": "'ls -la /proc/self/fd' mostra os file descriptors do shell atual. 0=stdin, 1=stdout, 2=stderr.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "8013481d-50de-45b0-a5ef-f5da7565d993",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando edita o crontab do usuário atual de forma segura?",
+      "options": [
+        "nano /etc/crontab",
+        "vi /var/spool/cron/usuario",
+        "crontab -e",
+        "cron -edit"
+      ],
+      "answer": [
+        "crontab -e"
+      ],
+      "difficulty": "easy",
+      "hint": "'crontab -l' lista as tarefas. 'crontab -r' remove TODAS as tarefas (cuidado!).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "837e6731-2b80-46c4-800a-717edad2a1a5",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é swap no Linux e quando ele é usado?",
+      "options": [
+        "Uma partição de backup usada durante falhas",
+        "Espaço em disco usado como extensão da RAM quando a memória física está esgotada",
+        "Uma técnica de troca de processos entre CPUs",
+        "Um mecanismo de cache de disco"
+      ],
+      "answer": [
+        "Espaço em disco usado como extensão da RAM quando a memória física está esgotada"
+      ],
+      "difficulty": "easy",
+      "hint": "'swapon -s' mostra o uso de swap. Alto uso de swap causa lentidão significativa.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "859afda0-ccc4-4552-9a3d-fc7face74c89",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como montar um compartilhamento NFS do servidor 192.168.1.10 diretório /dados em /mnt/nfs?",
+      "options": [
+        "mount --type nfs 192.168.1.10:/dados /mnt/nfs",
+        "mount -t nfs 192.168.1.10:/dados /mnt/nfs",
+        "nfsmount 192.168.1.10:/dados /mnt/nfs",
+        "mount.nfs 192.168.1.10 /dados /mnt/nfs"
+      ],
+      "answer": [
+        "mount -t nfs 192.168.1.10:/dados /mnt/nfs"
+      ],
+      "difficulty": "medium",
+      "hint": "Para montar no boot, adicione ao /etc/fstab: '192.168.1.10:/dados /mnt/nfs nfs defaults 0 0'",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "887b672f-fbd6-426e-8222-9d85816f135a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O comando 'getent passwd joao' consulta qual fonte de informação?",
+      "options": [
+        "Apenas o arquivo /etc/passwd",
+        "As fontes configuradas no NSS (/etc/nsswitch.conf), incluindo LDAP, NIS, etc.",
+        "Apenas servidores LDAP remotos",
+        "O banco de dados do PAM"
+      ],
+      "answer": [
+        "As fontes configuradas no NSS (/etc/nsswitch.conf), incluindo LDAP, NIS, etc."
+      ],
+      "difficulty": "medium",
+      "hint": "Por isso getent é preferível a 'cat /etc/passwd' em ambientes com LDAP ou NIS.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "8c0ed823-18ed-4a12-af1e-009c81e808cb",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O comando 'last' exibe:",
+      "options": [
+        "Os últimos arquivos criados no sistema",
+        "O histórico de logins e logouts dos usuários",
+        "Os últimos comandos executados pelo root",
+        "Os últimos pacotes instalados"
+      ],
+      "answer": [
+        "O histórico de logins e logouts dos usuários"
+      ],
+      "difficulty": "easy",
+      "hint": "Lê de /var/log/wtmp. 'lastb' mostra tentativas de login falhas (/var/log/btmp).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "8ef0a6a6-f0b4-42bf-88c0-7e2e5a1334e4",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual é o propósito do arquivo /etc/cron.d/?",
+      "options": [
+        "Contém scripts executados diariamente",
+        "Permite que pacotes do sistema instalem entradas cron sem modificar /etc/crontab",
+        "Define os usuários que podem usar o cron",
+        "Armazena o log de execuções do cron"
+      ],
+      "answer": [
+        "Permite que pacotes do sistema instalem entradas cron sem modificar /etc/crontab"
+      ],
+      "difficulty": "medium",
+      "hint": "Formato igual ao /etc/crontab: inclui o usuário que executa o comando.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "8fd8828a-7912-428f-b457-5c1e32ed3ed5",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual syscall é usada pelo comando mount para anexar um filesystem à hierarquia?",
+      "options": [
+        "attach(2)",
+        "mount(2)",
+        "link(2)",
+        "bind(2)"
+      ],
+      "answer": [
+        "mount(2)"
+      ],
+      "difficulty": "hard",
+      "hint": "O comando 'mount' do userspace é um wrapper em torno da syscall mount(2).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "913b3fe8-a124-4b1d-9ac9-bcaa6793f108",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual bit de permissão especial, quando ativado em um executável, faz com que ele rode com o UID do DONO do arquivo ao invés do usuário que o executa?",
+      "options": [
+        "Sticky bit",
+        "setGID bit",
+        "setUID bit",
+        "Execute bit"
+      ],
+      "answer": [
+        "setUID bit"
+      ],
+      "difficulty": "medium",
+      "hint": "Ex: /usr/bin/passwd tem setUID para poder alterar /etc/shadow (que pertence ao root).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "92bb8d4b-7eb9-412a-ad72-65ee5b660ef9",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando verifica a integridade de um pacote RPM verificando se seus arquivos foram modificados?",
+      "options": [
+        "rpm --check",
+        "rpm -V pacote",
+        "rpm --verify-all",
+        "rpm --integrity pacote"
+      ],
+      "answer": [
+        "rpm -V pacote"
+      ],
+      "difficulty": "medium",
+      "hint": "rpm -Va verifica TODOS os pacotes. Saída: S=size, M=mode, 5=MD5, T=mtime mudados.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "9338a6f9-b707-4631-950a-c1afd5f2058b",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando é usado para particionar discos e suporta tabelas de partição GPT (necessário para discos >2TB)?",
+      "options": [
+        "fdisk",
+        "cfdisk",
+        "gdisk ou parted",
+        "diskpart"
+      ],
+      "answer": [
+        "gdisk ou parted"
+      ],
+      "difficulty": "medium",
+      "hint": "fdisk é limitado a MBR. gdisk e parted suportam GPT. 'parted -l' lista todas as partições.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "93cb8105-4db8-4e27-8a89-cda0696cdee1",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando no Red Hat/CentOS 8+ substitui 'yum' como gerenciador de pacotes principal?",
+      "options": [
+        "rpm2",
+        "apt",
+        "dnf",
+        "zypper"
+      ],
+      "answer": [
+        "dnf"
+      ],
+      "difficulty": "easy",
+      "hint": "DNF = Dandified YUM. É retrocompatível com yum, mas mais rápido e com melhor resolução de dependências.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "956c1cf1-ff88-4320-935c-c6a1078aabc3",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando exibe a tabela de roteamento IP do sistema?",
+      "options": [
+        "routeshow",
+        "ip route show",
+        "netstat -route",
+        "ifconfig --routes"
+      ],
+      "answer": [
+        "ip route show"
+      ],
+      "difficulty": "easy",
+      "hint": "O comando legado é 'route -n'. O moderno é 'ip route' ou 'ip r'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "980ecd62-9a40-4b35-a532-f58710f020c6",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que significa um load average de 4.0 em um sistema com 4 CPUs?",
+      "options": [
+        "O sistema está sobrecarregado (overloaded)",
+        "O sistema está com uso de CPU em 100% (todas as 4 CPUs ocupadas)",
+        "O sistema tem 4 processos em estado zombie",
+        "O sistema está usando 400% da memória disponível"
+      ],
+      "answer": [
+        "O sistema está com uso de CPU em 100% (todas as 4 CPUs ocupadas)"
+      ],
+      "difficulty": "hard",
+      "hint": "Load avg de 4.0 em 4 CPUs = uso perfeito de 100%. Acima de 4.0 indica fila de espera.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "98397d44-d161-445d-9066-df4fc25e7c72",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando exibe o número de inode de um arquivo?",
+      "options": [
+        "ls -l",
+        "stat arquivo ou ls -i arquivo",
+        "inode arquivo",
+        "file -i arquivo"
+      ],
+      "answer": [
+        "stat arquivo ou ls -i arquivo"
+      ],
+      "difficulty": "medium",
+      "hint": "'stat' mostra todos os metadados do inode: inode number, links, dono, permissões, timestamps.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "9ce54e7a-c741-46bb-881a-a53af6346666",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O comando 'tar -czf backup.tar.gz /dados/' cria um backup. O que o 'z' significa neste contexto?",
+      "options": [
+        "Criar em modo zero (sem compressão)",
+        "Comprimir com gzip",
+        "Comprimir com zip",
+        "Comprimir com bzip2"
+      ],
+      "answer": [
+        "Comprimir com gzip"
+      ],
+      "difficulty": "easy",
+      "hint": "'j' usa bzip2 (melhor compressão, mais lento). 'J' usa xz (melhor compressão ainda).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "a0e3e4e6-cc31-470f-ae34-d892fd4e4927",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual syscall permite que um processo obtenha/altere limites de recursos como tamanho máximo de arquivos e número de processos?",
+      "options": [
+        "getlimit(2)",
+        "resource(2)",
+        "getrlimit(2) / setrlimit(2)",
+        "ulimit(2)"
+      ],
+      "answer": [
+        "getrlimit(2) / setrlimit(2)"
+      ],
+      "difficulty": "hard",
+      "hint": "'ulimit -a' no shell usa getrlimit internamente. Limites hard só podem ser reduzidos por usuários comuns.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "a0ed1153-362b-4449-b0ac-1bdde545fd7a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que o comando 'journalctl --since \"1 hour ago\"' exibe?",
+      "options": [
+        "Logs de exatamente uma hora atrás",
+        "Logs do systemd journal da última hora até agora",
+        "O horário do último boot",
+        "Os logs da hora de pico do sistema"
+      ],
+      "answer": [
+        "Logs do systemd journal da última hora até agora"
+      ],
+      "difficulty": "easy",
+      "hint": "'journalctl --since today', '--since yesterday', '--since \"2024-01-01\"' também funcionam.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "a49d308b-dc50-4165-bd21-f34c100a2740",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é o arquivo /etc/pam.d/sshd no contexto de autenticação Linux?",
+      "options": [
+        "O arquivo de configuração do daemon SSH",
+        "O arquivo que define as regras de autenticação PAM para o serviço SSH",
+        "A lista de usuários permitidos via SSH",
+        "O log de tentativas de autenticação SSH"
+      ],
+      "answer": [
+        "O arquivo que define as regras de autenticação PAM para o serviço SSH"
+      ],
+      "difficulty": "hard",
+      "hint": "PAM (Pluggable Authentication Modules) permite configurar autenticação de forma modular.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "a84bf83e-5c03-4153-a838-8509c4feb4f3",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/nsswitch.conf define a ordem de resolução de nomes. A linha 'hosts: files dns' significa:",
+      "options": [
+        "Usar apenas /etc/hosts, ignorando DNS",
+        "Verificar primeiro /etc/hosts; se não encontrar, consultar DNS",
+        "Verificar primeiro DNS; se falhar, usar /etc/hosts",
+        "Usar os dois simultaneamente e combinar resultados"
+      ],
+      "answer": [
+        "Verificar primeiro /etc/hosts; se não encontrar, consultar DNS"
+      ],
+      "difficulty": "medium",
+      "hint": "getent(1) usa exatamente esta configuração para resolver consultas.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "a9089e9e-6f2a-49bf-9169-7b210e0a2c9b",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/hosts.deny e /etc/hosts.allow fazem parte de qual mecanismo de controle de acesso?",
+      "options": [
+        "SELinux",
+        "TCP Wrappers (tcpd)",
+        "PAM",
+        "iptables"
+      ],
+      "answer": [
+        "TCP Wrappers (tcpd)"
+      ],
+      "difficulty": "medium",
+      "hint": "Legado mas ainda presente em algumas distros. Ordem: hosts.allow é verificado primeiro.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "ac521ecc-026c-4d43-aaa3-fcccc0adc218",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O arquivo /etc/logrotate.conf e os arquivos em /etc/logrotate.d/ controlam:",
+      "options": [
+        "Quais logs são enviados para servidores remotos",
+        "A rotação automática de arquivos de log (compressão, tamanho máximo, retenção)",
+        "O nível de detalhamento dos logs do sistema",
+        "A criptografia dos arquivos de log"
+      ],
+      "answer": [
+        "A rotação automática de arquivos de log (compressão, tamanho máximo, retenção)"
+      ],
+      "difficulty": "medium",
+      "hint": "Opções: daily/weekly/monthly, rotate N (manter N cópias), compress, size 100M.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "af678b36-b8b3-4129-9e26-047230fac4e7",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como fazer um serviço iniciar automaticamente após um reboot com systemd?",
+      "options": [
+        "systemctl start nginx",
+        "systemctl auto nginx",
+        "systemctl enable nginx",
+        "systemctl activate nginx"
+      ],
+      "answer": [
+        "systemctl enable nginx"
+      ],
+      "difficulty": "easy",
+      "hint": "'enable' cria links simbólicos. 'disable' os remove. 'start' inicia imediatamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "b0cbffe6-50d3-4bc4-a273-e76ad599d264",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é um 'systemd unit file' do tipo '.service'?",
+      "options": [
+        "Um arquivo binário compilado com a configuração do serviço",
+        "Um arquivo de texto que define como o systemd deve iniciar, parar e monitorar um serviço",
+        "Um script de shell executado pelo init",
+        "Uma entrada no /etc/inittab"
+      ],
+      "answer": [
+        "Um arquivo de texto que define como o systemd deve iniciar, parar e monitorar um serviço"
+      ],
+      "difficulty": "medium",
+      "hint": "Ficam em /etc/systemd/system/ (custom) ou /lib/systemd/system/ (do sistema).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "b86ec377-b102-4d58-afb9-f97f5c660001",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo do /proc exibe a média de carga do sistema (load average)?",
+      "options": [
+        "/proc/stat",
+        "/proc/loadavg",
+        "/proc/cpuinfo",
+        "/proc/meminfo"
+      ],
+      "answer": [
+        "/proc/loadavg"
+      ],
+      "difficulty": "medium",
+      "hint": "Exibe: avg_1min avg_5min avg_15min processos_rodando/total último_pid",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "bc221088-f246-4cd1-bbdb-8f5041a1590b",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual parâmetro do kernel (/proc/sys/vm/) controla a agressividade com que o kernel move páginas de memória para swap?",
+      "options": [
+        "vm.mem_pressure",
+        "vm.swappiness",
+        "vm.swap_rate",
+        "vm.overcommit_ratio"
+      ],
+      "answer": [
+        "vm.swappiness"
+      ],
+      "difficulty": "hard",
+      "hint": "Valor 0-100. Padrão=60. Em servidores de banco de dados, recomenda-se vm.swappiness=10 ou menos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "bdccbcf6-b429-4bfe-b500-c80ba40a4f62",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando do systemd lista o status de todos os serviços em execução?",
+      "options": [
+        "systemctl list-services",
+        "systemctl status --all",
+        "systemctl list-units --type=service",
+        "service --list-all"
+      ],
+      "answer": [
+        "systemctl list-units --type=service"
+      ],
+      "difficulty": "easy",
+      "hint": "Adicione '--state=running' para filtrar apenas os ativos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "be64d716-23ed-4160-adc4-156b2bef77ac",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando verifica e corrige erros em um sistema de arquivos ext4 (o filesystem deve estar DESMONTADO)?",
+      "options": [
+        "diskcheck /dev/sdb1",
+        "fsck.ext4 /dev/sdb1",
+        "e4fsck /dev/sdb1",
+        "repair /dev/sdb1"
+      ],
+      "answer": [
+        "fsck.ext4 /dev/sdb1"
+      ],
+      "difficulty": "medium",
+      "hint": "fsck = filesystem check. Nunca execute em um filesystem montado em modo leitura/escrita.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "be74bbbf-d90e-471e-a5f5-eb1709dc3a0f",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Na seção [Service] de um unit file, qual opção define o comando que inicia o serviço?",
+      "options": [
+        "StartCommand=",
+        "Execute=",
+        "ExecStart=",
+        "Command="
+      ],
+      "answer": [
+        "ExecStart="
+      ],
+      "difficulty": "medium",
+      "hint": "ExecStop= para parar, ExecReload= para recarregar, Restart= para política de reinício automático.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "bfcc101c-8f6a-48cb-8936-0e81a9627c4a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando instala um pacote em distribuições baseadas em Red Hat (RHEL, CentOS, Fedora)?",
+      "options": [
+        "apt install pacote",
+        "yum install pacote / dnf install pacote",
+        "rpm -i pacote.rpm",
+        "zypper install pacote"
+      ],
+      "answer": [
+        "yum install pacote / dnf install pacote"
+      ],
+      "difficulty": "easy",
+      "hint": "yum é legado; dnf é o moderno. rpm é o formato de pacote, mas não resolve dependências.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c0f7f40c-effd-4d52-9501-736813889ca6",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que faz o comando 'traceroute google.com' (ou tracepath)?",
+      "options": [
+        "Mede a latência de uma conexão HTTP com o servidor",
+        "Exibe o caminho dos pacotes IP até o destino, mostrando cada hop/roteador",
+        "Testa se a porta 80 do servidor está aberta",
+        "Resolve o hostname para seu endereço IP"
+      ],
+      "answer": [
+        "Exibe o caminho dos pacotes IP até o destino, mostrando cada hop/roteador"
+      ],
+      "difficulty": "easy",
+      "hint": "Útil para diagnosticar onde pacotes estão sendo descartados na rede.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c22b0b2d-3548-4e1d-9fb6-468b89d6bb3c",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando verifica se um serviço systemd está configurado para iniciar no boot?",
+      "options": [
+        "systemctl is-enabled servico",
+        "systemctl status servico",
+        "systemctl is-active servico",
+        "systemctl check servico"
+      ],
+      "answer": [
+        "systemctl is-enabled servico"
+      ],
+      "difficulty": "easy",
+      "hint": "Retorna 'enabled', 'disabled', 'static', ou 'masked'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c3aec7a5-29f4-49de-9d8f-d4b854ff1c80",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual variável define o diretório home do usuário no Linux?",
+      "options": [
+        "HOMEDIR",
+        "USERHOME",
+        "HOME",
+        "USER"
+      ],
+      "answer": [
+        "HOME"
+      ],
+      "difficulty": "easy",
+      "hint": "'cd $HOME' e 'cd ~' são equivalentes.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c458270c-0512-4333-84c1-2d86a2c80e75",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que faz 'ip link set eth0 up'?",
+      "options": [
+        "Configura um endereço IP na interface eth0",
+        "Ativa (habilita) a interface de rede eth0",
+        "Define a velocidade de eth0",
+        "Cria uma interface virtual eth0"
+      ],
+      "answer": [
+        "Ativa (habilita) a interface de rede eth0"
+      ],
+      "difficulty": "easy",
+      "hint": "'ip link set eth0 down' desativa. 'ip link show' lista todas as interfaces e seus estados.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c4e0d58f-5e36-418f-91f1-95f5ccfbedb3",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que o arquivo /proc/meminfo exibe?",
+      "options": [
+        "O histórico de alocações de memória por processo",
+        "Estatísticas detalhadas sobre o uso de memória física e swap do sistema",
+        "Os endereços de memória dos processos em execução",
+        "A configuração do hardware de memória RAM"
+      ],
+      "answer": [
+        "Estatísticas detalhadas sobre o uso de memória física e swap do sistema"
+      ],
+      "difficulty": "medium",
+      "hint": "Campos importantes: MemTotal, MemFree, MemAvailable, Buffers, Cached, SwapTotal, SwapFree.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c62e0d82-5601-41a5-9831-28c2c55c8248",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que faz o comando 'dd if=/dev/sda of=/backup/sda.img bs=4M'?",
+      "options": [
+        "Comprime o disco /dev/sda para /backup/sda.img",
+        "Cria uma imagem bit-a-bit do disco /dev/sda no arquivo sda.img",
+        "Copia apenas os arquivos modificados de /dev/sda",
+        "Formata /dev/sda com um filesystem de 4MB por bloco"
+      ],
+      "answer": [
+        "Cria uma imagem bit-a-bit do disco /dev/sda no arquivo sda.img"
+      ],
+      "difficulty": "medium",
+      "hint": "dd = 'disk dump'. Copia byte a byte. Cuidado com a ordem de if= e of=!",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c643b335-e0b6-46be-8108-046035310e8d",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando gera um par de chaves SSH (pública e privada)?",
+      "options": [
+        "ssh-create",
+        "ssh-keygen",
+        "openssh-gen",
+        "keygen --ssh"
+      ],
+      "answer": [
+        "ssh-keygen"
+      ],
+      "difficulty": "easy",
+      "hint": "Por padrão cria ~/.ssh/id_rsa (privada) e ~/.ssh/id_rsa.pub (pública).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c6d27ae8-0434-472b-94fe-ea828c7a267d",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo define os diretórios exportados via NFS em um servidor Linux?",
+      "options": [
+        "/etc/nfs.conf",
+        "/etc/exports",
+        "/etc/nfsd/shares",
+        "/etc/shares.conf"
+      ],
+      "answer": [
+        "/etc/exports"
+      ],
+      "difficulty": "medium",
+      "hint": "Ex: '/dados 192.168.1.0/24(rw,sync,no_subtree_check)'. Após editar: 'exportfs -ra'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "c7c5495a-76c4-4b7a-bb79-927a5d40dfd2",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando remove um usuário e seu diretório home?",
+      "options": [
+        "rmuser -r joao",
+        "userdel -r joao",
+        "deluser --remove-home joao",
+        "usermod -d joao"
+      ],
+      "answer": [
+        "userdel -r joao"
+      ],
+      "difficulty": "easy",
+      "hint": "Sem -r, o diretório home permanece. Verifique arquivos do usuário antes de remover.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "cd2236e1-3f6c-4e5c-8b01-184e31216be6",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando bloqueia a conta de um usuário impedindo-o de fazer login?",
+      "options": [
+        "usermod -L usuario",
+        "passwd -l usuario",
+        "chage -E 0 usuario",
+        "usermod -s /sbin/nologin usuario"
+      ],
+      "answer": [
+        "usermod -L usuario"
+      ],
+      "difficulty": "medium",
+      "hint": "usermod -L adiciona '!' antes do hash da senha em /etc/shadow. usermod -U desbloqueia.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "cf6c515d-2a6c-42e9-b51f-21932e8f4373",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual arquivo de configuração do GRUB2 é gerado automaticamente e NÃO deve ser editado diretamente?",
+      "options": [
+        "/etc/grub.conf",
+        "/boot/grub/grub.cfg",
+        "/etc/grub2.cfg",
+        "/boot/grub2/menu.cfg"
+      ],
+      "answer": [
+        "/boot/grub/grub.cfg"
+      ],
+      "difficulty": "medium",
+      "hint": "Edite /etc/default/grub e execute 'grub2-mkconfig' ou 'update-grub' para regenerar.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "d04ed671-6df4-43b1-aa67-8df58c5bfb89",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que significa um serviço systemd com estado 'masked'?",
+      "options": [
+        "O serviço está em execução mas oculto",
+        "O serviço está completamente desabilitado e não pode ser iniciado nem mesmo manualmente",
+        "O serviço está em modo de teste",
+        "O serviço está aguardando uma condição para iniciar"
+      ],
+      "answer": [
+        "O serviço está completamente desabilitado e não pode ser iniciado nem mesmo manualmente"
+      ],
+      "difficulty": "hard",
+      "hint": "'systemctl mask servico' cria um link para /dev/null. 'unmask' desfaz. Mais forte que 'disable'.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "d5b065fe-2009-4c47-890b-44197cc3ab9a",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual campo no /proc/pid/status indica o uso atual de memória virtual (RSS) pelo processo?",
+      "options": [
+        "VmRSS",
+        "VmSize",
+        "MemUsage",
+        "RSSMem"
+      ],
+      "answer": [
+        "VmRSS"
+      ],
+      "difficulty": "hard",
+      "hint": "VmRSS = Resident Set Size (memória física real usada). VmSize = memória virtual total alocada.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "efd9badb-fef1-4170-9aba-af3ca4a7c0c2",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como tornar uma rota de rede persistente entre reboots em um sistema RHEL/CentOS?",
+      "options": [
+        "Adicionar 'ip route add ...' ao /etc/rc.local",
+        "Configurar no arquivo de rede da interface ou em /etc/sysconfig/network-scripts/route-eth0",
+        "Usar 'ip route add ... permanent'",
+        "Adicionar ao /etc/sysctl.conf"
+      ],
+      "answer": [
+        "Configurar no arquivo de rede da interface ou em /etc/sysconfig/network-scripts/route-eth0"
+      ],
+      "difficulty": "hard",
+      "hint": "No NetworkManager moderno, use 'nmcli' ou edite os arquivos de conexão em /etc/NetworkManager/system-connections/.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "f0de1d91-b6fb-4a4b-9814-3bb421966877",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Como copiar sua chave pública SSH para um servidor remoto para login sem senha?",
+      "options": [
+        "scp ~/.ssh/id_rsa.pub user@server:~/.ssh/authorized_keys",
+        "ssh-copy-id user@servidor",
+        "ssh --install-key user@servidor",
+        "rsync -avz ~/.ssh/id_rsa.pub user@servidor"
+      ],
+      "answer": [
+        "ssh-copy-id user@servidor"
+      ],
+      "difficulty": "easy",
+      "hint": "ssh-copy-id cuida da criação do diretório e das permissões corretas automaticamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "f1c9bc07-e2e1-4269-bda3-2a1d0fe34f7e",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que faz 'rpm -qa' em sistemas Red Hat?",
+      "options": [
+        "Instala todos os pacotes de um repositório",
+        "Lista todos os pacotes RPM instalados no sistema",
+        "Remove pacotes não utilizados",
+        "Atualiza todos os pacotes instalados"
+      ],
+      "answer": [
+        "Lista todos os pacotes RPM instalados no sistema"
+      ],
+      "difficulty": "medium",
+      "hint": "'rpm -qi pacote' mostra detalhes de um pacote. 'rpm -ql pacote' lista seus arquivos.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "f4310d97-0421-46ed-8a62-d826e83a64f2",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é um 'runlevel' no contexto de sistemas init legados (SysV)?",
+      "options": [
+        "A velocidade de execução dos processos",
+        "Um estado do sistema que define quais serviços estão rodando (0=halt, 3=multiuser, 5=GUI, 6=reboot)",
+        "O nível de prioridade do processo init",
+        "O nível de logs gerados pelo sistema"
+      ],
+      "answer": [
+        "Um estado do sistema que define quais serviços estão rodando (0=halt, 3=multiuser, 5=GUI, 6=reboot)"
+      ],
+      "difficulty": "medium",
+      "hint": "No systemd, os runlevels correspondem a 'targets': multi-user.target, graphical.target, etc.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "f590af44-93c4-4a5b-bfc4-8695ba957b24",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O comando 'lsof -p PID' exibe:",
+      "options": [
+        "Os limites de recursos do processo",
+        "Todos os arquivos, sockets e dispositivos abertos pelo processo especificado",
+        "O log de operações de arquivo do processo",
+        "A lista de chamadas de sistema feitas pelo processo"
+      ],
+      "answer": [
+        "Todos os arquivos, sockets e dispositivos abertos pelo processo especificado"
+      ],
+      "difficulty": "medium",
+      "hint": "lsof = list open files. 'lsof -i :80' mostra processos usando a porta 80.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "fa292d0f-55cd-433a-93b0-58052b93df5e",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "O que é LVM (Logical Volume Manager) e qual sua principal vantagem?",
+      "options": [
+        "Um filesystem de alta performance como XFS",
+        "Uma camada de abstração sobre dispositivos físicos que permite redimensionar volumes sem downtime",
+        "Um sistema de RAID por software",
+        "Um gerenciador de partições gráfico"
+      ],
+      "answer": [
+        "Uma camada de abstração sobre dispositivos físicos que permite redimensionar volumes sem downtime"
+      ],
+      "difficulty": "medium",
+      "hint": "Com LVM: PV (physical volumes) → VG (volume groups) → LV (logical volumes).",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "fa7adee1-6302-4533-bc44-9697d5dcc012",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando aplica as configurações do /etc/sysctl.conf imediatamente sem reboot?",
+      "options": [
+        "sysctl --reload",
+        "sysctl -p",
+        "service sysctl restart",
+        "sysctl apply"
+      ],
+      "answer": [
+        "sysctl -p"
+      ],
+      "difficulty": "easy",
+      "hint": "'sysctl -w net.ipv4.ip_forward=1' altera um parâmetro específico temporariamente.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "fab400e4-7ed1-46b7-b828-e33efab48ed7",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual é a função do comando 'update-alternatives' em sistemas Debian/Ubuntu?",
+      "options": [
+        "Atualizar o sistema para a versão alternativa do Debian",
+        "Gerenciar múltiplas versões de um mesmo programa (ex: python2 vs python3) e definir qual é o padrão",
+        "Instalar pacotes alternativos de repositórios não oficiais",
+        "Criar links alternativos para bibliotecas compartilhadas"
+      ],
+      "answer": [
+        "Gerenciar múltiplas versões de um mesmo programa (ex: python2 vs python3) e definir qual é o padrão"
+      ],
+      "difficulty": "medium",
+      "hint": "'update-alternatives --config java' permite escolher qual JVM usar como padrão.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "fadafc82-d72a-4837-8f89-4af05ab71b55",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual ferramenta analisa logs e gera relatórios de tentativas de intrusão e atividades suspeitas?",
+      "options": [
+        "logwatch",
+        "sysstat",
+        "auditd",
+        "fail2ban"
+      ],
+      "answer": [
+        "fail2ban"
+      ],
+      "difficulty": "medium",
+      "hint": "fail2ban monitora logs e bane IPs automaticamente após tentativas falhas. Logwatch gera relatórios diários.",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    },
+    {
+      "id": "fcfe163d-7996-4f98-8e46-6515c79d2afc",
+      "exam_id": "dc75c42a-6666-4eb1-9a07-880dd5ea5f10",
+      "type": "multiple",
+      "question": "Qual comando sincroniza diretórios de forma eficiente, copiando apenas arquivos modificados?",
+      "options": [
+        "cp -r",
+        "scp -r",
+        "rsync -av",
+        "rcp -r"
+      ],
+      "answer": [
+        "rsync -av"
+      ],
+      "difficulty": "easy",
+      "hint": "rsync é ideal para backups incrementais. Pode funcionar localmente ou via SSH: rsync -av src/ user@host:/dest/",
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-24T19:21:15.558134"
+    }
+  ]
+}

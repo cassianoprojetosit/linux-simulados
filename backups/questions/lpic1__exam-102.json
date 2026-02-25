@@ -1,0 +1,2874 @@
+{
+  "meta": {
+    "simulado_id": "9663387a-649a-412e-b31c-000e71616591",
+    "simulado_slug": "lpic1",
+    "simulado_title": "LPIC-1",
+    "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+    "exam_code": "102",
+    "exam_name": null,
+    "exported_at": "2026-02-25T13:55:10.698Z"
+  },
+  "questions": [
+    {
+      "id": "025a675b-bc98-4cad-834f-347811241798",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Dado o IP 192.168.1.100/26, qual é o endereço de rede?",
+      "options": [
+        "192.168.1.0",
+        "192.168.1.64",
+        "192.168.1.128",
+        "192.168.1.96",
+        "192.168.1.255"
+      ],
+      "answer": [
+        "192.168.1.64"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "02ade5f3-6604-4456-8f99-2e6e37d8ed0f",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando copia a chave pública SSH do usuário local para o servidor remoto, permitindo login sem senha?",
+      "options": null,
+      "answer": [
+        "ssh-copy-id"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "03f525b5-b1bc-4d32-abb9-ad5cb76ceff5",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo armazena hashes de senha que são legíveis apenas pelo root?",
+      "options": [
+        "/etc/passwd",
+        "/etc/shadow",
+        "/etc/security/opasswd",
+        "/etc/login.defs",
+        "/etc/gshadow"
+      ],
+      "answer": [
+        "/etc/shadow"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "03fcf335-84ed-4372-baf7-5631730478c9",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo define a ordem de resolução de nomes no Linux (DNS, hosts, etc)?",
+      "options": null,
+      "answer": [
+        "/etc/nsswitch.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "09fac21d-20d5-4f86-b901-34da323c06b1",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando exibe a hora do relógio do hardware (RTC)?",
+      "options": [
+        "date",
+        "timedatectl",
+        "hwclock",
+        "clock",
+        "time"
+      ],
+      "answer": [
+        "hwclock"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "0a3b565a-f134-4242-a72a-17c66644e2bd",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando lista os trabalhos at pendentes?",
+      "options": [
+        "at -l",
+        "atq",
+        "atrm",
+        "at -d",
+        "at -c"
+      ],
+      "answer": [
+        "atq"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "0b4a7bfc-e432-4457-8a2b-0525311d5463",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para definir limites de recursos para o shell e processos filhos?",
+      "options": [
+        "limit",
+        "ulimit",
+        "setrlimit",
+        "getconf",
+        "limits"
+      ],
+      "answer": [
+        "ulimit"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "0bbfcd71-5675-42e3-accf-f676720ee8f4",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para gerar um par de chaves SSH?",
+      "options": [
+        "ssh",
+        "ssh-agent",
+        "ssh-add",
+        "ssh-keygen",
+        "ssh-copy-id"
+      ],
+      "answer": [
+        "ssh-keygen"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "0f89d374-327e-437f-ae77-0583f9ca155f",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando sincroniza o relógio do sistema com servidores NTP (ferramenta clássica)?",
+      "options": null,
+      "answer": [
+        "ntpdate",
+        "ntpd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "0fda8c59-7677-4084-accd-2a807e62715e",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a localização padrão do arquivo de configuração principal do Xorg?",
+      "options": [
+        "/etc/X11/xorg.conf",
+        "/etc/xorg.conf",
+        "/usr/share/X11/xorg.conf",
+        "/etc/X11/xorg.conf.d/",
+        "/var/lib/xorg.conf"
+      ],
+      "answer": [
+        "/etc/X11/xorg.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "1149e72c-d445-4695-b826-bf9bc0020990",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para agendar tarefas únicas no futuro?",
+      "options": [
+        "cron",
+        "at",
+        "batch",
+        "systemd-run",
+        "anacron"
+      ],
+      "answer": [
+        "at"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "115998d6-f2aa-4d0d-b01b-f88b277f8af7",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para ler um arquivo linha por linha em um script?",
+      "options": [
+        "for linha in $(cat arquivo)",
+        "while read linha; do ... done < arquivo",
+        "until read linha; do ... done",
+        "cat arquivo | for linha",
+        "foreach linha (cat arquivo)"
+      ],
+      "answer": [
+        "while read linha; do ... done < arquivo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "16ba2704-a145-4eba-82f9-02ae4808a597",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para encontrar arquivos com o bit SUID definido (e quaisquer outras permissões)?",
+      "options": [
+        "find / -perm -4000",
+        "find / -perm +4000",
+        "find / -perm /4000",
+        "find / -type f -uid 0",
+        "find / -user root"
+      ],
+      "answer": [
+        "find / -perm -4000"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "1b64bf66-d6a7-4640-bca4-25e386d2a77e",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual variável de ambiente controla a aparência do prompt primário do shell?",
+      "options": [
+        "PS1",
+        "PS2",
+        "PROMPT",
+        "SHELL",
+        "BASH_PROMPT"
+      ],
+      "answer": [
+        "PS1"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "1d1ac9c3-b3d9-4a25-9022-80f66ca3f7c7",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é considerado a versão moderna e mais rápida do netstat?",
+      "options": [
+        "ip",
+        "ss",
+        "nc",
+        "lsof",
+        "fuser"
+      ],
+      "answer": [
+        "ss"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "20f305d5-2434-4fae-9e42-2979d2724914",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando do systemd é usado para ler os logs do journal (sistema de log centralizado)?",
+      "options": null,
+      "answer": [
+        "journalctl"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "242708b4-f359-4937-8de9-5406459576b5",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para transformar uma variável local em uma variável de ambiente?",
+      "options": [
+        "set",
+        "env",
+        "export",
+        "unset",
+        "declare"
+      ],
+      "answer": [
+        "export"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "28feaa4f-7464-4c6c-b489-410b5d673cfb",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual diretório contém a maioria dos arquivos de log do sistema?",
+      "options": [
+        "/var/log",
+        "/var/spool",
+        "/etc/log",
+        "/usr/log",
+        "/var/adm"
+      ],
+      "answer": [
+        "/var/log"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "2c7ad02a-ee91-49c7-a35b-e2b82f4ea51a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando gera um par de chaves SSH (pública e privada)?",
+      "options": null,
+      "answer": [
+        "ssh-keygen"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "2c7d49a2-13fe-4636-90e4-c1f97d872f43",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual estrutura de loop percorre uma lista de itens?",
+      "options": [
+        "while",
+        "until",
+        "for",
+        "select",
+        "case"
+      ],
+      "answer": [
+        "for"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "2cf8a0ea-bf6a-4029-a818-cf8d50297539",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Em qual diretório ficam os arquivos de log do sistema no Linux?",
+      "options": null,
+      "answer": [
+        "/var/log"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "2e8b9a07-4831-475a-967e-b85395ba14b0",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "O que é o pool.ntp.org?",
+      "options": [
+        "Um servidor NTP oficial",
+        "Um pool de servidores NTP públicos",
+        "Um comando para sincronizar NTP",
+        "Um arquivo de configuração",
+        "Um protocolo de tempo"
+      ],
+      "answer": [
+        "Um pool de servidores NTP públicos"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "2f3a4256-1e93-417c-9bf0-980f8f9afb15",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo de configuração do Bash é executado para shells interativos de login?",
+      "options": null,
+      "answer": [
+        "/etc/profile",
+        "~/.bash_profile",
+        "~/.profile"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "2fb6f186-97c0-48de-99af-85b406b74894",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo contém a configuração do fuso horário do sistema em distribuições baseadas no Debian?",
+      "options": [
+        "/etc/localtime",
+        "/etc/timezone",
+        "/usr/share/zoneinfo",
+        "/etc/clock",
+        "/etc/sysconfig/clock"
+      ],
+      "answer": [
+        "/etc/timezone"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "3352cf1c-12db-4326-87f9-5c56dc0b98f9",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo de configuração define as regras de roteamento de mensagens do rsyslog?",
+      "options": null,
+      "answer": [
+        "/etc/rsyslog.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "34e8cc82-d7bb-4791-a66c-f454fd429568",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo define as configurações de expiração e envelhecimento de senhas de usuários no Linux?",
+      "options": null,
+      "answer": [
+        "/etc/login.defs"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "3572ab86-dbc8-45aa-8378-f981dd08ad67",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a porta padrão do protocolo SMTP?",
+      "options": [
+        "22",
+        "25",
+        "80",
+        "110",
+        "143"
+      ],
+      "answer": [
+        "25"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "37ffd397-2d02-4061-91a3-9c769c079f68",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando gerencia a rotação de arquivos de log?",
+      "options": [
+        "logrotate",
+        "rotate",
+        "logclean",
+        "log-rotate",
+        "logadm"
+      ],
+      "answer": [
+        "logrotate"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "3820752d-dffa-440d-a8ae-d655eb6ec3d1",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando agenda tarefas para serem executadas periodicamente no Linux?",
+      "options": null,
+      "answer": [
+        "cron",
+        "crontab"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "38813036-48ba-4f3d-9234-360efd86866a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando verifica a configuração de DNS realizando consultas a servidores de nomes? (ferramenta detalhada)",
+      "options": null,
+      "answer": [
+        "dig"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "392c1944-d6bb-4c31-9028-a8e6a596e108",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual das seguintes afirmações é verdadeira sobre o TCP?",
+      "options": [
+        "É um protocolo não orientado à conexão",
+        "Garante a entrega e a ordem dos pacotes",
+        "É mais rápido que o UDP",
+        "Não tem confirmação de recebimento",
+        "É usado pelo DNS"
+      ],
+      "answer": [
+        "Garante a entrega e a ordem dos pacotes"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "39bfd513-3f07-42a2-9b43-581ffcd47c42",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "O que significa o atalho @reboot em um crontab?",
+      "options": [
+        "Executar a cada reinicialização do sistema",
+        "Executar uma vez por hora",
+        "Executar uma vez por dia",
+        "Executar uma vez por semana",
+        "Executar a cada minuto"
+      ],
+      "answer": [
+        "Executar a cada reinicialização do sistema"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "3a043bdb-184b-4c76-b1e1-47170e8ad432",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando do GnuPG é usado para criptografar um arquivo com a chave pública de um destinatário?",
+      "options": [
+        "gpg --encrypt --recipient usuario arquivo",
+        "gpg --sign arquivo",
+        "gpg --decrypt arquivo",
+        "gpg --verify arquivo",
+        "gpg --export usuario"
+      ],
+      "answer": [
+        "gpg --encrypt --recipient usuario arquivo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "3bd1015e-179b-4387-a93d-4a8eeb786384",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo é usado para negar acesso a serviços por padrão no TCP Wrappers?",
+      "options": [
+        "/etc/hosts.allow",
+        "/etc/hosts.deny",
+        "/etc/hosts",
+        "/etc/nologin",
+        "/etc/securetty"
+      ],
+      "answer": [
+        "/etc/hosts.deny"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "3f37fd7d-d4f8-4c71-93a2-b656930599e4",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo define a ordem das fontes para resolução de nomes (ex: files, dns)?",
+      "options": [
+        "/etc/resolv.conf",
+        "/etc/hosts",
+        "/etc/nsswitch.conf",
+        "/etc/host.conf",
+        "/etc/network.conf"
+      ],
+      "answer": [
+        "/etc/nsswitch.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "3f75edbb-29dd-43df-89cf-2f6c22d657e0",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Em uma regra do rsyslog, o que significa o par '*' (asterisco) nos campos facility ou priority?",
+      "options": [
+        "Nenhum",
+        "Todos",
+        "Apenas alguns",
+        "O padrão",
+        "Prioridade máxima"
+      ],
+      "answer": [
+        "Todos"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "40866325-2f73-4bfb-9791-5ea88115699f",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando lista todos os arquivos abertos, incluindo sockets de rede?",
+      "options": [
+        "fuser",
+        "lsof",
+        "ss",
+        "netstat",
+        "ps"
+      ],
+      "answer": [
+        "lsof"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "46185e0a-de51-4bca-ab59-6cd7144fa4dd",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a sintaxe recomendada e moderna para avaliação de expressões aritméticas no Bash?",
+      "options": [
+        "$[2+2]",
+        "$((2+2))",
+        "expr 2+2",
+        "`expr 2+2`",
+        "let resultado=2+2"
+      ],
+      "answer": [
+        "$((2+2))"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "46c5b500-50a2-4892-bdde-77fa875090a4",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "O que o campo 'x' no arquivo /etc/passwd indica?",
+      "options": [
+        "A conta está bloqueada",
+        "A senha está criptografada em /etc/shadow",
+        "O usuário não tem senha",
+        "O usuário é um sistema",
+        "A senha está vencida"
+      ],
+      "answer": [
+        "A senha está criptografada em /etc/shadow"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "4b1a553b-48f9-4761-875f-7d8c3da8ffee",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual opção do netstat mostra todos os sockets de escuta (listening) e as conexões estabelecidas?",
+      "options": [
+        "-t",
+        "-u",
+        "-a",
+        "-l",
+        "-p"
+      ],
+      "answer": [
+        "-a"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "4bce70df-88c0-4b05-a84f-f4059c5cb5ff",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando altera a senha de um usuário no Linux?",
+      "options": null,
+      "answer": [
+        "passwd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "4eddaad6-281e-4b43-991a-2ee265d59d6b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe as rotas de rede (tabela de roteamento) usando a ferramenta moderna do iproute2?",
+      "options": null,
+      "answer": [
+        "ip route",
+        "ip r",
+        "ip route show"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "4f530251-7f45-47f6-9ddf-6c5beff8fe71",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual diretório deve existir para que o journald armazene logs de forma persistente?",
+      "options": [
+        "/run/log/journal",
+        "/var/log/journal",
+        "/var/log/journald",
+        "/var/spool/journal",
+        "/etc/journald"
+      ],
+      "answer": [
+        "/var/log/journal"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "51cca1ef-b7ab-4fea-abf0-5e1f754eca1c",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a finalidade principal do arquivo /etc/hosts?",
+      "options": [
+        "Definir servidores DNS",
+        "Mapear nomes de host para endereços IP localmente",
+        "Configurar a resolução de nomes",
+        "Armazenar o nome do host",
+        "Configurar aliases de rede"
+      ],
+      "answer": [
+        "Mapear nomes de host para endereços IP localmente"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "5235386f-4d79-49e6-88bb-b81619220c16",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual palavra-chave em /etc/resolv.conf é usada para especificar um servidor DNS?",
+      "options": [
+        "server",
+        "dns",
+        "nameserver",
+        "search",
+        "domain"
+      ],
+      "answer": [
+        "nameserver"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "528daa28-46d2-46a2-a9b0-e9eb145ffc88",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo contém o nome estático do host no Linux?",
+      "options": [
+        "/etc/hosts",
+        "/etc/hostname",
+        "/etc/resolv.conf",
+        "/etc/nsswitch.conf",
+        "/etc/sysconfig/network"
+      ],
+      "answer": [
+        "/etc/hostname"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "52adf463-4309-41a5-acba-3dca9fe98ccd",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando pode ser usado para verificar o tipo de shell atual (login ou não login)?",
+      "options": [
+        "echo $SHELL",
+        "echo $0",
+        "ps -p $$",
+        "whoami",
+        "type"
+      ],
+      "answer": [
+        "echo $0"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "5793a8c3-97d0-41cd-a9d2-a632eba2944b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para consultas DNS detalhadas e resolução de problemas?",
+      "options": [
+        "host",
+        "nslookup",
+        "dig",
+        "getent",
+        "resolvectl"
+      ],
+      "answer": [
+        "dig"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "57fa373d-4116-40ad-afbd-260150ad9d84",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo de configuração do SSH define os parâmetros do servidor SSH?",
+      "options": null,
+      "answer": [
+        "/etc/ssh/sshd_config"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "5a015f10-4944-4ab7-b46d-eaa60762a2b9",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual opção do nmap é usada para escanear um intervalo de portas?",
+      "options": [
+        "-p",
+        "--port",
+        "-P",
+        "--range",
+        "-r"
+      ],
+      "answer": [
+        "-p"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "5b16b340-c1a4-4915-a28a-0cedada67c6c",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe o caminho (rota) percorrido pelos pacotes até um host destino?",
+      "options": null,
+      "answer": [
+        "traceroute",
+        "tracepath"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "5e3ab123-5383-4514-ae10-43be16c7f811",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a URL padrão da interface web de administração do CUPS?",
+      "options": [
+        "http://localhost:631",
+        "http://localhost:80/cups",
+        "http://localhost:8080",
+        "http://localhost:515",
+        "http://localhost:9100"
+      ],
+      "answer": [
+        "http://localhost:631"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "60df9fbe-b0f5-48a7-9c16-ec29a8228965",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual ambiente de desktop é conhecido por ser leve e adequado para computadores com poucos recursos?",
+      "options": [
+        "GNOME",
+        "KDE Plasma",
+        "Xfce",
+        "Cinnamon",
+        "Unity"
+      ],
+      "answer": [
+        "Xfce"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "6146bf71-923e-4755-9966-439ae9aa77aa",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe quem está atualmente logado no sistema e o que está fazendo?",
+      "options": null,
+      "answer": [
+        "w"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "69e3c40b-bf32-40e1-bf17-13b08935643a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual opção do comando 'read' é usada para ocultar a entrada do usuário (útil para senhas)?",
+      "options": [
+        "-p",
+        "-a",
+        "-d",
+        "-s",
+        "-r"
+      ],
+      "answer": [
+        "-s"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "6f54a017-e31d-4ca9-9366-7ecdac8cde4b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual opção do journalctl é usada para seguir as mensagens de log em tempo real (como tail -f)?",
+      "options": [
+        "-r",
+        "-e",
+        "-f",
+        "-k",
+        "-b"
+      ],
+      "answer": [
+        "-f"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "700ca4db-5598-4ac2-ac97-8b005714731f",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Como o traceroute determina a rota até um destino?",
+      "options": [
+        "Enviando pacotes com TTL crescente",
+        "Analisando a tabela de roteamento",
+        "Consultando servidores DNS",
+        "Usando SNMP",
+        "Escutando broadcasts"
+      ],
+      "answer": [
+        "Enviando pacotes com TTL crescente"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "7420ebfe-0bfa-4a1b-9c5b-23309a18bc11",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando é usado para transferir arquivos com segurança entre hosts via SSH?",
+      "options": null,
+      "answer": [
+        "scp"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "7480a8d7-5edd-48a1-b26c-f92be5c49b98",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo é usado para permitir que apenas usuários específicos usem o crontab?",
+      "options": [
+        "/etc/cron.deny",
+        "/etc/cron.allow",
+        "/etc/crontab.allow",
+        "/etc/cron.d/allow",
+        "/var/spool/cron/allow"
+      ],
+      "answer": [
+        "/etc/cron.allow"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "74b25ec2-f0c8-4bed-80fd-3c83c6086f57",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual variável especial do Bash contém o número de argumentos passados a um script ou função?",
+      "options": null,
+      "answer": [
+        "$#"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "7630217e-0b2d-4604-9719-67129adab4c1",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual variável de ambiente define o idioma e a localidade do sistema Linux?",
+      "options": null,
+      "answer": [
+        "LANG",
+        "LC_ALL"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "79eefd65-1dc3-4a8c-8e48-719f32f7628a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "O que a variável de ambiente DISPLAY=:0 indica?",
+      "options": [
+        "O servidor X está no host remoto",
+        "O servidor X local está usando a primeira tela",
+        "O servidor X está na porta 0",
+        "O display está desabilitado",
+        "O servidor X está na segunda tela"
+      ],
+      "answer": [
+        "O servidor X local está usando a primeira tela"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "7b98f8cd-ab62-4427-b9b6-1f9b9634acb6",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para criar um alias no Bash?",
+      "options": [
+        "alias",
+        "unalias",
+        "function",
+        "set",
+        "export"
+      ],
+      "answer": [
+        "alias"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "7f4b1689-f143-475c-804d-05af99369640",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando moderno substitui o antigo ifconfig?",
+      "options": [
+        "ip",
+        "ss",
+        "route",
+        "netstat",
+        "ifup"
+      ],
+      "answer": [
+        "ip"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "803b90ba-3aee-4bb7-a628-be40dc332e87",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual opção do comando 'usermod' é usada para bloquear a senha de um usuário?",
+      "options": [
+        "-u",
+        "-U",
+        "-L",
+        "-l",
+        "-e"
+      ],
+      "answer": [
+        "-L"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "81cd616d-913b-44c6-909f-b76ecdece8b3",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual variável especial contém o código de status de saída do último comando executado?",
+      "options": [
+        "$!",
+        "$$",
+        "$?",
+        "$#",
+        "$-"
+      ],
+      "answer": [
+        "$?"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "83ea7416-774f-42ea-8a0e-0d7091e4b175",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual variável de ambiente substitui todas as outras configurações de localidade?",
+      "options": [
+        "LANG",
+        "LC_ALL",
+        "LC_CTYPE",
+        "LC_TIME",
+        "LANGUAGE"
+      ],
+      "answer": [
+        "LC_ALL"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "8508249f-609e-400e-ab08-1461758c5814",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "No shell Bash, qual variável especial armazena o PID do processo atual?",
+      "options": null,
+      "answer": [
+        "$$"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "85c61c8f-6558-486a-96a8-20343e583704",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para inspecionar a fila de e-mails do Sendmail?",
+      "options": [
+        "sendmail -bp",
+        "mailq",
+        "sendmail -q",
+        "mail -f",
+        "postqueue -p"
+      ],
+      "answer": [
+        "mailq",
+        "sendmail -bp"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "85f91f80-0b93-4c83-8fdc-ccb12d25e351",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é o daemon do sistema de impressão CUPS?",
+      "options": [
+        "lpd",
+        "cupsd",
+        "cups-lpd",
+        "printd",
+        "ippd"
+      ],
+      "answer": [
+        "cupsd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "8655f2de-2b14-4e65-a78c-aff2df542827",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo de configuração é usado pelo daemon ntpd?",
+      "options": [
+        "/etc/ntp.conf",
+        "/etc/ntpd.conf",
+        "/etc/ntp/ntp.conf",
+        "/etc/chrony.conf",
+        "/etc/ntp.d/"
+      ],
+      "answer": [
+        "/etc/ntp.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "876d4758-38b6-410b-b41a-6e6d94c07526",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Como termina um bloco 'if' no Bash?",
+      "options": [
+        "endif",
+        "}",
+        "done",
+        "fi",
+        "end"
+      ],
+      "answer": [
+        "fi"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "884a3142-12d7-4ff9-8757-f11eda4cb559",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é o protocolo de exibição mais recente projetado para substituir o X Window System?",
+      "options": [
+        "Mir",
+        "Wayland",
+        "DirectFB",
+        "XFree86",
+        "Xorg"
+      ],
+      "answer": [
+        "Wayland"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "88bf8fe0-5038-4d3e-a848-1bebd6f3c206",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é o propósito do diretório /etc/skel/?",
+      "options": [
+        "Armazenar scripts de inicialização do sistema",
+        "Servir como modelo para o diretório inicial de novos usuários",
+        "Armazenar arquivos de log do sistema",
+        "Conter binários essenciais",
+        "Armazenar bibliotecas compartilhadas"
+      ],
+      "answer": [
+        "Servir como modelo para o diretório inicial de novos usuários"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "89119368-5fd4-43f5-ae3f-7850b97be9d7",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual campo extra é obrigatório nos arquivos crontab de sistema (como /etc/crontab)?",
+      "options": [
+        "Minuto",
+        "Comando",
+        "Usuário",
+        "Dia do mês",
+        "Mês"
+      ],
+      "answer": [
+        "Usuário"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "89b9240a-5238-43a0-847a-4f29c6ea6f26",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo define as regras de acesso ao sudo para usuários e grupos?",
+      "options": null,
+      "answer": [
+        "/etc/sudoers"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "8a218200-07e6-4a59-8502-347bc058d99a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para visualizar a tabela de roteamento?",
+      "options": [
+        "ip route",
+        "route -n",
+        "netstat -r",
+        "ss -r",
+        "ip link"
+      ],
+      "answer": [
+        "ip route"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "8ab2e580-ce6b-4010-8a15-c7f2163b7f3e",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo contém a configuração dos servidores DNS no Linux?",
+      "options": null,
+      "answer": [
+        "/etc/resolv.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "8d934b7e-03b0-42e4-a23d-f1968a3f773b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual das seguintes sintaxes é válida para substituição de comando no Bash?",
+      "options": [
+        "`comando`",
+        "$(comando)",
+        "Ambas são válidas",
+        "{comando}",
+        "[comando]"
+      ],
+      "answer": [
+        "Ambas são válidas"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "8fd0be83-8209-42ab-a894-5147d0d39cba",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe o final de um arquivo de log em tempo real (acompanha novas entradas)?",
+      "options": null,
+      "answer": [
+        "tail -f",
+        "tail"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "9008f873-2a5b-4248-be93-b61f182ef633",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "No Bash, qual variável especial contém o código de saída (exit status) do último comando executado?",
+      "options": null,
+      "answer": [
+        "$?"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "90aeee07-13e6-4c84-afe9-54d0e8ad1009",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando exibe informações sobre o servidor X, incluindo as extensões disponíveis?",
+      "options": [
+        "xwininfo",
+        "xlsclients",
+        "xdpyinfo",
+        "xrandr",
+        "xset"
+      ],
+      "answer": [
+        "xdpyinfo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "914df83c-432d-4537-9f0a-bfcef385d2c3",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo de inicialização do Bash é executado para shells interativos SEM login (ex: ao abrir um terminal no desktop)?",
+      "options": null,
+      "answer": [
+        "~/.bashrc",
+        "/etc/bash.bashrc"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "91d3d4f3-2be5-4967-8b38-9a284ebba377",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo mapeia nomes de host para endereços IP localmente (sem DNS)?",
+      "options": null,
+      "answer": [
+        "/etc/hosts"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "94abaa8d-468a-4e0f-82c2-782e88162d41",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual protocolo é nativamente suportado pelo Windows para acesso remoto à área de trabalho e também tem clientes disponíveis para Linux?",
+      "options": [
+        "VNC",
+        "XDMCP",
+        "RDP",
+        "SPICE",
+        "RFB"
+      ],
+      "answer": [
+        "RDP"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "965423c3-b371-4881-ba96-1ef66bb3d726",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo é usado para configurar aliases de e-mail em todo o sistema?",
+      "options": [
+        "~/.forward",
+        "/etc/aliases",
+        "/etc/mail/aliases",
+        "/etc/postfix/aliases",
+        "/etc/email-aliases"
+      ],
+      "answer": [
+        "/etc/aliases"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "97e31e00-7279-44ad-aa91-6483543d5ae7",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo de inicialização é executado por um shell de login interativo em nível de usuário, se ~/.bash_profile e ~/.bash_login não existirem?",
+      "options": [
+        "~/.bashrc",
+        "~/.profile",
+        "~/.bash_logout",
+        "/etc/profile",
+        "~/.bash_aliases"
+      ],
+      "answer": [
+        "~/.profile"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "990f59ee-268b-4bac-8b4c-f940a62b5768",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando do sistema é usado para adicionar um grupo ao sistema Linux?",
+      "options": null,
+      "answer": [
+        "groupadd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "9e9c653c-f945-4cc7-819f-3222c483230b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "O que o comando 'host' retorna por padrão quando consulta um nome de domínio?",
+      "options": [
+        "Apenas o registro A",
+        "Registros A, AAAA e MX",
+        "Apenas o registro MX",
+        "Apenas o registro NS",
+        "Apenas o registro CNAME"
+      ],
+      "answer": [
+        "Registros A, AAAA e MX"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "a254b92e-7a88-4f7a-8d9c-af02e5f6e1d5",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "No X Window System, como é chamado o componente que gerencia a exibição gráfica e os dispositivos de entrada?",
+      "options": [
+        "Cliente X",
+        "Gerenciador de Janelas",
+        "Servidor X",
+        "Gerenciador de Display",
+        "Ambiente de Desktop"
+      ],
+      "answer": [
+        "Servidor X"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "a3441ac3-e278-403e-85ba-39c074313b11",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Onde um usuário comum pode configurar o redirecionamento de seu próprio e-mail?",
+      "options": [
+        "/etc/aliases",
+        "/etc/mail/forward",
+        "~/.forward",
+        "~/.mailrc",
+        "/var/spool/mail/forward"
+      ],
+      "answer": [
+        "~/.forward"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "a43e5863-9d75-494d-9617-cbc9b934cc68",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Como é chamado o endereço IPv6 equivalente ao 127.0.0.1 no IPv4?",
+      "options": [
+        "::",
+        "::1",
+        "2001:db8::1",
+        "fe80::1",
+        "ff02::1"
+      ],
+      "answer": [
+        "::1"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "a7577aa1-3f19-4a2e-b775-2785ed4f5ca0",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual biblioteca de widgets é a base do ambiente de desktop KDE?",
+      "options": [
+        "GTK+",
+        "Qt",
+        "Motif",
+        "FLTK",
+        "wxWidgets"
+      ],
+      "answer": [
+        "Qt"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "a822ec90-8d86-499a-b581-760ea1e171e8",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é o comando de baixo nível, listado nos objetivos da LPI, para adicionar um novo usuário no Linux?",
+      "options": [
+        "adduser",
+        "useradd",
+        "newuser",
+        "mkuser",
+        "passwd"
+      ],
+      "answer": [
+        "useradd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "a8dcd09f-3231-4dc6-9061-e4f8ed1159f5",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual operador garante que o comando à direita só seja executado se o comando à esquerda for bem-sucedido (status 0)?",
+      "options": [
+        "||",
+        "&&",
+        "|",
+        "&",
+        ";"
+      ],
+      "answer": [
+        "&&"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "aac8b8d3-1660-4fca-8e21-b884fa20600a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando testa a conectividade com um host remoto enviando pacotes ICMP?",
+      "options": null,
+      "answer": [
+        "ping"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "abe962c7-7fb0-4d82-8c77-5675dbe9ae7b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a vantagem do 'getent hosts' sobre simplesmente ler o /etc/hosts?",
+      "options": [
+        "É mais rápido",
+        "Ele consulta todas as fontes definidas no nsswitch.conf",
+        "Ele formata a saída",
+        "Ele verifica a sintaxe",
+        "Ele só funciona para IPv4"
+      ],
+      "answer": [
+        "Ele consulta todas as fontes definidas no nsswitch.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "ad81d457-0442-48af-b8d7-4f062947be4d",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando define o relógio do hardware a partir do relógio do sistema?",
+      "options": [
+        "hwclock --hctosys",
+        "hwclock --systohc",
+        "date --set",
+        "timedatectl set-time",
+        "clock --sync"
+      ],
+      "answer": [
+        "hwclock --systohc"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "ad9cb061-ca3e-4a38-a18d-3519b24c0c3a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando atualiza o banco de dados de aliases após modificar o /etc/aliases?",
+      "options": [
+        "sendmail -bi",
+        "newaliases",
+        "postalias",
+        "sendmail -q",
+        "makealiases"
+      ],
+      "answer": [
+        "newaliases",
+        "postalias"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "b084a22b-c1bd-4f3b-8cfa-fa80750eaaef",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para definir a data de expiração de uma conta de usuário?",
+      "options": [
+        "passwd",
+        "usermod",
+        "chage",
+        "groupmod",
+        "userdel"
+      ],
+      "answer": [
+        "chage"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "b3e02388-5ecc-4fba-9182-bb9e2574e653",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Onde são armazenadas as chaves de host do servidor SSH?",
+      "options": [
+        "~/.ssh/",
+        "/etc/ssh/",
+        "/var/lib/ssh/",
+        "/usr/share/ssh/",
+        "/etc/ssl/"
+      ],
+      "answer": [
+        "/etc/ssh/"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "b4f2dbfd-3f82-46b7-b8f5-f68d26634808",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando torna um script shell executável?",
+      "options": null,
+      "answer": [
+        "chmod +x",
+        "chmod 755"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "b714e215-fa29-4273-8ca3-e2210c92508d",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual shell é o padrão na maioria das distribuições Linux e é definido pelo POSIX?",
+      "options": null,
+      "answer": [
+        "bash"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "b98d9a76-c6a8-4f28-a4f1-1901ef461126",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando cria um alias temporário no Bash? (apenas o nome do comando)",
+      "options": null,
+      "answer": [
+        "alias"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "ba0dd27c-664c-41e3-9fd8-0a0e6130be6f",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando deve ser usado para editar o arquivo /etc/sudoers com segurança?",
+      "options": [
+        "vi /etc/sudoers",
+        "nano /etc/sudoers",
+        "visudo",
+        "sudoedit /etc/sudoers",
+        "emacs /etc/sudoers"
+      ],
+      "answer": [
+        "visudo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "be835569-c31a-401f-898a-7c64195042c8",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a máscara de rede em notação decimal para /24?",
+      "options": [
+        "255.0.0.0",
+        "255.255.0.0",
+        "255.255.255.0",
+        "255.255.255.128",
+        "255.255.255.192"
+      ],
+      "answer": [
+        "255.255.255.0"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "beca7575-3600-40f2-ba6b-7e861d6f1154",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe os processos em execução no sistema em tempo real?",
+      "options": null,
+      "answer": [
+        "top",
+        "htop"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "c05da715-b169-40b2-867f-6b9000cb31d0",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual protocolo o comando ping utiliza?",
+      "options": [
+        "TCP",
+        "UDP",
+        "ICMP",
+        "IGMP",
+        "ARP"
+      ],
+      "answer": [
+        "ICMP"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "c2d26c5e-4491-4e3d-abed-7f90d3ae24ce",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Em um script Bash, qual variável especial contém o nome do script?",
+      "options": [
+        "$1",
+        "$*",
+        "$@",
+        "$0",
+        "$$"
+      ],
+      "answer": [
+        "$0"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "c505de06-20b0-43c7-b5c6-b8984a75fb31",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual variável de ambiente define os diretórios onde o shell procura por comandos executáveis?",
+      "options": [
+        "HOME",
+        "PWD",
+        "SHELL",
+        "PATH",
+        "LD_LIBRARY_PATH"
+      ],
+      "answer": [
+        "PATH"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "c7d8404d-cda3-40f5-8f0d-f6e753c8abe7",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Em um crontab de usuário, qual campo especifica o dia da semana?",
+      "options": [
+        "1º campo",
+        "2º campo",
+        "3º campo",
+        "4º campo",
+        "5º campo"
+      ],
+      "answer": [
+        "5º campo"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "c82787bc-1483-487c-874c-1bb4b1147228",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para editar o arquivo crontab do usuário atual?",
+      "options": [
+        "crontab -l",
+        "crontab -e",
+        "crontab -r",
+        "vi /etc/crontab",
+        "cronedit"
+      ],
+      "answer": [
+        "crontab -e"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "c864bc31-c84d-4870-9d56-e2506dccfbd2",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual linha deve ser a primeira em um script Bash para garantir que ele seja executado com o interpretador /bin/bash?",
+      "options": [
+        "#/bin/bash",
+        "//bin/bash",
+        "#!/bin/bash",
+        "#!/bin/sh",
+        "#!/usr/bin/env bash"
+      ],
+      "answer": [
+        "#!/bin/bash"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "cbee6137-6357-4ed5-9146-2113f406c0d6",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe o endereço IP das interfaces de rede (versão moderna)?",
+      "options": null,
+      "answer": [
+        "ip a",
+        "ip addr",
+        "ip address"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "cc5f4c34-e3b0-42e9-9f12-b857b30ea16a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Como você declara um array chamado 'frutas' no Bash?",
+      "options": [
+        "frutas = (maçã banana laranja)",
+        "frutas=(maçã banana laranja)",
+        "array frutas = maçã banana laranja",
+        "frutas = ['maçã', 'banana', 'laranja']",
+        "declare -a frutas = (maçã banana laranja)"
+      ],
+      "answer": [
+        "frutas=(maçã banana laranja)"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "ce22b389-498d-4e79-b6ad-eb634386f4d1",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando cria um novo usuário no sistema Linux?",
+      "options": null,
+      "answer": [
+        "useradd",
+        "adduser"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "ced79e9e-2b2a-4f39-9902-23513902a384",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual das seguintes faixas de IP é reservada para redes privadas Classe B?",
+      "options": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+        "169.254.0.0/16",
+        "224.0.0.0/4"
+      ],
+      "answer": [
+        "172.16.0.0/12"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "cf266dc5-92e4-435d-90e5-ba897cfc47d2",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando de linha de comando é usado para interagir com o NetworkManager?",
+      "options": [
+        "nmcli",
+        "nmtui",
+        "nm-connection-editor",
+        "network-manager",
+        "nm"
+      ],
+      "answer": [
+        "nmcli",
+        "nmtui"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "cf63901e-0fdd-48b6-95c9-a6bb771f34ab",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é o arquivo de configuração principal do rsyslog, que também pode incluir arquivos de outros diretórios?",
+      "options": [
+        "/etc/rsyslog.d/*",
+        "/etc/rsyslog.conf",
+        "/etc/syslog.conf",
+        "/etc/logrotate.conf",
+        "/etc/rsyslog"
+      ],
+      "answer": [
+        "/etc/rsyslog.conf"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "da92da87-2002-4e84-b972-e32c01c87f3b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "O que é uma rota padrão (default gateway)?",
+      "options": [
+        "A rota para a rede local",
+        "A rota usada quando não há correspondência específica na tabela de roteamento",
+        "A rota para o servidor DNS",
+        "A rota para a interface de loopback",
+        "A rota com a menor métrica"
+      ],
+      "answer": [
+        "A rota usada quando não há correspondência específica na tabela de roteamento"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "de8a16d8-6c2b-44ab-a429-f581a343f904",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Quais comandos podem ser usados para alterar o layout do teclado no Linux?",
+      "options": [
+        "Apenas loadkeys",
+        "setxkbmap e localectl",
+        "Apenas setxkbmap",
+        "xmodmap",
+        "keyboard-config"
+      ],
+      "answer": [
+        "setxkbmap e localectl"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "dee1092f-56d3-466e-9dfd-4f19a2c7b6a1",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual arquivo contém as senhas criptografadas dos usuários no Linux moderno?",
+      "options": null,
+      "answer": [
+        "/etc/shadow"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "e039a30f-a4c3-4f51-9745-a1f68c1846c2",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual recurso de acessibilidade permite que um usuário digite atalhos de teclado (como Ctrl+Alt+Del) pressionando uma tecla de cada vez?",
+      "options": [
+        "Teclas lentas",
+        "Teclas de aderência",
+        "Teclas de alternância",
+        "Teclas no mouse",
+        "Teclas de repetição"
+      ],
+      "answer": [
+        "Teclas de aderência"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "e15e1ad7-8cd7-4241-a988-eae8a9263e23",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para converter arquivos de texto de uma codificação de caracteres para outra?",
+      "options": [
+        "convert",
+        "iconv",
+        "recode",
+        "utf8",
+        "chardet"
+      ],
+      "answer": [
+        "iconv"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "e1f83f40-b145-443c-b76f-f3b364ecbe9c",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando exibe ou define o fuso horário atual do sistema no Linux moderno (systemd)?",
+      "options": null,
+      "answer": [
+        "timedatectl"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "e3d6ce9c-1848-4374-9129-fb2010fa1418",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando lista os processos em execução (snapshot estático)?",
+      "options": null,
+      "answer": [
+        "ps",
+        "ps aux",
+        "ps -ef"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "e77f7e56-9f67-41cc-a849-99ebb82195b3",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual recurso de acessibilidade é usado para ampliar partes da tela?",
+      "options": [
+        "Alto contraste",
+        "Texto grande",
+        "Lente de aumento",
+        "Leitor de tela",
+        "Display Braille"
+      ],
+      "answer": [
+        "Lente de aumento"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "eb323596-b29f-4219-8d38-154480196e32",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual arquivo armazena as senhas criptografadas dos usuários?",
+      "options": [
+        "/etc/passwd",
+        "/etc/group",
+        "/etc/shadow",
+        "/etc/gshadow",
+        "/etc/login.defs"
+      ],
+      "answer": [
+        "/etc/shadow"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "eb6ec453-a5e4-4c38-9a97-be6978f1b3e3",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando testa se um arquivo é um diretório?",
+      "options": [
+        "test -f /caminho",
+        "test -d /caminho",
+        "test -e /caminho",
+        "test -s /caminho",
+        "test -r /caminho"
+      ],
+      "answer": [
+        "test -d /caminho"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "ec97cef1-4bf6-43f6-b82f-6044d99a578f",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é o comando de baixo nível, listado nos objetivos da LPI, para adicionar um novo grupo ao sistema?",
+      "options": [
+        "groupadd",
+        "addgroup",
+        "newgroup",
+        "groupmod",
+        "groupdel"
+      ],
+      "answer": [
+        "groupadd"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "eca107bc-0501-488d-8991-7fc77935c086",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a porta padrão do protocolo HTTPS?",
+      "options": [
+        "80",
+        "443",
+        "8080",
+        "8443",
+        "22"
+      ],
+      "answer": [
+        "443"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "ed4d5619-6442-4bb5-89d5-9e50e7c32a42",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é necessário para tornar um script diretamente executável (ex: ./script.sh)?",
+      "options": [
+        "chmod +r script.sh",
+        "chmod +x script.sh",
+        "chmod 644 script.sh",
+        "chown script.sh",
+        "bash script.sh"
+      ],
+      "answer": [
+        "chmod +x script.sh"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "ed580579-cd97-44a0-8851-19a07b76cc4a",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para enviar um trabalho de impressão para a fila?",
+      "options": [
+        "lpr",
+        "lpq",
+        "lprm",
+        "lpstat",
+        "cancel"
+      ],
+      "answer": [
+        "lpr"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "ef2ed6b3-4ba9-40f5-9b63-ecf066995638",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando gerencia a expiração e envelhecimento de senhas de usuários no Linux?",
+      "options": null,
+      "answer": [
+        "chage"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "f1a6160a-5001-49c9-9985-c5c0d3a7d1dc",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual é a sintaxe correta para definir uma função chamada 'hello' no Bash?",
+      "options": [
+        "function hello { echo 'Hi'; }",
+        "hello() { echo 'Hi'; }",
+        "def hello(): echo 'Hi'",
+        "Apenas A e B são sintaxe Bash válida",
+        "Apenas A está correta"
+      ],
+      "answer": [
+        "function hello { echo 'Hi'; }",
+        "hello() { echo 'Hi'; }"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "f3f9795a-da1c-469c-8712-833a632f21cf",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando do GPG é usado para verificar a assinatura de um arquivo?",
+      "options": null,
+      "answer": [
+        "gpg --verify"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "f6dc41f6-77e2-477f-bcdd-f38b98daa4af",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para adicionar manualmente uma entrada ao syslog?",
+      "options": [
+        "log",
+        "syslog",
+        "logger",
+        "logwrite",
+        "journalctl"
+      ],
+      "answer": [
+        "logger"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    },
+    {
+      "id": "f8d9438c-a77d-4246-a4f2-39edcb5add1b",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para executar (source) um arquivo de script no shell atual, em vez de em um sub-shell?",
+      "options": [
+        "bash script.sh",
+        "./script.sh",
+        "sh script.sh",
+        ". script.sh",
+        "chmod +x script.sh"
+      ],
+      "answer": [
+        ". script.sh"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.565559"
+    },
+    {
+      "id": "fe77f97b-8914-446d-a945-d4fda8ef4042",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "text",
+      "question": "Qual comando agenda a execução de um comando para uma única vez em horário específico?",
+      "options": null,
+      "answer": [
+        "at"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.985399"
+    },
+    {
+      "id": "fea8bd37-34d5-4b95-a6ed-80bd96836a92",
+      "exam_id": "fe6a8246-f081-4156-9a4e-f1ea5f759ca8",
+      "type": "multiple",
+      "question": "Qual comando é usado para adicionar ou remover impressoras no CUPS?",
+      "options": [
+        "lpadmin",
+        "lpinfo",
+        "lpstat",
+        "lpoptions",
+        "cupsadd"
+      ],
+      "answer": [
+        "lpadmin"
+      ],
+      "difficulty": "medium",
+      "hint": null,
+      "explanation": null,
+      "weight": 1,
+      "is_active": true,
+      "created_at": "2026-02-23T19:31:10.780755"
+    }
+  ]
+}
