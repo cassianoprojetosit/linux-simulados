@@ -1,6 +1,8 @@
 /**
  * Modal de doações: Solana, Bitcoin, Ethereum.
- * Endereços e QR gerado no cliente (sem enviar dados a terceiros).
+ * - Segurança: endereços só exibidos; escape Html/Attr contra XSS; href com scheme em allowlist (solana:|bitcoin:|ethereum:).
+ * - Desempenho: modal criado no primeiro clique; QR lib carregada sob demanda (lazy).
+ * - Acessibilidade: foco no botão fechar ao abrir; foco devolvido ao trigger ao fechar.
  * Incluir em páginas que tenham .sidebar e #mobile-menu-overlay.
  */
 (function() {
@@ -42,32 +44,27 @@
         a.innerHTML = '<span class="nav-icon">❤️</span> Doar';
         a.addEventListener('click', function(e) {
             e.preventDefault();
-            openModal();
+            openModal(e);
         });
         return a;
     }
 
     function injectSidebarDonation() {
         const nav = document.querySelector('.sidebar .nav');
-        const footer = document.querySelector('.sidebar .sidebar-footer');
-        if (!nav) return;
+        if (!nav || nav.querySelector('.donation-trigger')) return;
+        // .sidebar-footer é irmão do .nav, não filho — só append no nav
         const section = document.createElement('div');
         section.className = 'nav-section';
         section.textContent = 'Apoie';
         const link = createDonationLink();
-        if (footer) {
-            nav.insertBefore(section, footer);
-            nav.insertBefore(link, footer);
-        } else {
-            nav.appendChild(section);
-            nav.appendChild(link);
-        }
+        nav.appendChild(section);
+        nav.appendChild(link);
     }
 
     function injectMobileDonation() {
         const content = document.querySelector('#mobile-menu-overlay .mobile-menu-content');
         const adminWrap = document.getElementById('mobile-admin-wrap');
-        if (!content) return;
+        if (!content || content.querySelector('.donation-trigger')) return;
         const section = document.createElement('div');
         section.className = 'nav-section';
         section.textContent = 'Apoie';
@@ -102,17 +99,23 @@
             '</div>';
         document.body.appendChild(el);
 
-        el.querySelector('.donation-modal-close').addEventListener('click', closeModal);
+        var closeBtn = el.querySelector('.donation-modal-close');
+        closeBtn.addEventListener('click', closeModal);
         el.addEventListener('click', function(e) {
             if (e.target === el) closeModal();
         });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && el.classList.contains('open')) closeModal();
+            if (e.key === 'Escape' && el.classList.contains('open')) {
+                closeModal();
+            }
         });
+        el._donationCloseBtn = closeBtn;
         return el;
     }
 
-    function openModal() {
+    var _lastDonationTrigger = null;
+    function openModal(ev) {
+        if (ev && ev.currentTarget) _lastDonationTrigger = ev.currentTarget;
         const modal = getModal();
         const body = document.getElementById(MODAL_BODY_ID);
         const networksEl = body && body.querySelector('.donation-networks');
@@ -124,7 +127,11 @@
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
-        requestAnimationFrame(function() { buildAndDrawQr(); });
+        requestAnimationFrame(function() {
+            buildAndDrawQr();
+            var btn = modal._donationCloseBtn;
+            if (btn && typeof btn.focus === 'function') btn.focus();
+        });
     }
 
     function closeModal() {
@@ -133,6 +140,10 @@
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        if (_lastDonationTrigger && typeof _lastDonationTrigger.focus === 'function') {
+            _lastDonationTrigger.focus();
+            _lastDonationTrigger = null;
+        }
     }
 
     function buildNetworks(body) {
@@ -155,7 +166,7 @@
                 '  <code class="donation-address" title="' + escapeAttr(w.address) + '">' + escapeHtml(shortenAddress(w.address)) + '</code>' +
                 '  <button type="button" class="donation-copy" data-address="' + escapeAttr(w.address) + '" title="Copiar endereço">Copiar</button>' +
                 '</div>' +
-                (w.scheme ? '<a href="' + escapeAttr(w.scheme + w.address) + '" class="donation-wallet-link" target="_blank" rel="noopener">Abrir na carteira</a>' : '');
+                (allowedScheme(w.scheme) ? '<a href="' + escapeAttr(w.scheme + w.address) + '" class="donation-wallet-link" target="_blank" rel="noopener noreferrer">Abrir na carteira</a>' : '');
             container.appendChild(card);
         });
         container.querySelectorAll('.donation-copy').forEach(function(btn) {
@@ -175,11 +186,18 @@
     }
     function escapeAttr(s) {
         if (s == null) return '';
-        return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
     function shortenAddress(addr) {
         if (!addr || addr.length < 20) return addr;
         return addr.slice(0, 10) + '…' + addr.slice(-8);
+    }
+
+    var ALLOWED_SCHEMES = { 'solana:': 1, 'bitcoin:': 1, 'ethereum:': 1 };
+    function allowedScheme(s) {
+        return s && ALLOWED_SCHEMES[s] === 1;
     }
 
     function copyToClipboard(text, buttonEl) {
@@ -269,6 +287,6 @@
     function init() {
         injectSidebarDonation();
         injectMobileDonation();
-        getModal();
+        // Modal criado sob demanda no primeiro openModal() (melhor desempenho)
     }
 })();
