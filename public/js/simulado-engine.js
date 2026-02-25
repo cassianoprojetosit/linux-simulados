@@ -37,7 +37,6 @@
     const simuladoExamSpan = document.getElementById('simulado-exam');
     const customQuantity = document.getElementById('custom-quantity');
     const customTimer = document.getElementById('custom-timer');
-    const showFeedbackCheck = document.getElementById('show-feedback');
 
     document.querySelectorAll('input[name="quantity"]').forEach(radio => {
         radio.addEventListener('change', function() {
@@ -355,7 +354,7 @@
         const isCorrect = (q.correct != null && selectedValue === q.correct);
         userAnswers[index] = selectedValue;
         userAnswerStatus[index] = isCorrect ? 'correct' : 'incorrect';
-        if (showFeedbackCheck && showFeedbackCheck.checked) updateSingleCard(index);
+        updateSingleCard(index);
         updateScoreAndProgress();
     }
 
@@ -374,7 +373,7 @@
         userAnswerStatus[index] = isCorrect ? 'correct' : 'incorrect';
         if (input) input.disabled = true;
         event.target.disabled = true;
-        if (showFeedbackCheck && showFeedbackCheck.checked) updateSingleCard(index);
+        updateSingleCard(index);
         updateScoreAndProgress();
     }
 
@@ -401,12 +400,19 @@
             } else {
                 const optionsDiv = card.querySelector('.options');
                 const optionDivs = optionsDiv ? optionsDiv.querySelectorAll('.option') : [];
+                optionDivs.forEach((opt, i) => opt.classList.remove('correct-answer', 'wrong-answer'));
                 if (q.correct != null && optionDivs[q.correct]) optionDivs[q.correct].classList.add('correct-answer');
+                const selectedIdx = userAnswers[index];
+                if (selectedIdx != null && selectedIdx !== q.correct && optionDivs[selectedIdx]) optionDivs[selectedIdx].classList.add('wrong-answer');
                 feedbackDiv.className = 'feedback incorrect-feedback';
                 feedbackDiv.innerText = q.correct != null && q.options && q.options[q.correct] != null
                     ? '✗ Incorreto. A correta é ' + String.fromCharCode(65 + q.correct) + ': ' + q.options[q.correct]
                     : '✗ Incorreto.';
             }
+        }
+        if (status !== null) {
+            const opts = card.querySelector('.options');
+            if (opts) opts.querySelectorAll('input').forEach(inp => { inp.disabled = true; });
         }
     }
 

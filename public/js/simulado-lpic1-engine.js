@@ -31,8 +31,6 @@
             // Controles de quantidade
             const customQuantity = document.getElementById('custom-quantity');
             const customTimer = document.getElementById('custom-timer');
-            const showFeedbackCheck = document.getElementById('show-feedback');
-
             // Event listeners para habilitar/desabilitar campos personalizados
             document.querySelectorAll('input[name="quantity"]').forEach(radio => {
                 radio.addEventListener('change', function() {
@@ -341,11 +339,7 @@
                 
                 userAnswers[index] = selectedValue;
                 userAnswerStatus[index] = isCorrect ? 'correct' : 'incorrect';
-                
-                if (!showFeedbackCheck || showFeedbackCheck.checked) {
-                    updateSingleCard(index);
-                }
-                
+                updateSingleCard(index);
                 updateScoreAndProgress();
             }
 
@@ -371,11 +365,7 @@
                 
                 input.disabled = true;
                 event.target.disabled = true;
-                
-                if (!showFeedbackCheck || showFeedbackCheck.checked) {
-                    updateSingleCard(index);
-                }
-                
+                updateSingleCard(index);
                 updateScoreAndProgress();
             }
 
@@ -409,9 +399,10 @@
                     } else {
                         const optionsDiv = card.querySelector('.options');
                         const optionDivs = optionsDiv ? optionsDiv.querySelectorAll('.option') : [];
-                        if (q.correct != null && q.correct >= 0 && optionDivs[q.correct]) {
-                            optionDivs[q.correct].classList.add('correct-answer');
-                        }
+                        optionDivs.forEach((opt, i) => opt.classList.remove('correct-answer', 'wrong-answer'));
+                        if (q.correct != null && q.correct >= 0 && optionDivs[q.correct]) optionDivs[q.correct].classList.add('correct-answer');
+                        const selectedIdx = userAnswers[index];
+                        if (selectedIdx != null && selectedIdx !== q.correct && optionDivs[selectedIdx]) optionDivs[selectedIdx].classList.add('wrong-answer');
                         feedbackDiv.className = 'feedback incorrect-feedback';
                         if (q.correct != null && q.options && q.options[q.correct] != null) {
                             feedbackDiv.innerText = `✗ Incorreto. A correta é ${String.fromCharCode(65 + q.correct)}: ${q.options[q.correct]}`;
@@ -419,6 +410,10 @@
                             feedbackDiv.innerText = '✗ Incorreto.';
                         }
                     }
+                }
+                if (status !== null) {
+                    const opts = card.querySelector('.options');
+                    if (opts) opts.querySelectorAll('input').forEach(inp => { inp.disabled = true; });
                 }
             }
 
